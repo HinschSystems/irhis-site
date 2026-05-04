@@ -3,34 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
-<title>About Neela Kelly — I Rent Houses In Sweats, Toledo OH</title>
-<meta name="description" content="Meet Neela Kelly, owner of I Rent Houses In Sweats. A licensed real estate agent and Toledo landlord with 10+ years experience managing 40+ doors. Here's how she operates.">
+<title>1337 Abbott Ave — Toledo, OH | IRHIS Rental</title>
+<meta name="description" content="Rent 1337 Abbott Ave in Toledo, OH. 3-bedroom rental home with garage and full basement, managed by I Rent Houses In Sweats. View details and get pre-qualified.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-font-family: 'Nunito Sans', Arial, sans-serif;
-font-size: 16px;
-color: #3a3a3a;
-background: #fff;
--webkit-font-smoothing: antialiased;
-overflow-x: hidden;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { text-decoration: none; color: inherit; }
 :root {
 --navy:   #0b2c3d;
 --salmon: #C4775A;
 --cream:  #E8EEED;
---white:  #ffffff;
+--white:  #FFFFFF;
 --text:   #3a3a3a;
---mid:    #6b7280;
+--text-light: #6b7280;
+--border: #d1d5db;
+--shadow: 0 2px 16px rgba(11,44,61,0.10);
+--radius: 10px;
 }
-
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito Sans', Arial, sans-serif; font-size: 16px; color: var(--text); background: var(--white); line-height: 1.6; }
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero-photo { width: 100%; height: 480px; object-fit: cover; opacity: 0.55; display: block; }
+.hero-overlay { position: absolute; inset: 0; min-height: 480px; background: linear-gradient(to bottom, rgba(11,44,61,0.3) 0%, rgba(11,44,61,0.82) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 48px 40px; }
+.hero-badge { display: inline-block; background: var(--salmon); color: var(--white); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 14px; border-radius: 4px; margin-bottom: 14px; width: fit-content; }
+.hero h1 { color: var(--white); font-size: clamp(26px, 4vw, 42px); font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+.hero-sub { color: rgba(255,255,255,0.78); font-size: 17px; font-weight: 400; margin-bottom: 24px; max-width: 560px; }
+.hero-facts { display: flex; gap: 24px; flex-wrap: wrap; }
+.hero-fact { color: var(--white); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.hero-fact span { color: rgba(255,255,255,0.75); font-weight: 400; }
+.page-body { max-width: 1160px; margin: 0 auto; padding: 48px 24px; display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+.sidebar { position: sticky; top: 24px; align-self: start; }
+.price-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.price-card-header { background: var(--navy); color: var(--white); padding: 22px 24px; text-align: center; }
+.price-card-header .rent { font-size: 36px; font-weight: 800; line-height: 1; }
+.price-card-header .per-mo { font-size: 14px; color: rgba(255,255,255,0.65); font-weight: 400; margin-top: 2px; }
+.price-card-body { padding: 22px 24px; }
+.price-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.price-row:last-of-type { border-bottom: none; }
+.price-row .label { color: var(--text-light); font-weight: 600; }
+.price-row .value { font-weight: 700; color: var(--text); }
+.avail-badge { display: inline-block; background: #d1fae5; color: #065f46; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+.placeholder-tag { background: #fef3c7; color: #92400e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; display: inline-block; }
+.btn { display: block; width: 100%; padding: 14px; border: none; border-radius: 8px; font-family: inherit; font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; cursor: pointer; text-decoration: none; transition: opacity 0.2s, transform 0.15s; }
+.btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-salmon { background: var(--salmon); color: var(--white); margin-bottom: 10px; margin-top: 18px; }
+.btn-outline-navy { background: transparent; color: var(--navy); border: 2px solid var(--navy); margin-bottom: 10px; }
+.tour-card { background: var(--cream); border-radius: var(--radius); padding: 20px 24px; margin-top: 16px; text-align: center; }
+.tour-card h4 { font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+.tour-card p { font-size: 13px; color: var(--text-light); margin-bottom: 14px; }
+.section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--salmon); margin-bottom: 6px; }
+.section-title { font-size: clamp(20px, 2.5vw, 26px); font-weight: 800; color: var(--navy); margin-bottom: 16px; line-height: 1.25; }
+.gallery-section { margin-bottom: 48px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+.gallery-grid .main-photo { grid-column: span 2; grid-row: span 2; }
+.gallery-thumb { border-radius: 8px; overflow: hidden; background: var(--cream); aspect-ratio: 4/3; }
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-thumb.main-photo { aspect-ratio: auto; height: 100%; min-height: 280px; }
+.about-section { margin-bottom: 48px; }
+.about-body { font-size: 16px; line-height: 1.75; color: var(--text); margin-bottom: 28px; }
+.love-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.love-item { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; font-weight: 600; color: var(--text); }
+.love-icon { width: 22px; height: 22px; background: var(--salmon); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.love-icon svg { width: 12px; height: 12px; }
+.details-section { margin-bottom: 48px; }
+.detail-blocks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 18px; }
+.detail-block { background: var(--cream); border-radius: var(--radius); padding: 20px; }
+.detail-block h4 { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--salmon); margin-bottom: 12px; }
+.detail-item { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.07); gap: 12px; }
+.detail-item:last-child { border-bottom: none; }
+.detail-item .dk { color: var(--text-light); font-weight: 600; }
+.detail-item .dv { font-weight: 700; color: var(--text); text-align: right; }
+.location-section { margin-bottom: 48px; }
+.map-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--white); text-decoration: none; padding: 12px 22px; border-radius: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 18px; transition: opacity 0.2s; }
+.map-btn:hover { opacity: 0.85; }
+.prequal-section { background: var(--navy); border-radius: var(--radius); padding: 36px 40px; margin-bottom: 48px; text-align: center; }
+.prequal-section .section-eyebrow { color: var(--salmon); }
+.prequal-section .section-title { color: var(--white); margin-bottom: 12px; }
+.prequal-body { color: rgba(255,255,255,0.75); font-size: 15px; max-width: 520px; margin: 0 auto 28px; }
+.btn-salmon-inline { display: inline-block; background: var(--salmon); color: var(--white); padding: 15px 36px; border-radius: 8px; font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+.btn-salmon-inline:hover { opacity: 0.88; }
+.cta-section { margin-bottom: 48px; }
+.cta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+.cta-card { border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.cta-card.center-card { background: var(--navy); border-color: var(--navy); }
+.cta-icon { width: 48px; height: 48px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cta-card.center-card .cta-icon { background: rgba(255,255,255,0.12); }
+.cta-card h4 { font-size: 15px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; }
+.cta-card.center-card h4 { color: var(--white); }
+.cta-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+.cta-card.center-card p { color: rgba(255,255,255,0.7); }
+.btn-cta-salmon { margin-top: auto; display: inline-block; background: var(--salmon); color: var(--white); padding: 11px 22px; border-radius: 7px; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+.btn-cta-salmon:hover { opacity: 0.88; }
+.btn-cta-outline-white { margin-top: auto; display: inline-block; background: transparent; color: var(--white); border: 2px solid var(--white); padding: 10px 22px; border-radius: 7px; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+.btn-cta-outline-white:hover { opacity: 0.78; }
+.trust-section { background: var(--cream); padding: 36px 24px; text-align: center; }
+.trust-note { font-size: 13px; color: var(--text-light); margin-bottom: 24px; }
+.trust-logos { display: flex; justify-content: center; align-items: center; gap: 36px; flex-wrap: wrap; filter: grayscale(1); opacity: 0.55; }
+.trust-logo-text { font-size: 13px; font-weight: 700; color: var(--navy); border: 1.5px solid var(--navy); padding: 6px 14px; border-radius: 4px; }
+.neela-section { background: var(--white); padding: 56px 24px; }
+.neela-inner { max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 160px 1fr; gap: 36px; align-items: start; }
+.neela-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--cream); box-shadow: var(--shadow); }
+.neela-text h2 { font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 14px; }
+.neela-bio { font-size: 15px; line-height: 1.75; color: var(--text); margin-bottom: 18px; }
+.neela-sig img { height: 52px; width: auto; }
+.neela-name { font-size: 14px; font-weight: 700; color: var(--text-light); margin-top: 6px; }
+.testimonials-section { background: var(--cream); padding: 56px 24px; }
+.testimonials-inner { max-width: 1100px; margin: 0 auto; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+.testi-card { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+.stars { color: #f59e0b; font-size: 16px; margin-bottom: 12px; }
+.testi-quote { font-size: 14px; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 14px; }
+.testi-name { font-size: 13px; font-weight: 700; color: var(--text-light); }
+@media (max-width: 1024px) {
+.page-body { grid-template-columns: 1fr; gap: 32px; }
+.sidebar { position: static; }
+.gallery-grid { grid-template-columns: repeat(2, 1fr); }
+.gallery-grid .main-photo { grid-column: span 2; grid-row: auto; }
+}
+@media (max-width: 768px) {
+.hero-overlay { padding: 32px 24px 28px; }
+.hero-photo { height: 360px; }
+.detail-blocks { grid-template-columns: 1fr; }
+.cta-grid { grid-template-columns: 1fr; }
+.testi-grid { grid-template-columns: 1fr; }
+.neela-inner { grid-template-columns: 1fr; text-align: center; }
+.neela-photo { margin: 0 auto; }
+.prequal-section { padding: 28px 22px; }
+}
+@media (max-width: 420px) {
+.hero-photo { height: 280px; }
+.hero-facts { flex-direction: column; gap: 8px; }
+.gallery-grid { grid-template-columns: 1fr; }
+.gallery-grid .main-photo { grid-column: span 1; }
+.price-card-header .rent { font-size: 28px; }
+.hero h1 { font-size: 22px; }
+}
 /* ─── NAV BASE ────────────────────────────────────── */
 nav {
 background: var(--white, #fff);
@@ -56,506 +166,60 @@ text-decoration: none;
 transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--salmon, #C4775A); }
-.nav-links a.nav-active { color: var(--salmon, #C4775A); }
-@media (max-width: 1024px) { nav { padding: 0 28px; } }
-@media (max-width: 768px) {
-nav { padding: 0 16px; height: 64px; }
-.nav-logo img { height: 42px; }
-}
-@media (max-width: 480px) {
-nav { height: 58px; }
-.nav-logo img { height: 36px; }
-}
-/* ── HERO ─────────────────────────────────────────────────────── */
-/* Split: left = big text on navy, right = photo bleeding to edge */
-.hero {
-display: grid;
-grid-template-columns: 1fr 1fr;
-min-height: 560px;
-}
-.hero__left {
-background: var(--navy);
-padding: 72px 56px 72px 64px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-position: relative;
-}
-.hero__eyebrow {
-font-size: 10px;
-font-weight: 700;
-letter-spacing: 0.22em;
-text-transform: uppercase;
-color: var(--salmon);
-margin-bottom: 20px;
-}
-.hero__title {
-font-size: clamp(30px, 3.8vw, 48px);
-font-weight: 800;
-color: #fff;
-line-height: 1.1;
-margin-bottom: 24px;
-}
-.hero__title em {
-font-style: italic;
-color: var(--salmon);
-font-weight: 400;
-}
-.hero__body {
-font-size: 15px;
-color: rgba(255,255,255,0.65);
-line-height: 1.8;
-max-width: 400px;
-}
-/* Stat pill floating bottom-left of left panel */
-.hero__stat-row {
-display: flex;
-gap: 32px;
-margin-top: 48px;
-padding-top: 36px;
-border-top: 1px solid rgba(255,255,255,0.12);
-}
-.hero__stat-val {
-font-size: 28px;
-font-weight: 800;
-color: #fff;
-line-height: 1;
-margin-bottom: 4px;
-}
-.hero__stat-label {
-font-size: 10px;
-font-weight: 700;
-letter-spacing: 0.14em;
-text-transform: uppercase;
-color: rgba(255,255,255,0.40);
-}
-/* Right: navy column with centered circle photo + nameplate below */
-.hero__right {
-background: var(--navy);
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 56px 40px 40px;
-gap: 28px;
-border-left: 1px solid rgba(255,255,255,0.08);
-}
-.hero__photo-circle {
-width: 220px;
-height: 220px;
-border-radius: 50%;
-overflow: hidden;
-border: 3px solid var(--salmon);
-flex-shrink: 0;
-}
-.hero__photo {
-width: 100%;
-height: 100%;
-object-fit: cover;
-object-position: center top;
-display: block;
-}
-.hero__overlay {
-background: rgba(255,255,255,0.06);
-border: 1px solid rgba(255,255,255,0.10);
-border-radius: 4px;
-padding: 16px 24px;
-text-align: center;
-width: 100%;
-max-width: 260px;
-}
-.hero__overlay-text {
-font-size: 13px;
-font-weight: 700;
-color: rgba(255,255,255,0.80);
-line-height: 1.5;
-}
-.hero__overlay-text strong { color: #fff; display: block; margin-bottom: 3px; }
-
-/* ── INTRO PULL QUOTE ────────────────────────────────────────── */
-/* Full-width cream band, large italic pull quote, not a grid */
-.pullquote {
-background: var(--cream);
-padding: 64px 10vw;
-position: relative;
-}
-.pullquote::before {
-content: '\201C';
-position: absolute;
-top: 20px;
-left: 6vw;
-font-size: 160px;
-line-height: 1;
-color: rgba(11,44,61,0.07);
-font-family: Georgia, serif;
-pointer-events: none;
-}
-.pullquote__text {
-font-size: clamp(20px, 2.4vw, 28px);
-font-weight: 700;
-color: var(--navy);
-line-height: 1.5;
-font-style: italic;
-max-width: 780px;
-position: relative;
-z-index: 1;
-}
-.pullquote__text em { color: var(--salmon); font-style: normal; }
-.pullquote__attr {
-margin-top: 20px;
-font-size: 13px;
-font-weight: 700;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-color: var(--mid);
-display: flex;
-align-items: center;
-gap: 12px;
-}
-.pullquote__attr::before {
-content: '';
-display: block;
-width: 28px;
-height: 2px;
-background: var(--salmon);
-}
-
-/* ── NEELA STORY ─────────────────────────────────────────────── */
-/* Asymmetric: wide text left, narrow photo right, offset upward */
-.story {
-background: #fff;
-padding: 80px 64px 80px;
-}
-.story__inner {
-max-width: 1100px;
-margin: 0 auto;
-display: grid;
-grid-template-columns: 1.2fr 1fr;
-gap: 80px;
-align-items: start;
-}
-.story__label {
-font-size: 10px;
-font-weight: 700;
-letter-spacing: 0.20em;
-text-transform: uppercase;
-color: var(--salmon);
-margin-bottom: 20px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-.story__label::before {
-content: '';
-width: 24px;
-height: 2px;
-background: var(--salmon);
-display: block;
-flex-shrink: 0;
-}
-.story__title {
-font-size: clamp(24px, 2.8vw, 34px);
-font-weight: 800;
-color: var(--navy);
-line-height: 1.15;
-margin-bottom: 28px;
-}
-.story__body {
-font-size: 15px;
-color: var(--mid);
-line-height: 1.85;
-margin-bottom: 18px;
-}
-.story__body strong { color: var(--navy); font-weight: 700; }
-.story__sig {
-height: 44px;
-width: auto;
-margin-top: 32px;
-opacity: 0.80;
-}
-/* Photo col: image + a floating salmon card below it */
-.story__photo-col {
-position: relative;
-padding-top: 32px;
-}
-.story__photo {
-width: 100%;
-border-radius: 4px;
-display: block;
-box-shadow: 0 20px 60px rgba(11,44,61,0.14);
-}
-.story__card {
-background: var(--salmon);
-color: #fff;
-padding: 24px 28px;
-margin-top: -1px;
-border-radius: 0 0 4px 4px;
-}
-.story__card-title {
-font-size: 13px;
-font-weight: 800;
-text-transform: uppercase;
-letter-spacing: 0.10em;
-margin-bottom: 8px;
-}
-.story__card-body {
-font-size: 13px;
-line-height: 1.65;
-color: rgba(255,255,255,0.85);
-}
-
-/* ── HOW WE OPERATE ─────────────────────────────────────────── */
-/* Alternating full-bleed rows instead of a card grid */
-.operate {
-background: var(--navy);
-}
-.operate__header {
-padding: 72px 64px 48px;
-max-width: 1100px;
-margin: 0 auto;
-}
-.operate__eyebrow {
-font-size: 10px;
-font-weight: 700;
-letter-spacing: 0.22em;
-text-transform: uppercase;
-color: var(--salmon);
-margin-bottom: 14px;
-}
-.operate__title {
-font-size: clamp(24px, 3vw, 36px);
-font-weight: 800;
-color: #fff;
-line-height: 1.15;
-}
-/* Steps as a single flowing list, not a grid */
-.steps {
-padding: 0 64px 80px;
-max-width: 1100px;
-margin: 0 auto;
-}
-.step {
-display: grid;
-grid-template-columns: 80px 1fr;
-gap: 0 32px;
-padding: 36px 0;
-border-top: 1px solid rgba(255,255,255,0.08);
-}
-.step:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
-.step__num {
-font-size: 11px;
-font-weight: 800;
-letter-spacing: 0.12em;
-color: var(--salmon);
-padding-top: 3px;
-}
-.step__icon {
-width: 36px;
-height: 36px;
-flex-shrink: 0;
-margin-top: 2px;
-}
-.step__content {}
-.step__title {
-font-size: 16px;
-font-weight: 800;
-color: #fff;
-margin-bottom: 8px;
-line-height: 1.3;
-}
-.step__body {
-font-size: 14px;
-color: rgba(255,255,255,0.55);
-line-height: 1.75;
-max-width: 580px;
-}
-
-/* ── HONEST STRIP ────────────────────────────────────────────── */
-/* Full-bleed salmon divider with a single honest statement */
-.honest {
-background: var(--salmon);
-padding: 52px 64px;
-display: flex;
-align-items: center;
-gap: 48px;
-}
-.honest__rule {
-width: 2px;
-height: 64px;
-background: rgba(255,255,255,0.35);
-flex-shrink: 0;
-}
-.honest__title {
-font-size: clamp(18px, 2vw, 22px);
-font-weight: 800;
-color: #fff;
-line-height: 1.3;
-max-width: 520px;
-}
-.honest__sub {
-font-size: 14px;
-color: rgba(255,255,255,0.78);
-line-height: 1.7;
-max-width: 420px;
-margin-top: 8px;
-}
-
-/* ── CTA ─────────────────────────────────────────────────────── */
-.cta {
-background: var(--cream);
-padding: 80px 64px;
-}
-.cta__inner { max-width: 1100px; margin: 0 auto; width: 100%;
-display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
-.cta__eyebrow {
-font-size: 10px;
-font-weight: 700;
-letter-spacing: 0.20em;
-text-transform: uppercase;
-color: var(--salmon);
-margin-bottom: 12px;
-}
-.cta__title {
-font-size: clamp(22px, 2.8vw, 32px);
-font-weight: 800;
-color: var(--navy);
-line-height: 1.2;
-margin-bottom: 10px;
-}
-.cta__sub {
-font-size: 15px;
-color: var(--mid);
-line-height: 1.7;
-max-width: 480px;
-}
-.cta__btns {
-display: flex;
-flex-direction: column;
-gap: 12px;
-flex-shrink: 0;
-}
-.btn {
-display: inline-block;
-text-align: center;
-font-family: 'Nunito Sans', Arial, sans-serif;
-font-size: 12px;
-font-weight: 700;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-padding: 16px 32px;
-border-radius: 3px;
-border: none;
-transition: background .2s, transform .15s;
-cursor: pointer;
-}
-.btn:hover { transform: translateY(-1px); }
-.btn-salmon { background: var(--salmon); color: #fff; }
-.btn-salmon:hover { background: #b36848; }
-.btn-outline {
-background: transparent;
-color: var(--navy);
-border: 2px solid rgba(11,44,61,0.30);
-}
-.btn-outline:hover { border-color: var(--navy); background: rgba(11,44,61,0.05); }
-
-/* ── RESPONSIVE: 1024px ──────────────────────────────────────── */
-@media (max-width: 1024px) {
-.hero__left { padding: 56px 40px 56px 48px; }
-.story { padding: 64px 40px; }
-.story__inner { gap: 56px; }
-.operate__header { padding: 56px 40px 40px; }
-.steps { padding: 0 40px 64px; }
-.honest { padding: 44px 40px; gap: 32px; }
-.cta { padding: 64px 40px; }
-}
-
-/* ── RESPONSIVE: 768px ───────────────────────────────────────── */
-@media (max-width: 768px) {
-.hero { grid-template-columns: 1fr; min-height: auto; }
-.hero__left { padding: 48px 24px; }
-.hero__body { max-width: 100%; }
-.hero__right { padding: 40px 24px; border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
-.hero__photo-circle { width: 160px; height: 160px; }
-.hero__stat-row { gap: 24px; margin-top: 36px; }
-.pullquote { padding: 52px 24px; }
-.pullquote::before { font-size: 100px; top: 10px; left: 10px; }
-.story { padding: 56px 24px; }
-.story__inner { grid-template-columns: 1fr; gap: 40px; }
-.story__photo-col { padding-top: 0; max-width: 380px; }
-.operate__header { padding: 48px 24px 32px; }
-.steps { padding: 0 24px 56px; }
-.step { grid-template-columns: 56px 1fr; gap: 0 20px; }
-.honest { padding: 36px 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
-.honest__rule { width: 40px; height: 2px; }
-.cta { padding: 56px 24px; }
-.cta__inner { grid-template-columns: 1fr; gap: 32px; }
-.cta__btns { flex-direction: row; flex-wrap: wrap; }
-}
-
-/* ── RESPONSIVE: 480px ───────────────────────────────────────── */
-@media (max-width: 480px) {
-.hero__left { padding: 40px 16px; }
-.hero__stat-row { flex-wrap: wrap; gap: 20px 32px; }
-.pullquote { padding: 44px 16px; }
-.story { padding: 44px 16px; }
-.operate__header { padding: 40px 16px 28px; }
-.steps { padding: 0 16px 48px; }
-.step { grid-template-columns: 48px 1fr; }
-.honest { padding: 32px 16px; }
-.cta { padding: 44px 16px; }
-.cta__btns { flex-direction: column; }
-.btn { width: 100%; }
-}
 /* ─── NAV RIGHT / CTA ─────────────────────────────── */
 .nav-right { display: flex; align-items: center; gap: 1.25rem; }
-.nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
-.nav-phone:hover { color: var(--salmon); }
+.nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text, #3a3a3a); text-decoration: none; letter-spacing: 0.04em; }
+.nav-phone:hover { color: var(--salmon, #C4775A); }
 .nav-cta {
-  background: var(--salmon); color: white;
-  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.52rem 1.1rem; border-radius: 4px; text-decoration: none;
-  transition: background 0.2s;
+background: var(--salmon, #C4775A); color: white;
+font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+padding: 0.52rem 1.1rem; border-radius: 4px; text-decoration: none;
+transition: background 0.2s;
 }
 .nav-cta:hover { background: #b3674d; }
 /* ─── HAMBURGER ───────────────────────────────────── */
 .nav-hamburger {
-  display: none; flex-direction: column; justify-content: center; gap: 5px;
-  background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px;
+display: none; flex-direction: column; justify-content: center; gap: 5px;
+background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px;
 }
-.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy, #0b2c3d); border-radius: 2px; transition: all 0.25s; }
 /* ─── MOBILE DRAWER ───────────────────────────────── */
 .nav-drawer {
-  position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
-  background: var(--navy); z-index: 500; padding: 2rem 1.5rem;
-  transition: right 0.3s ease; display: flex; flex-direction: column;
+position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+background: var(--navy, #0b2c3d); z-index: 500; padding: 2rem 1.5rem;
+transition: right 0.3s ease; display: flex; flex-direction: column;
 }
 .nav-drawer.open { right: 0; }
 .nav-overlay {
-  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 499;
+display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 499;
 }
 .nav-overlay.open { display: block; }
 .nav-drawer-close {
-  align-self: flex-end; background: none; border: none; color: white;
-  font-size: 1.3rem; cursor: pointer; margin-bottom: 2rem; padding: 4px;
+align-self: flex-end; background: none; border: none; color: white;
+font-size: 1.3rem; cursor: pointer; margin-bottom: 2rem; padding: 4px;
 }
 .nav-drawer-links { list-style: none; display: flex; flex-direction: column; flex: 1; }
 .nav-drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
 .nav-drawer-links a {
-  display: block; padding: 1rem 0; color: white; text-decoration: none;
-  font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
+display: block; padding: 1rem 0; color: white; text-decoration: none;
+font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
 }
-.nav-drawer-links a:hover { color: var(--salmon); }
+.nav-drawer-links a:hover { color: var(--salmon, #C4775A); }
 .nav-drawer-cta {
-  margin-top: 2rem; display: block; text-align: center;
-  background: var(--salmon); color: white; text-decoration: none;
-  font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.9rem 1rem; border-radius: 4px;
+margin-top: 2rem; display: block; text-align: center;
+background: var(--salmon, #C4775A); color: white; text-decoration: none;
+font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 0.9rem 1rem; border-radius: 4px;
 }
+@media (max-width: 1024px) { nav { padding: 0 28px; } }
 @media (max-width: 768px) {
-  .nav-links, .nav-phone { display: none; }
-  .nav-hamburger { display: flex; }
-  .nav-cta { display: none; }
+nav { padding: 0 16px; height: 64px; }
+.nav-logo img { height: 42px; }
+.nav-links, .nav-phone { display: none; }
+.nav-hamburger { display: flex; }
+.nav-cta { display: none; }
 }
+@media (max-width: 480px) { nav { height: 58px; } .nav-logo img { height: 36px; } }
 /* ─── FOOTER BASE ─────────────────────────────────── */
 footer {
 background: var(--navy, #0b2c3d);
@@ -571,11 +235,8 @@ border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
 .footer-tag {
-font-size: 0.83rem;
-color: rgba(255,255,255,0.45);
-line-height: 1.65;
-margin-bottom: 1.25rem;
-max-width: 260px;
+font-size: 0.83rem; color: rgba(255,255,255,0.45); line-height: 1.65;
+margin-bottom: 1.25rem; max-width: 260px;
 }
 .footer-social a {
 display: inline-flex; align-items: center; justify-content: center;
@@ -591,12 +252,9 @@ text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 1.1rem;
 .footer-col li { margin-bottom: 0.55rem; }
 .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.84rem; }
 .footer-col a:hover { color: white; }
-.footer-col li[style] { font-size: 0.84rem; }
 .footer-bottom {
-padding: 1.4rem 0;
-font-size: 0.73rem;
-color: rgba(255,255,255,0.28);
-text-align: center;
+padding: 1.4rem 0; font-size: 0.73rem;
+color: rgba(255,255,255,0.28); text-align: center;
 }
 @media (max-width: 1024px) { footer { padding: 48px 36px 0; } .footer-grid { gap: 2.5rem; } }
 @media (max-width: 768px) { footer { padding: 36px 16px 0; } .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } .footer-tag { max-width: 100%; } }
@@ -606,7 +264,10 @@ text-align: center;
 <nav>
 <a href="/" class="nav-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png" alt="I Rent Houses In Sweats" /></a>
 <ul class="nav-links">
-<li><a href="/">Home</a></li><li><a href="/portfolio">Properties</a></li><li><a href="/about" class="nav-active">About</a></li><li><a href="https://www.irenthousesinsweats.com/contact">Contact</a></li>
+<li><a href="/">Home</a></li>
+<li><a href="/portfolio">Properties</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="https://www.irenthousesinsweats.com/contact" target="_blank" rel="noopener">Contact</a></li>
 </ul>
 <div class="nav-right">
 <a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
@@ -622,182 +283,278 @@ text-align: center;
 <li><a href="/portfolio">Properties</a></li>
 <li><a href="/about">About</a></li>
 <li><a href="https://www.irenthousesinsweats.com/contact" target="_blank" rel="noopener">Contact</a></li>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
 </ul>
 <a href="https://www.irenthousesinsweats.com/contact" class="nav-drawer-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
 </div>
 <div class="nav-overlay"></div>
 </nav>
-
-<!-- HERO: split layout, photo bleeds full right column -->
+<!-- HERO -->
 <section class="hero">
-<div class="hero__left">
-<p class="hero__eyebrow">Toledo-Area Rentals · Est. 2026</p>
-<h1 class="hero__title">Renting Done<br><em>the right way.</em></h1>
-<p class="hero__body">Small operation. Personal service. Every home managed by one person who actually picks up the phone — and means it.</p>
-<div class="hero__stat-row">
-<div>
-<div class="hero__stat-val">40+</div>
-<div class="hero__stat-label">Doors Managed, and Counting</div>
-</div>
-<div>
-<div class="hero__stat-val">10+</div>
-<div class="hero__stat-label">Years Experience</div>
-</div>
-<div>
-<div class="hero__stat-val">100%</div>
-<div class="hero__stat-label">Owner-Run</div>
-</div>
-</div>
-</div>
-<div class="hero__right">
-<div class="hero__photo-circle">
-<img
-class="hero__photo"
-src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/e2fded25-85b0-41a8-a566-350fcb79ad69.png"
-alt="Neela Kelly"
-onerror="this.style.background='#1a4a60'">
-</div>
-<div class="hero__overlay">
-<p class="hero__overlay-text"><strong>Neela Kelly</strong> Licensed Real Estate Agent &amp; Property Owner</p>
+<img class="hero-photo" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/697ea80e1fd8275c8345caf1.jpg" alt="1337 Abbott Ave — Exterior" onerror="this.style.opacity='0'">
+<div class="hero-overlay">
+<span class="hero-badge">Single-Family Home · Available Now</span>
+<h1>1337 Abbott Ave<br>Toledo, OH 43614</h1>
+<p class="hero-sub">Move-in ready South Toledo home with modern finishes, a unique loft-style layout, LVP flooring, a full basement, and a patio right off the garage — all in a quiet, established neighborhood.</p>
+<div class="hero-facts">
+<div class="hero-fact">🛏 <span>3 Bedrooms</span></div>
+<div class="hero-fact">🛁 <span>1 Bathroom</span></div>
+<div class="hero-fact">📐 <span>1,149 sq ft</span></div>
+<div class="hero-fact">🚗 <span>1.5-Car Garage</span></div>
 </div>
 </div>
 </section>
-
-<!-- PULL QUOTE: wide, italic, not a grid -->
-<div class="pullquote">
-<p class="pullquote__text">"I started this because I thought renting could be done <em>better</em> — with real communication, clear expectations, and genuine respect for the people in my homes."</p>
-<p class="pullquote__attr">Neela Kelly, Owner</p>
+<!-- MAIN BODY -->
+<div class="page-body">
+<main>
+<!-- PHOTO GALLERY -->
+<section class="gallery-section">
+<div class="section-eyebrow">Photos</div>
+<div class="section-title">See Inside This Home</div>
+<div class="gallery-grid">
+<div class="gallery-thumb main-photo">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/697ea2fa66e7cac73286b47a.jpg" alt="Interior" onerror="this.style.display='none'">
 </div>
-
-<!-- NEELA STORY: asymmetric text + photo -->
-<section class="story">
-<div class="story__inner">
-<div>
-<p class="story__label">The Person Behind It</p>
-<h2 class="story__title">Hey, I'm Neela. I run this whole thing myself.</h2>
-<p class="story__body">I'm a <strong>licensed real estate agent</strong> based right here in Toledo, Ohio. I live in this community, know these neighborhoods, and manage every property personally. When you reach out, you hear back from me — not a property management hotline, not a ticket system.</p>
-<p class="story__body">The name says it all. <strong>I Rent Houses In Sweats</strong> is a real business run by a real person. I'm not trying to build a corporate portfolio — I'm trying to do right by the tenants who trust me with their home.</p>
-<img
-loading="lazy"
-class="story__sig"
-src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69377e431da73cd937ae6b68.png"
-alt="Neela Kelly signature"
-onerror="this.style.display='none'">
+<div class="gallery-thumb">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/697ea2fa1fd827bc8c452a30.jpg" alt="Interior" onerror="this.style.display='none'">
 </div>
-<div class="story__photo-col">
-<img
-loading="lazy"
-class="story__photo"
-src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/e2fded25-85b0-41a8-a566-350fcb79ad69.png"
-alt="Neela Kelly"
-onerror="this.style.display='none'">
-<div class="story__card">
-<p class="story__card-title">Licensed Real Estate Agent</p>
-<p class="story__card-body">Neela holds an active Ohio real estate license and manages all 18+ properties in the IRHIS portfolio directly — no third-party management companies.</p>
+<div class="gallery-thumb">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/697ea2fa1fd827ddca452a31.jpg" alt="Interior" onerror="this.style.display='none'">
+</div>
+<div class="gallery-thumb">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/697ea2fa1fd8276a70452a2f.jpg" alt="Interior" onerror="this.style.display='none'">
+</div>
+<div class="gallery-thumb">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/697ea2fa1311f648de4822fc.jpg" alt="Interior" onerror="this.style.display='none'">
+</div>
+<div class="gallery-thumb">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/697ea2faf7a8770fc6d2d627.jpg" alt="Interior" onerror="this.style.display='none'">
+</div>
+</div>
+</section>
+<!-- ABOUT + WHAT YOU'LL LOVE -->
+<section class="about-section">
+<div class="section-eyebrow">About This Home</div>
+<div class="section-title">A Unique Layout in a Quiet South Toledo Neighborhood</div>
+<p class="about-body">This single-family home has a layout you don't see often — two bedrooms on the main floor and a loft-style third bedroom upstairs that works well as a private retreat, home office, or guest room. The main level has been updated with newer finishes including hardwood and LVP flooring throughout, and a full basement gives you real storage or flex space below.</p>
+<p class="about-body">Outside, a patio sits right off the 1.5-car garage — a great spot for grilling or winding down after work. The yard is low-fenced and low maintenance, and the street has the kind of quiet, friendly feel that's genuinely hard to find at this price point in South Toledo.</p>
+<div class="section-eyebrow" style="margin-top: 28px;">What You'll Love</div>
+<ul class="love-list" style="margin-top: 12px;">
+<li class="love-item">
+<span class="love-icon"><svg viewBox="0 0 12 12" fill="white"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none"/></svg></span>
+Luxury vinyl plank and hardwood flooring throughout the main level
+</li>
+<li class="love-item">
+<span class="love-icon"><svg viewBox="0 0 12 12" fill="white"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none"/></svg></span>
+Loft-style 3rd bedroom upstairs — great for privacy, a home office, or a guest room
+</li>
+<li class="love-item">
+<span class="love-icon"><svg viewBox="0 0 12 12" fill="white"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none"/></svg></span>
+Full basement with real potential for additional living space or storage
+</li>
+<li class="love-item">
+<span class="love-icon"><svg viewBox="0 0 12 12" fill="white"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none"/></svg></span>
+Patio right off the 1.5-car garage — great for grilling or unwinding
+</li>
+<li class="love-item">
+<span class="love-icon"><svg viewBox="0 0 12 12" fill="white"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none"/></svg></span>
+Central A/C and W/D hookups in-unit
+</li>
+<li class="love-item">
+<span class="love-icon"><svg viewBox="0 0 12 12" fill="white"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none"/></svg></span>
+Water &amp; trash included — quiet, established South Toledo neighborhood
+</li>
+</ul>
+</section>
+<!-- DETAIL BLOCKS -->
+<section class="details-section">
+<div class="section-eyebrow">Details</div>
+<div class="section-title">Lease &amp; Home Info</div>
+<div class="detail-blocks">
+<div class="detail-block">
+<h4>Lease Details</h4>
+<div class="detail-item"><span class="dk">Monthly Rent</span><span class="dv">$1,500</span></div>
+<div class="detail-item"><span class="dk">Security Deposit</span><span class="dv">$1,500</span></div>
+<div class="detail-item"><span class="dk">Lease Term</span><span class="dv">12 Months</span></div>
+<div class="detail-item"><span class="dk">Smoking</span><span class="dv">🚫 No smoking indoors</span></div>
+<div class="detail-item"><span class="dk">Available</span><span class="dv"><span class="placeholder-tag">DATE TBD</span></span></div>
+</div>
+<div class="detail-block">
+<h4>Home Info</h4>
+<div class="detail-item"><span class="dk">Type</span><span class="dv">Single-Family Home</span></div>
+<div class="detail-item"><span class="dk">Bedrooms</span><span class="dv">3 (2 main + loft)</span></div>
+<div class="detail-item"><span class="dk">Bathrooms</span><span class="dv">1</span></div>
+<div class="detail-item"><span class="dk">Sq Footage</span><span class="dv">1,149 sq ft</span></div>
+<div class="detail-item"><span class="dk">Flooring</span><span class="dv">Hardwood / LVP throughout</span></div>
+<div class="detail-item"><span class="dk">Basement</span><span class="dv">Full — storage / flex space</span></div>
+<div class="detail-item"><span class="dk">Cooling</span><span class="dv">Central A/C</span></div>
+<div class="detail-item"><span class="dk">Heat</span><span class="dv"><span class="placeholder-tag">TBD — confirm with Neela</span></span></div>
+<div class="detail-item"><span class="dk">Laundry</span><span class="dv">W/D hookups in-unit</span></div>
+<div class="detail-item"><span class="dk">Outdoor</span><span class="dv">Patio + low-fenced yard</span></div>
+<div class="detail-item"><span class="dk">Parking</span><span class="dv">1.5-car attached garage</span></div>
+</div>
+<div class="detail-block">
+<h4>Utilities</h4>
+<div class="detail-item"><span class="dk">Owner Pays</span><span class="dv">Water &amp; Trash</span></div>
+<div class="detail-item"><span class="dk">Tenant Pays</span><span class="dv">Electric, gas</span></div>
+<div class="detail-item"><span class="dk">Utility Names</span><span class="dv">In tenant's name full lease</span></div>
+<div class="detail-item"><span class="dk">Lawn Care</span><span class="dv">Tenant responsibility</span></div>
+<div class="detail-item"><span class="dk">Snow Removal</span><span class="dv">Tenant responsibility</span></div>
+</div>
+<div class="detail-block">
+<h4>Pets</h4>
+<div class="detail-item"><span class="dk">Pets Allowed</span><span class="dv">At owner's discretion</span></div>
+<div class="detail-item"><span class="dk">Cats</span><span class="dv">✅ Allowed</span></div>
+<div class="detail-item"><span class="dk">Dogs</span><span class="dv">✅ Small &amp; large considered</span></div>
+<div class="detail-item"><span class="dk">Pet Rent</span><span class="dv">$50/month (up to 2 pets)</span></div>
+<div class="detail-item"><span class="dk">Pet Deposit</span><span class="dv">$250 non-refundable</span></div>
+<div class="detail-item"><span class="dk">Service Animals / ESAs</span><span class="dv">Always permitted by law</span></div>
+</div>
+</div>
+</section>
+<!-- RENTAL REQUIREMENTS -->
+<section class="details-section">
+<div class="section-eyebrow">Requirements</div>
+<div class="section-title">How to Qualify</div>
+<div class="detail-blocks" style="grid-template-columns: 1fr;">
+<div class="detail-block">
+<h4>What We Look For</h4>
+<div class="detail-item"><span class="dk">Income</span><span class="dv">3× monthly rent ($4,500+/mo gross)</span></div>
+<div class="detail-item"><span class="dk">Credit Score</span><span class="dv">600+</span></div>
+<div class="detail-item"><span class="dk">Background Check</span><span class="dv">Required — all adult applicants</span></div>
+<div class="detail-item"><span class="dk">Eviction History</span><span class="dv">No prior evictions</span></div>
+<div class="detail-item"><span class="dk">First Step</span><span class="dv">Complete prequalification before scheduling a tour</span></div>
+</div>
+</div>
+</section>
+<!-- LOCATION -->
+<section class="location-section">
+<div class="section-eyebrow">Location</div>
+<div class="section-title">Where You'll Be</div>
+<p style="font-size:15px;line-height:1.75;margin-bottom:12px;">Quiet, established South Toledo neighborhood close to groceries, gas, restaurants, and everyday shops — most errands are quick trips, not long drives. The Heatherdowns area offers nearby parks and green spaces within a short drive, with Ottawa Park and the University of Toledo just minutes away.</p>
+<p style="font-size:15px;line-height:1.75;margin-bottom:16px;">Convenient access to I-475, US-23, and Airport Highway makes commuting across Toledo or toward Perrysburg and Maumee straightforward. TARTA bus routes nearby connect to downtown Toledo and major employment areas.</p>
+<a class="map-btn" href="https://www.google.com/maps/search/1337+Abbott+Ave+Toledo+OH+43614" target="_blank" rel="noopener">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+View on Google Maps
+</a>
+</section>
+<!-- PREQUALIFICATION -->
+<section class="prequal-section">
+<div class="section-eyebrow">Get Started</div>
+<div class="section-title">Start with a Quick, 2-Minute Prequalification</div>
+<p class="prequal-body">A few simple questions tell us if you're likely to be approved before you pay an application fee or take time off to tour. Please complete the prequalification form before requesting a showing.</p>
+<a class="btn-salmon-inline" href="https://www.irenthousesinsweats.com/property/1337-abbott-ave/qualify?property_of_interest=1337%20Abbott%20Ave" target="_blank" rel="noopener">See If You Qualify</a>
+</section>
+<!-- BOTTOM CTAs -->
+<section class="cta-section">
+<div class="section-eyebrow">Next Steps</div>
+<div class="section-title">Ready to Move Forward?</div>
+<div class="cta-grid">
+<div class="cta-card">
+<div class="cta-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0b2c3d" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+</div>
+<h4>Get Pre-Qualified</h4>
+<p>Helps us confirm this home is a realistic fit before anyone takes time off to tour.</p>
+<a class="btn-cta-salmon" href="https://www.irenthousesinsweats.com/property/1337-abbott-ave/qualify?property_of_interest=1337%20Abbott%20Ave" target="_blank" rel="noopener">Start Here</a>
+</div>
+<div class="cta-card center-card">
+<div class="cta-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+</div>
+<h4>Book a Tour</h4>
+<p>Already confident you qualify? Schedule a time to come walk through.</p>
+<a class="btn-cta-outline-white" href="https://api.leadconnectorhq.com/widget/bookings/property/showing" target="_blank" rel="noopener">📅 Book a Showing</a>
+</div>
+<div class="cta-card">
+<div class="cta-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0b2c3d" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+</div>
+<h4>Not Sure Yet?</h4>
+<p>Send a quick question about the home, the requirements, or the process.</p>
+<a class="btn-cta-salmon" href="https://www.irenthousesinsweats.com/contact" target="_blank" rel="noopener">Ask a Question</a>
+</div>
+</div>
+</section>
+</main>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+<div class="price-card">
+<div class="price-card-header">
+<div class="rent">$1,500</div>
+<div class="per-mo">per month</div>
+</div>
+<div class="price-card-body">
+<div class="price-row"><span class="label">Deposit</span><span class="value">$1,500</span></div>
+<div class="price-row"><span class="label">Bedrooms</span><span class="value">3 (2 main + loft)</span></div>
+<div class="price-row"><span class="label">Bathrooms</span><span class="value">1</span></div>
+<div class="price-row"><span class="label">Sq Ft</span><span class="value">1,149</span></div>
+<div class="price-row"><span class="label">Parking</span><span class="value">1.5-Car Garage</span></div>
+<div class="price-row"><span class="label">Water &amp; Trash</span><span class="value">Included</span></div>
+<div class="price-row"><span class="label">Available</span><span class="value"><span class="placeholder-tag">DATE TBD</span></span></div>
+<div class="price-row"><span class="label">Status</span><span class="value"><span class="avail-badge">Available</span></span></div>
+<a class="btn btn-salmon" href="https://www.irenthousesinsweats.com/property/1337-abbott-ave/qualify?property_of_interest=1337%20Abbott%20Ave" target="_blank" rel="noopener">Prequalify Now</a>
+<a class="btn btn-outline-navy" href="https://api.leadconnectorhq.com/widget/bookings/property/showing" target="_blank" rel="noopener">Book a Showing</a>
+</div>
+</div>
+<div class="tour-card">
+<h4>Book a Tour</h4>
+<p>Prequalify first, then schedule your showing online — quick and easy.</p>
+<a class="btn btn-outline-navy" href="https://api.leadconnectorhq.com/widget/bookings/property/showing" target="_blank" rel="noopener">Schedule a Showing</a>
+</div>
+</aside>
+</div><!-- end .page-body -->
+<!-- TRUST BADGES -->
+<section class="trust-section">
+<p class="trust-note">We use trusted platforms and tools to keep your application and payments secure.</p>
+<div class="trust-logos">
+<span class="trust-logo-text">Equal Housing</span>
+<span class="trust-logo-text">REALTOR®</span>
+<span class="trust-logo-text">Zillow</span>
+<span class="trust-logo-text">nKey Realty</span>
+<span class="trust-logo-text">BBB</span>
+</div>
+</section>
+<!-- MEET NEELA -->
+<section class="neela-section">
+<div class="neela-inner">
+<img loading="lazy" class="neela-photo" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/e2fded25-85b0-41a8-a566-350fcb79ad69.png" alt="Neela Kelly" onerror="this.style.display='none'">
+<div class="neela-text">
+<div class="section-eyebrow">Meet Your Property Owner</div>
+<h2>Hi, I'm Neela.</h2>
+<p class="neela-bio">I own this property and I'm the person you'll work with directly. I handle showings, approvals, and questions myself — you're dealing with a real human who knows the home and the process, not a big corporate office. I'm also a licensed real estate agent, which just means I'm comfortable with the paperwork and details that keep things running smoothly.</p>
+<p class="neela-bio">I keep things simple: clear expectations, honest answers, and quick communication from your first message through move-in and beyond.</p>
+<div class="neela-sig">
+<img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69377e431da73cd937ae6b68.png" alt="Neela Kelly Signature" onerror="this.style.display='none'">
+</div>
+<div class="neela-name">Neela Kelly — (419) 902-7728</div>
+</div>
+</div>
+</section>
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+<div class="testimonials-inner">
+<div class="section-eyebrow" style="text-align:center;">What Renters Say</div>
+<div class="section-title" style="text-align:center;">Real Words from Real Tenants</div>
+<div class="testi-grid">
+<div class="testi-card">
+<div class="stars">★★★★★</div>
+<p class="testi-quote">"The first time I actually felt like a property manager was on my side. Neela told me exactly what I needed, and there were zero surprise fees."</p>
+<div class="testi-name">— E. Johnson, Renter</div>
+</div>
+<div class="testi-card">
+<div class="stars">★★★★★</div>
+<p class="testi-quote">"If I texted with a question, I got a real answer, not an auto-reply. It felt like working with a neighbor who happens to know property management."</p>
+<div class="testi-name">— K. Davis, Renter</div>
+</div>
+<div class="testi-card">
+<div class="stars">★★★★★</div>
+<p class="testi-quote">"I get clear updates instead of radio silence or chaos. If something breaks, I know what happened, what it costs, and what's being done about it."</p>
+<div class="testi-name">— R. Williams, Renter</div>
 </div>
 </div>
 </div>
 </section>
-
-<!-- HOW WE OPERATE: navy, flowing step list not a card grid -->
-<section class="operate">
-<div class="operate__header">
-<p class="operate__eyebrow">How It Works</p>
-<h2 class="operate__title">Simple from day one.<br>Straightforward every step after.</h2>
-</div>
-<div class="steps">
-<div class="step">
-<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Clipboard with checkmark -->
-  <rect x="8" y="6" width="20" height="24" rx="2" stroke="#C4775A" stroke-width="1.8"/>
-  <rect x="13" y="4" width="10" height="4" rx="1.5" stroke="#C4775A" stroke-width="1.6"/>
-  <polyline points="13,19 16.5,22.5 23,15" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-<div class="step__content">
-<p class="step__title">Start with a quick prequalification</p>
-<p class="step__body">Before a tour or application, we do a quick prequalification — no credit hit, just a few minutes. It makes sure the basics line up so nobody wastes anyone's time.</p>
-</div>
-</div>
-<div class="step">
-<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Calendar -->
-  <rect x="6" y="9" width="24" height="20" rx="2" stroke="#C4775A" stroke-width="1.8"/>
-  <line x1="6" y1="15" x2="30" y2="15" stroke="#C4775A" stroke-width="1.6"/>
-  <line x1="13" y1="6" x2="13" y2="12" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="23" y1="6" x2="23" y2="12" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round"/>
-  <circle cx="13" cy="22" r="1.5" fill="#C4775A"/>
-  <circle cx="18" cy="22" r="1.5" fill="#C4775A"/>
-  <circle cx="23" cy="22" r="1.5" fill="#C4775A"/>
-</svg>
-<div class="step__content">
-<p class="step__title">Book a showing and see the home</p>
-<p class="step__body">If you prequalify, you'll book a showing directly. Neela handles showings personally — you get to ask real questions and get real answers on the spot.</p>
-</div>
-</div>
-<div class="step">
-<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Pen signing a line -->
-  <path d="M10 26 L20 10 L26 16 L16 26 Z" stroke="#C4775A" stroke-width="1.8" stroke-linejoin="round"/>
-  <line x1="20" y1="10" x2="26" y2="16" stroke="#C4775A" stroke-width="1.8"/>
-  <path d="M16 26 L13 29 L10 26" stroke="#C4775A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="8" y1="30" x2="28" y2="30" stroke="#C4775A" stroke-width="1.6" stroke-linecap="round"/>
-</svg>
-<div class="step__content">
-<p class="step__title">Apply, sign, and move in</p>
-<p class="step__body">Applications go through Zillow. Once approved, lease signing and deposit collection are handled quickly and digitally. Move-in is coordinated directly with Neela.</p>
-</div>
-</div>
-<div class="step">
-<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Speech bubble with signal lines -->
-  <path d="M7 8 Q7 6 9 6 H27 Q29 6 29 8 V20 Q29 22 27 22 H16 L10 28 V22 H9 Q7 22 7 20 Z" stroke="#C4775A" stroke-width="1.8" stroke-linejoin="round"/>
-  <line x1="13" y1="13" x2="23" y2="13" stroke="#C4775A" stroke-width="1.6" stroke-linecap="round"/>
-  <line x1="13" y1="17" x2="20" y2="17" stroke="#C4775A" stroke-width="1.6" stroke-linecap="round"/>
-</svg>
-<div class="step__content">
-<p class="step__title">Ongoing communication that's actually responsive</p>
-<p class="step__body">Once you're a tenant, you have Neela's direct contact. Maintenance requests and questions get a real response — fast. No ticket systems, no voicemail black holes.</p>
-</div>
-</div>
-<div class="step">
-<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- House with a wrench inside -->
-  <polyline points="6,17 18,7 30,17" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M10 17 V28 Q10 29 11 29 H25 Q26 29 26 28 V17" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round"/>
-  <path d="M15 22 Q15 18.5 18 18.5 Q19.5 18.5 20.5 19.5 L18.5 21.5 L20 23 L22 21 Q23 22.5 22.5 24 Q21.5 26 18.5 25.5 Q16 25 15 22Z" stroke="#C4775A" stroke-width="1.5" stroke-linejoin="round"/>
-</svg>
-<div class="step__content">
-<p class="step__title">Well-maintained homes, always</p>
-<p class="step__body">Every home is kept in good condition before move-in. Maintenance is handled with trusted local contractors — not the cheapest option, the right one.</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- HONEST STRIP: salmon band, single statement, not a grid -->
-<div class="honest">
-<div class="honest__rule"></div>
-<div>
-<p class="honest__title">No mystery fees, Bait-and-switch or Runaround.</p>
-<p class="honest__sub">If something won't work out, we'll tell you early. Clear requirements up front — because your time matters as much as ours.</p>
-</div>
-</div>
-
-<!-- CTA: side-by-side text + buttons, not centered card -->
-<section class="cta">
-<div class="cta__inner">
-<div>
-<p class="cta__eyebrow">Ready to Get Started?</p>
-<h2 class="cta__title">Find a home or get in touch</h2>
-<p class="cta__sub">Browse all properties across the IRHIS portfolio, or reach out to Neela directly with any questions.</p>
-</div>
-<div class="cta__btns">
-<a href="/portfolio" class="btn btn-salmon" target="_blank" rel="noopener">View All Properties</a>
-<a href="https://www.irenthousesinsweats.com/contact" class="btn btn-outline" target="_blank" rel="noopener">Contact Neela</a>
-</div>
-</div>
-</section>
-
 
 <footer>
 <div class="footer-grid">
