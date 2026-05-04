@@ -1,10 +1,846 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>1337 Abbott Ave | IRHIS</title>
-  </head>
-  <body>
-    <h1>1337 Abbott Ave Placeholder</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
+<title>About Neela Kelly — I Rent Houses In Sweats, Toledo OH</title>
+<meta name="description" content="Meet Neela Kelly, owner of I Rent Houses In Sweats. A licensed real estate agent and Toledo landlord with 10+ years experience managing 40+ doors. Here's how she operates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+font-family: 'Nunito Sans', Arial, sans-serif;
+font-size: 16px;
+color: #3a3a3a;
+background: #fff;
+-webkit-font-smoothing: antialiased;
+overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+:root {
+--navy:   #0b2c3d;
+--salmon: #C4775A;
+--cream:  #E8EEED;
+--white:  #ffffff;
+--text:   #3a3a3a;
+--mid:    #6b7280;
+}
+
+/* ─── NAV BASE ────────────────────────────────────── */
+nav {
+background: var(--white, #fff);
+height: 78px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 56px;
+border-bottom: 1px solid #e5e5e5;
+position: sticky;
+top: 0;
+z-index: 200;
+}
+.nav-logo img { height: 52px; display: block; width: auto; }
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a {
+font-size: 0.77rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--navy, #0b2c3d);
+text-decoration: none;
+transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--salmon, #C4775A); }
+.nav-links a.nav-active { color: var(--salmon, #C4775A); }
+@media (max-width: 1024px) { nav { padding: 0 28px; } }
+@media (max-width: 768px) {
+nav { padding: 0 16px; height: 64px; }
+.nav-logo img { height: 42px; }
+}
+@media (max-width: 480px) {
+nav { height: 58px; }
+.nav-logo img { height: 36px; }
+}
+/* ── HERO ─────────────────────────────────────────────────────── */
+/* Split: left = big text on navy, right = photo bleeding to edge */
+.hero {
+display: grid;
+grid-template-columns: 1fr 1fr;
+min-height: 560px;
+}
+.hero__left {
+background: var(--navy);
+padding: 72px 56px 72px 64px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+position: relative;
+}
+.hero__eyebrow {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.22em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 20px;
+}
+.hero__title {
+font-size: clamp(30px, 3.8vw, 48px);
+font-weight: 800;
+color: #fff;
+line-height: 1.1;
+margin-bottom: 24px;
+}
+.hero__title em {
+font-style: italic;
+color: var(--salmon);
+font-weight: 400;
+}
+.hero__body {
+font-size: 15px;
+color: rgba(255,255,255,0.65);
+line-height: 1.8;
+max-width: 400px;
+}
+/* Stat pill floating bottom-left of left panel */
+.hero__stat-row {
+display: flex;
+gap: 32px;
+margin-top: 48px;
+padding-top: 36px;
+border-top: 1px solid rgba(255,255,255,0.12);
+}
+.hero__stat-val {
+font-size: 28px;
+font-weight: 800;
+color: #fff;
+line-height: 1;
+margin-bottom: 4px;
+}
+.hero__stat-label {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.40);
+}
+/* Right: navy column with centered circle photo + nameplate below */
+.hero__right {
+background: var(--navy);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 56px 40px 40px;
+gap: 28px;
+border-left: 1px solid rgba(255,255,255,0.08);
+}
+.hero__photo-circle {
+width: 220px;
+height: 220px;
+border-radius: 50%;
+overflow: hidden;
+border: 3px solid var(--salmon);
+flex-shrink: 0;
+}
+.hero__photo {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center top;
+display: block;
+}
+.hero__overlay {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.10);
+border-radius: 4px;
+padding: 16px 24px;
+text-align: center;
+width: 100%;
+max-width: 260px;
+}
+.hero__overlay-text {
+font-size: 13px;
+font-weight: 700;
+color: rgba(255,255,255,0.80);
+line-height: 1.5;
+}
+.hero__overlay-text strong { color: #fff; display: block; margin-bottom: 3px; }
+
+/* ── INTRO PULL QUOTE ────────────────────────────────────────── */
+/* Full-width cream band, large italic pull quote, not a grid */
+.pullquote {
+background: var(--cream);
+padding: 64px 10vw;
+position: relative;
+}
+.pullquote::before {
+content: '\201C';
+position: absolute;
+top: 20px;
+left: 6vw;
+font-size: 160px;
+line-height: 1;
+color: rgba(11,44,61,0.07);
+font-family: Georgia, serif;
+pointer-events: none;
+}
+.pullquote__text {
+font-size: clamp(20px, 2.4vw, 28px);
+font-weight: 700;
+color: var(--navy);
+line-height: 1.5;
+font-style: italic;
+max-width: 780px;
+position: relative;
+z-index: 1;
+}
+.pullquote__text em { color: var(--salmon); font-style: normal; }
+.pullquote__attr {
+margin-top: 20px;
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(--mid);
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.pullquote__attr::before {
+content: '';
+display: block;
+width: 28px;
+height: 2px;
+background: var(--salmon);
+}
+
+/* ── NEELA STORY ─────────────────────────────────────────────── */
+/* Asymmetric: wide text left, narrow photo right, offset upward */
+.story {
+background: #fff;
+padding: 80px 64px 80px;
+}
+.story__inner {
+max-width: 1100px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1.2fr 1fr;
+gap: 80px;
+align-items: start;
+}
+.story__label {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.20em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.story__label::before {
+content: '';
+width: 24px;
+height: 2px;
+background: var(--salmon);
+display: block;
+flex-shrink: 0;
+}
+.story__title {
+font-size: clamp(24px, 2.8vw, 34px);
+font-weight: 800;
+color: var(--navy);
+line-height: 1.15;
+margin-bottom: 28px;
+}
+.story__body {
+font-size: 15px;
+color: var(--mid);
+line-height: 1.85;
+margin-bottom: 18px;
+}
+.story__body strong { color: var(--navy); font-weight: 700; }
+.story__sig {
+height: 44px;
+width: auto;
+margin-top: 32px;
+opacity: 0.80;
+}
+/* Photo col: image + a floating salmon card below it */
+.story__photo-col {
+position: relative;
+padding-top: 32px;
+}
+.story__photo {
+width: 100%;
+border-radius: 4px;
+display: block;
+box-shadow: 0 20px 60px rgba(11,44,61,0.14);
+}
+.story__card {
+background: var(--salmon);
+color: #fff;
+padding: 24px 28px;
+margin-top: -1px;
+border-radius: 0 0 4px 4px;
+}
+.story__card-title {
+font-size: 13px;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.10em;
+margin-bottom: 8px;
+}
+.story__card-body {
+font-size: 13px;
+line-height: 1.65;
+color: rgba(255,255,255,0.85);
+}
+
+/* ── HOW WE OPERATE ─────────────────────────────────────────── */
+/* Alternating full-bleed rows instead of a card grid */
+.operate {
+background: var(--navy);
+}
+.operate__header {
+padding: 72px 64px 48px;
+max-width: 1100px;
+margin: 0 auto;
+}
+.operate__eyebrow {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.22em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 14px;
+}
+.operate__title {
+font-size: clamp(24px, 3vw, 36px);
+font-weight: 800;
+color: #fff;
+line-height: 1.15;
+}
+/* Steps as a single flowing list, not a grid */
+.steps {
+padding: 0 64px 80px;
+max-width: 1100px;
+margin: 0 auto;
+}
+.step {
+display: grid;
+grid-template-columns: 80px 1fr;
+gap: 0 32px;
+padding: 36px 0;
+border-top: 1px solid rgba(255,255,255,0.08);
+}
+.step:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.step__num {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.12em;
+color: var(--salmon);
+padding-top: 3px;
+}
+.step__icon {
+width: 36px;
+height: 36px;
+flex-shrink: 0;
+margin-top: 2px;
+}
+.step__content {}
+.step__title {
+font-size: 16px;
+font-weight: 800;
+color: #fff;
+margin-bottom: 8px;
+line-height: 1.3;
+}
+.step__body {
+font-size: 14px;
+color: rgba(255,255,255,0.55);
+line-height: 1.75;
+max-width: 580px;
+}
+
+/* ── HONEST STRIP ────────────────────────────────────────────── */
+/* Full-bleed salmon divider with a single honest statement */
+.honest {
+background: var(--salmon);
+padding: 52px 64px;
+display: flex;
+align-items: center;
+gap: 48px;
+}
+.honest__rule {
+width: 2px;
+height: 64px;
+background: rgba(255,255,255,0.35);
+flex-shrink: 0;
+}
+.honest__title {
+font-size: clamp(18px, 2vw, 22px);
+font-weight: 800;
+color: #fff;
+line-height: 1.3;
+max-width: 520px;
+}
+.honest__sub {
+font-size: 14px;
+color: rgba(255,255,255,0.78);
+line-height: 1.7;
+max-width: 420px;
+margin-top: 8px;
+}
+
+/* ── CTA ─────────────────────────────────────────────────────── */
+.cta {
+background: var(--cream);
+padding: 80px 64px;
+}
+.cta__inner { max-width: 1100px; margin: 0 auto; width: 100%;
+display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.cta__eyebrow {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.20em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 12px;
+}
+.cta__title {
+font-size: clamp(22px, 2.8vw, 32px);
+font-weight: 800;
+color: var(--navy);
+line-height: 1.2;
+margin-bottom: 10px;
+}
+.cta__sub {
+font-size: 15px;
+color: var(--mid);
+line-height: 1.7;
+max-width: 480px;
+}
+.cta__btns {
+display: flex;
+flex-direction: column;
+gap: 12px;
+flex-shrink: 0;
+}
+.btn {
+display: inline-block;
+text-align: center;
+font-family: 'Nunito Sans', Arial, sans-serif;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 16px 32px;
+border-radius: 3px;
+border: none;
+transition: background .2s, transform .15s;
+cursor: pointer;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-salmon { background: var(--salmon); color: #fff; }
+.btn-salmon:hover { background: #b36848; }
+.btn-outline {
+background: transparent;
+color: var(--navy);
+border: 2px solid rgba(11,44,61,0.30);
+}
+.btn-outline:hover { border-color: var(--navy); background: rgba(11,44,61,0.05); }
+
+/* ── RESPONSIVE: 1024px ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+.hero__left { padding: 56px 40px 56px 48px; }
+.story { padding: 64px 40px; }
+.story__inner { gap: 56px; }
+.operate__header { padding: 56px 40px 40px; }
+.steps { padding: 0 40px 64px; }
+.honest { padding: 44px 40px; gap: 32px; }
+.cta { padding: 64px 40px; }
+}
+
+/* ── RESPONSIVE: 768px ───────────────────────────────────────── */
+@media (max-width: 768px) {
+.hero { grid-template-columns: 1fr; min-height: auto; }
+.hero__left { padding: 48px 24px; }
+.hero__body { max-width: 100%; }
+.hero__right { padding: 40px 24px; border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
+.hero__photo-circle { width: 160px; height: 160px; }
+.hero__stat-row { gap: 24px; margin-top: 36px; }
+.pullquote { padding: 52px 24px; }
+.pullquote::before { font-size: 100px; top: 10px; left: 10px; }
+.story { padding: 56px 24px; }
+.story__inner { grid-template-columns: 1fr; gap: 40px; }
+.story__photo-col { padding-top: 0; max-width: 380px; }
+.operate__header { padding: 48px 24px 32px; }
+.steps { padding: 0 24px 56px; }
+.step { grid-template-columns: 56px 1fr; gap: 0 20px; }
+.honest { padding: 36px 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
+.honest__rule { width: 40px; height: 2px; }
+.cta { padding: 56px 24px; }
+.cta__inner { grid-template-columns: 1fr; gap: 32px; }
+.cta__btns { flex-direction: row; flex-wrap: wrap; }
+}
+
+/* ── RESPONSIVE: 480px ───────────────────────────────────────── */
+@media (max-width: 480px) {
+.hero__left { padding: 40px 16px; }
+.hero__stat-row { flex-wrap: wrap; gap: 20px 32px; }
+.pullquote { padding: 44px 16px; }
+.story { padding: 44px 16px; }
+.operate__header { padding: 40px 16px 28px; }
+.steps { padding: 0 16px 48px; }
+.step { grid-template-columns: 48px 1fr; }
+.honest { padding: 32px 16px; }
+.cta { padding: 44px 16px; }
+.cta__btns { flex-direction: column; }
+.btn { width: 100%; }
+}
+/* ─── NAV RIGHT / CTA ─────────────────────────────── */
+.nav-right { display: flex; align-items: center; gap: 1.25rem; }
+.nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+.nav-phone:hover { color: var(--salmon); }
+.nav-cta {
+  background: var(--salmon); color: white;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.52rem 1.1rem; border-radius: 4px; text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #b3674d; }
+/* ─── HAMBURGER ───────────────────────────────────── */
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px;
+}
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+/* ─── MOBILE DRAWER ───────────────────────────────── */
+.nav-drawer {
+  position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+  background: var(--navy); z-index: 500; padding: 2rem 1.5rem;
+  transition: right 0.3s ease; display: flex; flex-direction: column;
+}
+.nav-drawer.open { right: 0; }
+.nav-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 499;
+}
+.nav-overlay.open { display: block; }
+.nav-drawer-close {
+  align-self: flex-end; background: none; border: none; color: white;
+  font-size: 1.3rem; cursor: pointer; margin-bottom: 2rem; padding: 4px;
+}
+.nav-drawer-links { list-style: none; display: flex; flex-direction: column; flex: 1; }
+.nav-drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.nav-drawer-links a {
+  display: block; padding: 1rem 0; color: white; text-decoration: none;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.nav-drawer-links a:hover { color: var(--salmon); }
+.nav-drawer-cta {
+  margin-top: 2rem; display: block; text-align: center;
+  background: var(--salmon); color: white; text-decoration: none;
+  font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.9rem 1rem; border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-phone { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-cta { display: none; }
+}
+/* ─── FOOTER BASE ─────────────────────────────────── */
+footer {
+background: var(--navy, #0b2c3d);
+color: white;
+padding: 56px 60px 0;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+gap: 4rem;
+padding-bottom: 2.5rem;
+border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
+.footer-tag {
+font-size: 0.83rem;
+color: rgba(255,255,255,0.45);
+line-height: 1.65;
+margin-bottom: 1.25rem;
+max-width: 260px;
+}
+.footer-social a {
+display: inline-flex; align-items: center; justify-content: center;
+width: 32px; height: 32px; border-radius: 50%;
+background: rgba(255,255,255,0.1); transition: background 0.2s;
+}
+.footer-social a:hover { background: var(--salmon, #C4775A); }
+.footer-col h4 {
+font-size: 0.67rem; font-weight: 800; letter-spacing: 0.2em;
+text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 1.1rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.55rem; }
+.footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.84rem; }
+.footer-col a:hover { color: white; }
+.footer-col li[style] { font-size: 0.84rem; }
+.footer-bottom {
+padding: 1.4rem 0;
+font-size: 0.73rem;
+color: rgba(255,255,255,0.28);
+text-align: center;
+}
+@media (max-width: 1024px) { footer { padding: 48px 36px 0; } .footer-grid { gap: 2.5rem; } }
+@media (max-width: 768px) { footer { padding: 36px 16px 0; } .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } .footer-tag { max-width: 100%; } }
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="nav-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png" alt="I Rent Houses In Sweats" /></a>
+<ul class="nav-links">
+<li><a href="/">Home</a></li><li><a href="/portfolio">Properties</a></li><li><a href="/about" class="nav-active">About</a></li><li><a href="https://www.irenthousesinsweats.com/contact">Contact</a></li>
+</ul>
+<div class="nav-right">
+<a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
+<a href="https://www.irenthousesinsweats.com/contact" class="nav-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
+</div>
+<button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-drawer">
+<button class="nav-drawer-close" aria-label="Close menu">&#x2715;</button>
+<ul class="nav-drawer-links">
+<li><a href="/">Home</a></li>
+<li><a href="/portfolio">Properties</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="https://www.irenthousesinsweats.com/contact" target="_blank" rel="noopener">Contact</a></li>
+</ul>
+<a href="https://www.irenthousesinsweats.com/contact" class="nav-drawer-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
+</div>
+<div class="nav-overlay"></div>
+</nav>
+
+<!-- HERO: split layout, photo bleeds full right column -->
+<section class="hero">
+<div class="hero__left">
+<p class="hero__eyebrow">Toledo-Area Rentals · Est. 2026</p>
+<h1 class="hero__title">Renting Done<br><em>the right way.</em></h1>
+<p class="hero__body">Small operation. Personal service. Every home managed by one person who actually picks up the phone — and means it.</p>
+<div class="hero__stat-row">
+<div>
+<div class="hero__stat-val">40+</div>
+<div class="hero__stat-label">Doors Managed, and Counting</div>
+</div>
+<div>
+<div class="hero__stat-val">10+</div>
+<div class="hero__stat-label">Years Experience</div>
+</div>
+<div>
+<div class="hero__stat-val">100%</div>
+<div class="hero__stat-label">Owner-Run</div>
+</div>
+</div>
+</div>
+<div class="hero__right">
+<div class="hero__photo-circle">
+<img
+class="hero__photo"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/e2fded25-85b0-41a8-a566-350fcb79ad69.png"
+alt="Neela Kelly"
+onerror="this.style.background='#1a4a60'">
+</div>
+<div class="hero__overlay">
+<p class="hero__overlay-text"><strong>Neela Kelly</strong> Licensed Real Estate Agent &amp; Property Owner</p>
+</div>
+</div>
+</section>
+
+<!-- PULL QUOTE: wide, italic, not a grid -->
+<div class="pullquote">
+<p class="pullquote__text">"I started this because I thought renting could be done <em>better</em> — with real communication, clear expectations, and genuine respect for the people in my homes."</p>
+<p class="pullquote__attr">Neela Kelly, Owner</p>
+</div>
+
+<!-- NEELA STORY: asymmetric text + photo -->
+<section class="story">
+<div class="story__inner">
+<div>
+<p class="story__label">The Person Behind It</p>
+<h2 class="story__title">Hey, I'm Neela. I run this whole thing myself.</h2>
+<p class="story__body">I'm a <strong>licensed real estate agent</strong> based right here in Toledo, Ohio. I live in this community, know these neighborhoods, and manage every property personally. When you reach out, you hear back from me — not a property management hotline, not a ticket system.</p>
+<p class="story__body">The name says it all. <strong>I Rent Houses In Sweats</strong> is a real business run by a real person. I'm not trying to build a corporate portfolio — I'm trying to do right by the tenants who trust me with their home.</p>
+<img
+loading="lazy"
+class="story__sig"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69377e431da73cd937ae6b68.png"
+alt="Neela Kelly signature"
+onerror="this.style.display='none'">
+</div>
+<div class="story__photo-col">
+<img
+loading="lazy"
+class="story__photo"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/e2fded25-85b0-41a8-a566-350fcb79ad69.png"
+alt="Neela Kelly"
+onerror="this.style.display='none'">
+<div class="story__card">
+<p class="story__card-title">Licensed Real Estate Agent</p>
+<p class="story__card-body">Neela holds an active Ohio real estate license and manages all 18+ properties in the IRHIS portfolio directly — no third-party management companies.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HOW WE OPERATE: navy, flowing step list not a card grid -->
+<section class="operate">
+<div class="operate__header">
+<p class="operate__eyebrow">How It Works</p>
+<h2 class="operate__title">Simple from day one.<br>Straightforward every step after.</h2>
+</div>
+<div class="steps">
+<div class="step">
+<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clipboard with checkmark -->
+  <rect x="8" y="6" width="20" height="24" rx="2" stroke="#C4775A" stroke-width="1.8"/>
+  <rect x="13" y="4" width="10" height="4" rx="1.5" stroke="#C4775A" stroke-width="1.6"/>
+  <polyline points="13,19 16.5,22.5 23,15" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<div class="step__content">
+<p class="step__title">Start with a quick prequalification</p>
+<p class="step__body">Before a tour or application, we do a quick prequalification — no credit hit, just a few minutes. It makes sure the basics line up so nobody wastes anyone's time.</p>
+</div>
+</div>
+<div class="step">
+<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Calendar -->
+  <rect x="6" y="9" width="24" height="20" rx="2" stroke="#C4775A" stroke-width="1.8"/>
+  <line x1="6" y1="15" x2="30" y2="15" stroke="#C4775A" stroke-width="1.6"/>
+  <line x1="13" y1="6" x2="13" y2="12" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="23" y1="6" x2="23" y2="12" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="13" cy="22" r="1.5" fill="#C4775A"/>
+  <circle cx="18" cy="22" r="1.5" fill="#C4775A"/>
+  <circle cx="23" cy="22" r="1.5" fill="#C4775A"/>
+</svg>
+<div class="step__content">
+<p class="step__title">Book a showing and see the home</p>
+<p class="step__body">If you prequalify, you'll book a showing directly. Neela handles showings personally — you get to ask real questions and get real answers on the spot.</p>
+</div>
+</div>
+<div class="step">
+<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pen signing a line -->
+  <path d="M10 26 L20 10 L26 16 L16 26 Z" stroke="#C4775A" stroke-width="1.8" stroke-linejoin="round"/>
+  <line x1="20" y1="10" x2="26" y2="16" stroke="#C4775A" stroke-width="1.8"/>
+  <path d="M16 26 L13 29 L10 26" stroke="#C4775A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="8" y1="30" x2="28" y2="30" stroke="#C4775A" stroke-width="1.6" stroke-linecap="round"/>
+</svg>
+<div class="step__content">
+<p class="step__title">Apply, sign, and move in</p>
+<p class="step__body">Applications go through Zillow. Once approved, lease signing and deposit collection are handled quickly and digitally. Move-in is coordinated directly with Neela.</p>
+</div>
+</div>
+<div class="step">
+<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Speech bubble with signal lines -->
+  <path d="M7 8 Q7 6 9 6 H27 Q29 6 29 8 V20 Q29 22 27 22 H16 L10 28 V22 H9 Q7 22 7 20 Z" stroke="#C4775A" stroke-width="1.8" stroke-linejoin="round"/>
+  <line x1="13" y1="13" x2="23" y2="13" stroke="#C4775A" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="13" y1="17" x2="20" y2="17" stroke="#C4775A" stroke-width="1.6" stroke-linecap="round"/>
+</svg>
+<div class="step__content">
+<p class="step__title">Ongoing communication that's actually responsive</p>
+<p class="step__body">Once you're a tenant, you have Neela's direct contact. Maintenance requests and questions get a real response — fast. No ticket systems, no voicemail black holes.</p>
+</div>
+</div>
+<div class="step">
+<svg class="step__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- House with a wrench inside -->
+  <polyline points="6,17 18,7 30,17" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10 17 V28 Q10 29 11 29 H25 Q26 29 26 28 V17" stroke="#C4775A" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M15 22 Q15 18.5 18 18.5 Q19.5 18.5 20.5 19.5 L18.5 21.5 L20 23 L22 21 Q23 22.5 22.5 24 Q21.5 26 18.5 25.5 Q16 25 15 22Z" stroke="#C4775A" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
+<div class="step__content">
+<p class="step__title">Well-maintained homes, always</p>
+<p class="step__body">Every home is kept in good condition before move-in. Maintenance is handled with trusted local contractors — not the cheapest option, the right one.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HONEST STRIP: salmon band, single statement, not a grid -->
+<div class="honest">
+<div class="honest__rule"></div>
+<div>
+<p class="honest__title">No mystery fees, Bait-and-switch or Runaround.</p>
+<p class="honest__sub">If something won't work out, we'll tell you early. Clear requirements up front — because your time matters as much as ours.</p>
+</div>
+</div>
+
+<!-- CTA: side-by-side text + buttons, not centered card -->
+<section class="cta">
+<div class="cta__inner">
+<div>
+<p class="cta__eyebrow">Ready to Get Started?</p>
+<h2 class="cta__title">Find a home or get in touch</h2>
+<p class="cta__sub">Browse all properties across the IRHIS portfolio, or reach out to Neela directly with any questions.</p>
+</div>
+<div class="cta__btns">
+<a href="/portfolio" class="btn btn-salmon" target="_blank" rel="noopener">View All Properties</a>
+<a href="https://www.irenthousesinsweats.com/contact" class="btn btn-outline" target="_blank" rel="noopener">Contact Neela</a>
+</div>
+</div>
+</section>
+
+
+<footer>
+<div class="footer-grid">
+<div>
+<div class="footer-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png" alt="I Rent Houses In Sweats" /></div>
+<p class="footer-tag">Friendly, organized, and upfront about everything &#8212; from first tour to move-in day.</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/irenthousesinsweats" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="https://irenthousesinsweats.com/">Home</a></li>
+<li><a href="https://www.irenthousesinsweats.com/properties">Properties</a></li>
+<li><a href="https://www.irenthousesinsweats.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+<li><a href="https://www.irenthousesinsweats.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Get In Touch</h4>
+<ul>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
+<li><a href="mailto:nkelly7x@gmail.com">nkelly7x@gmail.com</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&#169; 2026 I Rent Houses In Sweats. All rights reserved. Equal Housing Opportunity &nbsp;&middot;&nbsp; Neela Kelly, Licensed Real Estate Agent &nbsp;&middot;&nbsp; Perrysburg, OH</p>
+</div>
+</footer>
+<script>
+(function() {
+  var btn = document.querySelector('.nav-hamburger');
+  var drawer = document.querySelector('.nav-drawer');
+  var overlay = document.querySelector('.nav-overlay');
+  var closeBtn = document.querySelector('.nav-drawer-close');
+  function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  if (btn) btn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+})();
+</script>
+</body>
 </html>
