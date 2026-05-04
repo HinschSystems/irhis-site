@@ -1,10 +1,140 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Book a Showing | IRHIS</title>
-  </head>
-  <body>
-    <h1>Book a Showing Placeholder</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Showing — I Rent Houses In Sweats</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+--navy: #0b2c3d;
+--salmon: #C4775A;
+--cream: #E8EEED;
+--white: #FFFFFF;
+--text: #3a3a3a;
+--text-light: #6b7280;
+--border: #d1d5db;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+body {
+font-family: 'Nunito Sans', Arial, sans-serif;
+color: var(--text);
+background: var(--white);
+}
+.header {
+background: var(--navy);
+padding: 32px 24px 28px;
+text-align: center;
+}
+.header .eyebrow {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 8px;
+}
+.header h1 {
+font-size: clamp(22px, 3.5vw, 34px);
+font-weight: 800;
+color: var(--white);
+line-height: 1.2;
+margin-bottom: 10px;
+}
+.header p {
+font-size: 15px;
+color: rgba(255,255,255,0.65);
+max-width: 440px;
+margin: 0 auto;
+}
+.notice {
+background: var(--cream);
+border-bottom: 1px solid var(--border);
+padding: 12px 24px;
+text-align: center;
+font-size: 13px;
+font-weight: 700;
+color: var(--navy);
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+flex-wrap: wrap;
+}
+.notice a {
+color: var(--salmon);
+text-decoration: none;
+font-weight: 800;
+}
+.notice a:hover { text-decoration: underline; }
+.notice-dot {
+width: 7px;
+height: 7px;
+border-radius: 50%;
+background: var(--salmon);
+flex-shrink: 0;
+}
+.calendar-wrap {
+max-width: 860px;
+margin: 0 auto;
+padding: 40px 24px 56px;
+}
+.calendar-wrap iframe {
+width: 100%;
+min-height: 700px;
+border: none;
+overflow: hidden;
+display: block;
+}
+.footer-strip {
+background: var(--cream);
+border-top: 1px solid var(--border);
+padding: 20px 24px;
+text-align: center;
+font-size: 13px;
+color: var(--text-light);
+}
+.footer-strip a {
+color: var(--salmon);
+font-weight: 700;
+text-decoration: none;
+}
+.footer-strip a:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+.header { padding: 24px 20px 22px; }
+.calendar-wrap { padding: 28px 16px 40px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">Schedule a Tour</div>
+  <h1>Book a Showing</h1>
+  <p>Pick a time below. Neela handles every showing personally.</p>
+</div>
+
+<div class="notice">
+  <div class="notice-dot"></div>
+  Prequalification required before scheduling —
+  <a href="https://www.irenthousesinsweats.com/properties" target="_blank" rel="noopener">haven't done it yet? Start here.</a>
+</div>
+
+<div class="calendar-wrap">
+  <iframe src="https://api.leadconnectorhq.com/widget/booking/pJflwoBexiPgl3859DIK" style="width:100%;border:none;overflow:hidden;" scrolling="no" id="pJflwoBexiPgl3859DIK_1777614681222"></iframe>
+  <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+</div>
+
+<div class="footer-strip">
+  Questions? <a href="tel:4199027728">(419) 902-7728</a> &nbsp;·&nbsp;
+  <a href="https://www.irenthousesinsweats.com/properties" target="_blank" rel="noopener">Browse properties</a> &nbsp;·&nbsp;
+  <a href="https://www.irenthousesinsweats.com/contact" target="_blank" rel="noopener">Send a message</a>
+</div>
+
+
+</body>
 </html>
