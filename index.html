@@ -1,10 +1,1280 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>I Rent Houses In Sweats</title>
-  </head>
-  <body>
-    <h1>IRHIS Homepage Placeholder</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Rent Houses In Sweats – A Clear, Honest Path To Renting Your Next Home</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+--navy:     #0b2c3d;
+--salmon:   #C4775A;
+--cream:    #E8EEED;
+--white:    #FFFFFF;
+--text:     #3a3a3a;
+--text-mid: #555;
+--text-lt:  #888;
+--border:   #ddd;
+--font: 'Nunito Sans', Arial, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.6; }
+img { max-width: 100%; height: auto; display: block; }
+/* placeholder style for any img with data-placeholder */
+img[data-placeholder] {
+background: #cdd5d8;
+display: block;
+}
+/* ─── NAV ─────────────────────────────────────────── */
+nav {
+background: var(--white);
+height: 78px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 56px;
+border-bottom: 1px solid #e5e5e5;
+position: sticky;
+top: 0;
+z-index: 200;
+}
+.nav-logo img { height: 52px; display: block; }
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a {
+font-size: 0.77rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--text);
+text-decoration: none;
+}
+.nav-links a:hover { color: var(--salmon); }
+/* ─── HERO ────────────────────────────────────────── */
+.hero {
+background: var(--navy);
+display: grid;
+grid-template-columns: 1fr 1fr;
+min-height: 500px;
+position: relative;
+padding-right: 48px;
+}
+.hero-left {
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 64px 48px 64px 72px;
+}
+h1.hero-title {
+font-size: 1.95rem;
+font-weight: 800;
+line-height: 1.22;
+color: var(--white);
+text-transform: uppercase;
+letter-spacing: 0.03em;
+margin-bottom: 1rem;
+max-width: 380px;
+}
+.hero-sub {
+font-size: 0.88rem;
+color: rgba(255,255,255,0.72);
+line-height: 1.65;
+margin-bottom: 2rem;
+max-width: 360px;
+}
+.hero-ctas { display: flex; align-items: center; gap: 2rem; }
+.btn-outline-white {
+display: inline-block;
+border: 1.5px solid rgba(255,255,255,0.55);
+color: var(--white);
+background: transparent;
+padding: 0.6rem 1.4rem;
+font-size: 0.77rem;
+font-weight: 700;
+letter-spacing: 0.06em;
+text-decoration: none;
+border-radius: 3px;
+}
+.btn-outline-white:hover { border-color: white; background: rgba(255,255,255,0.08); }
+.link-white {
+color: rgba(255,255,255,0.72);
+font-size: 0.77rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+text-decoration: none;
+}
+.link-white:hover { color: white; }
+/* hero right: single image */
+.hero-right {
+position: relative;
+border-radius: 6px;
+margin: 32px 0;
+align-self: center;
+}
+.hero-right img {
+width: 100%;
+height: auto;
+display: block;
+border-radius: 6px;
+}
+/* ─── WHY RENTERS ─────────────────────────────────── */
+.why-section {
+background: var(--navy);
+padding: 64px 60px;
+text-align: center;
+}
+.why-label {
+font-size: 0.7rem;
+font-weight: 800;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: white;
+margin-bottom: 0.5rem;
+}
+.why-rule {
+width: 36px;
+height: 2px;
+background: var(--salmon);
+margin: 0 auto 2.5rem;
+}
+.why-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1rem 4rem;
+max-width: 860px;
+margin: 0 auto;
+}
+.why-card h3 {
+font-size: 0.76rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.12em;
+color: white;
+margin-bottom: 0.6rem;
+}
+.why-card p {
+font-size: 0.86rem;
+color: rgba(255,255,255,0.62);
+line-height: 1.7;
+}
+/* ─── UPCOMING ────────────────────────────────────── */
+/* pointed top chevron from navy into cream */
+.upcoming-wrap {
+background: var(--cream);
+position: relative;
+padding-top: 0;
+}
+.upcoming-wrap::before {
+content: '';
+display: block;
+width: 100%;
+height: 56px;
+background: var(--navy);
+clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.upcoming-section {
+padding: 32px 60px 72px;
+text-align: center;
+}
+.upcoming-icon {
+/* PLACEHOLDER: replace src with your house icon URL */
+width: 42px;
+height: 42px;
+display: block;
+margin: 0 auto 0.75rem;
+object-fit: contain;
+}
+.upcoming-icon[data-placeholder] { background: transparent; }
+.upcoming-section h2 {
+font-size: 0.88rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.18em;
+color: var(--navy);
+margin-bottom: 0.4rem;
+}
+.upcoming-section .sub {
+font-size: 0.85rem;
+color: var(--text-mid);
+margin-bottom: 2.5rem;
+}
+/* property grid — three cards side by side */
+.property-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 1.5rem;
+max-width: 1100px;
+margin: 0 auto;
+}
+.property-card {
+border-radius: 4px;
+overflow: hidden;
+box-shadow: 0 6px 28px rgba(0,0,0,0.12);
+display: flex;
+flex-direction: column;
+}
+.property-card-img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+display: block;
+}
+.property-card-body {
+background: var(--navy);
+padding: 1.5rem;
+flex: 1;
+display: flex;
+flex-direction: column;
+}
+.property-card-badge {
+align-self: flex-start;
+background: var(--salmon);
+color: white;
+font-size: 0.65rem;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+padding: 0.22rem 0.75rem;
+border-radius: 20px;
+margin-bottom: 0.6rem;
+}
+.property-card-badge.available {
+background: #2a7a4b;
+}
+.property-card-badge.leased {
+background: #4a4a4a;
+}
+.property-card-badge.pending {
+background: #7c5c1e;
+}
+.property-card-address {
+font-size: 1.1rem;
+font-weight: 800;
+color: white;
+line-height: 1.25;
+margin-bottom: 0.5rem;
+}
+.property-card-price {
+font-size: 1.3rem;
+font-weight: 800;
+color: white;
+margin-bottom: 1rem;
+}
+.property-card-features {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0.25rem 0.5rem;
+margin-bottom: 1.25rem;
+flex: 1;
+}
+.property-card-feature {
+font-size: 0.75rem;
+color: rgba(255,255,255,0.75);
+display: flex;
+align-items: center;
+gap: 0.35rem;
+}
+.property-card-feature::before {
+content: '✓';
+color: var(--salmon);
+font-weight: 700;
+font-size: 0.7rem;
+}
+.property-card-cta {
+display: block;
+text-align: center;
+background: var(--salmon);
+color: white;
+padding: 0.7rem;
+font-size: 0.77rem;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+text-decoration: none;
+border-radius: 3px;
+}
+.property-card-cta:hover { background: #b3684d; }
+.property-card-cta-ghost {
+display: block;
+text-align: center;
+background: transparent;
+color: rgba(255,255,255,0.6);
+padding: 0.7rem;
+font-size: 0.77rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+text-decoration: none;
+border: 1.5px solid rgba(255,255,255,0.25);
+border-radius: 3px;
+margin-top: 0.5rem;
+}
+.property-card-cta-ghost:hover { border-color: rgba(255,255,255,0.6); color: white; }
+/* listing card */
+.listing-card {
+max-width: 760px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 5fr 6fr;
+border-radius: 4px;
+overflow: hidden;
+box-shadow: 0 6px 28px rgba(0,0,0,0.12);
+}
+.listing-left {
+background: var(--navy);
+padding: 1.75rem 1.75rem 1.75rem;
+display: flex;
+flex-direction: column;
+}
+.listing-badge {
+align-self: flex-start;
+background: var(--salmon);
+color: white;
+font-size: 0.65rem;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+padding: 0.22rem 0.75rem;
+border-radius: 20px;
+margin-bottom: 0.65rem;
+}
+.listing-coming {
+font-size: 0.75rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+color: rgba(255,255,255,0.65);
+margin-bottom: 0.1rem;
+}
+.listing-for-rent {
+font-family: Georgia, 'Times New Roman', serif;
+font-style: italic;
+font-size: 2.4rem;
+color: white;
+line-height: 1.1;
+margin-bottom: 0.9rem;
+}
+.listing-address {
+font-size: 1.05rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.04em;
+color: white;
+line-height: 1.3;
+margin-bottom: 1.4rem;
+}
+.listing-features-label {
+font-size: 0.65rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: rgba(255,255,255,0.5);
+margin-bottom: 0.6rem;
+}
+.listing-features {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0.25rem 0.5rem;
+}
+.listing-feature {
+font-size: 0.75rem;
+color: rgba(255,255,255,0.78);
+display: flex;
+align-items: center;
+gap: 0.35rem;
+}
+.listing-feature::before {
+content: '✓';
+color: var(--salmon);
+font-weight: 700;
+font-size: 0.7rem;
+}
+.listing-photos {
+display: grid;
+grid-template-rows: 1fr 1fr;
+grid-template-columns: 1fr 1fr;
+gap: 3px;
+background: #bbb;
+}
+/* main photo spans left column both rows */
+.listing-photos .photo-main {
+grid-row: 1 / 3;
+grid-column: 1;
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.listing-photos .photo-sm {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+/* rent callout under card */
+.rent-callout {
+max-width: 760px;
+margin: 1.25rem auto 0;
+display: flex;
+align-items: center;
+gap: 0.75rem;
+justify-content: flex-end;
+}
+.rent-callout-label {
+font-size: 0.68rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+color: var(--text-mid);
+}
+.rent-callout-amount {
+font-size: 1.55rem;
+font-weight: 800;
+color: var(--navy);
+line-height: 1;
+}
+/* PLACEHOLDER: replace src with rent/house icon URL */
+.rent-icon {
+width: 50px;
+height: 50px;
+object-fit: contain;
+}
+.rent-icon[data-placeholder] { background: #cdd5d8; border-radius: 4px; }
+/* ─── MEET NEELA ──────────────────────────────────── */
+.meet-section {
+position: relative;
+background-color: var(--navy);
+}
+.meet-section::before { display: none; }
+.meet-view-all {
+position: relative;
+z-index: 2;
+text-align: center;
+padding: 2.5rem 0;
+border-bottom: 1px solid rgba(255,255,255,0.15);
+margin: 0 60px;
+}
+.meet-inner {
+position: relative;
+z-index: 2;
+display: grid;
+grid-template-columns: 1fr auto;
+gap: 4rem;
+align-items: center;
+padding: 3rem 80px 4rem;
+}
+.meet-eyebrow {
+font-size: 0.7rem;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.55);
+margin-bottom: 0.6rem;
+}
+.meet-inner h2 {
+font-size: 1.45rem;
+font-weight: 800;
+color: white;
+margin-bottom: 0.9rem;
+line-height: 1.2;
+}
+.meet-inner p {
+font-size: 0.88rem;
+color: rgba(255,255,255,0.72);
+line-height: 1.75;
+max-width: 480px;
+}
+.meet-inner p strong { color: white; }
+.meet-photo {
+width: 210px;
+height: 210px;
+border-radius: 50%;
+object-fit: cover;
+object-position: center top;
+border: 5px solid white;
+display: block;
+flex-shrink: 0;
+}
+.meet-photo[data-placeholder] { background: #8aabb8; }
+/* ─── 3 STEPS ─────────────────────────────────────── */
+.steps-banner {
+position: relative;
+background-color: var(--navy);
+background-image: url('https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69595daa6e700e0e9ffb42dc.jpg');
+background-size: cover;
+background-position: center;
+padding: 52px 60px;
+text-align: center;
+overflow: hidden;
+}
+.steps-banner::before {
+content: '';
+position: absolute;
+inset: 0;
+background: rgba(11,44,61,0.72);
+}
+.steps-banner-text { position: relative; z-index: 2; }
+.steps-banner h2 {
+font-size: 0.95rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.14em;
+color: white;
+margin-bottom: 0.4rem;
+}
+.steps-banner p {
+font-size: 0.85rem;
+color: rgba(255,255,255,0.68);
+}
+.steps-body {
+background: var(--cream);
+padding: 0 60px 64px;
+}
+.steps-inner {
+display: grid;
+grid-template-columns: 1fr 1.15fr;
+gap: 3.5rem;
+align-items: start;
+max-width: 960px;
+margin: 0 auto;
+}
+/* photo overlaps up into banner */
+.steps-photo {
+width: 100%;
+aspect-ratio: 3/4;
+object-fit: cover;
+display: block;
+margin-top: -72px;
+box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+}
+.steps-photo[data-placeholder] { background: #bbc8cc; }
+.steps-list { padding-top: 3rem; }
+.steps-list-label {
+font-size: 0.68rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.18em;
+color: var(--navy);
+margin-bottom: 1.5rem;
+}
+.step-item {
+padding: 1.25rem 0;
+border-bottom: 1px dashed #bbb;
+}
+.step-item:last-of-type { border-bottom: none; }
+.step-title {
+font-size: 0.78rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+color: var(--navy);
+margin-bottom: 0.5rem;
+}
+.step-body {
+display: flex;
+align-items: flex-start;
+gap: 0.6rem;
+font-size: 0.84rem;
+color: var(--text-mid);
+line-height: 1.65;
+}
+.step-dot {
+width: 13px;
+height: 13px;
+border-radius: 50%;
+border: 2px solid var(--salmon);
+flex-shrink: 0;
+margin-top: 4px;
+}
+.steps-cta { margin-top: 1.75rem; }
+.btn-navy {
+display: inline-block;
+background: var(--navy);
+color: white;
+padding: 0.72rem 1.8rem;
+font-size: 0.77rem;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+text-decoration: none;
+border-radius: 2px;
+}
+.btn-navy:hover { background: #1e3a48; }
+/* ─── FAQ ─────────────────────────────────────────── */
+.faq-section {
+position: relative;
+background-color: #1e2d38;
+padding: 72px 60px;
+}
+.faq-section::before { display: none; }
+.faq-inner {
+position: relative;
+z-index: 2;
+max-width: 700px;
+margin: 0 auto;
+}
+.faq-title {
+font-size: 1.35rem;
+font-weight: 700;
+color: white;
+text-align: center;
+margin-bottom: 2rem;
+}
+.faq-item {
+background: rgba(238,238,238,0.95);
+border-radius: 5px;
+margin-bottom: 7px;
+overflow: hidden;
+}
+.faq-q {
+width: 100%;
+background: none;
+border: none;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0.95rem 1.2rem;
+font-family: var(--font);
+font-size: 0.86rem;
+font-weight: 600;
+color: var(--navy);
+text-align: left;
+gap: 1rem;
+}
+/* chevron using border trick — no SVG, no icon */
+.faq-chevron {
+width: 0; height: 0;
+border-left: 5px solid transparent;
+border-right: 5px solid transparent;
+border-top: 6px solid var(--navy);
+flex-shrink: 0;
+transition: transform 0.22s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+display: none;
+padding: 0 1.2rem 1rem;
+font-size: 0.84rem;
+color: var(--text-mid);
+line-height: 1.75;
+border-top: 1px solid #ddd;
+}
+.faq-a ul { padding-left: 1.2rem; margin: 0.4rem 0; }
+.faq-a li { margin-bottom: 0.3rem; }
+.faq-a strong { color: var(--navy); }
+.faq-a p { margin-bottom: 0.55rem; }
+.faq-item.open .faq-a { display: block; }
+/* ─── TESTIMONIALS ────────────────────────────────── */
+.testi-section {
+background: var(--cream);
+padding: 64px 60px;
+}
+.testi-title {
+font-size: 0.75rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.18em;
+color: var(--navy);
+text-align: center;
+margin-bottom: 2.25rem;
+}
+.testi-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.25rem;
+max-width: 840px;
+margin: 0 auto;
+}
+.testi-card {
+background: var(--white);
+border: 1px solid #d8d8d8;
+border-radius: 6px;
+overflow: hidden;
+}
+.testi-body {
+padding: 1.6rem 1.6rem 1.25rem;
+font-size: 0.86rem;
+color: var(--text-mid);
+line-height: 1.75;
+}
+.testi-foot {
+border-top: 1px solid #eee;
+padding: 0.9rem 1.6rem;
+}
+.testi-attr {
+font-size: 0.82rem;
+font-weight: 600;
+color: var(--text);
+display: block;
+margin-bottom: 0.2rem;
+}
+.testi-stars { color: #E5A520; font-size: 0.88rem; letter-spacing: 1px; }
+/* ─── AFFILIATIONS ────────────────────────────────── */
+.affil-section {
+background: var(--white);
+padding: 52px 60px;
+text-align: center;
+border-top: 1px solid #eee;
+}
+.affil-label {
+font-size: 0.7rem;
+font-weight: 800;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(--text-lt);
+margin-bottom: 2rem;
+}
+.affil-logos {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 3rem;
+flex-wrap: wrap;
+}
+.affil-logos img {
+height: 44px;
+object-fit: contain;
+opacity: 0.55;
+filter: grayscale(100%);
+transition: opacity 0.2s, filter 0.2s;
+}
+.affil-logos img:hover { opacity: 0.9; filter: none; }
+/* ─── FAIR HOUSING ────────────────────────────────── */
+.fair-section {
+border-top: 1px solid #eee;
+padding: 2.5rem 60px;
+display: flex;
+gap: 2rem;
+align-items: flex-start;
+max-width: 820px;
+margin: 0 auto;
+}
+.fair-logo { flex-shrink: 0; }
+.fair-logo img {
+height: 56px;
+object-fit: contain;
+opacity: 0.45;
+}
+.fair-text h3 {
+font-size: 0.85rem;
+font-weight: 700;
+color: var(--navy);
+margin-bottom: 0.5rem;
+}
+.fair-text p {
+font-size: 0.8rem;
+color: var(--text-lt);
+line-height: 1.8;
+}
+/* ─── FOOTER ──────────────────────────────────────── */
+footer {
+background: var(--navy);
+color: white;
+padding: 56px 60px 0;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+gap: 4rem;
+padding-bottom: 2.5rem;
+border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
+.footer-tag {
+font-size: 0.83rem;
+color: rgba(255,255,255,0.45);
+line-height: 1.65;
+margin-bottom: 1.25rem;
+max-width: 230px;
+}
+.footer-social a {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 32px; height: 32px;
+border-radius: 50%;
+background: rgba(255,255,255,0.1);
+transition: background 0.2s;
+}
+.footer-social a:hover { background: var(--salmon); }
+/* PLACEHOLDER: replace src with FB icon URL */
+.footer-fb-icon {
+width: 14px;
+height: 14px;
+object-fit: contain;
+}
+.footer-col h4 {
+font-size: 0.67rem;
+font-weight: 800;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.38);
+margin-bottom: 1.1rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.55rem; }
+.footer-col a {
+color: rgba(255,255,255,0.55);
+text-decoration: none;
+font-size: 0.84rem;
+}
+.footer-col a:hover { color: white; }
+.footer-bottom {
+padding: 1.4rem 0;
+font-size: 0.73rem;
+color: rgba(255,255,255,0.28);
+text-align: center;
+}
+/* ─── RESPONSIVE ──────────────────────────────────── */
+/* Tablet ≤1024px */
+@media (max-width: 1024px) {
+nav { padding: 0 28px; }
+.hero-left { padding: 48px 36px 48px 48px; }
+.why-section { padding: 56px 36px; }
+.upcoming-section { padding: 32px 36px 64px; }
+.property-grid { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.meet-inner { padding: 3rem 48px 4rem; gap: 3rem; }
+.meet-view-all { margin: 0 48px; }
+.steps-banner { padding: 52px 36px; }
+.steps-body { padding: 0 36px 56px; }
+.faq-section { padding: 72px 36px; }
+.testi-section { padding: 56px 36px; }
+.affil-section { padding: 48px 36px; }
+.fair-section { padding: 2.5rem 36px; }
+footer { padding: 48px 36px 0; }
+.footer-grid { gap: 2.5rem; }
+}
+/* Mobile ≤768px */
+@media (max-width: 768px) {
+nav {
+padding: 0 16px;
+height: 64px;
+}
+.nav-logo img { height: 42px; }
+.nav-links { gap: 1.25rem; }
+.nav-links a { font-size: 0.72rem; letter-spacing: 0.1em; }
+.hero { grid-template-columns: 1fr; min-height: auto; padding-right: 0; }
+.hero-left { padding: 2.5rem 1.25rem 3rem; }
+h1.hero-title { font-size: 1.6rem; max-width: 100%; }
+.hero-sub { max-width: 100%; }
+.hero-ctas { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+.hero-right { margin: 0; border-radius: 0; }
+.why-section { padding: 48px 16px; }
+.why-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+.upcoming-wrap::before { height: 40px; }
+.upcoming-section { padding: 20px 16px 48px; }
+.property-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+.property-card-img { height: 220px; }
+.property-card-features { grid-template-columns: 1fr 1fr; }
+.meet-view-all { margin: 0 16px; padding: 2rem 0; }
+.meet-inner {
+grid-template-columns: 1fr;
+padding: 2rem 16px 3rem;
+gap: 1.5rem;
+text-align: center;
+}
+.meet-inner h2 { font-size: 1.3rem; }
+.meet-inner p { margin: 0 auto; }
+.meet-photo-wrap { order: -1; display: flex; justify-content: center; }
+.meet-photo { width: 140px; height: 140px; }
+.steps-banner { padding: 40px 16px; }
+.steps-body { padding: 0 16px 48px; }
+.steps-inner { grid-template-columns: 1fr; gap: 0; }
+.steps-photo { margin-top: 0; aspect-ratio: 16/9; }
+.steps-list { padding-top: 2rem; }
+.faq-section { padding: 56px 16px; }
+.faq-title { font-size: 1.1rem; }
+.testi-section { padding: 48px 16px; }
+.testi-grid { grid-template-columns: 1fr; gap: 1rem; }
+.affil-section { padding: 40px 16px; }
+.affil-logos { gap: 1.5rem; }
+.affil-logos img { height: 36px; }
+.fair-section { padding: 2rem 16px; flex-direction: column; }
+footer { padding: 36px 16px 0; }
+.footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+.footer-tag { max-width: 100%; }
+}
+/* Small mobile ≤480px */
+@media (max-width: 480px) {
+nav { height: 58px; }
+.nav-logo img { height: 36px; }
+.nav-links { gap: 0.9rem; }
+.nav-links a { font-size: 0.68rem; }
+h1.hero-title { font-size: 1.4rem; }
+.hero-left { padding: 2rem 1rem 2.5rem; }
+.property-card-features { grid-template-columns: 1fr; }
+.why-grid { gap: 2rem; }
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+<section class="hero">
+<div class="hero-left">
+<h1 class="hero-title">A Clear, Honest Path To Renting Your Next Home.</h1>
+<p class="hero-sub">Friendly, organized, and upfront about everything — from first tour to move-in day.</p>
+<div class="hero-ctas">
+<a href="https://www.irenthousesinsweats.com/properties" class="btn-outline-white">&#8962; See Available Homes</a>
+<a href="https://www.irenthousesinsweats.com/contact" class="link-white">ASK A QUESTION →</a>
+</div>
+</div>
+<div class="hero-right">
+<img
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/fcbf9f5e-4aed-4c04-ab54-10ffd2d5ae4d.png"
+alt="I Rent Houses In Sweats" />
+</div>
+</section>
+<!-- ═══ WHY RENTERS CHOOSE US ═══ -->
+<section class="why-section">
+<p class="why-label">Why Renters Choose Us</p>
+<div class="why-rule"></div>
+<div class="why-grid">
+<div class="why-card">
+<h3>Quality Properties</h3>
+<p>Clean, well-maintained homes in neighborhoods you'll actually want to live in.</p>
+</div>
+<div class="why-card">
+<h3>Fast Applications</h3>
+<p>Simple online application, clear requirements, and quick decisions.</p>
+</div>
+<div class="why-card">
+<h3>Professional Service</h3>
+<p>Fast responses, and clear communication at every step.</p>
+</div>
+</div>
+</section>
+<!-- ═══ PROPERTIES ═══ -->
+<div class="upcoming-wrap" id="properties">
+<section class="upcoming-section">
+<h2>Available &amp; Coming Soon</h2>
+<p class="sub">Browse our current and upcoming rentals in the Toledo area.</p>
+<div class="property-grid">
+<!-- CARD: 332 Lacombe -->
+<div class="property-card">
+<img loading="lazy" class="property-card-img"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bfa2dde974298a39f.jpg"
+alt="332 Lacombe Dr, Maumee OH"
+onerror="this.style.display='none'" />
+<div class="property-card-body">
+<span class="property-card-badge leased">Recently Leased</span>
+<p class="property-card-address">332 Lacombe Dr,<br>Maumee, OH 43537</p>
+<p class="property-card-price">$1,275<span style="font-size:0.8rem; font-weight:400; opacity:0.6;">/mo</span></p>
+<div class="property-card-features">
+<span class="property-card-feature">2 Bedrooms</span>
+<span class="property-card-feature">Attached Garage</span>
+<span class="property-card-feature">1 Bathroom</span>
+<span class="property-card-feature">Front Patio</span>
+<span class="property-card-feature">860 sq ft</span>
+<span class="property-card-feature">W/D Hookups</span>
+</div>
+</div>
+</div>
+<!-- CARD: 1531 Wilmore -->
+<div class="property-card">
+<img loading="lazy" class="property-card-img"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e111e550b9a3263a52336b.jpg"
+alt="1531 Wilmore Dr, Toledo OH"
+onerror="this.style.display='none'" />
+<div class="property-card-body">
+<span class="property-card-badge pending">Application Pending</span>
+<p class="property-card-address">1531 Wilmore Dr,<br>Toledo, OH 43614</p>
+<p class="property-card-price">$1,250<span style="font-size:0.8rem; font-weight:400; opacity:0.6;">/mo</span></p>
+<div class="property-card-features">
+<span class="property-card-feature">2 Bedrooms</span>
+<span class="property-card-feature">912 sq ft</span>
+<span class="property-card-feature">1 Bathroom</span>
+<span class="property-card-feature">South Toledo</span>
+</div>
+<a href="https://www.irenthousesinsweats.com/1531-wilmore-dr" class="property-card-cta" target="_blank" rel="noopener">View Property</a>
+<a href="https://www.irenthousesinsweats.com/property/1531-wilmore-dr/qualify?property_of_interest=1531%20Wilmore%20Dr" class="property-card-cta-ghost" target="_blank" rel="noopener">Get Prequalified</a>
+</div>
+</div>
+<!-- CARD: 1343 Corry Ave -->
+<div class="property-card">
+<img loading="lazy" class="property-card-img"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e103372c135a8c838fa635.jpg"
+alt="1343 Corry Ave, Toledo OH"
+onerror="this.style.display='none'" />
+<div class="property-card-body">
+<span class="property-card-badge">Coming Soon</span>
+<p class="property-card-address">1343 Corry Ave,<br>Toledo, OH 43614</p>
+<p class="property-card-price">$1,300<span style="font-size:0.8rem; font-weight:400; opacity:0.6;">/mo</span></p>
+<div class="property-card-features">
+<span class="property-card-feature">2 Bedrooms</span>
+<span class="property-card-feature">827 sq ft</span>
+<span class="property-card-feature">1 Bathroom</span>
+<span class="property-card-feature">Detached Garage</span>
+<span class="property-card-feature">W/D Included</span>
+<span class="property-card-feature">South Toledo</span>
+</div>
+<a href="https://www.irenthousesinsweats.com/1343-corry-ave" class="property-card-cta" target="_blank" rel="noopener">View Property</a>
+<a href="https://www.irenthousesinsweats.com/property/1343-corry-ave/qualify?property_of_interest=1343%20Corry%20Ave" class="property-card-cta-ghost" target="_blank" rel="noopener">Get Prequalified</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ═══ MEET YOUR LANDLADY ═══ -->
+<section class="meet-section" id="team">
+<div class="meet-inner">
+<div>
+<p class="meet-eyebrow">Locally Owned &amp; Managed</p>
+<h2>Meet Your Landlady.</h2>
+<p><strong>Hey, I'm Neela!</strong> I live here, work here, and manage every home myself. When something comes up, you're talking to me, not a call center.</p>
+<img
+loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69377e431da73cd937ae6b68.png"
+alt="Neela Kelly signature"
+style="height:52px; width:auto; margin-top:1.25rem; opacity:0.85;" />
+</div>
+<div class="meet-photo-wrap">
+<img loading="lazy" class="meet-photo"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/e2fded25-85b0-41a8-a566-350fcb79ad69.png"
+alt="Neela Kelly" />
+</div>
+</div>
+</section>
+<!-- ═══ 3-STEP PROCESS ═══ -->
+<section>
+<div class="steps-banner">
+<div class="steps-banner-text">
+<h2>Renting With Us Is Simple &amp; Straightforward</h2>
+<p>No mystery steps or hidden fees — just a clear plan from first tour to move-in.</p>
+</div>
+</div>
+<div class="steps-body">
+<div class="steps-inner">
+<!-- STEPS PHOTO: couple in home — replace with actual photo URL -->
+<img loading="lazy" class="steps-photo"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/693a0585751b346b8f4d3ca7.jpg"
+alt="Couple viewing home" />
+<div class="steps-list">
+<p class="steps-list-label">3-Step Process</p>
+<div class="step-item">
+<p class="step-title">Step 1 – Start With a Quick Prequalification</p>
+<div class="step-body">
+<span class="step-dot"></span>
+<span>If a home is available, start with a quick prequalification before you tour or apply. It only takes a couple of minutes and does not run your credit.</span>
+</div>
+</div>
+<div class="step-item">
+<p class="step-title">Step 2 – Book a Showing If You Qualify</p>
+<div class="step-body">
+<span class="step-dot"></span>
+<span>If you meet the basics (about 3x rent in income, decent credit, and clean rental history), you can book a showing right from the listing.</span>
+</div>
+</div>
+<div class="step-item">
+<p class="step-title">Step 3 – Apply or Get First in Line</p>
+<div class="step-body">
+<span class="step-dot"></span>
+<span>If a home you love is available, you'll apply through Zillow. If it's not available right now, contact Neela — there may be an upcoming opening or a new home about to be listed.</span>
+</div>
+</div>
+<div class="steps-cta">
+<a href="https://www.irenthousesinsweats.com/properties" class="btn-navy">View All Properties</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section" id="faq">
+<div class="faq-inner">
+<h2 class="faq-title">Frequently Asked Questions</h2>
+<div class="faq-item open">
+<button class="faq-q">What are your rental requirements? <span class="faq-chevron"></span></button>
+<div class="faq-a">
+<p><strong>Income:</strong></p>
+<ul>
+<li>Monthly income of at least 3× the monthly rent</li>
+<li>Example: For a $1,200/month rental, you need $3,600/month income</li>
+<li>Need to provide 3 months of recent pay stubs</li>
+</ul>
+<p><strong>Credit &amp; Background:</strong></p>
+<ul>
+<li>Minimum credit score of 600</li>
+<li>Clean rental history (no evictions)</li>
+<li>No outstanding collections</li>
+<li>No felony convictions</li>
+</ul>
+<p><strong>Documentation:</strong></p>
+<ul>
+<li>Photo ID</li>
+<li>3 months of pay stubs (showing your name and employer's name)</li>
+<li>Proof you can afford the deposit upfront</li>
+</ul>
+<p>I'm straightforward about this because I don't want to waste your time if it's not going to work out.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">What if I don't meet the 3x income requirement? <span class="faq-chevron"></span></button>
+<div class="faq-a">
+<p><strong>A few options:</strong></p>
+<ul>
+<li><strong>Get a Co-Signer</strong> – Someone who does meet the income requirement and will sign the lease</li>
+<li><strong>Look at Lower-Priced Properties</strong> – I might have something that fits your budget better</li>
+<li><strong>Increase Your Income</strong> – Reach back out when your situation changes</li>
+</ul>
+<p>If you're close to qualifying, reach out anyway. Let's have a conversation.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">Do you allow pets? <span class="faq-chevron"></span></button>
+<div class="faq-a">
+<p>It depends on the property and the pet.</p>
+<p><strong>Houses:</strong> Pets allowed at my discretion. Must get approval BEFORE applying. Pet deposit: $250 (non-refundable). Pet rent: Additional $50/month.</p>
+<p><strong>Condos:</strong> Cats are usually fine (with approval). Small dogs maybe (depends on the condo association). Same fees: $250 deposit + $50/month.</p>
+<p><strong>What I need to know:</strong> Type, breed, weight • How many pets • Are they house-trained?</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">How long are the leases? <span class="faq-chevron"></span></button>
+<div class="faq-a">
+<p>12 months is standard. After the first year, if we don't sign a new lease, it goes month-to-month automatically. Either of us can end it with 30 days' written notice.</p>
+<p>Shorter leases or custom terms? Reach out and let's talk about your situation.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">Do you run a credit check? <span class="faq-chevron"></span></button>
+<div class="faq-a">
+<p><strong>Yes — but not right away.</strong> For the quick prequalification, there is no impact on your credit score. It's just to make sure the basics line up before you tour or apply.</p>
+<p>If you decide to move forward on a home and submit a full application through Zillow, a standard credit/background check is part of that process. We look at the whole picture — not just a single number.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">Is there an application fee? <span class="faq-chevron"></span></button>
+<div class="faq-a">
+<p><strong>For the quick prequalification, there is no fee.</strong> If you move forward with a full application through Zillow, they charge a standard screening fee that covers your credit and background check. We don't add surprise "processing" or "admin" fees on top of that.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q">What income do I need to qualify? <span class="faq-chevron"></span></button>
+<div class="faq-a">
+<p>As a general guideline, most residents need a household income of about 3x the monthly rent to comfortably qualify.</p>
+<p>We'll usually ask for simple documentation like recent pay stubs, an offer letter, or proof of consistent self-employment income.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testi-section">
+<p class="testi-title">What Our Residents Say</p>
+<div class="testi-grid">
+<div class="testi-card">
+<div class="testi-body">This was the first time I felt like someone on the rental side was actually on my team. Neela told me exactly what I needed to qualify and there were zero surprise fees.</div>
+<div class="testi-foot">
+<span class="testi-attr">— J.M., Renter</span>
+<span class="testi-stars">★★★★★</span>
+</div>
+</div>
+<div class="testi-card">
+<div class="testi-body">The process was so simple: prequal, tour, apply. Neela explained everything in plain language, answered my questions fast, and I always knew what was happening next.</div>
+<div class="testi-foot">
+<span class="testi-attr">— K.D., Renter</span>
+<span class="testi-stars">★★★★★</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ AFFILIATIONS ═══ -->
+<section class="affil-section">
+<p class="affil-label">Affiliations</p>
+<div class="affil-logos">
+<!-- AFFIL LOGOS: replace each src with actual affiliation logo URLs -->
+<img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/0c4536eb-137d-4d05-b06a-dea352716913.png" alt="Equal Housing" />
+<img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/c79794e4-171c-4868-bb4b-9e8cedefdb36.png" alt="Realtor" />
+<img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/df994159-b071-41ae-8745-1037d7586545.png" alt="Zillow" />
+<img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/94704420-22ed-48de-9836-09d05060f85d.png" alt="nKey Realty" />
+</div>
+</section>
+<!-- ═══ FAIR HOUSING ═══ -->
+<div class="fair-section">
+<div class="fair-logo">
+<!-- FAIR HOUSING LOGO: Equal Housing logo — replace src with actual logo URL -->
+<img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/0c4536eb-137d-4d05-b06a-dea352716913.png" alt="Equal Housing Opportunity" />
+</div>
+<div class="fair-text">
+<h3>Our Fair Housing Promise</h3>
+<p>I Rent Houses in Sweats follows all federal, state, and local fair housing laws. I do not make rental decisions based on race, color, religion, sex, national origin, disability, familial status, or any other protected class. If you ever have questions or concerns about fair housing or how decisions are made, please reach out and ask.</p>
+</div>
+</div>
+<script>
+document.querySelectorAll('.faq-q').forEach(btn => {
+btn.addEventListener('click', () => {
+const item = btn.closest('.faq-item');
+const isOpen = item.classList.contains('open');
+document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+if (!isOpen) item.classList.add('open');
+});
+});
+</script>
+<script>
+(function() {
+var _source = 'homepage';
+var _active = true;
+var _lastH = 0;
+var _stable = 0;
+
+function _h() {
+var h = document.body.offsetHeight;
+if (!h || h < 200) {
+h = document.documentElement.offsetHeight;
+}
+return Math.min(h, 12000);
+}
+
+function sendHeight() {
+var h = _h();
+if (h < 200) return;
+try { window.parent.postMessage({ iframeHeight: h, source: _source }, '*'); } catch(e) {}
+}
+
+function pollHeight() {
+if (!_active) return;
+var h = _h();
+if (h < 200) { setTimeout(pollHeight, 200); return; }
+if (h !== _lastH) {
+_lastH = h;
+_stable = 0;
+try { window.parent.postMessage({ iframeHeight: h, source: _source }, '*'); } catch(e) {}
+} else {
+_stable++;
+}
+if (_stable < 20) { setTimeout(pollHeight, 500); }
+}
+
+// Fire immediately on script parse (earliest possible)
+try { window.parent.postMessage({ scrollToTop: true, source: _source }, '*'); } catch(e) {}
+sendHeight();
+
+// Fire at multiple early intervals to catch fast renders
+setTimeout(sendHeight, 100);
+setTimeout(sendHeight, 300);
+setTimeout(sendHeight, 600);
+
+// Then start polling on load to catch lazy images
+window.addEventListener('load', function() {
+_lastH = 0; _stable = 0;
+pollHeight();
+});
+
+window.addEventListener('resize', sendHeight);
+
+document.addEventListener('DOMContentLoaded', function() {
+sendHeight();
+document.querySelectorAll('img').forEach(function(img) {
+img.addEventListener('load', sendHeight);
+});
+});
+
+window.addEventListener('pagehide', function() { _active = false; });
+window.addEventListener('beforeunload', function() { _active = false; });
+})();
+</script>
+</body>
 </html>
