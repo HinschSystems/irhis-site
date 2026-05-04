@@ -1,6 +1,257 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Neela Portal | IRHIS</title>
-  </head
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRHIS — Neela's Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+--navy:   #0b2c3d;
+--salmon: #C4775A;
+--cream:  #E8EEED;
+--white:  #FFFFFF;
+--text:   #3a3a3a;
+--text-light: #6b7280;
+--border: #d1d5db;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+font-family: 'Nunito Sans', Arial, sans-serif;
+background: var(--cream);
+min-height: 100vh;
+padding: 40px 20px 60px;
+}
+.portal-header { text-align: center; margin-bottom: 36px; }
+.portal-logo {
+width: 52px; height: 52px;
+background: var(--navy);
+border-radius: 14px;
+display: flex; align-items: center; justify-content: center;
+margin: 0 auto 14px;
+}
+.portal-logo svg { width: 26px; height: 26px; }
+.portal-header h1 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+.portal-header p { font-size: 13px; color: var(--text-light); font-weight: 600; }
+.portal-wrap { max-width: 640px; margin: 0 auto; }
+.portal-section { margin-bottom: 28px; }
+.section-label {
+font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+text-transform: uppercase; color: var(--text-light);
+margin-bottom: 10px; padding: 0 2px;
+}
+.card-grid { display: grid; gap: 12px; }
+.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.portal-card {
+background: var(--white);
+border-radius: 16px;
+border: 1.5px solid var(--border);
+display: flex; flex-direction: column;
+align-items: center; justify-content: flex-start;
+gap: 10px; padding: 22px 14px 18px;
+text-decoration: none; text-align: center;
+transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+min-height: 128px;
+}
+.portal-card:hover {
+border-color: var(--navy);
+box-shadow: 0 4px 18px rgba(11,44,61,0.11);
+transform: translateY(-2px);
+}
+.portal-card.primary { background: var(--navy); border-color: var(--navy); }
+.portal-card.primary:hover { box-shadow: 0 6px 22px rgba(11,44,61,0.28); }
+.card-icon {
+width: 46px; height: 46px; border-radius: 13px;
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0;
+}
+.card-icon svg { width: 21px; height: 21px; }
+.i-white  { background: rgba(255,255,255,0.15); }
+.i-navy   { background: rgba(11,44,61,0.09); }
+.i-salmon { background: rgba(196,119,90,0.13); }
+.i-green  { background: #d1fae5; }
+.i-blue   { background: #dbeafe; }
+.i-purple { background: #ede9fe; }
+.card-name { font-size: 13px; font-weight: 800; line-height: 1.3; color: var(--navy); }
+.portal-card.primary .card-name { color: var(--white); }
+.card-desc { font-size: 11px; font-weight: 600; color: var(--text-light); line-height: 1.45; }
+.portal-card.primary .card-desc { color: rgba(255,255,255,0.52); }
+.portal-footer { text-align: center; margin-top: 36px; font-size: 12px; color: var(--text-light); font-weight: 600; }
+.portal-footer a { color: var(--salmon); text-decoration: none; font-weight: 700; }
+
+/* TABLET */
+@media (max-width: 640px) {
+.cols-3 { grid-template-columns: repeat(2, 1fr); }
+.cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* MOBILE — all cards stack, switch to horizontal row layout */
+@media (max-width: 480px) {
+body { padding: 24px 14px 48px; }
+.portal-header h1 { font-size: 18px; }
+.portal-header p { font-size: 12px; }
+.cols-2,
+.cols-3,
+.cols-4 { grid-template-columns: 1fr; gap: 10px; }
+.portal-card {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  min-height: unset;
+  padding: 16px 18px;
+  gap: 16px;
+  border-radius: 14px;
+}
+.card-icon { width: 42px; height: 42px; flex-shrink: 0; }
+.card-name { font-size: 14px; }
+.card-desc { font-size: 12px; }
+.portal-section { margin-bottom: 22px; }
+.portal-wrap { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="portal-header">
+  <div class="portal-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+  </div>
+  <h1>Neela's IRHIS Portal</h1>
+  <p>I Rent Houses In Sweats — Quick Access</p>
+</div>
+
+<div class="portal-wrap">
+
+  <!-- OPERATIONS -->
+  <div class="portal-section">
+    <div class="section-label">Operations</div>
+    <div class="card-grid cols-3">
+
+      <a href="https://app.hinschportal.com/v2/location/Ju2En80bdsSebpKgHpJT/dashboard" target="_blank" rel="noopener" class="portal-card primary">
+        <div class="card-icon i-white">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div>
+          <div class="card-name">IRHIS Dashboard</div>
+          <div class="card-desc">Hinsch Systems · CRM · Funnels · Workflows</div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/drive/folders/1ldMlLYhCGUmaaEeAuJPBdP1ba3gjTfvW?usp=sharing" target="_blank" rel="noopener" class="portal-card">
+        <div class="card-icon i-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <div class="card-name">Google Drive</div>
+          <div class="card-desc">Photos · Docs · Files</div>
+        </div>
+      </a>
+
+      <a href="https://www.zillow.com/rental-manager/properties" target="_blank" rel="noopener" class="portal-card">
+        <div class="card-icon i-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div>
+          <div class="card-name">Zillow</div>
+          <div class="card-desc">Listings · Leads · Applications</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- AI & CREATIVE -->
+  <div class="portal-section">
+    <div class="section-label">AI &amp; Creative</div>
+    <div class="card-grid cols-2">
+
+      <a href="[[GPT_ASSISTANT_URL]]" target="_blank" rel="noopener" class="portal-card">
+        <div class="card-icon i-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <div class="card-name">GPT Assistant</div>
+          <div class="card-desc">Property intake · Copy</div>
+        </div>
+      </a>
+
+      <a href="[[CANVA_URL]]" target="_blank" rel="noopener" class="portal-card">
+        <div class="card-icon i-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12s1-4 4-4 4 4 4 4-1 4-4 4-4-4-4-4z"/></svg>
+        </div>
+        <div>
+          <div class="card-name">Canva</div>
+          <div class="card-desc">Graphics · Brand assets</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="portal-section">
+    <div class="section-label">Quick Links</div>
+    <div class="card-grid cols-4">
+
+      <a href="https://www.irenthousesinsweats.com/" target="_blank" rel="noopener" class="portal-card">
+        <div class="card-icon i-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0b2c3d" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div>
+          <div class="card-name">Website</div>
+          <div class="card-desc">Live site</div>
+        </div>
+      </a>
+
+      <a href="https://www.irenthousesinsweats.com/properties" target="_blank" rel="noopener" class="portal-card">
+        <div class="card-icon i-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0b2c3d" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="card-name">Properties</div>
+          <div class="card-desc">All rentals</div>
+        </div>
+      </a>
+
+      <a href="https://app.hinschportal.com/v2/location/Ju2En80bdsSebpKgHpJT/calendars/appointments" target="_blank" rel="noopener" class="portal-card">
+        <div class="card-icon i-salmon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="card-name">Showings</div>
+          <div class="card-desc">Booking page</div>
+        </div>
+      </a>
+
+      <a href="https://www.irenthousesinsweats.com/prequal-form-page" target="_blank" rel="noopener" class="portal-card">
+        <div class="card-icon i-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="card-name">Prequal</div>
+          <div class="card-desc">Public form</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="portal-footer">
+  I Rent Houses In Sweats &nbsp;·&nbsp; Neela Kelly &nbsp;·&nbsp;
+  <a href="tel:4199027728">(419) 902-7728</a>
+</div>
+
+
+</body>
+</html>
