@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I Rent Houses In Sweats – A Clear, Honest Path To Renting Your Next Home</title>
+<meta name="description" content="Rent quality homes in Toledo & Maumee, OH with I Rent Houses In Sweats. Friendly, organized, and upfront about everything — from first tour to move-in day. See available properties.">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -906,6 +907,56 @@ h1.hero-title { font-size: 1.4rem; }
 .property-card-features { grid-template-columns: 1fr; }
 .why-grid { gap: 2rem; }
 }
+/* ─── NAV RIGHT / CTA ─────────────────────────────── */
+.nav-right { display: flex; align-items: center; gap: 1.25rem; }
+.nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+.nav-phone:hover { color: var(--salmon); }
+.nav-cta {
+  background: var(--salmon); color: white;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.52rem 1.1rem; border-radius: 4px; text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #b3674d; }
+/* ─── HAMBURGER ───────────────────────────────────── */
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px;
+}
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+/* ─── MOBILE DRAWER ───────────────────────────────── */
+.nav-drawer {
+  position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+  background: var(--navy); z-index: 500; padding: 2rem 1.5rem;
+  transition: right 0.3s ease; display: flex; flex-direction: column;
+}
+.nav-drawer.open { right: 0; }
+.nav-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 499;
+}
+.nav-overlay.open { display: block; }
+.nav-drawer-close {
+  align-self: flex-end; background: none; border: none; color: white;
+  font-size: 1.3rem; cursor: pointer; margin-bottom: 2rem; padding: 4px;
+}
+.nav-drawer-links { list-style: none; display: flex; flex-direction: column; flex: 1; }
+.nav-drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.nav-drawer-links a {
+  display: block; padding: 1rem 0; color: white; text-decoration: none;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.nav-drawer-links a:hover { color: var(--salmon); }
+.nav-drawer-cta {
+  margin-top: 2rem; display: block; text-align: center;
+  background: var(--salmon); color: white; text-decoration: none;
+  font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.9rem 1rem; border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-phone { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-cta { display: none; }
+}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
@@ -913,12 +964,36 @@ h1.hero-title { font-size: 1.4rem; }
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+<nav>
+<a href="/" class="nav-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png" alt="I Rent Houses In Sweats" /></a>
+<ul class="nav-links">
+<li><a href="/" class="nav-active">Home</a></li><li><a href="/portfolio">Properties</a></li><li><a href="/about">About</a></li><li><a href="https://www.irenthousesinsweats.com/contact">Contact</a></li>
+</ul>
+<div class="nav-right">
+<a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
+<a href="https://www.irenthousesinsweats.com/contact" class="nav-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
+</div>
+<button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-drawer">
+<button class="nav-drawer-close" aria-label="Close menu">&#x2715;</button>
+<ul class="nav-drawer-links">
+<li><a href="/">Home</a></li>
+<li><a href="/portfolio">Properties</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="https://www.irenthousesinsweats.com/contact" target="_blank" rel="noopener">Contact</a></li>
+</ul>
+<a href="https://www.irenthousesinsweats.com/contact" class="nav-drawer-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
+</div>
+<div class="nav-overlay"></div>
+</nav>
 <section class="hero">
 <div class="hero-left">
 <h1 class="hero-title">A Clear, Honest Path To Renting Your Next Home.</h1>
 <p class="hero-sub">Friendly, organized, and upfront about everything — from first tour to move-in day.</p>
 <div class="hero-ctas">
-<a href="https://www.irenthousesinsweats.com/properties" class="btn-outline-white">&#8962; See Available Homes</a>
+<a href="/portfolio" class="btn-outline-white">&#8962; See Available Homes</a>
 <a href="https://www.irenthousesinsweats.com/contact" class="link-white">ASK A QUESTION →</a>
 </div>
 </div>
@@ -950,69 +1025,58 @@ alt="I Rent Houses In Sweats" />
 <!-- ═══ PROPERTIES ═══ -->
 <div class="upcoming-wrap" id="properties">
 <section class="upcoming-section">
-<h2>Available &amp; Coming Soon</h2>
-<p class="sub">Browse our current and upcoming rentals in the Toledo area.</p>
+<h2>Recently Added to the Portfolio</h2>
+<p class="sub">Neela recently acquired three duplex properties in Toledo — now under management and coming soon.</p>
 <div class="property-grid">
-<!-- CARD: 332 Lacombe -->
+<!-- CARD: 2265 & 2267 Byrneway Dr -->
 <div class="property-card">
 <img loading="lazy" class="property-card-img"
-src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bfa2dde974298a39f.jpg"
-alt="332 Lacombe Dr, Maumee OH"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a1d22c99637319b3d37.jpg"
+alt="2265 & 2267 Byrneway Dr, Toledo OH"
 onerror="this.style.display='none'" />
 <div class="property-card-body">
-<span class="property-card-badge leased">Recently Leased</span>
-<p class="property-card-address">332 Lacombe Dr,<br>Maumee, OH 43537</p>
-<p class="property-card-price">$1,275<span style="font-size:0.8rem; font-weight:400; opacity:0.6;">/mo</span></p>
+<span class="property-card-badge">Recently Acquired</span>
+<p class="property-card-address">2265 &amp; 2267 Byrneway Dr,<br>Toledo, OH</p>
 <div class="property-card-features">
 <span class="property-card-feature">2 Bedrooms</span>
-<span class="property-card-feature">Attached Garage</span>
+<span class="property-card-feature">Duplex</span>
 <span class="property-card-feature">1 Bathroom</span>
-<span class="property-card-feature">Front Patio</span>
-<span class="property-card-feature">860 sq ft</span>
-<span class="property-card-feature">W/D Hookups</span>
+<span class="property-card-feature">Basement</span>
 </div>
 </div>
 </div>
-<!-- CARD: 1531 Wilmore -->
+<!-- CARD: 2301 & 2303 Byrneway Dr -->
 <div class="property-card">
 <img loading="lazy" class="property-card-img"
-src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e111e550b9a3263a52336b.jpg"
-alt="1531 Wilmore Dr, Toledo OH"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a408a4be81f3aea4663.jpg"
+alt="2301 & 2303 Byrneway Dr, Toledo OH"
 onerror="this.style.display='none'" />
 <div class="property-card-body">
-<span class="property-card-badge pending">Application Pending</span>
-<p class="property-card-address">1531 Wilmore Dr,<br>Toledo, OH 43614</p>
-<p class="property-card-price">$1,250<span style="font-size:0.8rem; font-weight:400; opacity:0.6;">/mo</span></p>
+<span class="property-card-badge">Recently Acquired</span>
+<p class="property-card-address">2301 &amp; 2303 Byrneway Dr,<br>Toledo, OH</p>
 <div class="property-card-features">
 <span class="property-card-feature">2 Bedrooms</span>
-<span class="property-card-feature">912 sq ft</span>
+<span class="property-card-feature">Duplex</span>
 <span class="property-card-feature">1 Bathroom</span>
-<span class="property-card-feature">South Toledo</span>
-</div>
-<a href="https://www.irenthousesinsweats.com/1531-wilmore-dr" class="property-card-cta" target="_blank" rel="noopener">View Property</a>
-<a href="https://www.irenthousesinsweats.com/property/1531-wilmore-dr/qualify?property_of_interest=1531%20Wilmore%20Dr" class="property-card-cta-ghost" target="_blank" rel="noopener">Get Prequalified</a>
+<span class="property-card-feature">Basement</span>
 </div>
 </div>
-<!-- CARD: 1343 Corry Ave -->
+</div>
+<!-- CARD: 2317 & 2319 Byrneway Dr -->
 <div class="property-card">
 <img loading="lazy" class="property-card-img"
-src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e103372c135a8c838fa635.jpg"
-alt="1343 Corry Ave, Toledo OH"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a0ba6108a4858280f40.jpg"
+alt="2317 & 2319 Byrneway Dr, Toledo OH"
 onerror="this.style.display='none'" />
 <div class="property-card-body">
-<span class="property-card-badge">Coming Soon</span>
-<p class="property-card-address">1343 Corry Ave,<br>Toledo, OH 43614</p>
-<p class="property-card-price">$1,300<span style="font-size:0.8rem; font-weight:400; opacity:0.6;">/mo</span></p>
+<span class="property-card-badge">Recently Acquired</span>
+<p class="property-card-address">2317 &amp; 2319 Byrneway Dr,<br>Toledo, OH</p>
 <div class="property-card-features">
 <span class="property-card-feature">2 Bedrooms</span>
-<span class="property-card-feature">827 sq ft</span>
+<span class="property-card-feature">Duplex</span>
 <span class="property-card-feature">1 Bathroom</span>
-<span class="property-card-feature">Detached Garage</span>
-<span class="property-card-feature">W/D Included</span>
-<span class="property-card-feature">South Toledo</span>
+<span class="property-card-feature">Basement</span>
 </div>
-<a href="https://www.irenthousesinsweats.com/1343-corry-ave" class="property-card-cta" target="_blank" rel="noopener">View Property</a>
-<a href="https://www.irenthousesinsweats.com/property/1343-corry-ave/qualify?property_of_interest=1343%20Corry%20Ave" class="property-card-cta-ghost" target="_blank" rel="noopener">Get Prequalified</a>
 </div>
 </div>
 </div>
@@ -1076,7 +1140,7 @@ alt="Couple viewing home" />
 </div>
 </div>
 <div class="steps-cta">
-<a href="https://www.irenthousesinsweats.com/properties" class="btn-navy">View All Properties</a>
+<a href="/portfolio" class="btn-navy">View All Properties</a>
 </div>
 </div>
 </div>
@@ -1213,67 +1277,48 @@ if (!isOpen) item.classList.add('open');
 });
 });
 </script>
+
+<footer>
+<div class="footer-grid">
+<div>
+<div class="footer-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png" alt="I Rent Houses In Sweats" /></div>
+<p class="footer-tag">Friendly, organized, and upfront about everything &#8212; from first tour to move-in day.</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/irenthousesinsweats" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="https://irenthousesinsweats.com/">Home</a></li>
+<li><a href="https://www.irenthousesinsweats.com/properties">Properties</a></li>
+<li><a href="https://www.irenthousesinsweats.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+<li><a href="https://www.irenthousesinsweats.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Get In Touch</h4>
+<ul>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
+<li><a href="mailto:nkelly7x@gmail.com">nkelly7x@gmail.com</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&#169; 2026 I Rent Houses In Sweats. All rights reserved. Equal Housing Opportunity &nbsp;&middot;&nbsp; Neela Kelly, Licensed Real Estate Agent &nbsp;&middot;&nbsp; Perrysburg, OH</p>
+</div>
+</footer>
 <script>
 (function() {
-var _source = 'homepage';
-var _active = true;
-var _lastH = 0;
-var _stable = 0;
-
-function _h() {
-var h = document.body.offsetHeight;
-if (!h || h < 200) {
-h = document.documentElement.offsetHeight;
-}
-return Math.min(h, 12000);
-}
-
-function sendHeight() {
-var h = _h();
-if (h < 200) return;
-try { window.parent.postMessage({ iframeHeight: h, source: _source }, '*'); } catch(e) {}
-}
-
-function pollHeight() {
-if (!_active) return;
-var h = _h();
-if (h < 200) { setTimeout(pollHeight, 200); return; }
-if (h !== _lastH) {
-_lastH = h;
-_stable = 0;
-try { window.parent.postMessage({ iframeHeight: h, source: _source }, '*'); } catch(e) {}
-} else {
-_stable++;
-}
-if (_stable < 20) { setTimeout(pollHeight, 500); }
-}
-
-// Fire immediately on script parse (earliest possible)
-try { window.parent.postMessage({ scrollToTop: true, source: _source }, '*'); } catch(e) {}
-sendHeight();
-
-// Fire at multiple early intervals to catch fast renders
-setTimeout(sendHeight, 100);
-setTimeout(sendHeight, 300);
-setTimeout(sendHeight, 600);
-
-// Then start polling on load to catch lazy images
-window.addEventListener('load', function() {
-_lastH = 0; _stable = 0;
-pollHeight();
-});
-
-window.addEventListener('resize', sendHeight);
-
-document.addEventListener('DOMContentLoaded', function() {
-sendHeight();
-document.querySelectorAll('img').forEach(function(img) {
-img.addEventListener('load', sendHeight);
-});
-});
-
-window.addEventListener('pagehide', function() { _active = false; });
-window.addEventListener('beforeunload', function() { _active = false; });
+  var btn = document.querySelector('.nav-hamburger');
+  var drawer = document.querySelector('.nav-drawer');
+  var overlay = document.querySelector('.nav-overlay');
+  var closeBtn = document.querySelector('.nav-drawer-close');
+  function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  if (btn) btn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
 })();
 </script>
 </body>
