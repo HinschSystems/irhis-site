@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRHIS Launch Assistant — Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:        #0b2c3d;
+  --salmon:      #C4775A;
+  --salmon-lt:   #f5ebe6;
+  --cream:       #E8EEED;
+  --white:       #FFFFFF;
+  --text:        #3a3a3a;
+  --text-light:  #6b7280;
+  --border:      #d1d5db;
+  --border-focus:#C4775A;
+  --radius:      10px;
+  --input-bg:    #f9fafb;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito Sans',Arial,sans-serif;
+  background:var(--cream);
+  min-height:100vh;
+  padding:36px 20px 80px;
+  color:var(--text);
+}
+
+/* ── HEADER ── */
+.page-header{text-align:center;margin-bottom:32px}
+.portal-logo{
+  width:52px;height:52px;background:var(--navy);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 14px;
+}
+.portal-logo svg{width:26px;height:26px}
+.page-header h1{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.page-header p{font-size:13px;color:var(--text-light);font-weight:600}
+.back-link{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:12px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--text-light);text-decoration:none;margin-bottom:20px;
+  transition:color 0.15s;
+}
+.back-link:hover{color:var(--navy)}
+
+/* ── TASK SELECTOR ── */
+.wrap{max-width:680px;margin:0 auto}
+.task-label{
+  font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--text-light);margin-bottom:10px;padding:0 2px;
+}
+.task-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:28px}
+.task-btn{
+  background:var(--white);border:1.5px solid var(--border);border-radius:12px;
+  padding:14px 8px;cursor:pointer;text-align:center;transition:all 0.15s;
+  font-family:'Nunito Sans',Arial,sans-serif;
+}
+.task-btn:hover{border-color:var(--navy);transform:translateY(-1px)}
+.task-btn.active{border-color:var(--salmon);background:var(--salmon-lt);box-shadow:0 0 0 3px rgba(196,119,90,0.12)}
+.task-icon{font-size:20px;display:block;margin-bottom:6px}
+.task-name{font-size:11px;font-weight:800;color:var(--navy);display:block;line-height:1.3}
+
+/* ── FORM SECTIONS ── */
+.form-section{display:none;animation:fadeIn 0.2s ease}
+.form-section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+.section-card{
+  background:var(--white);border-radius:16px;border:1.5px solid var(--border);
+  padding:24px;margin-bottom:14px;
+}
+.section-card h3{
+  font-size:12px;font-weight:800;letter-spacing:0.10em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:18px;padding-bottom:10px;
+  border-bottom:1.5px solid var(--cream);
+}
+.field-grid{display:grid;gap:14px}
+.field-grid.cols-2{grid-template-columns:1fr 1fr}
+.field-grid.cols-3{grid-template-columns:1fr 1fr 1fr}
+
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{
+  font-size:11px;font-weight:800;color:var(--navy);
+  letter-spacing:0.04em;
+}
+.field label .req{color:var(--salmon);margin-left:2px}
+.field label .opt{color:var(--text-light);font-weight:600;font-size:10px;margin-left:4px}
+
+input[type=text],input[type=url],input[type=number],input[type=date],
+select,textarea{
+  background:var(--input-bg);border:1.5px solid var(--border);
+  border-radius:8px;padding:9px 12px;
+  font-family:'Nunito Sans',Arial,sans-serif;font-size:13px;
+  color:var(--text);width:100%;transition:border-color 0.15s;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--border-focus);background:var(--white);
+}
+textarea{resize:vertical;min-height:80px;line-height:1.6}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+
+.field-hint{font-size:11px;color:var(--text-light);margin-top:2px;font-weight:600}
+
+/* radio group */
+.radio-group{display:flex;gap:8px;flex-wrap:wrap}
+.radio-btn{
+  background:var(--input-bg);border:1.5px solid var(--border);border-radius:8px;
+  padding:7px 14px;cursor:pointer;font-size:12px;font-weight:700;
+  color:var(--text-light);transition:all 0.12s;user-select:none;
+}
+.radio-btn.sel{border-color:var(--salmon);background:var(--salmon-lt);color:var(--navy)}
+.radio-btn:hover{border-color:var(--navy);color:var(--navy)}
+
+/* urgency pills */
+.urgency-group{display:flex;gap:8px}
+.urgency-pill{
+  flex:1;text-align:center;padding:8px;border-radius:8px;border:1.5px solid var(--border);
+  cursor:pointer;font-size:11px;font-weight:800;letter-spacing:0.04em;
+  text-transform:uppercase;transition:all 0.12s;user-select:none;background:var(--input-bg);
+  color:var(--text-light);
+}
+.urgency-pill.sel-normal{border-color:#1D9E75;background:#d1fae5;color:#085041}
+.urgency-pill.sel-urgent{border-color:#BA7517;background:#fef3c7;color:#633806}
+.urgency-pill.sel-blocking{border-color:#E24B4A;background:#fcebeb;color:#501313}
+
+/* gallery url list */
+.url-list{display:flex;flex-direction:column;gap:6px}
+.url-row{display:flex;gap:6px;align-items:center}
+.url-row input{flex:1}
+.url-row .rm-btn{
+  background:none;border:none;cursor:pointer;color:var(--text-light);
+  font-size:16px;padding:4px;line-height:1;transition:color 0.12s;
+}
+.url-row .rm-btn:hover{color:#E24B4A}
+.add-url-btn{
+  background:none;border:1.5px dashed var(--border);border-radius:8px;
+  padding:8px;width:100%;cursor:pointer;font-size:12px;font-weight:700;
+  color:var(--text-light);font-family:'Nunito Sans',Arial,sans-serif;
+  transition:all 0.12s;margin-top:4px;
+}
+.add-url-btn:hover{border-color:var(--navy);color:var(--navy)}
+
+/* ── COPY BUTTON ── */
+.copy-section{
+  background:var(--navy);border-radius:16px;padding:24px;
+  margin-top:8px;display:none;
+}
+.copy-section.visible{display:block}
+.copy-section h3{font-size:13px;font-weight:800;color:rgba(255,255,255,0.6);margin-bottom:12px;letter-spacing:0.08em;text-transform:uppercase}
+.copy-output{
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+  border-radius:10px;padding:16px;font-size:12px;font-family:monospace;
+  color:rgba(255,255,255,0.85);line-height:1.7;white-space:pre-wrap;word-break:break-word;
+  max-height:320px;overflow-y:auto;
+}
+.copy-btn{
+  margin-top:14px;width:100%;background:var(--salmon);color:white;
+  border:none;border-radius:8px;padding:12px;font-size:13px;font-weight:800;
+  font-family:'Nunito Sans',Arial,sans-serif;cursor:pointer;letter-spacing:0.06em;
+  text-transform:uppercase;transition:background 0.15s;
+}
+.copy-btn:hover{background:#b3674d}
+.copy-btn.copied{background:#1D9E75}
+
+/* ── BUILD BTN ── */
+.build-btn{
+  width:100%;background:var(--navy);color:white;border:none;border-radius:10px;
+  padding:14px;font-size:14px;font-weight:800;font-family:'Nunito Sans',Arial,sans-serif;
+  cursor:pointer;letter-spacing:0.06em;text-transform:uppercase;
+  transition:background 0.15s;margin-top:8px;
+}
+.build-btn:hover{background:#0d3650}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .task-grid{grid-template-columns:repeat(3,1fr)}
+  .field-grid.cols-2,.field-grid.cols-3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a href="/neela" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Portal
+  </a>
+
+  <div class="page-header">
+    <div class="portal-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <h1>IRHIS Launch Assistant</h1>
+    <p>Fill in the form below, then copy the output into the GPT</p>
+  </div>
+
+  <!-- TASK SELECTOR -->
+  <div class="task-label">What do you need to do?</div>
+  <div class="task-grid">
+    <button class="task-btn active" onclick="setTask('update',this)">
+      <span class="task-icon">✏️</span>
+      <span class="task-name">Site Update</span>
+    </button>
+    <button class="task-btn" onclick="setTask('launch',this)">
+      <span class="task-icon">🏠</span>
+      <span class="task-name">New Property</span>
+    </button>
+    <button class="task-btn" onclick="setTask('qa',this)">
+      <span class="task-icon">✅</span>
+      <span class="task-name">Property QA</span>
+    </button>
+    <button class="task-btn" onclick="setTask('handoff',this)">
+      <span class="task-icon">📋</span>
+      <span class="task-name">Dev Handoff</span>
+    </button>
+    <button class="task-btn" onclick="setTask('photo',this)">
+      <span class="task-icon">📸</span>
+      <span class="task-name">Photo Edit</span>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- 1. SITE UPDATE -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="form-section active" id="sec-update">
+
+    <div class="section-card">
+      <h3>What needs to change</h3>
+      <div class="field-grid">
+
+        <div class="field">
+          <label>Update type <span class="req">*</span></label>
+          <select id="u-type">
+            <option value="">— select —</option>
+            <option>Public website page</option>
+            <option>Tenant portal page</option>
+            <option>Property page</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Page or property name <span class="req">*</span></label>
+          <input type="text" id="u-page" placeholder="e.g. Kershaw, About page, Pay Rent">
+        </div>
+
+        <div class="field">
+          <label>Exact change needed <span class="req">*</span></label>
+          <textarea id="u-change" placeholder="e.g. Change rent from $1,295 to $1,350&#10;e.g. Update available date to June 1&#10;e.g. Mark property as Recently Leased"></textarea>
+        </div>
+
+        <div class="field-grid cols-2">
+          <div class="field">
+            <label>Current value <span class="opt">optional</span></label>
+            <input type="text" id="u-current" placeholder="e.g. currently says $1,295">
+          </div>
+          <div class="field">
+            <label>New value <span class="opt">optional</span></label>
+            <input type="text" id="u-new" placeholder="e.g. $1,350">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Notes <span class="opt">optional</span></label>
+          <input type="text" id="u-notes" placeholder="Any context or reason for the change">
+        </div>
+
+        <div class="field">
+          <label>Urgency</label>
+          <div class="urgency-group">
+            <div class="urgency-pill sel-normal" id="urg-normal" onclick="setUrgency('normal')">Normal</div>
+            <div class="urgency-pill" id="urg-urgent" onclick="setUrgency('urgent')">Urgent</div>
+            <div class="urgency-pill" id="urg-blocking" onclick="setUrgency('blocking')">Launch Blocking</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="build-btn" onclick="buildUpdate()">Build GPT Prompt →</button>
+    <div class="copy-section" id="update-out">
+      <h3>Copy this into the GPT</h3>
+      <div class="copy-output" id="update-text"></div>
+      <button class="copy-btn" onclick="copyOut('update-text',this)">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- 2. NEW PROPERTY LAUNCH -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="form-section" id="sec-launch">
+
+    <div class="section-card">
+      <h3>Property basics</h3>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label>Full address <span class="req">*</span></label>
+          <input type="text" id="l-address" placeholder="1234 Main St, Toledo OH 43614">
+        </div>
+        <div class="field">
+          <label>Property slug <span class="req">*</span></label>
+          <input type="text" id="l-slug" placeholder="1234-main-st">
+          <span class="field-hint">Lowercase, hyphens only</span>
+        </div>
+        <div class="field">
+          <label>Property type</label>
+          <select id="l-type">
+            <option value="">— select —</option>
+            <option>Single Family</option>
+            <option>Duplex — Upper</option>
+            <option>Duplex — Lower</option>
+            <option>Townhouse</option>
+            <option>Condo</option>
+            <option>Apartment</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Square footage</label>
+          <input type="number" id="l-sqft" placeholder="1,200">
+        </div>
+      </div>
+      <div class="field-grid cols-3" style="margin-top:14px">
+        <div class="field">
+          <label>Bedrooms <span class="req">*</span></label>
+          <input type="number" id="l-beds" placeholder="3">
+        </div>
+        <div class="field">
+          <label>Bathrooms <span class="req">*</span></label>
+          <input type="text" id="l-baths" placeholder="1.5">
+        </div>
+        <div class="field">
+          <label>Levels</label>
+          <input type="number" id="l-levels" placeholder="2">
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Financials &amp; availability</h3>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label>Monthly rent <span class="req">*</span></label>
+          <input type="text" id="l-rent" placeholder="$1,400">
+        </div>
+        <div class="field">
+          <label>Security deposit <span class="req">*</span></label>
+          <input type="text" id="l-deposit" placeholder="$1,400">
+        </div>
+        <div class="field">
+          <label>Date available <span class="req">*</span></label>
+          <input type="date" id="l-avail">
+        </div>
+        <div class="field">
+          <label>Status <span class="req">*</span></label>
+          <select id="l-status">
+            <option value="">— select —</option>
+            <option>Available Now</option>
+            <option>Available Soon</option>
+            <option>Coming Soon</option>
+            <option>Under Consideration</option>
+            <option>Recently Leased</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Minimum credit score</label>
+          <input type="number" id="l-credit" placeholder="600">
+          <span class="field-hint">Default is 600 — only enter if different</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Utilities &amp; systems</h3>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label>Owner pays</label>
+          <input type="text" id="l-ownerpays" placeholder="Water, Trash">
+          <span class="field-hint">Default: Water, Trash</span>
+        </div>
+        <div class="field">
+          <label>Tenant pays</label>
+          <input type="text" id="l-tenantpays" placeholder="Gas, Electric, Internet">
+          <span class="field-hint">Default: everything else</span>
+        </div>
+        <div class="field">
+          <label>Heat type</label>
+          <select id="l-heat">
+            <option value="">— select or leave TBD —</option>
+            <option>Forced air / gas furnace</option>
+            <option>Electric baseboard</option>
+            <option>Boiler / radiator</option>
+            <option>Heat pump</option>
+            <option>TBD</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Cooling</label>
+          <select id="l-cool">
+            <option value="">— select or leave TBD —</option>
+            <option>Central AC</option>
+            <option>Window unit(s) provided</option>
+            <option>Window unit(s) not provided</option>
+            <option>No cooling</option>
+            <option>TBD</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Laundry</label>
+          <select id="l-laundry">
+            <option value="">— select or leave TBD —</option>
+            <option>In-unit washer/dryer included</option>
+            <option>In-unit hookups — tenant supplies</option>
+            <option>Shared laundry on-site</option>
+            <option>No laundry on-site</option>
+            <option>TBD</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Parking, outdoor &amp; storage</h3>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label>Parking type</label>
+          <select id="l-parking">
+            <option value="">— select —</option>
+            <option>Attached garage</option>
+            <option>Detached garage</option>
+            <option>Driveway</option>
+            <option>Street parking</option>
+            <option>Off-street lot</option>
+            <option>No parking</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Parking capacity</label>
+          <input type="text" id="l-parkingcap" placeholder="e.g. 2 cars">
+        </div>
+        <div class="field">
+          <label>Outdoor space</label>
+          <input type="text" id="l-outdoor" placeholder="e.g. Fenced backyard, front porch">
+        </div>
+        <div class="field">
+          <label>Storage</label>
+          <input type="text" id="l-storage" placeholder="e.g. Full basement, attached garage">
+        </div>
+        <div class="field">
+          <label>Lawn care</label>
+          <div class="radio-group" id="lawn-group">
+            <div class="radio-btn" onclick="setRadio('lawn-group',this,'Tenant')">Tenant</div>
+            <div class="radio-btn" onclick="setRadio('lawn-group',this,'Owner')">Owner</div>
+            <div class="radio-btn" onclick="setRadio('lawn-group',this,'Shared')">Shared</div>
+            <div class="radio-btn" onclick="setRadio('lawn-group',this,'N/A')">N/A</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Snow removal</label>
+          <div class="radio-group" id="snow-group">
+            <div class="radio-btn" onclick="setRadio('snow-group',this,'Tenant')">Tenant</div>
+            <div class="radio-btn" onclick="setRadio('snow-group',this,'Owner')">Owner</div>
+            <div class="radio-btn" onclick="setRadio('snow-group',this,'Shared')">Shared</div>
+            <div class="radio-btn" onclick="setRadio('snow-group',this,'N/A')">N/A</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Pet policy</h3>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label>Pets allowed?</label>
+          <div class="radio-group" id="pets-group">
+            <div class="radio-btn sel" onclick="setRadio('pets-group',this,'Yes — at discretion')">Yes</div>
+            <div class="radio-btn" onclick="setRadio('pets-group',this,'No')">No</div>
+            <div class="radio-btn" onclick="setRadio('pets-group',this,'Case by case')">Case by case</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Cats</label>
+          <div class="radio-group" id="cats-group">
+            <div class="radio-btn sel" onclick="setRadio('cats-group',this,'Allowed')">Allowed</div>
+            <div class="radio-btn" onclick="setRadio('cats-group',this,'Not allowed')">Not allowed</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Dogs</label>
+          <div class="radio-group" id="dogs-group">
+            <div class="radio-btn sel" onclick="setRadio('dogs-group',this,'Allowed')">Allowed</div>
+            <div class="radio-btn" onclick="setRadio('dogs-group',this,'Not allowed')">Not allowed</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Pet rent <span class="opt">monthly</span></label>
+          <input type="text" id="l-petrent" placeholder="$50/month (default)">
+        </div>
+        <div class="field">
+          <label>Pet deposit</label>
+          <input type="text" id="l-petdep" placeholder="$250 (default)">
+        </div>
+        <div class="field">
+          <label>Pet notes <span class="opt">optional</span></label>
+          <input type="text" id="l-petnotes" placeholder="e.g. small dogs only, no aggressive breeds">
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Property copy</h3>
+      <div class="field-grid">
+        <div class="field">
+          <label>About This Home — paragraph 1 <span class="req">*</span></label>
+          <textarea id="l-about1" placeholder="Vibe and feel copy only. No appliances, room counts, or spec details here — those go in Quick Facts."></textarea>
+        </div>
+        <div class="field">
+          <label>About This Home — paragraph 2 <span class="opt">optional</span></label>
+          <textarea id="l-about2" placeholder="Continue the story if needed…"></textarea>
+        </div>
+        <div class="field">
+          <label>What You'll Love — bullets <span class="req">*</span></label>
+          <div class="field-grid" style="gap:8px">
+            <input type="text" id="l-b1" placeholder="Bullet 1">
+            <input type="text" id="l-b2" placeholder="Bullet 2">
+            <input type="text" id="l-b3" placeholder="Bullet 3">
+            <input type="text" id="l-b4" placeholder="Bullet 4 (optional)">
+            <input type="text" id="l-b5" placeholder="Bullet 5 (optional)">
+            <input type="text" id="l-b6" placeholder="Bullet 6 (optional)">
+          </div>
+        </div>
+        <div class="field-grid cols-2">
+          <div class="field">
+            <label>Neighborhood name</label>
+            <input type="text" id="l-hood" placeholder="e.g. South Toledo, Maumee">
+          </div>
+          <div class="field">
+            <label>Location notes <span class="opt">optional</span></label>
+            <input type="text" id="l-locnotes" placeholder="e.g. Near I-75, walkable to shops">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Assets &amp; links</h3>
+      <div class="field-grid">
+        <div class="field">
+          <label>Hero image URL <span class="req">*</span></label>
+          <input type="url" id="l-hero" placeholder="https://assets.cdn.filesafe.space/…">
+          <span class="field-hint">Must be from assets.cdn.filesafe.space</span>
+        </div>
+        <div class="field">
+          <label>Gallery image URLs <span class="req">*</span></label>
+          <span class="field-hint" style="margin-bottom:6px;display:block">6–10 images required. All must be CDN URLs.</span>
+          <div class="url-list" id="gallery-list">
+            <div class="url-row"><input type="url" placeholder="https://assets.cdn.filesafe.space/…"><button class="rm-btn" onclick="removeUrl(this)">×</button></div>
+            <div class="url-row"><input type="url" placeholder="https://assets.cdn.filesafe.space/…"><button class="rm-btn" onclick="removeUrl(this)">×</button></div>
+            <div class="url-row"><input type="url" placeholder="https://assets.cdn.filesafe.space/…"><button class="rm-btn" onclick="removeUrl(this)">×</button></div>
+          </div>
+          <button class="add-url-btn" onclick="addUrl()">+ Add another image URL</button>
+        </div>
+        <div class="field-grid cols-2">
+          <div class="field">
+            <label>Deposit link — no pets <span class="opt">optional</span></label>
+            <input type="url" id="l-dep-nopet" placeholder="https://link.fastpaydirect.com/…">
+          </div>
+          <div class="field">
+            <label>Deposit link — with pets <span class="opt">optional</span></label>
+            <input type="url" id="l-dep-pet" placeholder="https://link.fastpaydirect.com/…">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="build-btn" onclick="buildLaunch()">Build GPT Prompt →</button>
+    <div class="copy-section" id="launch-out">
+      <h3>Copy this into the GPT</h3>
+      <div class="copy-output" id="launch-text"></div>
+      <button class="copy-btn" onclick="copyOut('launch-text',this)">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- 3. PROPERTY QA -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="form-section" id="sec-qa">
+
+    <div class="section-card">
+      <h3>Property to QA</h3>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label>Property address or slug <span class="req">*</span></label>
+          <input type="text" id="q-prop" placeholder="e.g. 3718 Kershaw Ave or 3718-kershaw-ave">
+        </div>
+        <div class="field">
+          <label>Hero image URL <span class="req">*</span></label>
+          <input type="url" id="q-hero" placeholder="https://assets.cdn.filesafe.space/…">
+        </div>
+        <div class="field">
+          <label>Rent <span class="req">*</span></label>
+          <input type="text" id="q-rent" placeholder="$1,400">
+        </div>
+        <div class="field">
+          <label>Security deposit <span class="req">*</span></label>
+          <input type="text" id="q-dep" placeholder="$1,400">
+        </div>
+        <div class="field">
+          <label>Available date <span class="req">*</span></label>
+          <input type="date" id="q-avail">
+        </div>
+        <div class="field">
+          <label>Status <span class="req">*</span></label>
+          <select id="q-status">
+            <option value="">— select —</option>
+            <option>Available Now</option>
+            <option>Available Soon</option>
+            <option>Coming Soon</option>
+            <option>Recently Leased</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Gallery images</h3>
+      <div class="field">
+        <label>Gallery image URLs <span class="req">*</span> <span class="opt">need 6–10</span></label>
+        <div class="url-list" id="qa-gallery-list">
+          <div class="url-row"><input type="url" placeholder="https://assets.cdn.filesafe.space/…"><button class="rm-btn" onclick="removeUrl(this)">×</button></div>
+          <div class="url-row"><input type="url" placeholder="https://assets.cdn.filesafe.space/…"><button class="rm-btn" onclick="removeUrl(this)">×</button></div>
+          <div class="url-row"><input type="url" placeholder="https://assets.cdn.filesafe.space/…"><button class="rm-btn" onclick="removeUrl(this)">×</button></div>
+        </div>
+        <button class="add-url-btn" onclick="addQaUrl()">+ Add another image URL</button>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Content check</h3>
+      <div class="field-grid">
+        <div class="field">
+          <label>About copy <span class="req">*</span></label>
+          <textarea id="q-about" placeholder="Paste the About This Home text here for review…"></textarea>
+        </div>
+        <div class="field">
+          <label>What You'll Love bullets <span class="req">*</span></label>
+          <textarea id="q-bullets" placeholder="Paste the bullets here, one per line…" style="min-height:100px"></textarea>
+        </div>
+        <div class="field">
+          <label>Utilities as written on the page <span class="req">*</span></label>
+          <textarea id="q-utils" placeholder="Paste the utility section text…" style="min-height:60px"></textarea>
+        </div>
+        <div class="field">
+          <label>Pet policy as written on the page <span class="req">*</span></label>
+          <input type="text" id="q-pets" placeholder="e.g. Pets allowed at landlord discretion, $50/month, $250 deposit">
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Links <span style="font-weight:600;text-transform:none;font-size:11px;color:var(--text-light)"> — leave blank if TBD</span></h3>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label>Deposit link — no pets</label>
+          <input type="url" id="q-dep-nopet" placeholder="https://…">
+        </div>
+        <div class="field">
+          <label>Deposit link — with pets</label>
+          <input type="url" id="q-dep-pet" placeholder="https://…">
+        </div>
+        <div class="field">
+          <label>Showing booking URL</label>
+          <input type="url" id="q-showing" placeholder="https://…">
+        </div>
+      </div>
+    </div>
+
+    <button class="build-btn" onclick="buildQA()">Build QA Request →</button>
+    <div class="copy-section" id="qa-out">
+      <h3>Copy this into the GPT</h3>
+      <div class="copy-output" id="qa-text"></div>
+      <button class="copy-btn" onclick="copyOut('qa-text',this)">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- 4. DEV HANDOFF -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="form-section" id="sec-handoff">
+
+    <div class="section-card">
+      <h3>Handoff details</h3>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label>Project type <span class="req">*</span></label>
+          <select id="h-type">
+            <option value="">— select —</option>
+            <option>New property page</option>
+            <option>Site update</option>
+            <option>Portal update</option>
+            <option>QA fix</option>
+            <option>New feature</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Property or page name <span class="req">*</span></label>
+          <input type="text" id="h-name" placeholder="e.g. 1234 Main St, About page">
+        </div>
+        <div class="field">
+          <label>Requested deadline <span class="opt">optional</span></label>
+          <input type="date" id="h-deadline">
+        </div>
+        <div class="field">
+          <label>Owner</label>
+          <select id="h-owner">
+            <option>Neela Kelly</option>
+            <option>Alex — Hinsch Web Systems</option>
+            <option>Developer (DNS/GHL infra)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Task breakdown</h3>
+      <div class="field-grid">
+        <div class="field">
+          <label>Launch blockers — must fix before going live <span class="req">*</span></label>
+          <textarea id="h-blockers" placeholder="List anything that must be resolved before this can launch…"></textarea>
+        </div>
+        <div class="field">
+          <label>Pending items — tracked but not blocking</label>
+          <textarea id="h-pending" placeholder="e.g. Hero image URL TBD, deposit link TBD…"></textarea>
+        </div>
+        <div class="field">
+          <label>What's done / ready</label>
+          <textarea id="h-done" placeholder="e.g. All copy written, gallery images ready, slug confirmed…"></textarea>
+        </div>
+        <div class="field">
+          <label>Nice to have <span class="opt">optional</span></label>
+          <textarea id="h-nice" placeholder="e.g. Would be great to have video tour link if available…"></textarea>
+        </div>
+        <div class="field">
+          <label>Special instructions <span class="opt">optional</span></label>
+          <textarea id="h-special" placeholder="Anything unique or non-standard about this task…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h3>Technical assets</h3>
+      <div class="field-grid">
+        <div class="field">
+          <label>Hero image URL</label>
+          <input type="url" id="h-hero" placeholder="https://assets.cdn.filesafe.space/…">
+        </div>
+        <div class="field">
+          <label>Gallery URLs <span class="opt">one per line</span></label>
+          <textarea id="h-gallery" placeholder="https://assets.cdn.filesafe.space/…&#10;https://assets.cdn.filesafe.space/…" style="min-height:80px"></textarea>
+        </div>
+        <div class="field-grid cols-2">
+          <div class="field">
+            <label>Deposit link — no pets</label>
+            <input type="url" id="h-dep-nopet" placeholder="https://link.fastpaydirect.com/…">
+          </div>
+          <div class="field">
+            <label>Deposit link — with pets</label>
+            <input type="url" id="h-dep-pet" placeholder="https://link.fastpaydirect.com/…">
+          </div>
+        </div>
+        <div class="field">
+          <label>Showing booking URL</label>
+          <input type="url" id="h-showing" placeholder="https://api.leadconnectorhq.com/…">
+        </div>
+      </div>
+    </div>
+
+    <button class="build-btn" onclick="buildHandoff()">Build Handoff Brief →</button>
+    <div class="copy-section" id="handoff-out">
+      <h3>Copy this into the GPT</h3>
+      <div class="copy-output" id="handoff-text"></div>
+      <button class="copy-btn" onclick="copyOut('handoff-text',this)">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- 5. PHOTO EDIT -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="form-section" id="sec-photo">
+
+    <div class="section-card">
+      <h3>Photo edit request</h3>
+      <div class="field-grid">
+        <div class="field">
+          <label>Property address <span class="req">*</span></label>
+          <input type="text" id="p-address" placeholder="e.g. 3718 Kershaw Ave">
+        </div>
+        <div class="field">
+          <label>Edit type <span class="req">*</span></label>
+          <select id="p-edittype">
+            <option value="">— select —</option>
+            <option>Recreate photo</option>
+            <option>Lens / perspective correction</option>
+            <option>Lighting fix</option>
+            <option>Winter version (add snow)</option>
+            <option>Summer version (remove snow)</option>
+            <option>Address number correction</option>
+            <option>Remove unwanted element</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>What should change <span class="req">*</span></label>
+          <textarea id="p-change" placeholder="Describe exactly what needs to be different in the output photo…"></textarea>
+        </div>
+        <div class="field">
+          <label>What must stay the same <span class="req">*</span></label>
+          <textarea id="p-same" placeholder="e.g. Colors, siding, roofline, trim, windows, porch, driveway, background, camera angle, lighting direction…"></textarea>
+        </div>
+        <div class="field">
+          <label>Address number (if visible or being changed)</label>
+          <input type="text" id="p-number" placeholder="e.g. 3718">
+        </div>
+        <div class="field">
+          <label>Style target</label>
+          <div class="radio-group" id="style-group">
+            <div class="radio-btn sel" onclick="setRadio('style-group',this,'Photorealistic rental listing photo')">Photorealistic</div>
+            <div class="radio-btn" onclick="setRadio('style-group',this,'Clean and bright')">Clean &amp; bright</div>
+            <div class="radio-btn" onclick="setRadio('style-group',this,'Natural / unedited look')">Natural</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Things to avoid <span class="opt">optional</span></label>
+          <input type="text" id="p-avoid" placeholder="e.g. No extra cars, people, signs, decorations, cinematic effects">
+        </div>
+        <div class="field">
+          <label>Reference image URL or description <span class="opt">optional</span></label>
+          <input type="text" id="p-ref" placeholder="URL or describe the source image if you can't upload it">
+        </div>
+      </div>
+    </div>
+
+    <button class="build-btn" onclick="buildPhoto()">Build Photo Brief →</button>
+    <div class="copy-section" id="photo-out">
+      <h3>Copy this into the GPT</h3>
+      <div class="copy-output" id="photo-text"></div>
+      <button class="copy-btn" onclick="copyOut('photo-text',this)">Copy to Clipboard</button>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+// ── TASK SWITCHING ──
+function setTask(id, btn) {
+  document.querySelectorAll('.task-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+}
+
+// ── URGENCY ──
+let urgency = 'Normal';
+function setUrgency(val) {
+  urgency = val.charAt(0).toUpperCase() + val.slice(1);
+  ['normal','urgent','blocking'].forEach(u => {
+    const el = document.getElementById('urg-' + u);
+    el.className = 'urgency-pill';
+    if (u === val) el.classList.add('sel-' + u);
+  });
+}
+
+// ── RADIO GROUPS ──
+function setRadio(groupId, el, val) {
+  document.querySelectorAll('#' + groupId + ' .radio-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  el.dataset.val = val;
+}
+function getRadio(groupId) {
+  const sel = document.querySelector('#' + groupId + ' .radio-btn.sel');
+  return sel ? (sel.dataset.val || sel.textContent.trim()) : '';
+}
+
+// ── GALLERY URLS ──
+function addUrl() {
+  const list = document.getElementById('gallery-list');
+  const row = document.createElement('div');
+  row.className = 'url-row';
+  row.innerHTML = '<input type="url" placeholder="https://assets.cdn.filesafe.space/…"><button class="rm-btn" onclick="removeUrl(this)">×</button>';
+  list.appendChild(row);
+}
+function addQaUrl() {
+  const list = document.getElementById('qa-gallery-list');
+  const row = document.createElement('div');
+  row.className = 'url-row';
+  row.innerHTML = '<input type="url" placeholder="https://assets.cdn.filesafe.space/…"><button class="rm-btn" onclick="removeUrl(this)">×</button>';
+  list.appendChild(row);
+}
+function removeUrl(btn) {
+  const list = btn.parentElement.parentElement;
+  if (list.querySelectorAll('.url-row').length > 1) btn.parentElement.remove();
+}
+function getGalleryUrls(listId) {
+  return Array.from(document.querySelectorAll('#' + listId + ' input'))
+    .map(i => i.value.trim()).filter(Boolean);
+}
+
+// ── COPY ──
+function copyOut(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy to Clipboard'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function v(id) { return (document.getElementById(id) && document.getElementById(id).value.trim()) || ''; }
+function show(outId) {
+  const el = document.getElementById(outId);
+  el.classList.add('visible');
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ── BUILD FUNCTIONS ──
+
+function buildUpdate() {
+  const lines = [
+    'IRHIS SITE UPDATE REQUEST',
+    '──────────────────────────',
+    `Task type: Website / Tenant Portal Update`,
+    `Update type: ${v('u-type')}`,
+    `Page / property: ${v('u-page')}`,
+    `Change needed: ${v('u-change')}`,
+    v('u-current') ? `Current value: ${v('u-current')}` : null,
+    v('u-new') ? `New value: ${v('u-new')}` : null,
+    v('u-notes') ? `Notes: ${v('u-notes')}` : null,
+    `Urgency: ${urgency}`,
+    `Requested by: Neela Kelly`,
+    '',
+    'Please confirm this change with me before making any updates.'
+  ].filter(l => l !== null).join('\n');
+  document.getElementById('update-text').textContent = lines;
+  show('update-out');
+}
+
+function buildLaunch() {
+  const bullets = [v('l-b1'),v('l-b2'),v('l-b3'),v('l-b4'),v('l-b5'),v('l-b6')].filter(Boolean);
+  const gallery = getGalleryUrls('gallery-list');
+  const lines = [
+    'IRHIS NEW PROPERTY LAUNCH',
+    '──────────────────────────',
+    `Task type: New Property Launch`,
+    '',
+    '— PROPERTY BASICS —',
+    `Full address: ${v('l-address')}`,
+    `Slug: ${v('l-slug')}`,
+    v('l-type') ? `Property type: ${v('l-type')}` : null,
+    v('l-sqft') ? `Square footage: ${v('l-sqft')} sq ft` : null,
+    `Bedrooms: ${v('l-beds')}`,
+    `Bathrooms: ${v('l-baths')}`,
+    v('l-levels') ? `Levels: ${v('l-levels')}` : null,
+    '',
+    '— FINANCIALS & AVAILABILITY —',
+    `Monthly rent: ${v('l-rent')}`,
+    `Security deposit: ${v('l-deposit')}`,
+    v('l-avail') ? `Date available: ${v('l-avail')}` : null,
+    v('l-status') ? `Status: ${v('l-status')}` : null,
+    v('l-credit') ? `Minimum credit score: ${v('l-credit')}` : `Minimum credit score: 600 (default)`,
+    '',
+    '— UTILITIES & SYSTEMS —',
+    `Owner pays: ${v('l-ownerpays') || 'Water, Trash (default)'}`,
+    `Tenant pays: ${v('l-tenantpays') || 'All others (default)'}`,
+    v('l-heat') ? `Heat: ${v('l-heat')}` : `Heat: TBD`,
+    v('l-cool') ? `Cooling: ${v('l-cool')}` : `Cooling: TBD`,
+    v('l-laundry') ? `Laundry: ${v('l-laundry')}` : `Laundry: TBD`,
+    '',
+    '— PARKING, OUTDOOR & STORAGE —',
+    v('l-parking') ? `Parking: ${v('l-parking')}` : null,
+    v('l-parkingcap') ? `Parking capacity: ${v('l-parkingcap')}` : null,
+    v('l-outdoor') ? `Outdoor space: ${v('l-outdoor')}` : null,
+    v('l-storage') ? `Storage: ${v('l-storage')}` : null,
+    `Lawn care: ${getRadio('lawn-group') || 'Not specified'}`,
+    `Snow removal: ${getRadio('snow-group') || 'Not specified'}`,
+    '',
+    '— PET POLICY —',
+    `Pets allowed: ${getRadio('pets-group') || 'Yes — at discretion'}`,
+    `Cats: ${getRadio('cats-group') || 'Allowed'}`,
+    `Dogs: ${getRadio('dogs-group') || 'Allowed'}`,
+    `Pet rent: ${v('l-petrent') || '$50/month (default)'}`,
+    `Pet deposit: ${v('l-petdep') || '$250 (default)'}`,
+    v('l-petnotes') ? `Pet notes: ${v('l-petnotes')}` : null,
+    '',
+    '— PROPERTY COPY —',
+    `About This Home (p1):\n${v('l-about1')}`,
+    v('l-about2') ? `About This Home (p2):\n${v('l-about2')}` : null,
+    bullets.length ? `What You'll Love:\n${bullets.map(b => '• ' + b).join('\n')}` : null,
+    v('l-hood') ? `Neighborhood: ${v('l-hood')}` : null,
+    v('l-locnotes') ? `Location notes: ${v('l-locnotes')}` : null,
+    '',
+    '— ASSETS & LINKS —',
+    `Hero image URL: ${v('l-hero') || 'TBD'}`,
+    gallery.length ? `Gallery images (${gallery.length}):\n${gallery.map((u,i) => `  ${i+1}. ${u}`).join('\n')}` : `Gallery images: TBD`,
+    v('l-dep-nopet') ? `Deposit link (no pets): ${v('l-dep-nopet')}` : `Deposit link (no pets): TBD`,
+    v('l-dep-pet') ? `Deposit link (with pets): ${v('l-dep-pet')}` : `Deposit link (with pets): TBD`,
+    '',
+    `Requested by: Neela Kelly`,
+    '',
+    'Please build the property page using the IRHIS v2.0 Hybrid template and confirm before deploying.'
+  ].filter(l => l !== null).join('\n');
+  document.getElementById('launch-text').textContent = lines;
+  show('launch-out');
+}
+
+function buildQA() {
+  const gallery = getGalleryUrls('qa-gallery-list');
+  const lines = [
+    'IRHIS PROPERTY QA REQUEST',
+    '──────────────────────────',
+    `Task type: Property QA / Readiness Check`,
+    `Property: ${v('q-prop')}`,
+    '',
+    '— REQUIRED FIELDS —',
+    `Hero image URL: ${v('q-hero') || '⚠️ MISSING'}`,
+    `Gallery images (${gallery.length}): ${gallery.length >= 6 ? '✅' : `⚠️ NEED ${6 - gallery.length} MORE`}`,
+    gallery.length ? gallery.map((u,i) => `  ${i+1}. ${u}`).join('\n') : '  None provided',
+    `Rent: ${v('q-rent') || '⚠️ MISSING'}`,
+    `Security deposit: ${v('q-dep') || '⚠️ MISSING'}`,
+    `Available date: ${v('q-avail') || '⚠️ MISSING'}`,
+    `Status: ${v('q-status') || '⚠️ MISSING'}`,
+    '',
+    '— CONTENT TO REVIEW —',
+    `About copy:\n${v('q-about') || '⚠️ NOT PROVIDED'}`,
+    `What You'll Love bullets:\n${v('q-bullets') || '⚠️ NOT PROVIDED'}`,
+    `Utilities: ${v('q-utils') || '⚠️ NOT PROVIDED'}`,
+    `Pet policy: ${v('q-pets') || '⚠️ NOT PROVIDED'}`,
+    '',
+    '— LINKS (TBD IS OK) —',
+    `Deposit link (no pets): ${v('q-dep-nopet') || 'TBD'}`,
+    `Deposit link (with pets): ${v('q-dep-pet') || 'TBD'}`,
+    `Showing booking URL: ${v('q-showing') || 'TBD'}`,
+    '',
+    'Please run a full QA check and return: QA status, launch blockers, missing fields, TBD items, image QA results, and next actions.'
+  ].filter(l => l !== null).join('\n');
+  document.getElementById('qa-text').textContent = lines;
+  show('qa-out');
+}
+
+function buildHandoff() {
+  const lines = [
+    'IRHIS DEV HANDOFF BRIEF',
+    '──────────────────────────',
+    `Task type: ${v('h-type')}`,
+    `Property / page: ${v('h-name')}`,
+    v('h-deadline') ? `Requested deadline: ${v('h-deadline')}` : null,
+    `Owner: ${v('h-owner')}`,
+    '',
+    '— LAUNCH BLOCKERS (must fix) —',
+    v('h-blockers') || 'None specified',
+    '',
+    '— PENDING (tracked, not blocking) —',
+    v('h-pending') || 'None',
+    '',
+    '— DONE / READY —',
+    v('h-done') || 'Not specified',
+    '',
+    v('h-nice') ? `— NICE TO HAVE —\n${v('h-nice')}` : null,
+    v('h-special') ? `— SPECIAL INSTRUCTIONS —\n${v('h-special')}` : null,
+    '',
+    '— TECHNICAL ASSETS —',
+    `Hero image: ${v('h-hero') || 'TBD'}`,
+    v('h-gallery') ? `Gallery images:\n${v('h-gallery')}` : `Gallery images: TBD`,
+    `Deposit link (no pets): ${v('h-dep-nopet') || 'TBD'}`,
+    `Deposit link (with pets): ${v('h-dep-pet') || 'TBD'}`,
+    `Showing URL: ${v('h-showing') || 'TBD'}`,
+    '',
+    `Requested by: Neela Kelly`
+  ].filter(l => l !== null).join('\n');
+  document.getElementById('handoff-text').textContent = lines;
+  show('handoff-out');
+}
+
+function buildPhoto() {
+  const lines = [
+    'IRHIS PHOTO EDIT REQUEST',
+    '──────────────────────────',
+    `Task type: Photo Recreation / Real Estate Image Edit`,
+    `Property: ${v('p-address')}`,
+    `Edit type: ${v('p-edittype')}`,
+    v('p-number') ? `Address number: ${v('p-number')}` : null,
+    '',
+    `What should change:\n${v('p-change')}`,
+    '',
+    `What must stay the same:\n${v('p-same')}`,
+    '',
+    `Style target: ${getRadio('style-group') || 'Photorealistic rental listing photo'}`,
+    v('p-avoid') ? `Things to avoid: ${v('p-avoid')}` : `Things to avoid: No extra cars, people, signs, decorations, or cinematic effects`,
+    v('p-ref') ? `Reference image: ${v('p-ref')}` : null,
+    '',
+    'Please preserve the original composition, camera angle, architecture, colors, and scale. Deliver a clean rental-listing-quality photo.',
+    '',
+    `Requested by: Neela Kelly`
+  ].filter(l => l !== null).join('\n');
+  document.getElementById('photo-text').textContent = lines;
+  show('photo-out');
+}
+</script>
+</body>
+</html>
