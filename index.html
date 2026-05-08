@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I Rent Houses In Sweats – A Clear, Honest Path To Renting Your Next Home</title>
-<meta name="description" content="Rent quality homes in Toledo & Maumee, OH with I Rent Houses In Sweats. Friendly, organized, and upfront about everything — from first tour to move-in day. See available properties.">
+<title>Houses for Rent in Toledo &amp; Maumee, OH | I Rent Houses In Sweats</title>
+<meta name="description" content="Browse quality rental homes in Toledo and Maumee, OH. Single-family houses, townhouses, condos, and duplexes in South Toledo, North Toledo, Old West End, and surrounding neighborhoods — managed by a local landlord who's upfront about everything.">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -957,6 +957,169 @@ h1.hero-title { font-size: 1.4rem; }
   .nav-hamburger { display: flex; }
   .nav-cta { display: none; }
 }
+
+/* ─── FEATURED LISTING ────────────────────────────── */
+.featured-listing {
+background: var(--cream);
+padding: 56px 60px 64px;
+}
+.featured-listing-label {
+font-size: 0.7rem;
+font-weight: 800;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 6px;
+}
+.featured-listing-title {
+font-size: 1.35rem;
+font-weight: 800;
+color: var(--navy);
+margin-bottom: 28px;
+line-height: 1.2;
+}
+.featured-listing-card {
+max-width: 900px;
+display: grid;
+grid-template-columns: 1fr 380px;
+border-radius: 6px;
+overflow: hidden;
+box-shadow: 0 8px 40px rgba(11,44,61,0.14);
+}
+.featured-listing-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+min-height: 280px;
+}
+.featured-listing-body {
+background: var(--navy);
+padding: 36px 32px 32px;
+display: flex;
+flex-direction: column;
+}
+.featured-listing-badge {
+align-self: flex-start;
+background: #2a7a4b;
+color: white;
+font-size: 0.65rem;
+font-weight: 800;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 0.25rem 0.8rem;
+border-radius: 20px;
+margin-bottom: 14px;
+}
+.featured-listing-type {
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.45);
+margin-bottom: 6px;
+}
+.featured-listing-address {
+font-size: 1.5rem;
+font-weight: 800;
+color: white;
+line-height: 1.15;
+margin-bottom: 4px;
+}
+.featured-listing-city {
+font-size: 0.82rem;
+color: rgba(255,255,255,0.5);
+margin-bottom: 20px;
+}
+.featured-listing-specs {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 12px 20px;
+margin-bottom: 24px;
+}
+.featured-listing-spec-val {
+display: block;
+font-size: 1.2rem;
+font-weight: 800;
+color: white;
+line-height: 1;
+margin-bottom: 2px;
+}
+.featured-listing-spec-label {
+font-size: 0.65rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.38);
+}
+.featured-listing-price {
+font-size: 2rem;
+font-weight: 800;
+color: white;
+line-height: 1;
+margin-bottom: 4px;
+}
+.featured-listing-price span {
+font-size: 0.82rem;
+font-weight: 400;
+color: rgba(255,255,255,0.45);
+}
+.featured-listing-deposit {
+font-size: 0.75rem;
+color: rgba(255,255,255,0.35);
+margin-bottom: 24px;
+}
+.featured-listing-ctas {
+display: flex;
+flex-direction: column;
+gap: 8px;
+margin-top: auto;
+}
+.featured-listing-cta-primary {
+display: block;
+text-align: center;
+background: var(--salmon);
+color: white;
+padding: 0.72rem;
+font-size: 0.75rem;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+text-decoration: none;
+border-radius: 3px;
+transition: background 0.2s;
+}
+.featured-listing-cta-primary:hover { background: #b3684d; }
+.featured-listing-cta-secondary {
+display: block;
+text-align: center;
+background: transparent;
+color: rgba(255,255,255,0.65);
+padding: 0.72rem;
+font-size: 0.72rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+text-decoration: none;
+border: 1.5px solid rgba(255,255,255,0.25);
+border-radius: 3px;
+transition: border-color 0.2s, color 0.2s;
+}
+.featured-listing-cta-secondary:hover { border-color: rgba(255,255,255,0.6); color: white; }
+@media (max-width: 1024px) {
+.featured-listing { padding: 48px 36px 56px; }
+.featured-listing-card { grid-template-columns: 1fr 340px; }
+}
+@media (max-width: 768px) {
+.featured-listing { padding: 40px 16px 48px; }
+.featured-listing-card { grid-template-columns: 1fr; max-width: 100%; }
+.featured-listing-img { min-height: 220px; max-height: 260px; width: 100%; }
+.featured-listing-body { padding: 28px 24px 28px; }
+}
+@media (max-width: 480px) {
+.featured-listing-price { font-size: 1.6rem; }
+}
+
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
@@ -967,7 +1130,7 @@ h1.hero-title { font-size: 1.4rem; }
 <nav>
 <a href="/" class="nav-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png" alt="I Rent Houses In Sweats" /></a>
 <ul class="nav-links">
-<li><a href="/" class="nav-active">Home</a></li><li><a href="/portfolio">Properties</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li>
+<li><a href="/" class="nav-active">Home</a></li><li><a href="/rentals">Properties</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li>
 </ul>
 <div class="nav-right">
 <a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
@@ -980,7 +1143,7 @@ h1.hero-title { font-size: 1.4rem; }
 <button class="nav-drawer-close" aria-label="Close menu">&#x2715;</button>
 <ul class="nav-drawer-links">
 <li><a href="/">Home</a></li>
-<li><a href="/portfolio">Properties</a></li>
+<li><a href="/rentals">Properties</a></li>
 <li><a href="/about">About</a></li>
 <li><a href="/contact" target="_blank" rel="noopener">Contact</a></li>
 </ul>
@@ -993,7 +1156,7 @@ h1.hero-title { font-size: 1.4rem; }
 <h1 class="hero-title">A Clear, Honest Path To Renting Your Next Home.</h1>
 <p class="hero-sub">Friendly, organized, and upfront about everything — from first tour to move-in day.</p>
 <div class="hero-ctas">
-<a href="/portfolio" class="btn-outline-white">&#8962; See Available Homes</a>
+<a href="/rentals" class="btn-outline-white">&#8962; See Available Homes</a>
 <a href="/contact" class="link-white">ASK A QUESTION →</a>
 </div>
 </div>
@@ -1022,6 +1185,49 @@ alt="I Rent Houses In Sweats" />
 </div>
 </div>
 </section>
+
+<!-- ═══ FEATURED LISTING ═══ -->
+<section class="featured-listing">
+<p class="featured-listing-label">Now Available</p>
+<h2 class="featured-listing-title">Available for Lease — June 1, 2026</h2>
+<div class="featured-listing-card">
+<img loading="lazy" class="featured-listing-img"
+  src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69386fd1169a4297b2f2f250.jpg"
+  alt="1429 Bensch Dr, Toledo OH"
+  onerror="this.style.display='none'">
+<div class="featured-listing-body">
+  <span class="featured-listing-badge">Available — June 1, 2026</span>
+  <p class="featured-listing-type">Single-Family Home &middot; South Toledo</p>
+  <p class="featured-listing-address">1429 Bensch Dr</p>
+  <p class="featured-listing-city">Toledo, OH 43614</p>
+  <div class="featured-listing-specs">
+    <div>
+      <span class="featured-listing-spec-val">1</span>
+      <span class="featured-listing-spec-label">Bedroom</span>
+    </div>
+    <div>
+      <span class="featured-listing-spec-val">1</span>
+      <span class="featured-listing-spec-label">Bathroom</span>
+    </div>
+    <div>
+      <span class="featured-listing-spec-val">650</span>
+      <span class="featured-listing-spec-label">Sq Ft</span>
+    </div>
+    <div>
+      <span class="featured-listing-spec-val">S. Toledo</span>
+      <span class="featured-listing-spec-label">Neighborhood</span>
+    </div>
+  </div>
+  <p class="featured-listing-price">$1,150<span>/mo</span></p>
+  <p class="featured-listing-deposit">$1,150 security deposit</p>
+  <div class="featured-listing-ctas">
+    <a class="featured-listing-cta-primary" href="/rentals/house-1-bedroom-south-toledo-oh-1429-bensch" target="_blank" rel="noopener">View Property Details</a>
+    <a class="featured-listing-cta-secondary" href="https://www.irenthousesinsweats.com/rentals/house-1-bedroom-south-toledo-oh-1429-bensch/qualify?property_of_interest=house-1-bedroom-south-toledo-oh-1429-bensch" target="_blank" rel="noopener">Get Pre-Qualified for This Rental</a>
+  </div>
+</div>
+</div>
+</section>
+
 <!-- ═══ PROPERTIES ═══ -->
 <div class="upcoming-wrap" id="properties">
 <section class="upcoming-section">
@@ -1140,7 +1346,7 @@ alt="Couple viewing home" />
 </div>
 </div>
 <div class="steps-cta">
-<a href="/portfolio" class="btn-navy">View All Properties</a>
+<a href="/rentals" class="btn-navy">View All Properties</a>
 </div>
 </div>
 </div>
@@ -1291,7 +1497,7 @@ if (!isOpen) item.classList.add('open');
 <h4>Quick Links</h4>
 <ul>
 <li><a href="https://irenthousesinsweats.com/">Home</a></li>
-<li><a href="/portfolio">Properties</a></li>
+<li><a href="/rentals">Properties</a></li>
 <li><a href="https://www.irenthousesinsweats.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
 <li><a href="https://www.irenthousesinsweats.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a></li>
 </ul>
