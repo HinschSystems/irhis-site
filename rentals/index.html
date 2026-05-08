@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
+<title>Rentals in Toledo &amp; Maumee, OH — I Rent Houses In Sweats</title>
+<meta name="description" content="Browse rental homes in Toledo and Maumee, OH managed by I Rent Houses In Sweats. Quality properties, transparent process, and a landlord who actually picks up the phone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET/* ── RESET ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+font-family: 'Nunito Sans', Arial, sans-serif;
+font-size: 16px;
+color: #3a3a3a;
+background: #fff;
+-webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }
+/* ─── NAV BASE ────────────────────────────────────── */
+nav {
+background: var(--white, #fff);
+height: 78px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 56px;
+border-bottom: 1px solid #e5e5e5;
+position: sticky;
+top: 0;
+z-index: 200;
+}
+.nav-logo img { height: 52px; display: block; width: auto; }
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a {
+font-size: 0.77rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--navy, #0b2c3d);
+text-decoration: none;
+transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--salmon, #C4775A); }
+.nav-links a.nav-active { color: var(--salmon, #C4775A); }
+@media (max-width: 1024px) { nav { padding: 0 28px; } }
+@media (max-width: 768px) {
+nav { padding: 0 16px; height: 64px; }
+.nav-logo img { height: 42px; }
+}
+@media (max-width: 480px) {
+nav { height: 58px; }
+.nav-logo img { height: 36px; }
+}
+/* ── TOKENS ──────────────────────────────────────────────────── */
+:root {
+--navy:   #0b2c3d;
+--salmon: #C4775A;
+--cream:  #E8EEED;
+--white:  #ffffff;
+--text:   #3a3a3a;
+--mid:    #6b7280;
+}
+/* ── NAV ─────────────────────────────────────────────────────── */
+.nav {
+position: sticky;
+top: 0;
+z-index: 200;
+background: #fff;
+border-bottom: 1px solid rgba(11,44,61,0.10);
+padding: 0 48px;
+height: 72px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.nav__logo img { height: 44px; width: auto; }
+.nav__links {
+display: flex;
+gap: 36px;
+list-style: none;
+}
+.nav__links a {
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 0.10em;
+text-transform: uppercase;
+color: var(--navy);
+transition: color .2s;
+}
+.nav__links a:hover,
+.nav__links a.active { color: var(--salmon); }
+.nav__hamburger {
+display: none;
+flex-direction: column;
+justify-content: center;
+gap: 5px;
+background: none;
+border: none;
+padding: 6px;
+cursor: pointer;
+width: 36px;
+height: 36px;
+}
+.nav__hamburger span {
+display: block;
+width: 22px;
+height: 2px;
+background: var(--navy);
+transition: all .3s;
+transform-origin: center;
+}
+.nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__hamburger.open span:nth-child(2) { opacity: 0; }
+.nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* ── MOBILE MENU ─────────────────────────────────────────────── */
+.nav__mobile {
+display: none;
+position: fixed;
+top: 72px; left: 0; right: 0;
+background: #fff;
+border-bottom: 1px solid rgba(11,44,61,0.10);
+padding: 0;
+z-index: 190;
+box-shadow: 0 8px 24px rgba(11,44,61,0.12);
+max-height: 0;
+overflow: hidden;
+transition: max-height .3s ease;
+}
+.nav__mobile.open {
+max-height: 300px;
+}
+.nav__mobile a {
+display: block;
+padding: 16px 24px;
+font-size: 15px;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(--navy);
+border-bottom: 1px solid rgba(11,44,61,0.06);
+transition: color .2s, background .2s;
+}
+.nav__mobile a:last-child { border-bottom: none; }
+.nav__mobile a:hover { color: var(--salmon); background: rgba(196,119,90,0.05); }
+/* ── PAGE HERO ───────────────────────────────────────────────── */
+.page-hero {
+background: var(--navy);
+padding: 60px 48px 56px;
+text-align: center;
+}
+.eyebrow {
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.20em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 14px;
+}
+.page-hero__title {
+font-size: clamp(24px, 3.2vw, 36px);
+font-weight: 800;
+color: var(--white);
+line-height: 1.1;
+margin-bottom: 16px;
+}
+.page-hero__sub {
+font-size: 17px;
+color: rgba(255,255,255,0.72);
+max-width: 500px;
+margin: 0 auto;
+line-height: 1.65;
+}
+/* ── BUTTONS ─────────────────────────────────────────────────── */
+.btn {
+display: inline-block;
+text-align: center;
+font-family: 'Nunito Sans', Arial, sans-serif;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 15px 24px;
+border-radius: 3px;
+border: none;
+transition: background .2s, transform .15s, border-color .2s;
+cursor: pointer;
+white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-salmon { background: var(--salmon); color: #fff; }
+.btn-salmon:hover { background: #b36848; color: #fff; }
+.btn-navy { background: var(--navy); color: #fff; }
+.btn-navy:hover { background: #0e3d55; color: #fff; }
+.btn-ghost {
+background: transparent;
+color: #fff;
+border: 2px solid rgba(255,255,255,0.4);
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.06); }
+/* ── FEATURED ────────────────────────────────────────────────── */
+.featured {
+background: var(--cream);
+padding: 72px 48px 80px;
+}
+.section-label {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 32px;
+}
+.section-label::before {
+content: '';
+display: block;
+width: 24px;
+height: 2px;
+background: var(--salmon);
+flex-shrink: 0;
+}
+.featured__wrap {
+max-width: 1160px;
+margin: 0 auto;
+}
+.featured__card {
+display: grid;
+grid-template-columns: 1fr 420px;
+border-radius: 6px;
+overflow: hidden;
+box-shadow: 0 12px 56px rgba(11,44,61,0.16);
+}
+/* Gallery */
+.feat-gallery {
+position: relative;
+background: #000;
+overflow: hidden;
+min-height: 380px;
+}
+.feat-gallery__main {
+width: 100%;
+height: 100%;
+object-fit: cover;
+cursor: pointer;
+transition: transform .5s ease;
+position: absolute;
+inset: 0;
+}
+.feat-gallery__main:hover { transform: scale(1.03); }
+.feat-gallery__badge {
+position: absolute;
+top: 20px; left: 20px;
+z-index: 2;
+background: var(--salmon);
+color: #fff;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+padding: 6px 14px;
+border-radius: 2px;
+}
+.feat-gallery__strip {
+position: absolute;
+bottom: 0; left: 0; right: 0;
+z-index: 2;
+display: flex;
+gap: 4px;
+padding: 14px 14px 14px;
+background: linear-gradient(transparent, rgba(11,44,61,0.88));
+align-items: flex-end;
+}
+.feat-gallery__thumb {
+width: 68px;
+height: 52px;
+flex-shrink: 0;
+overflow: hidden;
+border-radius: 3px;
+cursor: pointer;
+border: 2px solid transparent;
+transition: border-color .2s, opacity .2s;
+opacity: 0.75;
+}
+.feat-gallery__thumb.active,
+.feat-gallery__thumb:hover {
+border-color: var(--salmon);
+opacity: 1;
+}
+.feat-gallery__thumb img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+transition: transform .3s;
+}
+.feat-gallery__thumb:hover img { transform: scale(1.08); }
+.feat-gallery__counter {
+margin-left: auto;
+color: rgba(255,255,255,0.6);
+font-size: 11px;
+font-weight: 600;
+white-space: nowrap;
+padding-bottom: 4px;
+}
+/* Info panel */
+.feat-info {
+background: var(--navy);
+padding: 44px 40px 40px;
+display: flex;
+flex-direction: column;
+overflow-y: auto;
+}
+.feat-info__type {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.45);
+margin-bottom: 8px;
+}
+.feat-info__address {
+font-size: clamp(22px, 2.2vw, 28px);
+font-weight: 800;
+color: #fff;
+line-height: 1.2;
+margin-bottom: 4px;
+}
+.feat-info__city {
+font-size: 14px;
+color: rgba(255,255,255,0.55);
+margin-bottom: 22px;
+}
+.feat-info__pill {
+display: inline-block;
+background: rgba(196,119,90,0.15);
+border: 1px solid rgba(196,119,90,0.40);
+color: #e8a98a;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.08em;
+padding: 5px 13px;
+border-radius: 20px;
+margin-bottom: 22px;
+}
+.feat-info__desc {
+font-size: 14px;
+color: rgba(255,255,255,0.68);
+line-height: 1.7;
+margin-bottom: 28px;
+}
+.feat-stats {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1px;
+background: rgba(255,255,255,0.06);
+border-radius: 4px;
+overflow: hidden;
+margin-bottom: 28px;
+border: 1px solid rgba(255,255,255,0.06);
+}
+.feat-stat {
+background: rgba(255,255,255,0.03);
+padding: 14px 16px;
+text-align: center;
+}
+.feat-stat__val {
+font-size: 20px;
+font-weight: 800;
+color: #fff;
+line-height: 1;
+margin-bottom: 3px;
+}
+.feat-stat__label {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.10em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.38);
+}
+.feat-info__price {
+font-size: 36px;
+font-weight: 800;
+color: #fff;
+line-height: 1;
+margin-bottom: 4px;
+}
+.feat-info__price span {
+font-size: 15px;
+font-weight: 400;
+color: rgba(255,255,255,0.45);
+}
+.feat-info__deposit {
+font-size: 12px;
+color: rgba(255,255,255,0.38);
+margin-bottom: 28px;
+line-height: 1.5;
+}
+.feat-ctas {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-top: auto;
+}
+.feat-ctas .btn {
+width: 100%;
+padding: 15px;
+}
+/* ── COMING SOON ─────────────────────────────────────────────── */
+.coming {
+background: #fff;
+padding: 0 48px 16px;
+}
+.coming__wrap {
+max-width: 1160px;
+margin: 0 auto;
+}
+.coming__card {
+background: var(--navy);
+border-radius: 6px;
+overflow: hidden;
+display: grid;
+grid-template-columns: 320px 1fr;
+box-shadow: 0 4px 24px rgba(11,44,61,0.10);
+}
+.coming__img-wrap {
+position: relative;
+overflow: hidden;
+min-height: 240px;
+}
+.coming__img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+filter: brightness(0.65);
+transition: filter .3s;
+}
+.coming__card:hover .coming__img { filter: brightness(0.75); }
+.coming__badge-wrap {
+position: absolute;
+inset: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.coming__badge {
+background: rgba(196,119,90,0.90);
+color: #fff;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+padding: 8px 20px;
+border-radius: 2px;
+}
+.coming__body {
+padding: 36px 40px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.coming__type {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.38);
+margin-bottom: 6px;
+}
+.coming__address {
+font-size: 24px;
+font-weight: 800;
+color: #fff;
+margin-bottom: 4px;
+}
+.coming__city {
+font-size: 13px;
+color: rgba(255,255,255,0.45);
+margin-bottom: 16px;
+}
+.coming__desc {
+font-size: 14px;
+color: rgba(255,255,255,0.65);
+line-height: 1.65;
+margin-bottom: 20px;
+max-width: 480px;
+}
+.coming__specs {
+display: flex;
+flex-wrap: wrap;
+gap: 20px 32px;
+margin-bottom: 24px;
+}
+.coming-spec__val {
+display: block;
+font-size: 18px;
+font-weight: 800;
+color: #fff;
+line-height: 1;
+margin-bottom: 2px;
+}
+.coming-spec__label {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.10em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.35);
+}
+/* ── PORTFOLIO ───────────────────────────────────────────────── */
+.portfolio {
+background: #fff;
+padding: 64px 48px 80px;
+}
+.portfolio__wrap {
+max-width: 1160px;
+margin: 0 auto;
+}
+.portfolio__header {
+margin-bottom: 40px;
+}
+.section-title {
+font-size: clamp(24px, 3vw, 34px);
+font-weight: 800;
+color: var(--navy);
+line-height: 1.15;
+margin-bottom: 8px;
+}
+.portfolio__note {
+font-size: 14px;
+color: var(--mid);
+line-height: 1.6;
+max-width: 580px;
+}
+.portfolio__grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 24px;
+}
+.prop-card {
+border-radius: 5px;
+overflow: hidden;
+border: 1px solid rgba(11,44,61,0.09);
+background: #fff;
+transition: box-shadow .25s, transform .2s;
+display: flex;
+flex-direction: column;
+}
+.prop-card:hover {
+box-shadow: 0 8px 32px rgba(11,44,61,0.11);
+transform: translateY(-3px);
+}
+.prop-card__img-wrap {
+overflow: hidden;
+aspect-ratio: 4/3;
+background: var(--cream);
+flex-shrink: 0;
+}
+.prop-card__img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform .4s ease;
+}
+.prop-card:hover .prop-card__img { transform: scale(1.04); }
+.prop-card__body {
+padding: 16px 18px 18px;
+display: flex;
+flex-direction: column;
+flex: 1;
+}
+.prop-card__type {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 5px;
+}
+.prop-card__address {
+font-size: 15px;
+font-weight: 700;
+color: var(--navy);
+line-height: 1.3;
+margin-bottom: 2px;
+}
+.prop-card__city {
+font-size: 12px;
+color: var(--mid);
+margin-bottom: 12px;
+}
+.prop-card__specs {
+display: flex;
+flex-wrap: wrap;
+gap: 8px 14px;
+margin-bottom: 14px;
+flex: 1;
+}
+.prop-card__spec {
+font-size: 12px;
+color: var(--mid);
+}
+.prop-card__spec strong {
+font-weight: 700;
+color: var(--navy);
+}
+.prop-card__cta {
+display: block;
+text-align: center;
+background: var(--navy);
+color: #fff;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 11px;
+border-radius: 3px;
+transition: background .2s;
+margin-top: auto;
+}
+.prop-card__cta:hover { background: #0e3d55; color: #fff; }
+.coming__badge.pending { background: rgba(124,92,30,0.92); }
+.coming__badge.available-soon { background: rgba(42,122,75,0.92); }
+.coming__badge.recently-leased { background: rgba(30,50,70,0.88); }
+.coming__badge.recently-acquired { background: rgba(196,119,90,0.92); }
+.prop-card__badge {
+align-self: flex-start;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 3px 10px;
+border-radius: 20px;
+margin-bottom: 6px;
+display: inline-block;
+}
+.prop-card__badge.leased { background: #e0e0e0; color: #666; }
+.prop-card--leased { opacity: 0.72; }
+.prop-card--leased .prop-card__img { filter: grayscale(0.4); }
+/* ── QUALIFY BANNER ──────────────────────────────────────────── */
+.qualify {
+background: var(--navy);
+padding: 72px 48px 80px;
+text-align: center;
+}
+.qualify__title {
+font-size: clamp(24px, 3vw, 36px);
+font-weight: 800;
+color: #fff;
+margin-bottom: 14px;
+}
+.qualify__sub {
+font-size: 16px;
+color: rgba(255,255,255,0.65);
+max-width: 500px;
+margin: 0 auto 40px;
+line-height: 1.65;
+}
+.qualify__reqs {
+display: flex;
+justify-content: center;
+gap: 48px;
+flex-wrap: wrap;
+margin-bottom: 40px;
+}
+.req__val {
+display: block;
+font-size: 26px;
+font-weight: 800;
+color: var(--salmon);
+line-height: 1;
+margin-bottom: 5px;
+}
+.req__label {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.40);
+}
+/* ── FOOTER ──────────────────────────────────────────────────── */
+.footer {
+background: var(--navy);
+border-top: 1px solid rgba(255,255,255,0.07);
+padding: 56px 48px 32px;
+}
+.footer__inner {
+max-width: 1160px;
+margin: 0 auto;
+}
+.footer__top {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 48px;
+margin-bottom: 44px;
+}
+.footer__logo { height: 42px; width: auto; margin-bottom: 14px; }
+.footer__tagline {
+font-size: 14px;
+color: rgba(255,255,255,0.50);
+line-height: 1.6;
+margin-bottom: 20px;
+}
+.footer__social a {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 36px; height: 36px;
+border: 1px solid rgba(255,255,255,0.22);
+border-radius: 50%;
+transition: border-color .2s, background .2s;
+}
+.footer__social a:hover {
+border-color: var(--salmon);
+background: rgba(196,119,90,0.12);
+}
+.footer__col-title {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.38);
+margin-bottom: 18px;
+}
+.footer__links { list-style: none; }
+.footer__links li { margin-bottom: 9px; }
+.footer__links a {
+font-size: 14px;
+color: rgba(255,255,255,0.60);
+transition: color .2s;
+}
+.footer__links a:hover { color: var(--salmon); }
+.footer__contact-item {
+font-size: 14px;
+color: rgba(255,255,255,0.60);
+margin-bottom: 9px;
+}
+.footer__contact-item a {
+color: rgba(255,255,255,0.60);
+transition: color .2s;
+}
+.footer__contact-item a:hover { color: var(--salmon); }
+.footer__bottom {
+border-top: 1px solid rgba(255,255,255,0.07);
+padding-top: 24px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 10px;
+}
+.footer__copy,
+.footer__fair {
+font-size: 12px;
+color: rgba(255,255,255,0.28);
+}
+/* ── LIGHTBOX ────────────────────────────────────────────────── */
+.lightbox {
+display: none;
+position: fixed;
+inset: 0;
+z-index: 1000;
+background: rgba(0,0,0,0.93);
+align-items: center;
+justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox__img {
+max-width: 90vw;
+max-height: 88vh;
+object-fit: contain;
+border-radius: 3px;
+user-select: none;
+}
+.lightbox__close {
+position: absolute;
+top: 20px; right: 28px;
+background: none;
+border: none;
+color: rgba(255,255,255,0.7);
+font-size: 40px;
+line-height: 1;
+cursor: pointer;
+transition: color .2s;
+padding: 4px 8px;
+}
+.lightbox__close:hover { color: #fff; }
+.lightbox__btn {
+position: absolute;
+top: 50%; transform: translateY(-50%);
+background: rgba(255,255,255,0.08);
+border: 1px solid rgba(255,255,255,0.15);
+border-radius: 50%;
+color: rgba(255,255,255,0.7);
+font-size: 28px;
+line-height: 1;
+cursor: pointer;
+width: 52px; height: 52px;
+display: flex; align-items: center; justify-content: center;
+transition: background .2s, color .2s;
+}
+.lightbox__btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+.lightbox__prev { left: 20px; }
+.lightbox__next { right: 20px; }
+.lightbox__counter {
+position: absolute;
+bottom: 20px; left: 50%;
+transform: translateX(-50%);
+color: rgba(255,255,255,0.5);
+font-size: 13px;
+font-weight: 600;
+}
+/* ── RESPONSIVE: 1024px ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+.nav { padding: 0 32px; }
+.featured { padding: 56px 32px 64px; }
+.featured__card { grid-template-columns: 1fr 380px; }
+.feat-gallery { min-height: 320px; }
+.coming { padding: 0 32px 16px; }
+.coming__card { grid-template-columns: 260px 1fr; }
+.portfolio { padding: 56px 32px 72px; }
+.portfolio__grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.qualify { padding: 60px 32px 68px; }
+.footer { padding: 48px 32px 28px; }
+.footer__top { grid-template-columns: 1fr 1fr; gap: 36px; }
+.featured__wrap > div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
+}
+/* ── RESPONSIVE: 768px ───────────────────────────────────────── */
+@media (max-width: 768px) {
+.nav { padding: 0 20px; height: 64px; }
+.nav__logo img { height: 36px; }
+.nav__links { display: none; }
+.nav__hamburger { display: flex; }
+.nav__mobile { display: block; top: 64px; }
+.page-hero { padding: 48px 24px 44px; }
+.featured { padding: 44px 20px 52px; }
+.featured__card { grid-template-columns: 1fr; }
+.feat-gallery { min-height: 240px; }
+.feat-gallery__main { position: relative; width: 100%; height: 240px; }
+.feat-gallery__strip { padding: 10px; }
+.feat-gallery__thumb { width: 52px; height: 40px; }
+.feat-info { padding: 28px 24px 28px; }
+.feat-stats { grid-template-columns: repeat(4, 1fr); }
+.feat-ctas { flex-direction: row; flex-wrap: wrap; }
+.feat-ctas .btn { flex: 1; min-width: 120px; padding: 13px 10px; font-size: 11px; }
+.coming { padding: 0 20px 14px; }
+.coming__card { grid-template-columns: 1fr; }
+.coming__img-wrap { min-height: 180px; max-height: 200px; }
+.coming__body { padding: 24px 24px 28px; }
+.portfolio { padding: 44px 20px 60px; }
+.portfolio__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.qualify { padding: 52px 24px 60px; }
+.qualify__reqs { gap: 28px; }
+.footer { padding: 44px 20px 28px; }
+.footer__top { grid-template-columns: 1fr; gap: 28px; }
+.footer__bottom { flex-direction: column; text-align: center; gap: 8px; }
+.lightbox__btn { display: none; }
+.featured__wrap > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+.featured__wrap > div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+}
+/* ── RESPONSIVE: 480px ───────────────────────────────────────── */
+@media (max-width: 480px) {
+.page-hero { padding: 40px 16px 36px; }
+.featured { padding: 36px 16px 44px; }
+.feat-gallery { min-height: 190px; }
+.feat-gallery__main { height: 220px; }
+.feat-gallery__strip { gap: 3px; padding: 8px; }
+.feat-gallery__thumb { width: 44px; height: 34px; }
+.feat-info { padding: 24px 18px 24px; }
+.feat-stats { grid-template-columns: 1fr 1fr; }
+.feat-ctas { flex-direction: column; }
+.feat-ctas .btn { flex: none; width: 100%; }
+.feat-info__price { font-size: 28px; }
+.coming { padding: 0 16px 12px; }
+.coming__body { padding: 20px 18px 22px; }
+.coming__specs { gap: 14px 20px; }
+.portfolio { padding: 36px 16px 52px; }
+.portfolio__grid { grid-template-columns: 1fr; }
+.qualify { padding: 44px 16px 52px; }
+.qualify__reqs { gap: 20px 28px; }
+.footer { padding: 36px 16px 24px; }
+}
+/* ─── NAV RIGHT / CTA ─────────────────────────────── */
+.nav-right { display: flex; align-items: center; gap: 1.25rem; }
+.nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+.nav-phone:hover { color: var(--salmon); }
+.nav-cta {
+  background: var(--salmon); color: white;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.52rem 1.1rem; border-radius: 4px; text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #b3674d; }
+/* ─── HAMBURGER ───────────────────────────────────── */
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px;
+}
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+/* ─── MOBILE DRAWER ───────────────────────────────── */
+.nav-drawer {
+  position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+  background: var(--navy); z-index: 500; padding: 2rem 1.5rem;
+  transition: right 0.3s ease; display: flex; flex-direction: column;
+}
+.nav-drawer.open { right: 0; }
+.nav-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 499;
+}
+.nav-overlay.open { display: block; }
+.nav-drawer-close {
+  align-self: flex-end; background: none; border: none; color: white;
+  font-size: 1.3rem; cursor: pointer; margin-bottom: 2rem; padding: 4px;
+}
+.nav-drawer-links { list-style: none; display: flex; flex-direction: column; flex: 1; }
+.nav-drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.nav-drawer-links a {
+  display: block; padding: 1rem 0; color: white; text-decoration: none;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.nav-drawer-links a:hover { color: var(--salmon); }
+.nav-drawer-cta {
+  margin-top: 2rem; display: block; text-align: center;
+  background: var(--salmon); color: white; text-decoration: none;
+  font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.9rem 1rem; border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-phone { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-cta { display: none; }
+}
+/* ─── FOOTER BASE ─────────────────────────────────── */
+footer {
+background: var(--navy, #0b2c3d);
+color: white;
+padding: 56px 60px 0;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+gap: 4rem;
+padding-bottom: 2.5rem;
+border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
+.footer-tag {
+font-size: 0.83rem;
+color: rgba(255,255,255,0.45);
+line-height: 1.65;
+margin-bottom: 1.25rem;
+max-width: 260px;
+}
+.footer-social a {
+display: inline-flex; align-items: center; justify-content: center;
+width: 32px; height: 32px; border-radius: 50%;
+background: rgba(255,255,255,0.1); transition: background 0.2s;
+}
+.footer-social a:hover { background: var(--salmon, #C4775A); }
+.footer-col h4 {
+font-size: 0.67rem; font-weight: 800; letter-spacing: 0.2em;
+text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 1.1rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.55rem; }
+.footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.84rem; }
+.footer-col a:hover { color: white; }
+.footer-col li[style] { font-size: 0.84rem; }
+.footer-bottom {
+padding: 1.4rem 0;
+font-size: 0.73rem;
+color: rgba(255,255,255,0.28);
+text-align: center;
+}
+@media (max-width: 1024px) { footer { padding: 48px 36px 0; } .footer-grid { gap: 2.5rem; } }
+@media (max-width: 768px) { footer { padding: 36px 16px 0; } .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } .footer-tag { max-width: 100%; } }
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="nav-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png" alt="I Rent Houses In Sweats" /></a>
+<ul class="nav-links">
+<li><a href="/">Home</a></li><li><a href="/rentals" class="nav-active">Properties</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li>
+</ul>
+<div class="nav-right">
+<a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
+<a href="https://irenthousesinsweats.com/prequal" class="nav-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
+</div>
+<button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-drawer">
+<button class="nav-drawer-close" aria-label="Close menu">&#x2715;</button>
+<ul class="nav-drawer-links">
+<li><a href="/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact" target="_blank" rel="noopener">Contact</a></li>
+</ul>
+<a href="https://irenthousesinsweats.com/prequal" class="nav-drawer-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
+</div>
+<div class="nav-overlay"></div>
+</nav>
+<section class="page-hero">
+<p class="eyebrow">Toledo-Area Rentals</p>
+<h1 class="page-hero__title">Explore Our Full Property Portfolio</h1>
+<p class="page-hero__sub">See all homes across the IRHIS portfolio, from current listings to leased properties.</p>
+</section>
+<!-- FEATURED PROPERTIES — Wilmore + Corry -->
+<section class="featured">
+<div class="featured__wrap">
+<div class="section-label">Now Leasing</div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+<!-- CARD: 1531 Wilmore — Application Pending -->
+<div class="coming__card" style="display:grid; grid-template-columns:1fr;">
+<div class="coming__img-wrap" style="min-height:200px;">
+<img class="coming__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e111e550b9a3263a52336b.jpg"
+alt="1531 Wilmore Dr, Toledo OH"
+onerror="this.style.opacity='0'">
+<div class="coming__badge-wrap">
+<span class="coming__badge recently-leased">Recently Leased</span>
+</div>
+</div>
+<div class="coming__body">
+<p class="coming__type">Single-Family Home &middot; South Toledo</p>
+<p class="coming__address">1531 Wilmore Dr</p>
+<p class="coming__city">Toledo, OH 43614</p>
+<div class="coming__specs">
+<div><span class="coming-spec__val">2</span><span class="coming-spec__label">Bedrooms</span></div>
+<div><span class="coming-spec__val">1</span><span class="coming-spec__label">Bathroom</span></div>
+<div><span class="coming-spec__val">912</span><span class="coming-spec__label">Sq Ft</span></div>
+<div><span class="coming-spec__val">$1,250</span><span class="coming-spec__label">/ Month</span></div>
+</div>
+</div>
+</div>
+<!-- CARD: 1343 Corry Ave — Available Soon -->
+<div class="coming__card" style="display:grid; grid-template-columns:1fr;">
+<div class="coming__img-wrap" style="min-height:200px;">
+<img class="coming__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e103372c135a8c838fa635.jpg"
+alt="1343 Corry Ave, Toledo OH"
+onerror="this.style.opacity='0'">
+<div class="coming__badge-wrap">
+<span class="coming__badge recently-leased">Recently Leased</span>
+</div>
+</div>
+<div class="coming__body">
+<p class="coming__type">Single-Family Home &middot; South Toledo</p>
+<p class="coming__address">1343 Corry Ave</p>
+<p class="coming__city">Toledo, OH 43614</p>
+<div class="coming__specs">
+<div><span class="coming-spec__val">2</span><span class="coming-spec__label">Bedrooms</span></div>
+<div><span class="coming-spec__val">1</span><span class="coming-spec__label">Bathroom</span></div>
+<div><span class="coming-spec__val">827</span><span class="coming-spec__label">Sq Ft</span></div>
+<div><span class="coming-spec__val">$1,300</span><span class="coming-spec__label">/ Month</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- RECENTLY ACQUIRED — Byrneway Duplexes -->
+<section class="featured">
+<div class="featured__wrap">
+<div class="section-label">Recently Acquired</div>
+<h2 class="section-title" style="margin-bottom:8px;">New to the Portfolio</h2>
+<p style="color:var(--mid); font-size:0.95rem; margin-bottom:28px;">Three duplex units recently purchased by Neela — now under management.</p>
+<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;">
+
+<!-- CARD: 2265 & 2267 Byrneway Dr -->
+<div class="coming__card" style="display:grid; grid-template-columns:1fr;">
+<div class="coming__img-wrap" style="min-height:200px;">
+<img class="coming__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a1d22c99637319b3d37.jpg"
+alt="2265 & 2267 Byrneway Dr, Toledo OH"
+onerror="this.style.opacity='0'">
+<div class="coming__badge-wrap">
+<span class="coming__badge recently-acquired">Recently Acquired</span>
+</div>
+</div>
+<div class="coming__body">
+<p class="coming__type">Duplex</p>
+<p class="coming__address">2265 &amp; 2267 Byrneway Dr</p>
+<p class="coming__city">Toledo, OH</p>
+<div class="coming__specs">
+<div><span class="coming-spec__val">2</span><span class="coming-spec__label">Bedrooms</span></div>
+<div><span class="coming-spec__val">1</span><span class="coming-spec__label">Bathroom</span></div>
+<div><span class="coming-spec__val">Basement</span><span class="coming-spec__label">&nbsp;</span></div>
+</div>
+<div style="margin-top:16px;">
+<a class="btn btn-ghost" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+</div>
+
+<!-- CARD: 2301 & 2303 Byrneway Dr -->
+<div class="coming__card" style="display:grid; grid-template-columns:1fr;">
+<div class="coming__img-wrap" style="min-height:200px;">
+<img class="coming__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a408a4be81f3aea4663.jpg"
+alt="2301 & 2303 Byrneway Dr, Toledo OH"
+onerror="this.style.opacity='0'">
+<div class="coming__badge-wrap">
+<span class="coming__badge recently-acquired">Recently Acquired</span>
+</div>
+</div>
+<div class="coming__body">
+<p class="coming__type">Duplex</p>
+<p class="coming__address">2301 &amp; 2303 Byrneway Dr</p>
+<p class="coming__city">Toledo, OH</p>
+<div class="coming__specs">
+<div><span class="coming-spec__val">2</span><span class="coming-spec__label">Bedrooms</span></div>
+<div><span class="coming-spec__val">1</span><span class="coming-spec__label">Bathroom</span></div>
+<div><span class="coming-spec__val">Basement</span><span class="coming-spec__label">&nbsp;</span></div>
+</div>
+<div style="margin-top:16px;">
+<a class="btn btn-ghost" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+</div>
+
+<!-- CARD: 2317 & 2319 Byrneway Dr -->
+<div class="coming__card" style="display:grid; grid-template-columns:1fr;">
+<div class="coming__img-wrap" style="min-height:200px;">
+<img class="coming__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a0ba6108a4858280f40.jpg"
+alt="2317 & 2319 Byrneway Dr, Toledo OH"
+onerror="this.style.opacity='0'">
+<div class="coming__badge-wrap">
+<span class="coming__badge recently-acquired">Recently Acquired</span>
+</div>
+</div>
+<div class="coming__body">
+<p class="coming__type">Duplex</p>
+<p class="coming__address">2317 &amp; 2319 Byrneway Dr</p>
+<p class="coming__city">Toledo, OH</p>
+<div class="coming__specs">
+<div><span class="coming-spec__val">2</span><span class="coming-spec__label">Bedrooms</span></div>
+<div><span class="coming-spec__val">1</span><span class="coming-spec__label">Bathroom</span></div>
+<div><span class="coming-spec__val">Basement</span><span class="coming-spec__label">&nbsp;</span></div>
+</div>
+<div style="margin-top:16px;">
+<a class="btn btn-ghost" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<!-- PORTFOLIO GRID -->
+<section class="portfolio">
+<div class="portfolio__wrap">
+<div class="portfolio__header">
+<p class="eyebrow">The Full Portfolio</p>
+<h2 class="section-title">More Homes Managed by Neela</h2>
+<p class="portfolio__note">These properties are currently occupied. Get in touch to be added to the waitlist — we'll reach out as soon as something opens up.</p>
+</div>
+<div class="portfolio__grid">
+
+
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/697ea2fa66e7ca448286b47c.jpg"
+alt="1337 Abbott Ave, Toledo OH">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">1337 Abbott Ave</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>3</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,149</strong> sqft</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/694091d497c023e7304f55ca.jpg"
+alt="1960 Princeton Dr, Toledo OH">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">1960 Princeton Dr</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,215</strong> sqft</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/6940954bf4c8e95022630e0b.jpg"
+alt="1880 Wildwood Rd, Toledo OH">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">1880 Wildwood Rd</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>3</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,324</strong> sqft</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69409753021234e57df17c6a.jpg"
+alt="1876 Wildwood Rd, Toledo OH">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">1876 Wildwood Rd</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>922</strong> sqft</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69597c013ccdd6ac65ab0c87.jpg"
+alt="5468 Fern Dr, Toledo OH">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">5468 Fern Dr</p>
+<p class="prop-card__city">Toledo, OH 43613</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>3</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,235</strong> sqft</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69597c8c6e700ede6002809c.jpg"
+alt="3718 Kershaw Ave, Toledo OH">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">3718 Kershaw Ave</p>
+<p class="prop-card__city">Toledo, OH 43613</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>3</strong> Bed</span>
+<span class="prop-card__spec"><strong>1.5</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,192</strong> sqft</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/693a3bfcb263276ea3b205b5.jpg"
+alt="1429 Bensch Dr, Toledo OH">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">1429 Bensch Dr</p>
+<p class="prop-card__city">Toledo, OH 43613</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>1</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>650</strong> sqft</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69596b177483037d54decac0.jpg"
+alt="5524 Glenridge Dr, Toledo OH">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Condo &ndash; 4-Plex</p>
+<p class="prop-card__address">5524 Glenridge Dr</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1.5</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,443</strong> sqft</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+<!-- CARD: 332 Lacombe — Recently Leased -->
+<div class="prop-card prop-card--leased">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bfa2dde974298a39f.jpg"
+alt="332 Lacombe Dr, Maumee OH"
+onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<span class="prop-card__badge leased">Recently Leased</span>
+<p class="prop-card__type">Townhome</p>
+<p class="prop-card__address">332 Lacombe Dr</p>
+<p class="prop-card__city">Maumee, OH 43537</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>860</strong> sqft</span>
+</div>
+</div>
+</div>
+
+<!-- CARD: 3872 Vogel Dr -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e1247a2c135a8c839921a2.jpg" alt="3872 Vogel Dr, Toledo OH" onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">3872 Vogel Dr</p>
+<p class="prop-card__city">Toledo, OH 43613</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>750</strong> sqft</span>
+<span class="prop-card__spec">Street Parking</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 3110 Strathmoor Ave -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e1253d12a3b92a6815ac7a.jpg" alt="3110 Strathmoor Ave, Toledo OH" onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">3110 Strathmoor Ave</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>3</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,096</strong> sqft</span>
+<span class="prop-card__spec">Detached Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 3908 S Detroit Ave -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e124c5bde9ef25bd0b433a.jpg" alt="3908 S Detroit Ave, Toledo OH" onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Townhouse</p>
+<p class="prop-card__address">3908 S Detroit Ave</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1.5</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,150</strong> sqft</span>
+<span class="prop-card__spec">1-Car Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 5533 Cresthaven Ln #1B -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e125878696a78b8d645110.jpg" alt="5533 Cresthaven Ln, Toledo OH" onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Condo &ndash; Ground Floor</p>
+<p class="prop-card__address">5533 Cresthaven Ln #1B</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>968</strong> sqft</span>
+<span class="prop-card__spec">1-Car Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 5753 Yermo Dr -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e125e20b562c7281234468.jpg" alt="5753 Yermo Dr, Toledo OH" onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">5753 Yermo Dr</p>
+<p class="prop-card__city">Toledo, OH 43613</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>3</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,226</strong> sqft</span>
+<span class="prop-card__spec">Attached Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 1347 Corry Ave -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36dab558f9094882bdb44.jpg"
+alt="1347 Corry Ave, Toledo OH"
+onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Single-Family Home</p>
+<p class="prop-card__address">1347 Corry Ave</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>763</strong> sqft</span>
+<span class="prop-card__spec">Attached Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 3910 S Detroit Ave -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy"
+src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f376bda6108a48582b945f.jpg"
+alt="3910 S Detroit Ave, Toledo OH"
+onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Townhouse &ndash; Twinplex</p>
+<p class="prop-card__address">3910 S Detroit Ave</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>3</strong> Bed</span>
+<span class="prop-card__spec"><strong>1.5</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,556</strong> sqft</span>
+<span class="prop-card__spec">2-Car Attached Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 1052 Valley Grove Dr -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f369eebb6377d896a1031c.jpg"
+alt="1052 Valley Grove Dr, Maumee OH"
+onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Condo &ndash; Townhouse</p>
+<p class="prop-card__address">1052 Valley Grove Dr</p>
+<p class="prop-card__city">Maumee, OH 43537</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1.5</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,261</strong> sqft</span>
+<span class="prop-card__spec">2-Car Attached Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 2264 Rockspring Rd -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a8d14daed238d5054df.jpg"
+alt="2264 Rockspring Rd, Toledo OH"
+onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Condo &ndash; Apartment Unit</p>
+<p class="prop-card__address">2264 Rockspring Rd</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>2</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,224</strong> sqft</span>
+<span class="prop-card__spec">Parking Lot</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 2270 Rockspring Rd #7 -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a81bb6377d896a12b30.jpg"
+alt="2270 Rockspring Rd #7, Toledo OH"
+onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Condo &ndash; Apartment Unit</p>
+<p class="prop-card__address">2270 Rockspring Rd #7</p>
+<p class="prop-card__city">Toledo, OH 43614</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>2</strong> Bath</span>
+<span class="prop-card__spec"><strong>1,224</strong> sqft</span>
+<span class="prop-card__spec">Parking Lot</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 3354 Wyckliffe Pkwy #Upper -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a5745cd8494931e8459.jpg"
+alt="3354 Wyckliffe Pkwy Upper Unit, Toledo OH"
+onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Upper-Unit Apartment &ndash; Duplex</p>
+<p class="prop-card__address">3354 Wyckliffe Pkwy #Upper</p>
+<p class="prop-card__city">Toledo, OH 43606</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>988</strong> sqft</span>
+<span class="prop-card__spec">Detached Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+<!-- CARD: 3356 Wyckliffe Pkwy #Lower -->
+<div class="prop-card">
+<div class="prop-card__img-wrap">
+<img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a66bb6377d896a12370.jpg"
+alt="3356 Wyckliffe Pkwy Lower Unit, Toledo OH"
+onerror="this.style.display='none'">
+</div>
+<div class="prop-card__body">
+<p class="prop-card__type">Lower-Unit Apartment &ndash; Duplex</p>
+<p class="prop-card__address">3356 Wyckliffe Pkwy #Lower</p>
+<p class="prop-card__city">Toledo, OH 43606</p>
+<div class="prop-card__specs">
+<span class="prop-card__spec"><strong>2</strong> Bed</span>
+<span class="prop-card__spec"><strong>1</strong> Bath</span>
+<span class="prop-card__spec"><strong>988</strong> sqft</span>
+<span class="prop-card__spec">Detached Garage</span>
+</div>
+<a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<!-- QUALIFY BANNER -->
+<section class="qualify">
+<h2 class="qualify__title">Ready to Apply?</h2>
+<p class="qualify__sub">Every rental has the same clear requirements. Get pre-qualified in minutes and move to the front of the line.</p>
+<div class="qualify__reqs">
+<div>
+<span class="req__val">3&times;</span>
+<span class="req__label">Monthly Income</span>
+</div>
+<div>
+<span class="req__val">600+</span>
+<span class="req__label">Credit Score</span>
+</div>
+<div>
+<span class="req__val">0</span>
+<span class="req__label">Prior Evictions</span>
+</div>
+<div>
+<span class="req__val">&#10003;</span>
+<span class="req__label">Background Check</span>
+</div>
+</div>
+</section>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+<button class="lightbox__close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+<button class="lightbox__btn lightbox__prev" onclick="lightboxNav(-1)" aria-label="Previous photo">&#8249;</button>
+<img loading="lazy" class="lightbox__img" id="lightboxImg" src="" alt="Property photo">
+<button class="lightbox__btn lightbox__next" onclick="lightboxNav(1)" aria-label="Next photo">&#8250;</button>
+<div class="lightbox__counter" id="lightboxCounter"></div>
+</div>
+
+<footer>
+<div class="footer-grid">
+<div>
+<div class="footer-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png" alt="I Rent Houses In Sweats" /></div>
+<p class="footer-tag">Friendly, organized, and upfront about everything &#8212; from first tour to move-in day.</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/irenthousesinsweats" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="https://irenthousesinsweats.com/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="https://www.irenthousesinsweats.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+<li><a href="https://www.irenthousesinsweats.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Get In Touch</h4>
+<ul>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
+<li><a href="mailto:nkelly7x@gmail.com">nkelly7x@gmail.com</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&#169; 2026 I Rent Houses In Sweats. All rights reserved. Equal Housing Opportunity &nbsp;&middot;&nbsp; Neela Kelly, Licensed Real Estate Agent &nbsp;&middot;&nbsp; Perrysburg, OH</p>
+</div>
+</footer>
+<script>
+(function() {
+  var btn = document.querySelector('.nav-hamburger');
+  var drawer = document.querySelector('.nav-drawer');
+  var overlay = document.querySelector('.nav-overlay');
+  var closeBtn = document.querySelector('.nav-drawer-close');
+  function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  if (btn) btn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+})();
+</script>
+</body>
+</html>
