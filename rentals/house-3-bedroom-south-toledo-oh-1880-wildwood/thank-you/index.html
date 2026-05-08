@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're All Set — 1880 Wildwood Rd, Toledo OH | I Rent Houses In Sweats</title>
+<meta name="description" content="Your prequalification for 1880 Wildwood Rd, Toledo OH has been received. Neela reviews every submission personally and will follow up within 1 business day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+--navy:   #0b2c3d;
+--salmon: #C4775A;
+--cream:  #E8EEED;
+--white:  #FFFFFF;
+--text:   #3a3a3a;
+--text-light: #6b7280;
+--border: #d1d5db;
+--shadow: 0 2px 16px rgba(11,44,61,0.10);
+--radius: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+html { scroll-behavior: smooth; }
+body {
+font-family: 'Nunito Sans', Arial, sans-serif;
+font-size: 16px;
+color: var(--text);
+background: var(--white);
+line-height: 1.6;
+}
+
+/* HERO */
+.hero {
+background: var(--navy);
+padding: 64px 24px 72px;
+text-align: center;
+}
+.check-circle {
+width: 72px;
+height: 72px;
+background: var(--salmon);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 24px;
+}
+.check-circle svg {
+width: 36px;
+height: 36px;
+color: var(--white);
+}
+.hero .eyebrow {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 12px;
+}
+.hero h1 {
+font-size: clamp(26px, 4vw, 40px);
+font-weight: 800;
+color: var(--white);
+line-height: 1.2;
+margin-bottom: 16px;
+}
+.hero p {
+font-size: 17px;
+color: rgba(255,255,255,0.72);
+max-width: 520px;
+margin: 0 auto;
+line-height: 1.7;
+}
+
+/* WHAT HAPPENS NEXT */
+.next-section {
+max-width: 780px;
+margin: 0 auto;
+padding: 56px 24px;
+}
+.section-eyebrow {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 8px;
+}
+.section-title {
+font-size: clamp(20px, 2.5vw, 26px);
+font-weight: 800;
+color: var(--navy);
+margin-bottom: 32px;
+line-height: 1.25;
+}
+.steps {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+.step {
+display: grid;
+grid-template-columns: 48px 1fr;
+gap: 20px;
+align-items: start;
+padding-bottom: 32px;
+position: relative;
+}
+.step:not(:last-child)::before {
+content: '';
+position: absolute;
+left: 23px;
+top: 48px;
+bottom: 0;
+width: 2px;
+background: var(--border);
+}
+.step-icon {
+width: 48px;
+height: 48px;
+border-radius: 50%;
+background: var(--cream);
+border: 2px solid var(--border);
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+position: relative;
+z-index: 1;
+}
+.step-icon.active {
+background: var(--salmon);
+border-color: var(--salmon);
+}
+.step-icon.active svg { color: var(--white); }
+.step-icon svg { width: 20px; height: 20px; color: var(--text-light); }
+.step-content { padding-top: 10px; }
+.step-content h3 {
+font-size: 16px;
+font-weight: 800;
+color: var(--navy);
+margin-bottom: 6px;
+}
+.step-content p {
+font-size: 14px;
+color: var(--text-light);
+line-height: 1.7;
+}
+.step-content .timing {
+display: inline-block;
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 6px;
+}
+
+/* WHILE YOU WAIT */
+.while-section {
+background: var(--cream);
+padding: 56px 24px;
+}
+.while-inner {
+max-width: 780px;
+margin: 0 auto;
+}
+.while-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+margin-top: 8px;
+}
+.while-card {
+background: var(--white);
+border-radius: var(--radius);
+padding: 24px;
+box-shadow: var(--shadow);
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 12px;
+}
+.while-card-icon {
+width: 48px;
+height: 48px;
+background: var(--cream);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.while-card-icon svg { width: 22px; height: 22px; color: var(--navy); }
+.while-card h4 {
+font-size: 13px;
+font-weight: 800;
+color: var(--navy);
+text-transform: uppercase;
+letter-spacing: 0.06em;
+}
+.while-card p {
+font-size: 13px;
+color: var(--text-light);
+line-height: 1.6;
+}
+.while-card a {
+display: inline-block;
+margin-top: auto;
+font-size: 12px;
+font-weight: 800;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(--salmon);
+text-decoration: none;
+border-bottom: 2px solid transparent;
+transition: border-color 0.2s;
+}
+.while-card a:hover { border-color: var(--salmon); }
+
+/* NEELA SECTION */
+.neela-section {
+max-width: 780px;
+margin: 0 auto;
+padding: 56px 24px;
+}
+.neela-card {
+background: var(--navy);
+border-radius: var(--radius);
+padding: 36px 40px;
+display: grid;
+grid-template-columns: 100px 1fr;
+gap: 28px;
+align-items: center;
+}
+.neela-card img {
+width: 88px;
+height: 88px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid rgba(255,255,255,0.2);
+}
+.neela-card-text .label {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.5);
+margin-bottom: 6px;
+}
+.neela-card-text h3 {
+font-size: 18px;
+font-weight: 800;
+color: var(--white);
+margin-bottom: 10px;
+}
+.neela-card-text p {
+font-size: 14px;
+color: rgba(255,255,255,0.68);
+line-height: 1.7;
+margin-bottom: 16px;
+}
+.contact-row {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+}
+.contact-link {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+font-size: 13px;
+font-weight: 700;
+color: var(--white);
+text-decoration: none;
+opacity: 0.85;
+transition: opacity 0.2s;
+}
+.contact-link:hover { opacity: 1; }
+.contact-link svg { width: 14px; height: 14px; }
+
+/* BOTTOM NOTE */
+.bottom-note {
+background: var(--cream);
+padding: 28px 24px;
+text-align: center;
+border-top: 1px solid var(--border);
+}
+.bottom-note p {
+font-size: 13px;
+color: var(--text-light);
+max-width: 500px;
+margin: 0 auto;
+line-height: 1.7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+.hero { padding: 48px 20px 56px; }
+.next-section { padding: 40px 20px; }
+.while-section { padding: 40px 20px; }
+.while-grid { grid-template-columns: 1fr; }
+.neela-section { padding: 40px 20px; }
+.neela-card { grid-template-columns: 1fr; text-align: center; padding: 28px 24px; }
+.neela-card img { margin: 0 auto; }
+.contact-row { justify-content: center; }
+}
+@media (max-width: 480px) {
+.check-circle { width: 60px; height: 60px; }
+.check-circle svg { width: 28px; height: 28px; }
+}
+/* ─── FOOTER BASE ─────────────────────────────────── */
+footer { background: var(--navy, #0b2c3d); color: white; padding: 56px 60px 0; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
+.footer-tag { font-size: 0.83rem; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 1.25rem; max-width: 260px; }
+.footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1); transition: background 0.2s; }
+.footer-social a:hover { background: var(--salmon, #C4775A); }
+.footer-col h4 { font-size: 0.67rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.55rem; }
+.footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.84rem; }
+.footer-col a:hover { color: white; }
+.footer-bottom { padding: 1.4rem 0; font-size: 0.73rem; color: rgba(255,255,255,0.28); text-align: center; }
+@media (max-width: 1024px) { footer { padding: 48px 36px 0; } .footer-grid { gap: 2.5rem; } }
+@media (max-width: 768px) { footer { padding: 36px 16px 0; } .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } .footer-tag { max-width: 100%; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="check-circle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  </div>
+  <div class="eyebrow">Submitted Successfully</div>
+  <h1>You're All Set —<br>We'll Be in Touch Soon</h1>
+  <p>Your prequalification has been received. Neela reviews every submission personally and will follow up with you directly, usually within 1 business day.</p>
+</div>
+
+<!-- WHAT HAPPENS NEXT -->
+<div class="next-section">
+  <div class="section-eyebrow">What Comes Next</div>
+  <div class="section-title">Here's What to Expect</div>
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-icon active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="step-content">
+        <div class="timing">Done ✓</div>
+        <h3>Prequalification submitted</h3>
+        <p>Your answers have been received and are in the queue for review.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="step-content">
+        <div class="timing">Within 1 business day</div>
+        <h3>Neela reviews your submission</h3>
+        <p>She reviews every prequalification personally and will reach out by phone or text to let you know where things stand.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="step-content">
+        <div class="timing">If you're a good fit</div>
+        <h3>You'll be invited to schedule a showing</h3>
+        <p>If things look good, Neela will reach out to set up a time to walk through the property. No application fee until after you've seen it in person.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="step-content">
+        <div class="timing">After the showing</div>
+        <h3>Formal application through Zillow</h3>
+        <p>If you want to move forward, you'll complete a full application through Zillow. Neela will walk you through what's needed.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHILE YOU WAIT -->
+<div class="while-section">
+  <div class="while-inner">
+    <div class="section-eyebrow">While You Wait</div>
+    <div class="section-title">A Few Helpful Next Steps</div>
+    <div class="while-grid">
+      <div class="while-card">
+        <div class="while-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h4>Browse Properties</h4>
+        <p>See all available rentals and find the right fit before your showing.</p>
+        <a href="/rentals/house-3-bedroom-south-toledo-oh-1880-wildwood" target="_blank" rel="noopener">View this property →</a>
+      </div>
+      <div class="while-card">
+        <div class="while-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h4>Gather Your Documents</h4>
+        <p>Have your last 3 months of pay stubs ready — you'll need them for the full application.</p>
+        <a href="/contact" target="_blank" rel="noopener">Questions? Ask Neela →</a>
+      </div>
+      <div class="while-card">
+        <div class="while-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h4>Have Questions?</h4>
+        <p>You don't have to wait for a callback. Reach out directly if something's on your mind.</p>
+        <a href="/contact" target="_blank" rel="noopener">Send a message →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEELA -->
+<div class="neela-section">
+  <div class="neela-card">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/e2fded25-85b0-41a8-a566-350fcb79ad69.png" alt="Neela Kelly" onerror="this.style.display='none'">
+    <div class="neela-card-text">
+      <div class="label">A Note from Neela</div>
+      <h3>You'll hear from me directly.</h3>
+      <p>I review every prequalification myself — you're not going into a system where your submission disappears. I'll reach out personally with honest, straightforward feedback as soon as I've had a chance to look things over.</p>
+      <div class="contact-row">
+        <a href="tel:4199027728" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.07-1.07a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (419) 902-7728
+        </a>
+        <a href="mailto:nkelly7x@gmail.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          nkelly7x@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="footer-grid">
+<div>
+<div class="footer-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png" alt="I Rent Houses In Sweats" /></div>
+<p class="footer-tag">Friendly, organized, and upfront about everything &#8212; from first tour to move-in day.</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/irenthousesinsweats" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="https://irenthousesinsweats.com/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="https://www.irenthousesinsweats.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+<li><a href="https://www.irenthousesinsweats.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Get In Touch</h4>
+<ul>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
+<li><a href="mailto:nkelly7x@gmail.com">nkelly7x@gmail.com</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&#169; 2026 I Rent Houses In Sweats. All rights reserved. Equal Housing Opportunity &nbsp;&middot;&nbsp; Neela Kelly, Licensed Real Estate Agent &nbsp;&middot;&nbsp; Perrysburg, OH</p>
+</div>
+</footer>
+
+
+</body>
+</html>
