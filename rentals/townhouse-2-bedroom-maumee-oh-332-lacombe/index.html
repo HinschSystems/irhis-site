@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
+<title>332 Lacombe Dr, Maumee, OH 43537 — I Rent Houses In Sweats</title>
+<meta name="description" content="Rent 332 Lacombe Dr in Maumee, OH. Quality rental home managed by I Rent Houses In Sweats — friendly, organized, upfront about everything. View details and get pre-qualified.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:   #0b2c3d;
+  --salmon: #C4775A;
+  --cream:  #E8EEED;
+  --white:  #FFFFFF;
+  --text:   #333;
+  --mid:    #555;
+  --lt:     #888;
+  --border: #ddd;
+  --font:   'Nunito Sans', Arial, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.6; }
+img { max-width: 100%; height: auto; }
+
+/* HERO */
+.hero { background: var(--navy); padding: 52px 48px 48px; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start; }
+.hero-address { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
+.hero h1 { font-size: 2rem; font-weight: 800; color: white; line-height: 1.15; margin-bottom: 0.4rem; }
+.hero-type { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.55); font-style: italic; margin-bottom: 1.25rem; }
+.hero-desc { font-size: 0.9rem; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 560px; margin-bottom: 1.75rem; }
+.hero-quick-facts { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.fact-chip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: white; font-size: 0.78rem; font-weight: 700; padding: 0.4rem 0.9rem; border-radius: 20px; }
+.qualify-card { background: white; border-radius: 6px; padding: 1.75rem; width: 260px; flex-shrink: 0; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.18); }
+.qualify-price { font-size: 2rem; font-weight: 800; color: var(--navy); line-height: 1; }
+.qualify-price-label { font-size: 0.7rem; color: var(--lt); font-weight: 600; margin-bottom: 1.25rem; }
+.qualify-btn { display: block; background: var(--salmon); color: white; padding: 0.8rem; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 4px; margin-bottom: 0.4rem; }
+.qualify-btn:hover { background: #b3684d; }
+.qualify-subtext { font-size: 0.68rem; color: var(--lt); }
+
+/* GALLERY */
+.gallery-section { background: #1a1a1a; padding: 0; }
+.gallery-hero { width: 100%; max-height: 520px; object-fit: cover; display: block; }
+.gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; padding: 3px; background: #111; }
+.gallery-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: opacity 0.2s; }
+.gallery-grid img:hover { opacity: 0.85; }
+
+/* BODY LAYOUT */
+.page-body { display: grid; grid-template-columns: 1fr 300px; gap: 0; max-width: 1100px; margin: 0 auto; padding: 48px 48px 0; align-items: start; }
+.main-content { padding-right: 3rem; }
+.section-block { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+.section-block:last-child { border-bottom: none; }
+.section-label { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--salmon); margin-bottom: 0.75rem; }
+.section-block h2 { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy); margin-bottom: 1.25rem; }
+.love-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.love-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; color: var(--mid); line-height: 1.55; }
+.love-list li::before { content: '✓'; color: var(--salmon); font-weight: 800; font-size: 0.82rem; margin-top: 2px; flex-shrink: 0; }
+.about-text { font-size: 0.9rem; color: var(--mid); line-height: 1.75; margin-bottom: 1.5rem; }
+.detail-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+.detail-group h3 { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--salmon); }
+.detail-group ul { list-style: none; }
+.detail-group li { font-size: 0.84rem; color: var(--mid); padding: 0.35rem 0; border-bottom: 1px solid #f0f0f0; line-height: 1.4; }
+.detail-group li:last-child { border-bottom: none; }
+.detail-group li strong { color: var(--text); font-weight: 700; }
+.req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.req-box { background: var(--cream); padding: 1.25rem 1.5rem; border-radius: 4px; }
+.req-box h3 { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.75rem; }
+.req-box ul { list-style: none; }
+.req-box li { font-size: 0.83rem; color: var(--mid); padding: 0.28rem 0; display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.45; }
+.req-box li::before { content: '•'; color: var(--salmon); font-weight: 800; flex-shrink: 0; }
+.location-detail { margin-bottom: 1rem; }
+.location-detail h3 { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--navy); margin-bottom: 0.3rem; }
+.location-detail p { font-size: 0.87rem; color: var(--mid); line-height: 1.65; }
+.btn-salmon { display: inline-block; background: var(--salmon); color: white; padding: 0.65rem 1.5rem; font-size: 0.77rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 3px; }
+.btn-salmon:hover { background: #b3684d; }
+
+/* SIDEBAR */
+.sidebar { padding-top: 0; position: sticky; top: 24px; align-self: start; }
+.sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 1.25rem; }
+.sidebar-card-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+.sidebar-card-body { padding: 1.25rem; }
+.sidebar-card-body h3 { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); margin-bottom: 0.5rem; }
+.sidebar-card-body p { font-size: 0.8rem; color: var(--mid); line-height: 1.6; margin-bottom: 1rem; }
+.sidebar-btn { display: block; text-align: center; background: var(--navy); color: white; padding: 0.65rem; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 3px; }
+.sidebar-btn:hover { background: #1e3a48; }
+.sidebar-btn-outline { display: block; text-align: center; background: transparent; color: var(--navy); border: 1.5px solid var(--navy); padding: 0.65rem; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 3px; margin-top: 0.5rem; }
+.sidebar-btn-outline:hover { background: var(--navy); color: white; }
+
+/* 3 CTA COLUMNS */
+.cta-3col-section { background: var(--cream); padding: 56px 48px; margin-top: 48px; }
+.cta-3col { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; align-items: center; }
+.cta-col { text-align: center; padding: 1.75rem 1.5rem; background: white; border-radius: 6px; border: 1px solid var(--border); }
+.cta-col h3 { font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); margin-bottom: 0.6rem; }
+.cta-col p { font-size: 0.8rem; color: var(--mid); line-height: 1.6; margin-bottom: 1.25rem; }
+.cta-col-center { text-align: center; }
+.cta-col-center img { width: 100%; max-width: 200px; aspect-ratio: 1; object-fit: cover; border-radius: 4px; display: block; margin: 0 auto 1rem; }
+.cta-col-center p { font-size: 0.78rem; color: var(--mid); margin-bottom: 1rem; font-style: italic; }
+
+/* MEET NEELA */
+.neela-section { background: var(--navy); padding: 56px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+.neela-photo { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center top; border: 4px solid white; display: block; flex-shrink: 0; }
+.neela-text { text-align: center; max-width: 640px; }
+.neela-text .section-label { color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
+.neela-text h2 { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; color: white; margin-bottom: 0.9rem; }
+.neela-text p { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.75; max-width: 580px; margin: 0 auto; }
+.neela-sig { margin: 1rem auto 0; height: 48px; display: block; }
+
+/* TESTIMONIALS */
+.testi-section { background: var(--cream); padding: 56px 48px; }
+.testi-title { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); text-align: center; margin-bottom: 2rem; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 960px; margin: 0 auto; }
+.testi-card { background: white; border: 1px solid #d5d5d5; border-radius: 6px; padding: 1.5rem; }
+.testi-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-bottom: 0.75rem; display: block; }
+.testi-quote { font-size: 0.84rem; color: var(--mid); line-height: 1.7; margin-bottom: 0.9rem; }
+.testi-name { font-size: 0.77rem; font-weight: 700; color: var(--navy); }
+
+/* TRUST */
+.trust-section { background: white; padding: 40px 48px; text-align: center; border-top: 1px solid #eee; }
+.trust-logos { display: flex; justify-content: center; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.trust-logos img { height: 40px; object-fit: contain; opacity: 0.5; filter: grayscale(100%); transition: opacity 0.2s, filter 0.2s; }
+.trust-logos img:hover { opacity: 0.9; filter: none; }
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .hero { padding: 48px 28px; gap: 2rem; }
+  .hero h1 { font-size: 1.7rem; }
+  .qualify-card { width: 230px; padding: 1.25rem; }
+  .page-body { padding: 36px 28px 0; grid-template-columns: 1fr 260px; }
+  .main-content { padding-right: 2rem; }
+  .cta-3col-section { padding: 48px 28px; }
+  .neela-section, .testi-section { padding: 48px 28px; }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; padding: 28px 16px 32px; gap: 1.5rem; }
+  .hero h1 { font-size: 1.55rem; }
+  .qualify-card { width: 100%; }
+  .gallery-hero { max-height: 260px; }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 2px; }
+  .page-body { grid-template-columns: 1fr; padding: 24px 16px 0; }
+  .main-content { padding-right: 0; }
+  .sidebar { display: none; }
+  .detail-cols { grid-template-columns: 1fr; gap: 1.25rem; }
+  .req-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .cta-3col-section { padding: 32px 16px; margin-top: 24px; }
+  .cta-3col { grid-template-columns: 1fr; gap: 1rem; }
+  .neela-section { padding: 36px 16px; }
+  .neela-photo { width: 120px; height: 120px; }
+  .testi-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .testi-section { padding: 36px 16px; }
+  .trust-section { padding: 28px 16px; }
+}
+
+@media (max-width: 400px) {
+  .hero h1 { font-size: 1.35rem; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* ─── NAV BASE ────────────────────────────────────── */
+nav {
+background: var(--white, #fff);
+height: 78px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 56px;
+border-bottom: 1px solid #e5e5e5;
+position: sticky;
+top: 0;
+z-index: 200;
+}
+.nav-logo img { height: 52px; display: block; width: auto; }
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a {
+font-size: 0.77rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--navy, #0b2c3d);
+text-decoration: none;
+transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--salmon, #C4775A); }
+/* ─── NAV RIGHT / CTA ─────────────────────────────── */
+.nav-right { display: flex; align-items: center; gap: 1.25rem; }
+.nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text, #3a3a3a); text-decoration: none; letter-spacing: 0.04em; }
+.nav-phone:hover { color: var(--salmon, #C4775A); }
+.nav-cta {
+background: var(--salmon, #C4775A); color: white;
+font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+padding: 0.52rem 1.1rem; border-radius: 4px; text-decoration: none;
+transition: background 0.2s;
+}
+.nav-cta:hover { background: #b3674d; }
+/* ─── HAMBURGER ───────────────────────────────────── */
+.nav-hamburger {
+display: none; flex-direction: column; justify-content: center; gap: 5px;
+background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px;
+}
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy, #0b2c3d); border-radius: 2px; transition: all 0.25s; }
+/* ─── MOBILE DRAWER ───────────────────────────────── */
+.nav-drawer {
+position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+background: var(--navy, #0b2c3d); z-index: 500; padding: 2rem 1.5rem;
+transition: right 0.3s ease; display: flex; flex-direction: column;
+}
+.nav-drawer.open { right: 0; }
+.nav-overlay {
+display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 499;
+}
+.nav-overlay.open { display: block; }
+.nav-drawer-close {
+align-self: flex-end; background: none; border: none; color: white;
+font-size: 1.3rem; cursor: pointer; margin-bottom: 2rem; padding: 4px;
+}
+.nav-drawer-links { list-style: none; display: flex; flex-direction: column; flex: 1; }
+.nav-drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.nav-drawer-links a {
+display: block; padding: 1rem 0; color: white; text-decoration: none;
+font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.nav-drawer-links a:hover { color: var(--salmon, #C4775A); }
+.nav-drawer-cta {
+margin-top: 2rem; display: block; text-align: center;
+background: var(--salmon, #C4775A); color: white; text-decoration: none;
+font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 0.9rem 1rem; border-radius: 4px;
+}
+@media (max-width: 1024px) { nav { padding: 0 28px; } }
+@media (max-width: 768px) {
+nav { padding: 0 16px; height: 64px; }
+.nav-logo img { height: 42px; }
+.nav-links, .nav-phone { display: none; }
+.nav-hamburger { display: flex; }
+.nav-cta { display: none; }
+}
+@media (max-width: 480px) { nav { height: 58px; } .nav-logo img { height: 36px; } }
+/* ─── FOOTER BASE ─────────────────────────────────── */
+footer {
+background: var(--navy, #0b2c3d);
+color: white;
+padding: 56px 60px 0;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+gap: 4rem;
+padding-bottom: 2.5rem;
+border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
+.footer-tag {
+font-size: 0.83rem; color: rgba(255,255,255,0.45); line-height: 1.65;
+margin-bottom: 1.25rem; max-width: 260px;
+}
+.footer-social a {
+display: inline-flex; align-items: center; justify-content: center;
+width: 32px; height: 32px; border-radius: 50%;
+background: rgba(255,255,255,0.1); transition: background 0.2s;
+}
+.footer-social a:hover { background: var(--salmon, #C4775A); }
+.footer-col h4 {
+font-size: 0.67rem; font-weight: 800; letter-spacing: 0.2em;
+text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 1.1rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.55rem; }
+.footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.84rem; }
+.footer-col a:hover { color: white; }
+.footer-bottom {
+padding: 1.4rem 0; font-size: 0.73rem;
+color: rgba(255,255,255,0.28); text-align: center;
+}
+@media (max-width: 1024px) { footer { padding: 48px 36px 0; } .footer-grid { gap: 2.5rem; } }
+@media (max-width: 768px) { footer { padding: 36px 16px 0; } .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } .footer-tag { max-width: 100%; } }
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="nav-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png" alt="I Rent Houses In Sweats" /></a>
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact" target="_blank" rel="noopener">Contact</a></li>
+</ul>
+<div class="nav-right">
+<a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
+<a href="https://irenthousesinsweats.com/prequal" class="nav-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
+</div>
+<button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-drawer">
+<button class="nav-drawer-close" aria-label="Close menu">&#x2715;</button>
+<ul class="nav-drawer-links">
+<li><a href="/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact" target="_blank" rel="noopener">Contact</a></li>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
+</ul>
+<a href="https://irenthousesinsweats.com/prequal" class="nav-drawer-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
+</div>
+<div class="nav-overlay"></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-address">Maumee, OH 43537 &nbsp;&middot;&nbsp; Townhome</p>
+    <h1>332 Lacombe Dr,<br>Maumee, OH 43537</h1>
+    <p class="hero-type">Townhome</p>
+    <p class="hero-desc">Freshly updated townhome with an open floor plan, new LVP flooring, and stainless steel appliances in a quiet Maumee neighborhood. Only one other unit — attached garage, front patio, and dedicated laundry room included.</p>
+    <div class="hero-quick-facts">
+      <span class="fact-chip">2 Bedrooms</span>
+      <span class="fact-chip">1 Bath</span>
+      <span class="fact-chip">860 sq ft</span>
+      <span class="fact-chip">Attached Garage</span>
+    </div>
+  </div>
+  <div class="qualify-card">
+    <div class="qualify-price">$1,275</div>
+    <div class="qualify-price-label">/month</div>
+    <a href="https://www.irenthousesinsweats.com/rentals/townhouse-2-bedroom-maumee-oh-332-lacombe/qualify?property_of_interest=townhouse-2-bedroom-maumee-oh-332-lacombe" class="qualify-btn" target="_blank" rel="noopener">Prequalify Now</a>
+    <p class="qualify-subtext">Takes 2 minutes &middot; No credit check</p>
+  </div>
+</section>
+
+<div class="gallery-section">
+  <img class="gallery-hero" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bfa2dde974298a39f.jpg" alt="332 Lacombe Dr exterior" onerror="this.style.display='none'">
+  <div class="gallery-grid">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6ba7dcb4cff0fbef20.jpg" alt="Interior" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6ba7dcb4cff0fbef22.jpg" alt="Interior" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bbec7abdef128d630.jpg" alt="Interior" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6b84c045c274af9c01.jpg" alt="Interior" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6b3d829c73b28d360c.jpg" alt="Interior" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bbec7abdef128d62f.jpg" alt="Interior" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6b3d829c73b28d360b.jpg" alt="Exterior" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6ba7dcb4cff0fbef21.jpg" alt="Exterior" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bfa2dde974298a39e.jpg" alt="Interior" onerror="this.style.display='none'">
+  </div>
+</div>
+
+<div class="page-body">
+  <main class="main-content">
+
+    <div class="section-block">
+      <p class="section-label">Highlights</p>
+      <h2>What You'll Love About This Place</h2>
+      <ul class="love-list">
+        <li>Brand new LVP flooring and fresh paint throughout — move-in ready from day one</li>
+        <li>Butcher block island with pendant lights in an open-concept kitchen with stainless steel appliances</li>
+        <li>Dedicated laundry room on the main floor with washer/dryer hookups</li>
+        <li>Attached garage plus a front patio — great for parking, storage, or unwinding outside</li>
+        <li>Landlord covers water, trash, and recycling — typically $70–100/month back in your pocket</li>
+        <li>Quiet two-unit setup with only one neighbor behind you in a well-kept Maumee neighborhood</li>
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <p class="section-label">About</p>
+      <h2>About This Home</h2>
+      <p class="about-text">Freshly painted with stainless steel appliances, new LVP flooring and butcher block island with pendant lights. Open floor plan, quaint and quiet in this beautiful Maumee neighborhood. Features an attached garage, front patio and dedicated laundry room on main floor off the garage. Only one other unit behind with quiet tenant.</p>
+    </div>
+
+    <div class="section-block">
+      <p class="section-label">Full Details</p>
+      <h2>Lease Details</h2>
+      <div class="detail-cols">
+        <div class="detail-group">
+          <h3>Terms</h3>
+          <ul>
+            <li><strong>Duration:</strong> 12 months</li>
+            <li><strong>Monthly Rent:</strong> $1,275</li>
+            <li><strong>Security Deposit:</strong> $1,275</li>
+            <li><strong>Available:</strong> 04/06/2026</li>
+            <li>No smoking inside</li>
+          </ul>
+        </div>
+        <div class="detail-group">
+          <h3>Property</h3>
+          <ul>
+            <li><strong>Type:</strong> Townhome</li>
+            <li><strong>Size:</strong> 860 sq ft</li>
+            <li><strong>Beds:</strong> 2</li>
+            <li><strong>Baths:</strong> 1</li>
+            <li><strong>Flooring:</strong> New LVP + carpet</li>
+            <li><strong>Cooling:</strong> Central air</li>
+            <li><strong>Heat:</strong> Forced air gas</li>
+          </ul>
+        </div>
+        <div class="detail-group">
+          <h3>Utilities</h3>
+          <ul>
+            <li><strong>Owner pays:</strong> Water, trash, recycling</li>
+            <li><strong>Tenant pays:</strong> Electric, gas</li>
+            <li>Gas in tenant's name full lease term</li>
+            <li>Renters insurance required</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <p class="section-label">Requirements</p>
+      <h2>Application Requirements</h2>
+      <div class="req-grid">
+        <div class="req-box">
+          <h3>Financial</h3>
+          <ul>
+            <li>Monthly income at least 3x rent ($3,825+)</li>
+            <li>Credit score 600 or higher</li>
+            <li>Verifiable income required</li>
+          </ul>
+        </div>
+        <div class="req-box">
+          <h3>Rental History</h3>
+          <ul>
+            <li>No prior evictions</li>
+            <li>No outstanding balances with previous landlords</li>
+            <li>Background check required (via Zillow)</li>
+          </ul>
+        </div>
+        <div class="req-box">
+          <h3>Pets</h3>
+          <ul>
+            <li>Allowed at landlord's discretion</li>
+            <li>$50/month pet rent</li>
+            <li>$250 pet deposit</li>
+          </ul>
+        </div>
+        <div class="req-box">
+          <h3>Process</h3>
+          <ul>
+            <li>Pre-qualify on our site first (2 min, no credit check)</li>
+            <li>Book a showing after pre-qualification</li>
+            <li>Formal application through Zillow</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <p class="section-label">Location</p>
+      <h2>Neighborhood &amp; Location</h2>
+      <div class="location-detail">
+        <h3>About Maumee</h3>
+        <p>Maumee is one of Toledo's most desirable suburbs — walkable, well-maintained, and close to everything. Minutes from Maumee's historic downtown, the Maumee River, and a strong lineup of local restaurants and coffee shops.</p>
+      </div>
+      <div class="location-detail">
+        <h3>Nearby</h3>
+        <p>Kroger and Meijer are within 5 minutes. St. Luke's Hospital is less than 2 miles away. Easy access to I-475 makes this a great location for commuters.</p>
+      </div>
+      <div class="location-detail">
+        <h3>Getting Around</h3>
+        <p>Right off I-475 and US-20 — downtown Toledo is under 15 minutes, Perrysburg is right next door. Toledo Express Airport is a short drive west.</p>
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=332+Lacombe+Dr+Maumee+OH+43537" target="_blank" rel="noopener" style="display:block; margin-top:1.25rem; border-radius:4px; overflow:hidden; border:1px solid var(--border); text-decoration:none; background:var(--cream);">
+        <div style="display:flex; align-items:center; justify-content:center; gap:0.6rem; padding:1.25rem; color:var(--navy); font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          View on Google Maps &mdash; 332 Lacombe Dr, Maumee, OH 43537
+        </div>
+      </a>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-card-body">
+        <h3>Get Pre-qualified</h3>
+        <p>This helps us make sure this home is a realistic fit for your income, timing, and situation.</p>
+        <a href="https://www.irenthousesinsweats.com/rentals/townhouse-2-bedroom-maumee-oh-332-lacombe/qualify?property_of_interest=townhouse-2-bedroom-maumee-oh-332-lacombe" class="sidebar-btn" style="background:var(--navy);" target="_blank" rel="noopener">Start Here</a>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <img class="sidebar-card-img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bfa2dde974298a39f.jpg" alt="Book a Tour" onerror="this.style.display='none'">
+      <div class="sidebar-card-body">
+        <p style="font-size:0.76rem; color:var(--lt); font-style:italic; margin-bottom:0.75rem;">If you're confident you meet the requirements</p>
+        <a href="https://api.leadconnectorhq.com/widget/bookings/property/showing" class="sidebar-btn" style="background:#E8EEED; color:var(--navy);" target="_blank" rel="noopener">Book a Tour</a>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-card-body">
+        <h3>Not Sure About Something?</h3>
+        <p>Send a quick question about the home, requirements, or process and we'll walk you through it.</p>
+        <a href="/contact" class="sidebar-btn-outline" target="_blank" rel="noopener">Ask a Question</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="cta-3col-section">
+  <div class="cta-3col">
+    <div class="cta-col">
+      <h3>Get Pre-qualified</h3>
+      <p>This helps us make sure this home is a realistic fit for your income, timing, and situation.</p>
+      <a href="https://www.irenthousesinsweats.com/rentals/townhouse-2-bedroom-maumee-oh-332-lacombe/qualify?property_of_interest=townhouse-2-bedroom-maumee-oh-332-lacombe" class="btn-salmon" style="background:var(--navy);" target="_blank" rel="noopener">Start Here</a>
+    </div>
+    <div class="cta-col-center">
+      <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69d47b6bfa2dde974298a39f.jpg" alt="332 Lacombe Dr" onerror="this.style.display='none'">
+      <p>If you're confident you meet the requirements</p>
+      <a href="https://api.leadconnectorhq.com/widget/bookings/property/showing" target="_blank" rel="noopener" style="display:inline-block; text-align:center; padding:0.65rem 1.5rem; font-size:0.77rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; border:1.5px solid var(--navy); color:var(--navy); background:transparent; border-radius:3px;">Book a Tour</a>
+    </div>
+    <div class="cta-col">
+      <h3>Not Sure About Something?</h3>
+      <p>Send a quick question about the home, requirements, or process and we'll walk you through it.</p>
+      <a href="/contact" class="sidebar-btn-outline" style="display:inline-block; padding:0.65rem 1.5rem;" target="_blank" rel="noopener">Ask a Question</a>
+    </div>
+  </div>
+</section>
+
+<section class="trust-section">
+  <div class="trust-logos">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/0c4536eb-137d-4d05-b06a-dea352716913.png" alt="Equal Housing" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/a7f08d6a-bb85-4c91-9511-723c2ed156d5.png" alt="Trust badge" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/c79794e4-171c-4868-bb4b-9e8cedefdb36.png" alt="Realtor" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/df994159-b071-41ae-8745-1037d7586545.png" alt="Zillow" onerror="this.style.display='none'">
+    <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/94704420-22ed-48de-9836-09d05060f85d.png" alt="nKey Realty" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<section class="neela-section">
+  <img class="neela-photo" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/e2fded25-85b0-41a8-a566-350fcb79ad69.png" alt="Neela Kelly" onerror="this.style.display='none'">
+  <div class="neela-text">
+    <p class="section-label">Your Property Owner &amp; Manager</p>
+    <h2>Meet Your Landlady</h2>
+    <p>Hi, I'm Neela — I'm the property owner and manager. I handle showings, approvals, and questions myself, so you're dealing with a real person who knows the home and the process, not a big corporate office.</p>
+    <p style="margin-top:0.75rem;">I keep things simple: clear requirements, honest answers, and timely communication from your first message through move-in and beyond.</p>
+    <img class="neela-sig" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69377e431da73cd937ae6b68.png" alt="Neela Kelly signature" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<section class="testi-section">
+  <p class="testi-title">What Renters Say</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <img class="testi-avatar" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/a0a0b4f4-fff4-4851-8193-79ad1c67eb1e.png" alt="Renter" onerror="this.style.display='none'">
+      <p class="testi-quote">"The first time I actually felt like a landlord was on my side. Neela told me exactly what I needed, and there were zero surprise fees."</p>
+      <p class="testi-name">— E. Johnson, Renter</p>
+    </div>
+    <div class="testi-card">
+      <img class="testi-avatar" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/a0a0b4f4-fff4-4851-8193-79ad1c67eb1e.png" alt="Renter" onerror="this.style.display='none'">
+      <p class="testi-quote">"If I texted with a question, I got a real answer, not an auto-reply. It felt like working with a neighbor who happens to know property management."</p>
+      <p class="testi-name">— K. Davis, Renter</p>
+    </div>
+    <div class="testi-card">
+      <img class="testi-avatar" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/a0a0b4f4-fff4-4851-8193-79ad1c67eb1e.png" alt="Renter" onerror="this.style.display='none'">
+      <p class="testi-quote">"I get clear updates instead of radio silence or chaos. If something breaks, I know what happened, what it costs, and what's being done about it."</p>
+      <p class="testi-name">— R. Williams, Renter</p>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+<div class="footer-grid">
+<div>
+<div class="footer-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png" alt="I Rent Houses In Sweats" /></div>
+<p class="footer-tag">Friendly, organized, and upfront about everything &#8212; from first tour to move-in day.</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/irenthousesinsweats" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="https://irenthousesinsweats.com/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="https://www.irenthousesinsweats.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+<li><a href="https://www.irenthousesinsweats.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Get In Touch</h4>
+<ul>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
+<li><a href="mailto:nkelly7x@gmail.com">nkelly7x@gmail.com</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&#169; 2026 I Rent Houses In Sweats. All rights reserved. Equal Housing Opportunity &nbsp;&middot;&nbsp; Neela Kelly, Licensed Real Estate Agent &nbsp;&middot;&nbsp; Perrysburg, OH</p>
+</div>
+</footer>
+<script>
+(function() {
+  var btn = document.querySelector('.nav-hamburger');
+  var drawer = document.querySelector('.nav-drawer');
+  var overlay = document.querySelector('.nav-overlay');
+  var closeBtn = document.querySelector('.nav-drawer-close');
+  function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  if (btn) btn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+})();
+</script>
+</body>
+</html>
