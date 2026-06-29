@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pay Rent | I Rent Houses In Sweats</title>
+<meta name="description" content="Pay your monthly rent online. Find your property below and click Pay Now for secure payment through Stripe — managed by Neela Kelly.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pay Rent | I Rent Houses In Sweats">
+<meta property="og:description" content="Pay your monthly rent online. Find your property and click Pay Now for secure Stripe checkout.">
+<meta property="og:url" content="https://irenthousesinsweats.com/pay-rent">
+<meta property="og:image" content="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png">
+<meta property="og:site_name" content="I Rent Houses In Sweats">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://assets.cdn.filesafe.space">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+--navy:   #0b2c3d;
+--salmon: #C4775A;
+--cream:  #E8EEED;
+--white:  #FFFFFF;
+--text:   #3a3a3a;
+--text-light: #6b7280;
+--border: #d1d5db;
+--shadow: 0 2px 16px rgba(11,44,61,0.08);
+--radius: 8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito Sans', Arial, sans-serif; font-size: 16px; color: var(--text); background: var(--white); line-height: 1.6; }
+
+/* ─── NAV ──────────────────────────────────────────── */
+nav {
+background: var(--white);
+height: 78px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 56px;
+border-bottom: 1px solid #e5e5e5;
+position: sticky;
+top: 0;
+z-index: 200;
+}
+.nav-logo img { height: 52px; display: block; width: auto; }
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a { font-size: 0.77rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--salmon); }
+.nav-right { display: flex; align-items: center; gap: 1.25rem; }
+.nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+.nav-phone:hover { color: var(--salmon); }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+.nav-drawer { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--navy); z-index: 500; padding: 2rem 1.5rem; transition: right 0.3s ease; display: flex; flex-direction: column; }
+.nav-drawer.open { right: 0; }
+.nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 499; }
+.nav-overlay.open { display: block; }
+.nav-drawer-close { align-self: flex-end; background: none; border: none; color: white; font-size: 1.3rem; cursor: pointer; margin-bottom: 2rem; padding: 4px; }
+.nav-drawer-links { list-style: none; display: flex; flex-direction: column; flex: 1; }
+.nav-drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.nav-drawer-links a { display: block; padding: 1rem 0; color: white; text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; }
+.nav-drawer-links a:hover { color: var(--salmon); }
+@media (max-width: 1024px) { nav { padding: 0 28px; } }
+@media (max-width: 768px) {
+  nav { padding: 0 16px; height: 64px; }
+  .nav-logo img { height: 42px; }
+  .nav-links, .nav-phone { display: none; }
+  .nav-hamburger { display: flex; }
+}
+@media (max-width: 480px) { nav { height: 58px; } .nav-logo img { height: 36px; } }
+
+/* ─── PAGE HERO ─────────────────────────────────────── */
+.page-hero {
+background: var(--navy);
+padding: 56px 24px 60px;
+text-align: center;
+}
+.page-hero .eyebrow {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 12px;
+}
+.page-hero h1 {
+font-size: clamp(28px, 4vw, 44px);
+font-weight: 800;
+color: var(--white);
+line-height: 1.15;
+margin-bottom: 14px;
+}
+.page-hero p {
+font-size: 17px;
+color: rgba(255,255,255,0.70);
+max-width: 520px;
+margin: 0 auto;
+line-height: 1.7;
+}
+
+/* ─── NOTICE BANNER ─────────────────────────────────── */
+.notice-banner {
+background: #fffbeb;
+border-top: 3px solid #f59e0b;
+padding: 20px 24px;
+}
+.notice-inner {
+max-width: 900px;
+margin: 0 auto;
+display: flex;
+align-items: flex-start;
+gap: 14px;
+}
+.notice-icon {
+width: 22px;
+height: 22px;
+flex-shrink: 0;
+color: #b45309;
+margin-top: 1px;
+}
+.notice-text {
+font-size: 14px;
+color: #78350f;
+line-height: 1.65;
+}
+.notice-text strong { font-weight: 800; }
+.notice-text a { color: #b45309; font-weight: 700; text-decoration: none; }
+.notice-text a:hover { text-decoration: underline; }
+
+/* ─── SEARCH ────────────────────────────────────────── */
+.search-section {
+background: var(--cream);
+padding: 36px 24px 0;
+}
+.search-inner {
+max-width: 900px;
+margin: 0 auto;
+}
+.search-label {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--navy);
+margin-bottom: 10px;
+}
+.search-wrap {
+position: relative;
+}
+.search-wrap svg {
+position: absolute;
+left: 16px;
+top: 50%;
+transform: translateY(-50%);
+width: 18px;
+height: 18px;
+color: var(--text-light);
+pointer-events: none;
+}
+#address-search {
+width: 100%;
+padding: 14px 18px 14px 46px;
+font-family: 'Nunito Sans', Arial, sans-serif;
+font-size: 16px;
+font-weight: 600;
+color: var(--text);
+background: var(--white);
+border: 2px solid var(--border);
+border-radius: var(--radius);
+outline: none;
+transition: border-color 0.2s;
+}
+#address-search:focus { border-color: var(--salmon); }
+#address-search::placeholder { color: var(--text-light); font-weight: 400; }
+
+/* ─── GRID ──────────────────────────────────────────── */
+.grid-section {
+background: var(--cream);
+padding: 24px 24px 64px;
+}
+.grid-inner {
+max-width: 900px;
+margin: 0 auto;
+}
+.prop-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 16px;
+}
+
+/* ─── PROPERTY CARD ─────────────────────────────────── */
+.prop-card {
+background: var(--white);
+border-radius: var(--radius);
+border: 1.5px solid var(--border);
+box-shadow: var(--shadow);
+padding: 22px 20px 20px;
+display: flex;
+flex-direction: column;
+gap: 4px;
+transition: box-shadow 0.2s, border-color 0.2s;
+}
+.prop-card:hover { box-shadow: 0 4px 24px rgba(11,44,61,0.12); border-color: #b0bec5; }
+.prop-card__type {
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 2px;
+}
+.prop-card__address {
+font-size: 17px;
+font-weight: 800;
+color: var(--navy);
+line-height: 1.2;
+}
+.prop-card__city {
+font-size: 13px;
+color: var(--text-light);
+margin-bottom: 14px;
+}
+.prop-card__amount {
+font-size: 22px;
+font-weight: 800;
+color: var(--navy);
+line-height: 1;
+margin-bottom: 2px;
+}
+.prop-card__amount span {
+font-size: 13px;
+font-weight: 400;
+color: var(--text-light);
+}
+.amount-tbd {
+display: inline-block;
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+background: #fef3c7;
+color: #92400e;
+padding: 4px 10px;
+border-radius: 4px;
+margin-bottom: 4px;
+}
+.prop-card__btn {
+display: block;
+width: 100%;
+margin-top: 14px;
+padding: 12px;
+background: var(--salmon);
+color: var(--white);
+font-family: 'Nunito Sans', Arial, sans-serif;
+font-size: 13px;
+font-weight: 800;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+text-align: center;
+text-decoration: none;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+transition: background 0.2s, transform 0.15s;
+}
+.prop-card__btn:hover { background: #b3684d; transform: translateY(-1px); }
+.prop-card__btn.btn-placeholder {
+background: #d1d5db;
+color: #6b7280;
+cursor: default;
+pointer-events: none;
+}
+.prop-card__btn.btn-placeholder:hover { transform: none; }
+
+/* ─── NO RESULTS ────────────────────────────────────── */
+#no-results {
+display: none;
+text-align: center;
+padding: 40px 24px;
+color: var(--text-light);
+font-size: 15px;
+}
+#no-results strong { color: var(--navy); }
+
+/* ─── HELP SECTION ──────────────────────────────────── */
+.help-section {
+background: var(--white);
+padding: 64px 24px;
+border-top: 1px solid var(--border);
+}
+.help-inner {
+max-width: 900px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 40px;
+align-items: start;
+}
+.help-block h3 {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--salmon);
+margin-bottom: 8px;
+}
+.help-block h2 {
+font-size: clamp(18px, 2.5vw, 24px);
+font-weight: 800;
+color: var(--navy);
+margin-bottom: 14px;
+line-height: 1.25;
+}
+.help-block p {
+font-size: 14px;
+color: var(--text-light);
+line-height: 1.75;
+margin-bottom: 12px;
+}
+.help-block p:last-child { margin-bottom: 0; }
+.contact-links {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-top: 20px;
+}
+.contact-link {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+font-size: 14px;
+font-weight: 700;
+color: var(--navy);
+text-decoration: none;
+padding: 12px 18px;
+background: var(--cream);
+border-radius: var(--radius);
+transition: background 0.2s;
+}
+.contact-link:hover { background: #d8e0df; }
+.contact-link svg { width: 16px; height: 16px; color: var(--salmon); flex-shrink: 0; }
+
+.faq-list {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+.faq-item {}
+.faq-item h4 {
+font-size: 14px;
+font-weight: 800;
+color: var(--navy);
+margin-bottom: 4px;
+}
+.faq-item p {
+font-size: 13px;
+color: var(--text-light);
+line-height: 1.65;
+}
+
+/* ─── FOOTER ────────────────────────────────────────── */
+footer { background: var(--navy); color: white; padding: 56px 60px 0; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
+.footer-tag { font-size: 0.83rem; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 1.25rem; max-width: 260px; }
+.footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1); transition: background 0.2s; }
+.footer-social a:hover { background: var(--salmon); }
+.footer-col h4 { font-size: 0.67rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.55rem; }
+.footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.84rem; }
+.footer-col a:hover { color: white; }
+.footer-bottom { padding: 1.4rem 0; font-size: 0.73rem; color: rgba(255,255,255,0.28); text-align: center; }
+@media (max-width: 1024px) { footer { padding: 48px 36px 0; } .footer-grid { gap: 2.5rem; } }
+@media (max-width: 768px) { footer { padding: 36px 16px 0; } .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } .footer-tag { max-width: 100%; } }
+
+/* ─── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 1024px) {
+.prop-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.help-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+.page-hero { padding: 44px 20px 48px; }
+.prop-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.help-section { padding: 48px 20px; }
+.notice-banner { padding: 16px 20px; }
+}
+@media (max-width: 640px) {
+/* Sticky search on mobile — stays visible as you scroll 23 cards */
+.search-section {
+  position: sticky;
+  top: 58px;
+  z-index: 100;
+  padding: 16px 16px 14px;
+  box-shadow: 0 2px 8px rgba(11,44,61,0.08);
+}
+.prop-grid { grid-template-columns: 1fr; }
+.grid-section { padding: 14px 16px 48px; }
+.help-section { padding: 40px 16px; }
+.notice-inner { flex-direction: column; gap: 8px; }
+.notice-banner { padding: 14px 16px; }
+/* Larger touch targets on mobile */
+.prop-card__btn { padding: 15px 12px; font-size: 14px; margin-top: 16px; }
+#address-search { font-size: 16px; padding: 15px 18px 15px 46px; }
+.contact-link { padding: 14px 18px; }
+.prop-card { padding: 20px 18px 18px; }
+}
+@media (max-width: 420px) {
+.page-hero h1 { font-size: 26px; }
+.page-hero p { font-size: 15px; }
+nav { padding: 0 14px; height: 58px; }
+.nav-logo img { height: 36px; }
+.search-section { top: 52px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<a href="/" class="nav-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png" alt="I Rent Houses In Sweats" onerror="this.style.display='none'" /></a>
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+<div class="nav-right">
+<a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
+</div>
+<button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-drawer">
+<button class="nav-drawer-close" aria-label="Close menu">&#x2715;</button>
+<ul class="nav-drawer-links">
+<li><a href="/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact">Contact</a></li>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
+</ul>
+</div>
+<div class="nav-overlay"></div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+<div class="eyebrow">Tenant Payment</div>
+<h1>Pay Your Rent</h1>
+<p>Find your address below and click Pay Now. You'll be taken to a secure Stripe checkout for your exact monthly amount.</p>
+</div>
+
+<!-- NOTICE -->
+<div class="notice-banner">
+<div class="notice-inner">
+<svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+<p class="notice-text"><strong>Monthly rent only.</strong> This page covers your standard monthly rent, including any pet rent for the month. If you owe a different amount — prorated move-in, late fee, or any other charge — <a href="/contact" target="_blank" rel="noopener">contact Neela first</a> before paying so she can send you the correct link.</p>
+</div>
+</div>
+
+<!-- SEARCH + GRID -->
+<div class="search-section">
+<div class="search-inner">
+<p class="search-label">Find Your Property</p>
+<div class="search-wrap">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type="text" id="address-search" placeholder="Start typing your street address…" autocomplete="off" spellcheck="false">
+</div>
+</div>
+</div>
+
+<div class="grid-section">
+<div class="grid-inner">
+<div class="prop-grid" id="prop-grid">
+  <!-- 1880 Wildwood Rd — $1,500/mo -->
+  <div class="prop-card" data-address="1880 wildwood rd toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1880 Wildwood Rd</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <p class="prop-card__amount">$1,500<span>/mo</span></p>
+    <a class="prop-card__btn" href="https://link.fastpaydirect.com/payment-link/6a427b6c2cbd86186455305e" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+
+  <!-- 332 Lacombe Dr -->
+  <div class="prop-card" data-address="332 lacombe dr maumee">
+    <p class="prop-card__type">Townhome</p>
+    <p class="prop-card__address">332 Lacombe Dr</p>
+    <p class="prop-card__city">Maumee, OH 43537</p>
+    <p class="prop-card__amount">$1,275<span>/mo</span></p>
+    <a class="prop-card__btn" href="https://link.fastpaydirect.com/payment-link/6995fc25b31ce127c8f47cdb" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+
+
+  <!-- 1337 Abbott Ave -->
+  <div class="prop-card" data-address="1337 abbott ave toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1337 Abbott Ave</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <p class="prop-card__amount">$1,400<span>/mo</span></p>
+    <a class="prop-card__btn" href="https://link.fastpaydirect.com/payment-link/6a427cb9a655fa0b802a1c39" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+
+
+  <!-- 5468 Fern Dr -->
+  <div class="prop-card" data-address="5468 fern dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">5468 Fern Dr</p>
+    <p class="prop-card__city">Toledo, OH 43613</p>
+    <p class="prop-card__amount">$1,500<span>/mo</span></p>
+    <a class="prop-card__btn" href="https://link.fastpaydirect.com/payment-link/6a427d6b2cbd861864553066" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+
+
+
+  <!-- ============================================================
+       TEMPLATE INSTRUCTIONS:
+       - Replace [[STRIPE_LINK]] with the Stripe payment URL from GHL
+       - Replace amount-tbd span with actual dollar amount
+       - Remove class="btn-placeholder" from btn once link is added
+       ============================================================ -->  <!-- 1052 Valley Grove Dr -->
+  <div class="prop-card" data-address="1052 valley grove dr maumee">
+    <p class="prop-card__type">Condo · Townhouse</p>
+    <p class="prop-card__address">1052 Valley Grove Dr</p>
+    <p class="prop-card__city">Maumee, OH 43537</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>  <!-- 1343 Corry Ave -->
+  <div class="prop-card" data-address="1343 corry ave toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1343 Corry Ave</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 1347 Corry Ave -->
+  <div class="prop-card" data-address="1347 corry ave toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1347 Corry Ave</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 1429 Bensch Dr — $1,150/mo -->
+  <div class="prop-card" data-address="1429 bensch dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1429 Bensch Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <p class="prop-card__amount">$1,150<span>/mo</span></p>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 1531 Wilmore Dr -->
+  <div class="prop-card" data-address="1531 wilmore dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1531 Wilmore Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <p class="prop-card__amount">$1,350<span>/mo</span></p>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 1876 Wildwood Rd -->
+  <div class="prop-card" data-address="1876 wildwood rd toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1876 Wildwood Rd</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <p class="prop-card__amount">$1,350<span>/mo</span></p>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+  <!-- 1960 Princeton Dr -->
+  <div class="prop-card" data-address="1960 princeton dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1960 Princeton Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 2264 Rockspring Rd -->
+  <div class="prop-card" data-address="2264 rockspring rd toledo">
+    <p class="prop-card__type">Condo</p>
+    <p class="prop-card__address">2264 Rockspring Rd</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 2270 Rockspring Rd #7 -->
+  <div class="prop-card" data-address="2270 rockspring rd toledo">
+    <p class="prop-card__type">Condo</p>
+    <p class="prop-card__address">2270 Rockspring Rd #7</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 3110 Strathmoor Ave -->
+  <div class="prop-card" data-address="3110 strathmoor ave toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">3110 Strathmoor Ave</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <p class="prop-card__amount">$1,500<span>/mo</span></p>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 3354 Wyckliffe Pkwy #Upper -->
+  <div class="prop-card" data-address="3354 wyckliffe pkwy upper toledo">
+    <p class="prop-card__type">Upper Unit · Duplex</p>
+    <p class="prop-card__address">3354 Wyckliffe Pkwy<br><small>#Upper</small></p>
+    <p class="prop-card__city">Toledo, OH 43606</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 3356 Wyckliffe Pkwy #Lower -->
+  <div class="prop-card" data-address="3356 wyckliffe pkwy lower toledo">
+    <p class="prop-card__type">Lower Unit · Duplex</p>
+    <p class="prop-card__address">3356 Wyckliffe Pkwy<br><small>#Lower</small></p>
+    <p class="prop-card__city">Toledo, OH 43606</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 3718 Kershaw Ave -->
+  <div class="prop-card" data-address="3718 kershaw ave toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">3718 Kershaw Ave</p>
+    <p class="prop-card__city">Toledo, OH 43613</p>
+    <p class="prop-card__amount">$1,450<span>/mo</span></p>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 3872 Vogel Dr -->
+  <div class="prop-card" data-address="3872 vogel dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">3872 Vogel Dr</p>
+    <p class="prop-card__city">Toledo, OH 43613</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 3908 S Detroit Ave -->
+  <div class="prop-card" data-address="3908 s detroit ave toledo">
+    <p class="prop-card__type">Townhouse</p>
+    <p class="prop-card__address">3908 S Detroit Ave</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 3910 S Detroit Ave -->
+  <div class="prop-card" data-address="3910 s detroit ave toledo">
+    <p class="prop-card__type">Townhouse</p>
+    <p class="prop-card__address">3910 S Detroit Ave</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>  <!-- 5524 Glenridge Dr -->
+  <div class="prop-card" data-address="5524 glenridge dr toledo">
+    <p class="prop-card__type">Condo</p>
+    <p class="prop-card__address">5524 Glenridge Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <p class="prop-card__amount">$1,150<span>/mo</span></p>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 5533 Cresthaven Ln #1B -->
+  <div class="prop-card" data-address="5533 cresthaven ln toledo">
+    <p class="prop-card__type">Condo · Ground Floor</p>
+    <p class="prop-card__address">5533 Cresthaven Ln #1B</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+  <!-- 5753 Yermo Dr -->
+  <div class="prop-card" data-address="5753 yermo dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">5753 Yermo Dr</p>
+    <p class="prop-card__city">Toledo, OH 43613</p>
+    <span class="amount-tbd">Amount TBD</span>
+    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+  </div>
+
+</div><!-- /.prop-grid -->
+
+<div id="no-results">
+  <strong>No property found for that address.</strong><br>
+  Try a shorter search — or <a href="/contact" target="_blank" rel="noopener" style="color:var(--salmon);font-weight:700;">contact Neela</a> if you need help.
+</div>
+
+</div><!-- /.grid-inner -->
+</div><!-- /.grid-section -->
+
+<!-- HELP -->
+<div class="help-section">
+<div class="help-inner">
+
+  <div class="help-block">
+    <h3>Need Help?</h3>
+    <h2>Questions About Your Payment?</h2>
+    <p>If you don't see your address, owe a different amount than what's shown, or have any questions about your payment — reach out to Neela directly. She handles everything herself.</p>
+    <div class="contact-links">
+      <a href="tel:4199027728" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.07-1.07a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        (419) 902-7728
+      </a>
+      <a href="mailto:nkelly7x@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        nkelly7x@gmail.com
+      </a>
+    </div>
+  </div>
+
+  <div class="help-block">
+    <h3>Common Questions</h3>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>Is this secure?</h4>
+        <p>Yes. All payments are processed through Stripe, which is PCI-compliant. Your card info is never stored or seen by anyone except Stripe.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if I owe more or less than what's shown?</h4>
+        <p>Contact Neela before paying. She can send you a custom link for the exact amount you owe — late fees, prorated rent, or anything else.</p>
+      </div>
+      <div class="faq-item">
+        <h4>When is rent due?</h4>
+        <p>Rent is due on the 1st of the month. If you have questions about your due date or grace period, reach out directly.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Will I get a receipt?</h4>
+        <p>Yes — Stripe sends a receipt to your email automatically after every payment.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-grid">
+<div>
+<div class="footer-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png" alt="I Rent Houses In Sweats" onerror="this.style.display='none'" /></div>
+<p class="footer-tag">Friendly, organized, and upfront about everything &#8212; from first tour to move-in day.</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/irenthousesinsweats" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/rentals">Properties</a></li>
+<li><a href="https://www.irenthousesinsweats.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+<li><a href="https://www.irenthousesinsweats.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Get In Touch</h4>
+<ul>
+<li><a href="tel:4199027728">(419) 902-7728</a></li>
+<li><a href="mailto:nkelly7x@gmail.com">nkelly7x@gmail.com</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&#169; 2026 I Rent Houses In Sweats. All rights reserved. Equal Housing Opportunity &nbsp;&middot;&nbsp; Neela Kelly, Licensed Real Estate Agent &nbsp;&middot;&nbsp; Perrysburg, OH</p>
+</div>
+</footer>
+
+<script>
+// Nav drawer
+(function() {
+  var btn = document.querySelector('.nav-hamburger');
+  var drawer = document.querySelector('.nav-drawer');
+  var overlay = document.querySelector('.nav-overlay');
+  var closeBtn = document.querySelector('.nav-drawer-close');
+  function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  if (btn) btn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+})();
+
+// Address search filter
+(function() {
+  var input = document.getElementById('address-search');
+  var cards = document.querySelectorAll('.prop-card');
+  var noResults = document.getElementById('no-results');
+  if (!input) return;
+  input.addEventListener('input', function() {
+    var q = input.value.trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function(card) {
+      var addr = (card.dataset.address || '').toLowerCase();
+      var show = !q || addr.includes(q);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  });
+})();
+</script>
+</body>
+</html>
