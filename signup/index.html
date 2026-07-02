@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Account — I Rent Houses In Sweats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      background: #0b2c3d;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 44px 40px 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    }
+
+    .logo {
+      display: block;
+      height: 44px;
+      margin: 0 auto 28px;
+    }
+
+    h1 {
+      color: #0b2c3d;
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .property-tag {
+      background: #E8EEED;
+      color: #0b2c3d;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      padding: 10px 16px;
+      border-radius: 8px;
+      margin-bottom: 28px;
+    }
+
+    .property-tag span {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #C4775A;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 3px;
+    }
+
+    label {
+      display: block;
+      color: #0b2c3d;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #dde3e3;
+      border-radius: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 15px;
+      color: #0b2c3d;
+      margin-bottom: 18px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    input:focus { border-color: #C4775A; }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #C4775A;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 4px;
+    }
+
+    button:hover:not(:disabled) { background: #ad6249; }
+    button:disabled { background: #c8c8c8; cursor: not-allowed; }
+
+    .error {
+      background: #fff2f0;
+      border: 1.5px solid #f5c0b5;
+      color: #b83c28;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .login-link a {
+      color: #C4775A;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .login-link a:hover { text-decoration: underline; }
+
+    .loading {
+      text-align: center;
+      color: #888;
+      padding: 30px 0;
+      font-size: 15px;
+    }
+
+    .invalid {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .invalid p { color: #0b2c3d; font-size: 15px; margin-bottom: 10px; }
+    .invalid .contact { color: #888; font-size: 14px; }
+
+    @media (max-width: 480px) {
+      .card { padding: 36px 24px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <img class="logo"
+    src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png"
+    alt="I Rent Houses In Sweats"
+    onerror="this.style.display='none'">
+
+  <!-- Loading state -->
+  <div id="view-loading" class="loading">Looking up your property...</div>
+
+  <!-- Form -->
+  <div id="view-form" style="display:none;">
+    <h1>Create Your Account</h1>
+    <div class="property-tag">
+      <span>Your Property</span>
+      <span id="property-address"></span>
+    </div>
+
+    <div class="error" id="error-msg"></div>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="you@email.com" autocomplete="email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="At least 8 characters" autocomplete="new-password">
+
+    <label for="confirm">Confirm Password</label>
+    <input type="password" id="confirm" placeholder="Repeat your password" autocomplete="new-password">
+
+    <button id="submit-btn" onclick="handleSignup()">Create Account</button>
+
+    <div class="login-link">Already have an account? <a href="/login">Sign in</a></div>
+  </div>
+
+  <!-- Invalid code -->
+  <div id="view-invalid" style="display:none;" class="invalid">
+    <p>This invite link is invalid or expired.</p>
+    <p class="contact">Contact Neela at (419) 902-7728 for a new link.</p>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://dzhdwremvptmtacvmxlq.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_o1_z3RyBQlz5KRpMPSF83A_ux7nAc2y';
+
+  const { createClient } = supabase;
+  const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  let propertyId = null;
+
+  function show(viewId) {
+    ['view-loading', 'view-form', 'view-invalid'].forEach(id => {
+      document.getElementById(id).style.display = id === viewId ? 'block' : 'none';
+    });
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('error-msg');
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  function hideError() {
+    document.getElementById('error-msg').style.display = 'none';
+  }
+
+  async function init() {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('p');
+
+    if (!code) { show('view-invalid'); return; }
+
+    const { data, error } = await db
+      .from('properties')
+      .select('id, address')
+      .eq('invite_code', code)
+      .single();
+
+    if (error || !data) { show('view-invalid'); return; }
+
+    propertyId = data.id;
+    document.getElementById('property-address').textContent = data.address;
+    show('view-form');
+  }
+
+  async function handleSignup() {
+    hideError();
+
+    const email    = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirm  = document.getElementById('confirm').value;
+    const btn      = document.getElementById('submit-btn');
+
+    if (!email || !password || !confirm) {
+      showError('Please fill in all fields.'); return;
+    }
+    if (password.length < 8) {
+      showError('Password must be at least 8 characters.'); return;
+    }
+    if (password !== confirm) {
+      showError('Passwords do not match.'); return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Creating account...';
+
+    const { data, error } = await db.auth.signUp({ email, password });
+
+    if (error) {
+      showError(error.message);
+      btn.disabled = false;
+      btn.textContent = 'Create Account';
+      return;
+    }
+
+    await db.from('tenants').insert({
+      user_id: data.user.id,
+      property_id: propertyId,
+      balance: 0
+    });
+
+    window.location.href = '/dashboard';
+  }
+
+  init();
+</script>
+</body>
+</html>
