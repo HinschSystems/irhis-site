@@ -372,7 +372,7 @@
     }
 
     // Stripe payment link — add STRIPE_PAYMENT_LINK below once created
-    const STRIPE_LINK = 'REPLACE_WITH_STRIPE_VARIABLE_PAYMENT_LINK';
+    const STRIPE_LINK = 'https://buy.stripe.com/3cI9AM4re4gq0bPgZZds402';
     const amountInCents = Math.round(amount * 100);
     window.location.href = STRIPE_LINK + '?prefilled_amount=' + amountInCents;
   }
