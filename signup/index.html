@@ -272,7 +272,8 @@
     await db.from('tenants').insert({
       user_id: data.user.id,
       property_id: propertyId,
-      balance: 0
+      balance: 0,
+      email: email
     });
 
     window.location.href = '/dashboard';
