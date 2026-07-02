@@ -232,10 +232,7 @@
       .eq('invite_code', code)
       .single();
 
-    if (error || !data) {
-      document.getElementById('view-invalid').innerHTML = '<p style="color:#c00;font-size:13px;word-break:break-all;">DEBUG: ' + JSON.stringify(error) + ' | code: ' + code + '</p>';
-      show('view-invalid'); return;
-    }
+    if (error || !data) { show('view-invalid'); return; }
 
     propertyId = data.id;
     document.getElementById('property-address').textContent = data.address;
