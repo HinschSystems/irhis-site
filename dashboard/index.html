@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account — I Rent Houses In Sweats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      background: #E8EEED;
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    /* Top bar */
+    .topbar {
+      background: #0b2c3d;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar img {
+      height: 36px;
+    }
+
+    .signout {
+      color: #E8EEED;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      transition: background 0.15s;
+    }
+
+    .signout:hover { background: rgba(255,255,255,0.1); }
+
+    /* Main content */
+    .main {
+      max-width: 560px;
+      margin: 36px auto;
+      padding: 0 20px;
+    }
+
+    .greeting {
+      font-size: 13px;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .property-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0b2c3d;
+      margin-bottom: 24px;
+    }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(11,44,61,0.07);
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #C4775A;
+      margin-bottom: 6px;
+    }
+
+    .card-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0b2c3d;
+    }
+
+    .card-sub {
+      font-size: 13px;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .stats-row .card {
+      margin-bottom: 0;
+    }
+
+    /* Balance positive/negative */
+    .balance-positive { color: #2a7a4b; }
+    .balance-negative { color: #c0392b; }
+
+    /* Payment card */
+    .payment-card {
+      background: #0b2c3d;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin-bottom: 16px;
+    }
+
+    .payment-card .card-label {
+      color: rgba(232,238,237,0.6);
+    }
+
+    .payment-card h2 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .amount-input-wrap {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .dollar-sign {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      font-weight: 700;
+      color: #0b2c3d;
+    }
+
+    .amount-input {
+      width: 100%;
+      padding: 16px 16px 16px 36px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #0b2c3d;
+      outline: none;
+    }
+
+    .amount-input::placeholder { color: #bbb; }
+
+    .quick-amounts {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .quick-btn {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .quick-btn:hover { background: rgba(255,255,255,0.2); }
+
+    .pay-btn {
+      width: 100%;
+      padding: 16px;
+      background: #C4775A;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .pay-btn:hover:not(:disabled) { background: #ad6249; }
+    .pay-btn:disabled { background: #555; cursor: not-allowed; }
+
+    .pay-note {
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* Error */
+    .error-msg {
+      background: #fff2f0;
+      border: 1.5px solid #f5c0b5;
+      color: #b83c28;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #888;
+      font-size: 15px;
+    }
+
+    @media (max-width: 480px) {
+      .main { margin: 20px auto; }
+      .card-value { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png"
+    alt="I Rent Houses In Sweats"
+    onerror="this.style.display='none'">
+  <button class="signout" onclick="signOut()">Sign Out</button>
+</div>
+
+<div class="main">
+  <div id="view-loading" class="loading">Loading your account...</div>
+
+  <div id="view-dashboard" style="display:none;">
+    <p class="greeting">Welcome back</p>
+    <p class="property-name" id="property-address"></p>
+
+    <div class="stats-row">
+      <div class="card">
+        <div class="card-label">Monthly Rent</div>
+        <div class="card-value" id="monthly-rent">—</div>
+        <div class="card-sub">due on the 1st</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Balance</div>
+        <div class="card-value" id="balance">—</div>
+        <div class="card-sub" id="balance-sub"></div>
+      </div>
+    </div>
+
+    <div class="error-msg" id="pay-error"></div>
+
+    <div class="payment-card">
+      <div class="card-label">Make a Payment</div>
+      <h2>How much would you like to pay?</h2>
+
+      <div class="amount-input-wrap">
+        <span class="dollar-sign">$</span>
+        <input class="amount-input" type="number" id="pay-amount" placeholder="0.00" min="1" step="0.01">
+      </div>
+
+      <div class="quick-amounts" id="quick-amounts"></div>
+
+      <button class="pay-btn" id="pay-btn" onclick="handlePayment()">Pay Now</button>
+      <p class="pay-note">You'll be taken to a secure checkout page</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://dzhdwremvptmtacvmxlq.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6aGR3cmVtdnB0bXRhY3ZteGxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NDg2MDgsImV4cCI6MjA5ODUyNDYwOH0.xb_yw_w3AIpzn-cVZTm_1iqY-IE99oJxSnaa6jMExDQ';
+
+  const { createClient } = supabase;
+  const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  let monthlyRent = 0;
+  let currentBalance = 0;
+
+  function fmt(amount) {
+    return '$' + parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  async function init() {
+    const { data: { session } } = await db.auth.getSession();
+    if (!session) { window.location.href = '/login'; return; }
+
+    const user = session.user;
+
+    // Get tenant record
+    const { data: tenant, error: tErr } = await db
+      .from('tenants')
+      .select('balance, property_id')
+      .eq('user_id', user.id)
+      .single();
+
+    if (tErr || !tenant) { window.location.href = '/login'; return; }
+
+    currentBalance = tenant.balance || 0;
+
+    // Get property record
+    const { data: property, error: pErr } = await db
+      .from('properties')
+      .select('address, monthly_rent')
+      .eq('id', tenant.property_id)
+      .single();
+
+    if (pErr || !property) { window.location.href = '/login'; return; }
+
+    monthlyRent = property.monthly_rent;
+
+    // Populate UI
+    document.getElementById('property-address').textContent = property.address;
+    document.getElementById('monthly-rent').textContent = fmt(monthlyRent);
+
+    const balEl = document.getElementById('balance');
+    const balSub = document.getElementById('balance-sub');
+
+    if (currentBalance > 0) {
+      balEl.textContent = fmt(currentBalance);
+      balEl.className = 'card-value balance-negative';
+      balSub.textContent = 'outstanding balance';
+    } else if (currentBalance < 0) {
+      balEl.textContent = fmt(Math.abs(currentBalance));
+      balEl.className = 'card-value balance-positive';
+      balSub.textContent = 'credit on account';
+    } else {
+      balEl.textContent = '$0.00';
+      balEl.className = 'card-value';
+      balSub.textContent = 'no balance due';
+    }
+
+    // Quick amount buttons
+    const quickWrap = document.getElementById('quick-amounts');
+    const amounts = [monthlyRent, Math.round(monthlyRent / 2), 100, 50];
+    const labels = ['Full Month', 'Half Month', '$100', '$50'];
+    amounts.forEach((amt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quick-btn';
+      btn.textContent = labels[i];
+      btn.onclick = () => document.getElementById('pay-amount').value = amt;
+      quickWrap.appendChild(btn);
+    });
+
+    document.getElementById('view-loading').style.display = 'none';
+    document.getElementById('view-dashboard').style.display = 'block';
+  }
+
+  function handlePayment() {
+    const amount = parseFloat(document.getElementById('pay-amount').value);
+    const errEl = document.getElementById('pay-error');
+    errEl.style.display = 'none';
+
+    if (!amount || amount < 1) {
+      errEl.textContent = 'Please enter a payment amount of at least $1.00.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    // Stripe payment link — add STRIPE_PAYMENT_LINK below once created
+    const STRIPE_LINK = 'REPLACE_WITH_STRIPE_VARIABLE_PAYMENT_LINK';
+    const amountInCents = Math.round(amount * 100);
+    window.location.href = STRIPE_LINK + '?prefilled_amount=' + amountInCents;
+  }
+
+  async function signOut() {
+    await db.auth.signOut();
+    window.location.href = '/login';
+  }
+
+  init();
+</script>
+</body>
+</html>
