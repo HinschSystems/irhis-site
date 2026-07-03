@@ -290,6 +290,7 @@
 
   let monthlyRent = 0;
   let currentBalance = 0;
+  let tenantEmail = "";
 
   function fmt(amount) {
     return '$' + parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -300,6 +301,7 @@
     if (!session) { window.location.href = '/login'; return; }
 
     const user = session.user;
+    tenantEmail = user.email || "";
 
     // Get tenant record
     const { data: tenant, error: tErr } = await db
@@ -374,7 +376,8 @@
     // Stripe payment link — add STRIPE_PAYMENT_LINK below once created
     const STRIPE_LINK = 'https://buy.stripe.com/3cI9AM4re4gq0bPgZZds402';
     const amountInCents = Math.round(amount * 100);
-    window.location.href = STRIPE_LINK + '?prefilled_amount=' + amountInCents;
+    const emailParam = tenantEmail ? '&prefilled_email=' + encodeURIComponent(tenantEmail) : '';
+    window.location.href = STRIPE_LINK + '?prefilled_amount=' + amountInCents + emailParam;
   }
 
   async function signOut() {
