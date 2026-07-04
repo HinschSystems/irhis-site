@@ -148,6 +148,22 @@
     .invalid p { color: #0b2c3d; font-size: 15px; margin-bottom: 10px; }
     .invalid .contact { color: #888; font-size: 14px; }
 
+    .invalid button {
+      background: #C4775A;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      width: auto;
+      margin-top: 10px;
+    }
+
+    .invalid button:hover { background: #ad6249; }
+
     @media (max-width: 480px) {
       .card { padding: 36px 24px 32px; }
     }
@@ -193,6 +209,12 @@
     <p>This invite link is invalid or expired.</p>
     <p class="contact">Contact Neela at (419) 902-7728 for a new link.</p>
   </div>
+
+  <!-- Network / load error -->
+  <div id="view-load-error" style="display:none;" class="invalid">
+    <p>We couldn't load your property details. Please check your connection and try again.</p>
+    <button onclick="location.reload()">Retry</button>
+  </div>
 </div>
 
 <script>
@@ -205,7 +227,7 @@
   let propertyId = null;
 
   function show(viewId) {
-    ['view-loading', 'view-form', 'view-invalid'].forEach(id => {
+    ['view-loading', 'view-form', 'view-invalid', 'view-load-error'].forEach(id => {
       document.getElementById(id).style.display = id === viewId ? 'block' : 'none';
     });
   }
@@ -226,17 +248,21 @@
 
     if (!code) { show('view-invalid'); return; }
 
-    const { data, error } = await db
-      .from('properties')
-      .select('id, address')
-      .eq('invite_code', code)
-      .single();
+    try {
+      const { data, error } = await db
+        .from('properties')
+        .select('id, address')
+        .eq('invite_code', code)
+        .single();
 
-    if (error || !data) { show('view-invalid'); return; }
+      if (error || !data) { show('view-invalid'); return; }
 
-    propertyId = data.id;
-    document.getElementById('property-address').textContent = data.address;
-    show('view-form');
+      propertyId = data.id;
+      document.getElementById('property-address').textContent = data.address;
+      show('view-form');
+    } catch (e) {
+      show('view-load-error');
+    }
   }
 
   async function handleSignup() {
@@ -269,12 +295,19 @@
       return;
     }
 
-    await db.from('tenants').insert({
+    const { error: insertErr } = await db.from('tenants').insert({
       user_id: data.user.id,
       property_id: propertyId,
       balance: 0,
       email: email
     });
+
+    if (insertErr) {
+      showError('Your account was created, but we could not link it to your property. Please contact Neela at (419) 902-7728 so she can finish setting up your account.');
+      btn.disabled = false;
+      btn.textContent = 'Create Account';
+      return;
+    }
 
     window.location.href = '/dashboard';
   }
