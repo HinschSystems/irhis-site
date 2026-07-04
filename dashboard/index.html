@@ -227,6 +227,31 @@
       font-size: 15px;
     }
 
+    .load-error {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .load-error p {
+      color: #0b2c3d;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .load-error button {
+      background: #C4775A;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .load-error button:hover { background: #ad6249; }
+
     @media (max-width: 480px) {
       .main { margin: 20px auto; }
       .card-value { font-size: 26px; }
@@ -244,6 +269,11 @@
 
 <div class="main">
   <div id="view-loading" class="loading">Loading your account...</div>
+
+  <div id="view-load-error" class="load-error" style="display:none;">
+    <p>We couldn't load your account. Please check your connection and try again.</p>
+    <button onclick="location.reload()">Retry</button>
+  </div>
 
   <div id="view-dashboard" style="display:none;">
     <p class="greeting">Welcome back</p>
@@ -297,69 +327,74 @@
   }
 
   async function init() {
-    const { data: { session } } = await db.auth.getSession();
-    if (!session) { window.location.href = '/login'; return; }
+    try {
+      const { data: { session } } = await db.auth.getSession();
+      if (!session) { window.location.href = '/login'; return; }
 
-    const user = session.user;
-    tenantEmail = user.email || "";
+      const user = session.user;
+      tenantEmail = user.email || "";
 
-    // Get tenant record
-    const { data: tenant, error: tErr } = await db
-      .from('tenants')
-      .select('balance, property_id')
-      .eq('user_id', user.id)
-      .single();
+      // Get tenant record
+      const { data: tenant, error: tErr } = await db
+        .from('tenants')
+        .select('balance, property_id')
+        .eq('user_id', user.id)
+        .single();
 
-    if (tErr || !tenant) { window.location.href = '/login'; return; }
+      if (tErr || !tenant) { window.location.href = '/login'; return; }
 
-    currentBalance = tenant.balance || 0;
+      currentBalance = tenant.balance || 0;
 
-    // Get property record
-    const { data: property, error: pErr } = await db
-      .from('properties')
-      .select('address, monthly_rent')
-      .eq('id', tenant.property_id)
-      .single();
+      // Get property record
+      const { data: property, error: pErr } = await db
+        .from('properties')
+        .select('address, monthly_rent')
+        .eq('id', tenant.property_id)
+        .single();
 
-    if (pErr || !property) { window.location.href = '/login'; return; }
+      if (pErr || !property) { window.location.href = '/login'; return; }
 
-    monthlyRent = property.monthly_rent;
+      monthlyRent = property.monthly_rent;
 
-    // Populate UI
-    document.getElementById('property-address').textContent = property.address;
-    document.getElementById('monthly-rent').textContent = fmt(monthlyRent);
+      // Populate UI
+      document.getElementById('property-address').textContent = property.address;
+      document.getElementById('monthly-rent').textContent = fmt(monthlyRent);
 
-    const balEl = document.getElementById('balance');
-    const balSub = document.getElementById('balance-sub');
+      const balEl = document.getElementById('balance');
+      const balSub = document.getElementById('balance-sub');
 
-    if (currentBalance > 0) {
-      balEl.textContent = fmt(currentBalance);
-      balEl.className = 'card-value balance-negative';
-      balSub.textContent = 'outstanding balance';
-    } else if (currentBalance < 0) {
-      balEl.textContent = fmt(Math.abs(currentBalance));
-      balEl.className = 'card-value balance-positive';
-      balSub.textContent = 'credit on account';
-    } else {
-      balEl.textContent = '$0.00';
-      balEl.className = 'card-value';
-      balSub.textContent = 'no balance due';
+      if (currentBalance > 0) {
+        balEl.textContent = fmt(currentBalance);
+        balEl.className = 'card-value balance-negative';
+        balSub.textContent = 'outstanding balance';
+      } else if (currentBalance < 0) {
+        balEl.textContent = fmt(Math.abs(currentBalance));
+        balEl.className = 'card-value balance-positive';
+        balSub.textContent = 'credit on account';
+      } else {
+        balEl.textContent = fmt(0);
+        balEl.className = 'card-value';
+        balSub.textContent = 'no balance due';
+      }
+
+      // Quick amount buttons
+      const quickWrap = document.getElementById('quick-amounts');
+      const amounts = [monthlyRent, Math.round(monthlyRent / 2), 100, 50];
+      const labels = ['Full Month', 'Half Month', '$100', '$50'];
+      amounts.forEach((amt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'quick-btn';
+        btn.textContent = labels[i];
+        btn.onclick = () => document.getElementById('pay-amount').value = amt;
+        quickWrap.appendChild(btn);
+      });
+
+      document.getElementById('view-loading').style.display = 'none';
+      document.getElementById('view-dashboard').style.display = 'block';
+    } catch (e) {
+      document.getElementById('view-loading').style.display = 'none';
+      document.getElementById('view-load-error').style.display = 'block';
     }
-
-    // Quick amount buttons
-    const quickWrap = document.getElementById('quick-amounts');
-    const amounts = [monthlyRent, Math.round(monthlyRent / 2), 100, 50];
-    const labels = ['Full Month', 'Half Month', '$100', '$50'];
-    amounts.forEach((amt, i) => {
-      const btn = document.createElement('button');
-      btn.className = 'quick-btn';
-      btn.textContent = labels[i];
-      btn.onclick = () => document.getElementById('pay-amount').value = amt;
-      quickWrap.appendChild(btn);
-    });
-
-    document.getElementById('view-loading').style.display = 'none';
-    document.getElementById('view-dashboard').style.display = 'block';
   }
 
   function handlePayment() {
@@ -373,7 +408,6 @@
       return;
     }
 
-    // Stripe payment link — add STRIPE_PAYMENT_LINK below once created
     const STRIPE_LINK = 'https://buy.stripe.com/3cI9AM4re4gq0bPgZZds402';
     const amountInCents = Math.round(amount * 100);
     const emailParam = tenantEmail ? '&prefilled_email=' + encodeURIComponent(tenantEmail) : '';
