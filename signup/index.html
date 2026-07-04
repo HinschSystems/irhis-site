@@ -217,6 +217,12 @@
     <p class="contact">Contact Neela at (419) 902-7728 for a new link.</p>
   </div>
 
+  <!-- Already claimed -->
+  <div id="view-claimed" style="display:none;" class="invalid">
+    <p>An account already exists for this property.</p>
+    <p class="contact">If this is you, <a href="/login">sign in here</a>. If you think this is a mistake, contact Neela at (419) 902-7728.</p>
+  </div>
+
   <!-- Network / load error -->
   <div id="view-load-error" style="display:none;" class="invalid">
     <p>We couldn't load your property details. Please check your connection and try again.</p>
@@ -234,7 +240,7 @@
   let propertyId = null;
 
   function show(viewId) {
-    ['view-loading', 'view-form', 'view-invalid', 'view-load-error'].forEach(id => {
+    ['view-loading', 'view-form', 'view-invalid', 'view-load-error', 'view-claimed'].forEach(id => {
       document.getElementById(id).style.display = id === viewId ? 'block' : 'none';
     });
   }
@@ -250,6 +256,10 @@
   }
 
   async function init() {
+    // If they're already logged in, skip signup entirely and go straight to the dashboard
+    const { data: { session } } = await db.auth.getSession();
+    if (session) { window.location.href = '/dashboard'; return; }
+
     const params = new URLSearchParams(window.location.search);
     const code = params.get('p');
 
@@ -265,6 +275,14 @@
       if (error || !data) { show('view-invalid'); return; }
 
       propertyId = data.id;
+
+      // Check whether this property already has a tenant account before showing the form
+      const { data: alreadyClaimed, error: claimCheckErr } = await db.rpc('property_has_tenant', {
+        target_property_id: propertyId
+      });
+
+      if (!claimCheckErr && alreadyClaimed) { show('view-claimed'); return; }
+
       document.getElementById('property-address').textContent = data.address;
       show('view-form');
     } catch (e) {
@@ -310,6 +328,11 @@
     });
 
     if (insertErr) {
+      if (insertErr.code === '23505') {
+        // Someone else claimed this property in the moments since the page loaded
+        show('view-claimed');
+        return;
+      }
       showError('Your account was created, but we could not link it to your property. Please contact Neela at (419) 902-7728 so she can finish setting up your account.');
       btn.disabled = false;
       btn.textContent = 'Create Account';
