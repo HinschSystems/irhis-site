@@ -38,7 +38,6 @@ background: var(--white);
 line-height: 1.6;
 }
 
-/* ─── NAV BASE ────────────────────────────────────── */
 nav {
 background: var(--white);
 height: 78px;
@@ -102,7 +101,6 @@ nav { padding: 0 16px; height: 64px; }
 }
 @media (max-width: 480px) { nav { height: 58px; } .nav-logo img { height: 36px; } }
 
-/* HERO HEADER */
 .page-header {
 background: var(--navy);
 padding: 48px 24px 52px;
@@ -131,7 +129,6 @@ margin: 0 auto;
 line-height: 1.7;
 }
 
-/* TRUST STRIP */
 .trust-strip {
 background: var(--cream);
 padding: 20px 24px;
@@ -152,7 +149,6 @@ color: var(--navy);
 }
 .trust-item svg { color: var(--salmon); flex-shrink: 0; }
 
-/* MAIN LAYOUT */
 .page-body {
 max-width: 1100px;
 margin: 0 auto;
@@ -163,7 +159,6 @@ gap: 56px;
 align-items: start;
 }
 
-/* FORM COLUMN */
 .form-label {
 font-size: 11px;
 font-weight: 800;
@@ -191,7 +186,6 @@ border-radius: 3px;
 display: block;
 }
 
-/* SIDEBAR */
 .info-col {
 position: sticky;
 top: 24px;
@@ -263,7 +257,6 @@ font-weight: 700;
 color: var(--white);
 }
 
-/* FOOTER */
 footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
@@ -279,7 +272,6 @@ footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 @media (max-width: 1024px) { footer { padding: 48px 36px 0; } .footer-grid { gap: 2.5rem; } }
 @media (max-width: 768px) { footer { padding: 36px 16px 0; } .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } .footer-tag { max-width: 100%; } }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
 .page-body { grid-template-columns: 1fr; gap: 40px; }
 .info-col { position: static; }
@@ -301,6 +293,7 @@ footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 <li><a href="/rentals">Properties</a></li>
 <li><a href="/about">About</a></li>
 <li><a href="/contact" class="nav-active">Contact</a></li>
+<li><a href="/pay-rent">Tenant Login</a></li>
 </ul>
 <div class="nav-right">
 <a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
@@ -316,6 +309,7 @@ footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 <li><a href="/rentals">Properties</a></li>
 <li><a href="/about">About</a></li>
 <li><a href="/contact">Contact</a></li>
+<li><a href="/pay-rent">Tenant Login</a></li>
 <li><a href="tel:4199027728">(419) 902-7728</a></li>
 </ul>
 <a href="/prequal" class="nav-drawer-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
@@ -323,14 +317,12 @@ footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 <div class="nav-overlay"></div>
 </nav>
 
-<!-- HEADER -->
 <div class="page-header">
 <div class="eyebrow">Get In Touch</div>
 <h1>Ask a Question.<br>We'll Get Back to You Fast.</h1>
 <p>Have a question about a property, the rental process, or anything else? Send a message and Neela will respond directly — usually within one business day.</p>
 </div>
 
-<!-- TRUST STRIP -->
 <div class="trust-strip">
 <div class="trust-item">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -350,10 +342,8 @@ Your info stays private
 </div>
 </div>
 
-<!-- MAIN BODY -->
 <div class="page-body">
 
-  <!-- FORM COLUMN -->
   <div class="form-col">
     <div class="form-label">Send a Message</div>
     <div class="form-title">Just a Few Quick Questions Before We Connect</div>
@@ -379,7 +369,6 @@ Your info stays private
     </div>
   </div>
 
-  <!-- INFO SIDEBAR -->
   <div class="info-col">
 
     <div class="info-card">
