@@ -28,7 +28,6 @@ html { scroll-behavior: smooth; }
 body { font-family: var(--font); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.6; }
 img { max-width: 100%; height: auto; display: block; }
 img[data-placeholder] { background: #cdd5d8; display: block; }
-/* ─── NAV ─────────────────────────────────────────── */
 nav {
 background: var(--white);
 height: 78px;
@@ -45,7 +44,6 @@ z-index: 200;
 .nav-links { display: flex; gap: 3rem; list-style: none; }
 .nav-links a { font-size: 0.77rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); text-decoration: none; }
 .nav-links a:hover { color: var(--salmon); }
-/* ─── HERO ────────────────────────────────────────── */
 .hero { background: var(--navy); display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; position: relative; padding-right: 48px; }
 .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 64px 48px 64px 72px; }
 h1.hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.22; color: var(--white); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 1rem; max-width: 380px; }
@@ -57,14 +55,12 @@ h1.hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.22; color: 
 .link-white:hover { color: white; }
 .hero-right { position: relative; border-radius: 6px; margin: 32px 0; align-self: center; }
 .hero-right img { width: 100%; height: auto; display: block; border-radius: 6px; }
-/* ─── WHY RENTERS ─────────────────────────────────── */
 .why-section { background: var(--navy); padding: 64px 60px; text-align: center; }
 .why-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: white; margin-bottom: 0.5rem; }
 .why-rule { width: 36px; height: 2px; background: var(--salmon); margin: 0 auto 2.5rem; }
 .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem 4rem; max-width: 860px; margin: 0 auto; }
 .why-card h3 { font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: white; margin-bottom: 0.6rem; }
 .why-card p { font-size: 0.86rem; color: rgba(255,255,255,0.62); line-height: 1.7; }
-/* ─── UPCOMING ────────────────────────────────────── */
 .upcoming-wrap { background: var(--cream); position: relative; padding-top: 0; }
 .upcoming-wrap::before { content: ''; display: block; width: 100%; height: 56px; background: var(--navy); clip-path: polygon(0 0, 100% 0, 50% 100%); }
 .upcoming-section { padding: 32px 60px 72px; text-align: center; }
@@ -89,7 +85,6 @@ h1.hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.22; color: 
 .property-card-cta:hover { background: #b3684d; }
 .property-card-cta-ghost { display: block; text-align: center; background: transparent; color: rgba(255,255,255,0.6); padding: 0.7rem; font-size: 0.77rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 3px; margin-top: 0.5rem; }
 .property-card-cta-ghost:hover { border-color: rgba(255,255,255,0.6); color: white; }
-/* listing card */
 .listing-card { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: 5fr 6fr; border-radius: 4px; overflow: hidden; box-shadow: 0 6px 28px rgba(0,0,0,0.12); }
 .listing-left { background: var(--navy); padding: 1.75rem 1.75rem 1.75rem; display: flex; flex-direction: column; }
 .listing-badge { align-self: flex-start; background: var(--salmon); color: white; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.75rem; border-radius: 20px; margin-bottom: 0.65rem; }
@@ -108,7 +103,6 @@ h1.hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.22; color: 
 .rent-callout-amount { font-size: 1.55rem; font-weight: 800; color: var(--navy); line-height: 1; }
 .rent-icon { width: 50px; height: 50px; object-fit: contain; }
 .rent-icon[data-placeholder] { background: #cdd5d8; border-radius: 4px; }
-/* ─── MEET NEELA ──────────────────────────────────── */
 .meet-section { position: relative; background-color: var(--navy); }
 .meet-section::before { display: none; }
 .meet-view-all { position: relative; z-index: 2; text-align: center; padding: 2.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.15); margin: 0 60px; }
@@ -119,7 +113,6 @@ h1.hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.22; color: 
 .meet-inner p strong { color: white; }
 .meet-photo { width: 210px; height: 210px; border-radius: 50%; object-fit: cover; object-position: center top; border: 5px solid white; display: block; flex-shrink: 0; }
 .meet-photo[data-placeholder] { background: #8aabb8; }
-/* ─── 3 STEPS ─────────────────────────────────────── */
 .steps-banner { position: relative; background-color: var(--navy); background-image: url('https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69595daa6e700e0e9ffb42dc.jpg'); background-size: cover; background-position: center; padding: 52px 60px; text-align: center; overflow: hidden; }
 .steps-banner::before { content: ''; position: absolute; inset: 0; background: rgba(11,44,61,0.72); }
 .steps-banner-text { position: relative; z-index: 2; }
@@ -139,7 +132,6 @@ h1.hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.22; color: 
 .steps-cta { margin-top: 1.75rem; }
 .btn-navy { display: inline-block; background: var(--navy); color: white; padding: 0.72rem 1.8rem; font-size: 0.77rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; }
 .btn-navy:hover { background: #1e3a48; }
-/* ─── FAQ ─────────────────────────────────────────── */
 .faq-section { position: relative; background-color: #1e2d38; padding: 72px 60px; }
 .faq-section::before { display: none; }
 .faq-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
@@ -154,7 +146,6 @@ h1.hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.22; color: 
 .faq-a strong { color: var(--navy); }
 .faq-a p { margin-bottom: 0.55rem; }
 .faq-item.open .faq-a { display: block; }
-/* ─── TESTIMONIALS ────────────────────────────────── */
 .testi-section { background: var(--cream); padding: 64px 60px; }
 .testi-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; color: var(--navy); text-align: center; margin-bottom: 2.25rem; }
 .testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; max-width: 840px; margin: 0 auto; }
@@ -163,19 +154,16 @@ h1.hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.22; color: 
 .testi-foot { border-top: 1px solid #eee; padding: 0.9rem 1.6rem; }
 .testi-attr { font-size: 0.82rem; font-weight: 600; color: var(--text); display: block; margin-bottom: 0.2rem; }
 .testi-stars { color: #E5A520; font-size: 0.88rem; letter-spacing: 1px; }
-/* ─── AFFILIATIONS ────────────────────────────────── */
 .affil-section { background: var(--white); padding: 52px 60px; text-align: center; border-top: 1px solid #eee; }
 .affil-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-lt); margin-bottom: 2rem; }
 .affil-logos { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; }
 .affil-logos img { height: 44px; object-fit: contain; opacity: 0.55; filter: grayscale(100%); transition: opacity 0.2s, filter 0.2s; }
 .affil-logos img:hover { opacity: 0.9; filter: none; }
-/* ─── FAIR HOUSING ────────────────────────────────── */
 .fair-section { border-top: 1px solid #eee; padding: 2.5rem 60px; display: flex; gap: 2rem; align-items: flex-start; max-width: 820px; margin: 0 auto; }
 .fair-logo { flex-shrink: 0; }
 .fair-logo img { height: 56px; object-fit: contain; opacity: 0.45; }
 .fair-text h3 { font-size: 0.85rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
 .fair-text p { font-size: 0.8rem; color: var(--text-lt); line-height: 1.8; }
-/* ─── FOOTER ──────────────────────────────────────── */
 footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .footer-logo img { height: 52px; display: block; margin-bottom: 0.9rem; }
@@ -189,7 +177,6 @@ footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.84rem; }
 .footer-col a:hover { color: white; }
 .footer-bottom { padding: 1.4rem 0; font-size: 0.73rem; color: rgba(255,255,255,0.28); text-align: center; }
-/* ─── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 1024px) {
 nav { padding: 0 28px; }
 .hero-left { padding: 48px 36px 48px 48px; }
@@ -258,16 +245,13 @@ h1.hero-title { font-size: 1.4rem; }
 .property-card-features { grid-template-columns: 1fr; }
 .why-grid { gap: 2rem; }
 }
-/* ─── NAV RIGHT / CTA ─────────────────────────────── */
 .nav-right { display: flex; align-items: center; gap: 1.25rem; }
 .nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
 .nav-phone:hover { color: var(--salmon); }
 .nav-cta { background: var(--salmon); color: white; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.52rem 1.1rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
 .nav-cta:hover { background: #b3674d; }
-/* ─── HAMBURGER ───────────────────────────────────── */
 .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px; }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
-/* ─── MOBILE DRAWER ───────────────────────────────── */
 .nav-drawer { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--navy); z-index: 500; padding: 2rem 1.5rem; transition: right 0.3s ease; display: flex; flex-direction: column; }
 .nav-drawer.open { right: 0; }
 .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 499; }
@@ -283,8 +267,6 @@ h1.hero-title { font-size: 1.4rem; }
   .nav-hamburger { display: flex; }
   .nav-cta { display: none; }
 }
-
-/* ─── FEATURED LISTING ────────────────────────────── */
 .featured-listing { background: var(--cream); padding: 56px 60px 64px; }
 .featured-listing-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--salmon); margin-bottom: 6px; }
 .featured-listing-title { font-size: 1.35rem; font-weight: 800; color: var(--navy); margin-bottom: 28px; line-height: 1.2; }
@@ -320,7 +302,7 @@ h1.hero-title { font-size: 1.4rem; }
 <nav>
 <a href="/" class="nav-logo"><img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f5959204-7bf4-415e-a80a-cc75312b2ddb.png" alt="I Rent Houses In Sweats"  onerror="this.style.display='none'"/></a>
 <ul class="nav-links">
-<li><a href="/" class="nav-active">Home</a></li><li><a href="/rentals">Properties</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li>
+<li><a href="/" class="nav-active">Home</a></li><li><a href="/rentals">Properties</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li><li><a href="/pay-rent">Tenant Login</a></li>
 </ul>
 <div class="nav-right">
 <a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
@@ -335,6 +317,7 @@ h1.hero-title { font-size: 1.4rem; }
 <li><a href="/rentals">Properties</a></li>
 <li><a href="/about">About</a></li>
 <li><a href="/contact" target="_blank" rel="noopener">Contact</a></li>
+<li><a href="/pay-rent">Tenant Login</a></li>
 </ul>
 </div>
 <div class="nav-overlay"></div>
@@ -354,7 +337,6 @@ src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/fcbf9f5e-4aed-
 alt="I Rent Houses In Sweats"  onerror="this.style.display='none'"/>
 </div>
 </section>
-<!-- ═══ WHY RENTERS CHOOSE US ═══ -->
 <section class="why-section">
 <p class="why-label">Why Renters Choose Us</p>
 <div class="why-rule"></div>
@@ -414,13 +396,11 @@ alt="I Rent Houses In Sweats"  onerror="this.style.display='none'"/>
 </div>
 </section>
 
-<!-- ═══ PROPERTIES ═══ -->
 <div class="upcoming-wrap" id="properties">
 <section class="upcoming-section">
 <h2>Recently Added to the Portfolio</h2>
 <p class="sub">Neela becoming available three duplex properties in Toledo — now under management and coming soon.</p>
 <div class="property-grid">
-<!-- CARD: 2265 & 2267 Byrneway Dr -->
 <div class="property-card">
 <img loading="lazy" class="property-card-img"
 src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a1d22c99637319b3d37.jpg"
@@ -437,7 +417,6 @@ onerror="this.style.display='none'" />
 </div>
 </div>
 </div>
-<!-- CARD: 2301 & 2303 Byrneway Dr -->
 <div class="property-card">
 <img loading="lazy" class="property-card-img"
 src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a408a4be81f3aea4663.jpg"
@@ -454,7 +433,6 @@ onerror="this.style.display='none'" />
 </div>
 </div>
 </div>
-<!-- CARD: 2317 & 2319 Byrneway Dr -->
 <div class="property-card">
 <img loading="lazy" class="property-card-img"
 src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a0ba6108a4858280f40.jpg"
@@ -474,7 +452,6 @@ onerror="this.style.display='none'" />
 </div>
 </section>
 </div>
-<!-- ═══ MEET YOUR LANDLADY ═══ -->
 <section class="meet-section" id="team">
 <div class="meet-inner">
 <div>
@@ -494,7 +471,6 @@ alt="Neela Kelly"  onerror="this.style.display='none'"/>
 </div>
 </div>
 </section>
-<!-- ═══ 3-STEP PROCESS ═══ -->
 <section>
 <div class="steps-banner">
 <div class="steps-banner-text">
@@ -537,7 +513,6 @@ alt="Couple viewing home"  onerror="this.style.display='none'"/>
 </div>
 </div>
 </section>
-<!-- ═══ FAQ ═══ -->
 <section class="faq-section" id="faq">
 <div class="faq-inner">
 <h2 class="faq-title">Frequently Asked Questions</h2>
@@ -616,7 +591,6 @@ alt="Couple viewing home"  onerror="this.style.display='none'"/>
 </div>
 </div>
 </section>
-<!-- ═══ TESTIMONIALS ═══ -->
 <section class="testi-section">
 <p class="testi-title">What Our Residents Say</p>
 <div class="testi-grid">
@@ -636,7 +610,6 @@ alt="Couple viewing home"  onerror="this.style.display='none'"/>
 </div>
 </div>
 </section>
-<!-- ═══ AFFILIATIONS ═══ -->
 <section class="affil-section">
 <p class="affil-label">Affiliations</p>
 <div class="affil-logos">
@@ -646,7 +619,6 @@ alt="Couple viewing home"  onerror="this.style.display='none'"/>
 <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/94704420-22ed-48de-9836-09d05060f85d.png" alt="nKey Realty"  onerror="this.style.display='none'"/>
 </div>
 </section>
-<!-- ═══ FAIR HOUSING ═══ -->
 <div class="fair-section">
 <div class="fair-logo">
 <img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/0c4536eb-137d-4d05-b06a-dea352716913.png" alt="Equal Housing Opportunity"  onerror="this.style.display='none'"/>
