@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pay Rent | I Rent Houses In Sweats</title>
-<meta name="description" content="Pay your monthly rent online. Find your property below and click Pay Now for secure payment through Stripe — managed by Neela Kelly.">
+<meta name="description" content="Find your property below and access your tenant account to view your balance and pay rent securely online — managed by Neela Kelly.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pay Rent | I Rent Houses In Sweats">
-<meta property="og:description" content="Pay your monthly rent online. Find your property and click Pay Now for secure Stripe checkout.">
+<meta property="og:description" content="Find your property and access your tenant account to view your balance and pay rent securely online.">
 <meta property="og:url" content="https://irenthousesinsweats.com/pay-rent">
 <meta property="og:image" content="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/6a4283b706fe2e51dcc6ffaa.jpg">
 <meta property="og:site_name" content="I Rent Houses In Sweats">
@@ -176,6 +176,15 @@ transition: border-color 0.2s;
 #address-search:focus { border-color: var(--salmon); }
 #address-search::placeholder { color: var(--text-light); font-weight: 400; }
 
+.login-line {
+font-size: 13px;
+color: var(--text-light);
+margin-top: 12px;
+text-align: center;
+}
+.login-line a { color: var(--salmon); font-weight: 700; text-decoration: none; }
+.login-line a:hover { text-decoration: underline; }
+
 /* ─── GRID ──────────────────────────────────────────── */
 .grid-section {
 background: var(--cream);
@@ -223,34 +232,10 @@ font-size: 13px;
 color: var(--text-light);
 margin-bottom: 14px;
 }
-.prop-card__amount {
-font-size: 22px;
-font-weight: 800;
-color: var(--navy);
-line-height: 1;
-margin-bottom: 2px;
-}
-.prop-card__amount span {
-font-size: 13px;
-font-weight: 400;
-color: var(--text-light);
-}
-.amount-tbd {
-display: inline-block;
-font-size: 11px;
-font-weight: 800;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-background: #fef3c7;
-color: #92400e;
-padding: 4px 10px;
-border-radius: 4px;
-margin-bottom: 4px;
-}
 .prop-card__btn {
 display: block;
 width: 100%;
-margin-top: 14px;
+margin-top: auto;
 padding: 12px;
 background: var(--salmon);
 color: var(--white);
@@ -267,13 +252,6 @@ cursor: pointer;
 transition: background 0.2s, transform 0.15s;
 }
 .prop-card__btn:hover { background: #b3684d; transform: translateY(-1px); }
-.prop-card__btn.btn-placeholder {
-background: #d1d5db;
-color: #6b7280;
-cursor: default;
-pointer-events: none;
-}
-.prop-card__btn.btn-placeholder:hover { transform: none; }
 
 /* ─── NO RESULTS ────────────────────────────────────── */
 #no-results {
@@ -389,7 +367,7 @@ footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 .notice-banner { padding: 16px 20px; }
 }
 @media (max-width: 640px) {
-/* Sticky search on mobile — stays visible as you scroll 23 cards */
+/* Sticky search on mobile — stays visible as you scroll through cards */
 .search-section {
   position: sticky;
   top: 58px;
@@ -451,14 +429,14 @@ nav { padding: 0 14px; height: 58px; }
 <div class="page-hero">
 <div class="eyebrow">Tenant Payment</div>
 <h1>Pay Your Rent</h1>
-<p>Find your address below and click Pay Now. You'll be taken to a secure Stripe checkout for your exact monthly amount.</p>
+<p>Find your address below to access your tenant account. Once you're signed in, you'll see your exact rent amount, current balance, and can pay securely online.</p>
 </div>
 
 <!-- NOTICE -->
 <div class="notice-banner">
 <div class="notice-inner">
 <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-<p class="notice-text"><strong>Monthly rent only.</strong> This page covers your standard monthly rent, including any pet rent for the month. If you owe a different amount — prorated move-in, late fee, or any other charge — <a href="/contact" target="_blank" rel="noopener">contact Neela first</a> before paying so she can send you the correct link.</p>
+<p class="notice-text"><strong>First time here?</strong> Click your address below to create your account. <strong>Already have an account?</strong> Just sign in from your account page to view your balance and pay. If you have any questions about what you owe, <a href="/contact" target="_blank" rel="noopener">contact Neela</a> directly.</p>
 </div>
 </div>
 
@@ -470,225 +448,292 @@ nav { padding: 0 14px; height: 58px; }
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
 <input type="text" id="address-search" placeholder="Start typing your street address…" autocomplete="off" spellcheck="false">
 </div>
+<p class="login-line">Already created your account? <a href="/login">Sign in here</a></p>
 </div>
 </div>
 
 <div class="grid-section">
 <div class="grid-inner">
 <div class="prop-grid" id="prop-grid">
-  <!-- 1880 Wildwood Rd — $1,500/mo -->
-  <div class="prop-card" data-address="1880 wildwood rd toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">1880 Wildwood Rd</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <p class="prop-card__amount">$1,500<span>/mo</span></p>
-    <a class="prop-card__btn" href="https://link.fastpaydirect.com/payment-link/6a427b6c2cbd86186455305e" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
 
-
-  <!-- 332 Lacombe Dr -->
-  <div class="prop-card" data-address="332 lacombe dr maumee">
-    <p class="prop-card__type">Townhome</p>
-    <p class="prop-card__address">332 Lacombe Dr</p>
-    <p class="prop-card__city">Maumee, OH 43537</p>
-    <p class="prop-card__amount">$1,275<span>/mo</span></p>
-    <a class="prop-card__btn" href="https://link.fastpaydirect.com/payment-link/6995fc25b31ce127c8f47cdb" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-
-
-  <!-- 1337 Abbott Ave -->
-  <div class="prop-card" data-address="1337 abbott ave toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">1337 Abbott Ave</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <p class="prop-card__amount">$1,400<span>/mo</span></p>
-    <a class="prop-card__btn" href="https://link.fastpaydirect.com/payment-link/6a427cb9a655fa0b802a1c39" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-
-
-  <!-- 5468 Fern Dr -->
-  <div class="prop-card" data-address="5468 fern dr toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">5468 Fern Dr</p>
-    <p class="prop-card__city">Toledo, OH 43613</p>
-    <p class="prop-card__amount">$1,500<span>/mo</span></p>
-    <a class="prop-card__btn" href="https://link.fastpaydirect.com/payment-link/6a427d6b2cbd861864553066" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-
-
-
-  <!-- ============================================================
-       TEMPLATE INSTRUCTIONS:
-       - Replace [[STRIPE_LINK]] with the Stripe payment URL from GHL
-       - Replace amount-tbd span with actual dollar amount
-       - Remove class="btn-placeholder" from btn once link is added
-       ============================================================ -->  <!-- 1052 Valley Grove Dr -->
-  <div class="prop-card" data-address="1052 valley grove dr maumee">
-    <p class="prop-card__type">Condo · Townhouse</p>
-    <p class="prop-card__address">1052 Valley Grove Dr</p>
-    <p class="prop-card__city">Maumee, OH 43537</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>  <!-- 1343 Corry Ave -->
   <div class="prop-card" data-address="1343 corry ave toledo">
     <p class="prop-card__type">Single-Family Home</p>
     <p class="prop-card__address">1343 Corry Ave</p>
     <p class="prop-card__city">Toledo, OH 43614</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+    <a class="prop-card__btn" href="/signup?p=corry1343">Access My Account →</a>
   </div>
 
-  <!-- 1347 Corry Ave -->
   <div class="prop-card" data-address="1347 corry ave toledo">
     <p class="prop-card__type">Single-Family Home</p>
     <p class="prop-card__address">1347 Corry Ave</p>
     <p class="prop-card__city">Toledo, OH 43614</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+    <a class="prop-card__btn" href="/signup?p=corry1347">Access My Account →</a>
   </div>
 
-  <!-- 1429 Bensch Dr — $1,150/mo -->
-  <div class="prop-card" data-address="1429 bensch dr toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">1429 Bensch Dr</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <p class="prop-card__amount">$1,150<span>/mo</span></p>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 1531 Wilmore Dr -->
-  <div class="prop-card" data-address="1531 wilmore dr toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">1531 Wilmore Dr</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <p class="prop-card__amount">$1,350<span>/mo</span></p>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 1876 Wildwood Rd -->
-  <div class="prop-card" data-address="1876 wildwood rd toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">1876 Wildwood Rd</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <p class="prop-card__amount">$1,350<span>/mo</span></p>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-  <!-- 1960 Princeton Dr -->
-  <div class="prop-card" data-address="1960 princeton dr toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">1960 Princeton Dr</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 2264 Rockspring Rd -->
-  <div class="prop-card" data-address="2264 rockspring rd toledo">
-    <p class="prop-card__type">Condo</p>
-    <p class="prop-card__address">2264 Rockspring Rd</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 2270 Rockspring Rd #7 -->
-  <div class="prop-card" data-address="2270 rockspring rd toledo">
-    <p class="prop-card__type">Condo</p>
-    <p class="prop-card__address">2270 Rockspring Rd #7</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 3110 Strathmoor Ave -->
-  <div class="prop-card" data-address="3110 strathmoor ave toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">3110 Strathmoor Ave</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <p class="prop-card__amount">$1,500<span>/mo</span></p>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 3354 Wyckliffe Pkwy #Upper -->
-  <div class="prop-card" data-address="3354 wyckliffe pkwy upper toledo">
-    <p class="prop-card__type">Upper Unit · Duplex</p>
-    <p class="prop-card__address">3354 Wyckliffe Pkwy<br><small>#Upper</small></p>
-    <p class="prop-card__city">Toledo, OH 43606</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 3356 Wyckliffe Pkwy #Lower -->
-  <div class="prop-card" data-address="3356 wyckliffe pkwy lower toledo">
-    <p class="prop-card__type">Lower Unit · Duplex</p>
-    <p class="prop-card__address">3356 Wyckliffe Pkwy<br><small>#Lower</small></p>
-    <p class="prop-card__city">Toledo, OH 43606</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 3718 Kershaw Ave -->
-  <div class="prop-card" data-address="3718 kershaw ave toledo">
-    <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">3718 Kershaw Ave</p>
-    <p class="prop-card__city">Toledo, OH 43613</p>
-    <p class="prop-card__amount">$1,450<span>/mo</span></p>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>
-
-  <!-- 3872 Vogel Dr -->
   <div class="prop-card" data-address="3872 vogel dr toledo">
     <p class="prop-card__type">Single-Family Home</p>
     <p class="prop-card__address">3872 Vogel Dr</p>
     <p class="prop-card__city">Toledo, OH 43613</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+    <a class="prop-card__btn" href="/signup?p=vogel3872">Access My Account →</a>
   </div>
 
-  <!-- 3908 S Detroit Ave -->
+  <div class="prop-card" data-address="1337 abbott ave toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1337 Abbott Ave</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=abbott1337">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1050 valley grove dr maumee">
+    <p class="prop-card__type">Condo · Townhouse</p>
+    <p class="prop-card__address">1050 Valley Grove Dr</p>
+    <p class="prop-card__city">Maumee, OH 43537</p>
+    <a class="prop-card__btn" href="/signup?p=valleygrove1050">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1052 valley grove dr maumee">
+    <p class="prop-card__type">Condo · Townhouse</p>
+    <p class="prop-card__address">1052 Valley Grove Dr</p>
+    <p class="prop-card__city">Maumee, OH 43537</p>
+    <a class="prop-card__btn" href="/signup?p=valleygrove1052">Access My Account →</a>
+  </div>
+
   <div class="prop-card" data-address="3908 s detroit ave toledo">
     <p class="prop-card__type">Townhouse</p>
     <p class="prop-card__address">3908 S Detroit Ave</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+    <p class="prop-card__city">Toledo, OH 43606</p>
+    <a class="prop-card__btn" href="/signup?p=detroit3908">Access My Account →</a>
   </div>
 
-  <!-- 3910 S Detroit Ave -->
   <div class="prop-card" data-address="3910 s detroit ave toledo">
     <p class="prop-card__type">Townhouse</p>
     <p class="prop-card__address">3910 S Detroit Ave</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
-  </div>  <!-- 5524 Glenridge Dr -->
-  <div class="prop-card" data-address="5524 glenridge dr toledo">
-    <p class="prop-card__type">Condo</p>
-    <p class="prop-card__address">5524 Glenridge Dr</p>
-    <p class="prop-card__city">Toledo, OH 43614</p>
-    <p class="prop-card__amount">$1,150<span>/mo</span></p>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+    <p class="prop-card__city">Toledo, OH 43606</p>
+    <a class="prop-card__btn" href="/signup?p=detroit3910">Access My Account →</a>
   </div>
 
-  <!-- 5533 Cresthaven Ln #1B -->
+  <div class="prop-card" data-address="110 chase ct oak grove">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">110 Chase Ct</p>
+    <p class="prop-card__city">Oak Grove, OH</p>
+    <a class="prop-card__btn" href="/signup?p=chase110">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="2270 rockspring rd toledo">
+    <p class="prop-card__type">Condo</p>
+    <p class="prop-card__address">2270 Rockspring Rd #7</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=rockspring2270">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="3354 wyckliffe pkwy upper toledo">
+    <p class="prop-card__type">Upper Unit · Duplex</p>
+    <p class="prop-card__address">3354 Wyckliffe Pkwy<br><small>#Upper</small></p>
+    <p class="prop-card__city">Toledo, OH 43606</p>
+    <a class="prop-card__btn" href="/signup?p=wyckliffe3354">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="3356 wyckliffe pkwy lower toledo">
+    <p class="prop-card__type">Lower Unit · Duplex</p>
+    <p class="prop-card__address">3356 Wyckliffe Pkwy<br><small>#Lower</small></p>
+    <p class="prop-card__city">Toledo, OH 43606</p>
+    <a class="prop-card__btn" href="/signup?p=wyckliffe3356">Access My Account →</a>
+  </div>
+
   <div class="prop-card" data-address="5533 cresthaven ln toledo">
     <p class="prop-card__type">Condo · Ground Floor</p>
     <p class="prop-card__address">5533 Cresthaven Ln #1B</p>
     <p class="prop-card__city">Toledo, OH 43614</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+    <a class="prop-card__btn" href="/signup?p=cresthaven5533">Access My Account →</a>
   </div>
 
-  <!-- 5753 Yermo Dr -->
-  <div class="prop-card" data-address="5753 yermo dr toledo">
+  <div class="prop-card" data-address="1880 wildwood rd toledo">
     <p class="prop-card__type">Single-Family Home</p>
-    <p class="prop-card__address">5753 Yermo Dr</p>
+    <p class="prop-card__address">1880 Wildwood Rd</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=wildwood1880">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1876 wildwood rd toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1876 Wildwood Rd</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=wildwood1876">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="5524 glenridge dr toledo">
+    <p class="prop-card__type">Condo</p>
+    <p class="prop-card__address">5524 Glenridge Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=glenridge5524">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="5526 glenridge dr toledo">
+    <p class="prop-card__type">Condo</p>
+    <p class="prop-card__address">5526 Glenridge Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=glenridge5526">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="5528 glenridge dr toledo">
+    <p class="prop-card__type">Condo</p>
+    <p class="prop-card__address">5528 Glenridge Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=glenridge5528">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="5530 glenridge dr toledo">
+    <p class="prop-card__type">Condo</p>
+    <p class="prop-card__address">5530 Glenridge Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=glenridge5530">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="3718 kershaw ave toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">3718 Kershaw Ave</p>
     <p class="prop-card__city">Toledo, OH 43613</p>
-    <span class="amount-tbd">Amount TBD</span>
-    <a class="prop-card__btn btn-placeholder" href="[[STRIPE_LINK]]" target="_blank" rel="noopener">Pay Now →</a>
+    <a class="prop-card__btn" href="/signup?p=kershaw3718">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="3110 strathmoor ave toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">3110 Strathmoor Ave</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=strathmoor3110">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1960 princeton dr lower toledo">
+    <p class="prop-card__type">Lower Unit · Duplex</p>
+    <p class="prop-card__address">1960 Princeton Dr<br><small>Lower</small></p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=princetonlower1960">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1960 princeton dr upper toledo">
+    <p class="prop-card__type">Upper Unit · Duplex</p>
+    <p class="prop-card__address">1960 Princeton Dr<br><small>Upper</small></p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=princetonupper1960">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1429 bensch dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1429 Bensch Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=bensch1429">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1431 bensch dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1431 Bensch Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=bensch1431">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1710 longwood dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1710 Longwood Dr</p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=longwood1710">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="5468 fern dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">5468 Fern Dr</p>
+    <p class="prop-card__city">Toledo, OH 43613</p>
+    <a class="prop-card__btn" href="/signup?p=fern5468">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="5469 fern dr unit 2 toledo">
+    <p class="prop-card__type">Unit 2</p>
+    <p class="prop-card__address">5469 Fern Dr<br><small>Unit 2</small></p>
+    <p class="prop-card__city">Toledo, OH 43613</p>
+    <a class="prop-card__btn" href="/signup?p=fern5469unit2">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1531 wilmore dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1531 Wilmore Dr</p>
+    <p class="prop-card__city">Toledo, OH 43614</p>
+    <a class="prop-card__btn" href="/signup?p=wilmore1531">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="1923 southmoor dr toledo">
+    <p class="prop-card__type">Single-Family Home</p>
+    <p class="prop-card__address">1923 Southmoor Dr</p>
+    <p class="prop-card__city">Toledo, OH 43609</p>
+    <a class="prop-card__btn" href="/signup?p=southmoor1923">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="332 lacombe dr maumee">
+    <p class="prop-card__type">Townhome</p>
+    <p class="prop-card__address">332 Lacombe Dr</p>
+    <p class="prop-card__city">Maumee, OH 43537</p>
+    <a class="prop-card__btn" href="/signup?p=lacombe332">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="334 lacombe dr maumee">
+    <p class="prop-card__type">Townhome</p>
+    <p class="prop-card__address">334 Lacombe Dr</p>
+    <p class="prop-card__city">Maumee, OH 43537</p>
+    <a class="prop-card__btn" href="/signup?p=lacombe334">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="3031 douglas rd unit 1 toledo">
+    <p class="prop-card__type">Unit 1 · Duplex</p>
+    <p class="prop-card__address">3031 Douglas Rd<br><small>#1</small></p>
+    <p class="prop-card__city">Toledo, OH 43606</p>
+    <a class="prop-card__btn" href="/signup?p=douglas3031unit1">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="3031 douglas rd unit 2 toledo">
+    <p class="prop-card__type">Unit 2 · Duplex</p>
+    <p class="prop-card__address">3031 Douglas Rd<br><small>#2</small></p>
+    <p class="prop-card__city">Toledo, OH 43606</p>
+    <a class="prop-card__btn" href="/signup?p=douglas3031unit2">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="2317 byrneway dr toledo">
+    <p class="prop-card__type">Two Unit Townhouse · Tan</p>
+    <p class="prop-card__address">2317 Byrneway Dr</p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=byrneway2317">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="2319 byrneway dr toledo">
+    <p class="prop-card__type">Two Unit Townhouse · Tan</p>
+    <p class="prop-card__address">2319 Byrneway Dr</p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=byrneway2319">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="2301 byrneway dr toledo">
+    <p class="prop-card__type">Two Unit Townhouse · White</p>
+    <p class="prop-card__address">2301 Byrneway Dr</p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=byrneway2301">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="2303 byrneway dr toledo">
+    <p class="prop-card__type">Two Unit Townhouse · White</p>
+    <p class="prop-card__address">2303 Byrneway Dr</p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=byrneway2303">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="2265 byrneway dr toledo">
+    <p class="prop-card__type">Two Unit Townhouse · Blue</p>
+    <p class="prop-card__address">2265 Byrneway Dr</p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=byrneway2265">Access My Account →</a>
+  </div>
+
+  <div class="prop-card" data-address="2267 byrneway dr toledo">
+    <p class="prop-card__type">Two Unit Townhouse · Blue</p>
+    <p class="prop-card__address">2267 Byrneway Dr</p>
+    <p class="prop-card__city">Toledo, OH</p>
+    <a class="prop-card__btn" href="/signup?p=byrneway2267">Access My Account →</a>
   </div>
 
 </div><!-- /.prop-grid -->
@@ -707,8 +752,8 @@ nav { padding: 0 14px; height: 58px; }
 
   <div class="help-block">
     <h3>Need Help?</h3>
-    <h2>Questions About Your Payment?</h2>
-    <p>If you don't see your address, owe a different amount than what's shown, or have any questions about your payment — reach out to Neela directly. She handles everything herself.</p>
+    <h2>Questions About Your Account?</h2>
+    <p>If you don't see your address, can't find your invite link, or have any questions about your rent or balance — reach out to Neela directly. She handles everything herself.</p>
     <div class="contact-links">
       <a href="tel:4199027728" class="contact-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.07-1.07a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
@@ -729,8 +774,8 @@ nav { padding: 0 14px; height: 58px; }
         <p>Yes. All payments are processed through Stripe, which is PCI-compliant. Your card info is never stored or seen by anyone except Stripe.</p>
       </div>
       <div class="faq-item">
-        <h4>What if I owe more or less than what's shown?</h4>
-        <p>Contact Neela before paying. She can send you a custom link for the exact amount you owe — late fees, prorated rent, or anything else.</p>
+        <h4>Why can't I see my rent amount on this page?</h4>
+        <p>For privacy, rent and balance details are only shown after you sign in to your own account — not on this shared directory page.</p>
       </div>
       <div class="faq-item">
         <h4>When is rent due?</h4>
