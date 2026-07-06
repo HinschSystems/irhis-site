@@ -351,7 +351,7 @@
         .eq('user_id', user.id)
         .single();
 
-      if (tErr || !tenant) { window.location.href = '/login'; return; }
+      if (tErr || !tenant) { await db.auth.signOut(); window.location.href = '/login'; return; }
 
       currentBalance = tenant.balance || 0;
 
@@ -362,7 +362,7 @@
         .eq('id', tenant.property_id)
         .single();
 
-      if (pErr || !property) { window.location.href = '/login'; return; }
+      if (pErr || !property) { await db.auth.signOut(); window.location.href = '/login'; return; }
 
       monthlyRent = property.monthly_rent;
       propertyAddress = property.address || "";
