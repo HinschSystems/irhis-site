@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent Roll — I Rent Houses In Sweats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Nunito Sans', Arial, sans-serif; background: #E8EEED; min-height: 100vh; }
+
+    /* Login card (shown until authenticated + verified admin) */
+    .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; background: #0b2c3d; }
+    .login-card { background: #fff; border-radius: 14px; padding: 44px 40px; width: 100%; max-width: 400px; box-shadow: 0 8px 40px rgba(0,0,0,0.25); }
+    .login-card h1 { color: #0b2c3d; font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 24px; }
+    .login-card label { display: block; color: #0b2c3d; font-size: 13px; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .login-card input { width: 100%; padding: 12px 14px; border: 1.5px solid #dde3e3; border-radius: 8px; font-size: 15px; margin-bottom: 18px; outline: none; }
+    .login-card input:focus { border-color: #C4775A; }
+    .login-card button { width: 100%; padding: 14px; background: #C4775A; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; }
+    .login-card button:hover:not(:disabled) { background: #ad6249; }
+    .login-card button:disabled { background: #c8c8c8; cursor: not-allowed; }
+    .login-error { background: #fff2f0; border: 1.5px solid #f5c0b5; color: #b83c28; padding: 11px 14px; border-radius: 8px; font-size: 14px; margin-bottom: 16px; display: none; }
+
+    /* Topbar */
+    .topbar { background: #0b2c3d; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar img { height: 34px; }
+    .signout { color: #E8EEED; font-size: 13px; font-weight: 600; cursor: pointer; background: none; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 6px 14px; }
+    .signout:hover { background: rgba(255,255,255,0.1); }
+
+    .main { max-width: 1100px; margin: 32px auto; padding: 0 24px 60px; }
+    .page-title { font-size: 24px; font-weight: 800; color: #0b2c3d; margin-bottom: 4px; }
+    .page-sub { font-size: 14px; color: #888; margin-bottom: 28px; }
+
+    /* Summary cards */
+    .summary-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 28px; }
+    .summary-card { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 2px 10px rgba(11,44,61,0.06); }
+    .summary-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #C4775A; margin-bottom: 6px; }
+    .summary-value { font-size: 24px; font-weight: 800; color: #0b2c3d; }
+    .summary-value.owed { color: #c0392b; }
+    .summary-value.credit { color: #2a7a4b; }
+
+    /* Search */
+    .search-wrap { margin-bottom: 16px; }
+    #search { width: 100%; max-width: 360px; padding: 10px 14px; border: 1.5px solid #dde3e3; border-radius: 8px; font-size: 14px; outline: none; }
+    #search:focus { border-color: #C4775A; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(11,44,61,0.06); }
+    th { background: #0b2c3d; color: #fff; text-align: left; padding: 12px 16px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #eef1f0; color: #222; }
+    tr:last-child td { border-bottom: none; }
+    tr.vacant-row { background: #fafafa; color: #999; }
+    .bal-owed { color: #c0392b; font-weight: 700; }
+    .bal-credit { color: #2a7a4b; font-weight: 700; }
+    .bal-zero { color: #888; }
+    .badge { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 10px; }
+    .badge-vacant { background: #eee; color: #888; }
+
+    .loading, .load-error { text-align: center; padding: 80px 20px; color: #888; }
+    .load-error button { margin-top: 12px; background: #C4775A; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-weight: 700; cursor: pointer; }
+
+    @media (max-width: 900px) { .summary-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { margin-bottom: 12px; border-bottom: 2px solid #eef1f0; }
+      td { border-bottom: none; padding: 6px 16px; }
+      td::before { content: attr(data-label); font-weight: 800; text-transform: uppercase; font-size: 10px; color: #C4775A; display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN VIEW -->
+<div id="view-login" class="login-wrap">
+  <div class="login-card">
+    <h1>Rent Roll Sign In</h1>
+    <div class="login-error" id="login-error"></div>
+    <label for="email">Email</label>
+    <input type="email" id="email" autocomplete="email">
+    <label for="password">Password</label>
+    <input type="password" id="password" autocomplete="current-password">
+    <button id="login-btn" onclick="handleLogin()">Sign In</button>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div id="view-loading" class="loading" style="display:none;">Loading rent roll...</div>
+
+<!-- LOAD ERROR -->
+<div id="view-load-error" class="load-error" style="display:none;">
+  <p>We couldn't load the rent roll. Please check your connection and try again.</p>
+  <button onclick="location.reload()">Retry</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="view-dashboard" style="display:none;">
+  <div class="topbar">
+    <img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png" alt="I Rent Houses In Sweats" onerror="this.style.display='none'">
+    <button class="signout" onclick="signOut()">Sign Out</button>
+  </div>
+
+  <div class="main">
+    <p class="page-title">Rent Roll</p>
+    <p class="page-sub">All 40 properties — who's paid, who owes, and current balances.</p>
+
+    <div class="summary-row">
+      <div class="summary-card">
+        <div class="summary-label">Total Properties</div>
+        <div class="summary-value" id="sum-total">—</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Occupied</div>
+        <div class="summary-value" id="sum-occupied">—</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Vacant</div>
+        <div class="summary-value" id="sum-vacant">—</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Total Owed</div>
+        <div class="summary-value owed" id="sum-owed">—</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Total Credit</div>
+        <div class="summary-value credit" id="sum-credit">—</div>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <input type="text" id="search" placeholder="Search by address...">
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Tenant</th>
+          <th>Monthly Rent</th>
+          <th>Balance</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="rent-roll-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://dzhdwremvptmtacvmxlq.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6aGR3cmVtdnB0bXRhY3ZteGxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NDg2MDgsImV4cCI6MjA5ODUyNDYwOH0.xb_yw_w3AIpzn-cVZTm_1iqY-IE99oJxSnaa6jMExDQ';
+
+  const { createClient } = supabase;
+  const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  let rows = [];
+
+  function fmt(amount) {
+    return '$' + parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function show(viewId) {
+    ['view-login', 'view-loading', 'view-load-error', 'view-dashboard'].forEach(id => {
+      document.getElementById(id).style.display = id === viewId ? (id === 'view-dashboard' ? 'block' : 'flex') : 'none';
+    });
+  }
+
+  async function init() {
+    const { data: { session } } = await db.auth.getSession();
+    if (!session) { show('view-login'); return; }
+
+    const { data: isAdmin, error: adminErr } = await db.rpc('is_admin');
+    if (adminErr || !isAdmin) {
+      await db.auth.signOut();
+      document.getElementById('login-error').textContent = 'This account is not authorized to view the rent roll.';
+      document.getElementById('login-error').style.display = 'block';
+      show('view-login');
+      return;
+    }
+
+    await loadRentRoll();
+  }
+
+  async function loadRentRoll() {
+    show('view-loading');
+    try {
+      const { data, error } = await db
+        .from('properties')
+        .select('id, address, monthly_rent, tenants(email, balance)')
+        .order('address', { ascending: true });
+
+      if (error) throw error;
+
+      rows = data.map(p => {
+        const tenant = Array.isArray(p.tenants) ? p.tenants[0] : p.tenants;
+        return {
+          address: p.address,
+          monthly_rent: p.monthly_rent,
+          email: tenant ? tenant.email : null,
+          balance: tenant ? (tenant.balance || 0) : null,
+        };
+      });
+
+      renderSummary();
+      renderTable(rows);
+      show('view-dashboard');
+    } catch (e) {
+      show('view-load-error');
+    }
+  }
+
+  function renderSummary() {
+    const occupied = rows.filter(r => r.email !== null);
+    const vacant = rows.filter(r => r.email === null);
+    const totalOwed = occupied.reduce((sum, r) => sum + (r.balance > 0 ? r.balance : 0), 0);
+    const totalCredit = occupied.reduce((sum, r) => sum + (r.balance < 0 ? Math.abs(r.balance) : 0), 0);
+
+    document.getElementById('sum-total').textContent = rows.length;
+    document.getElementById('sum-occupied').textContent = occupied.length;
+    document.getElementById('sum-vacant').textContent = vacant.length;
+    document.getElementById('sum-owed').textContent = fmt(totalOwed);
+    document.getElementById('sum-credit').textContent = fmt(totalCredit);
+  }
+
+  function renderTable(list) {
+    // Highest amount owed first, then vacant properties at the bottom
+    const sorted = [...list].sort((a, b) => {
+      if (a.email === null && b.email !== null) return 1;
+      if (a.email !== null && b.email === null) return -1;
+      return (b.balance || 0) - (a.balance || 0);
+    });
+
+    const tbody = document.getElementById('rent-roll-body');
+    tbody.innerHTML = '';
+
+    sorted.forEach(r => {
+      const tr = document.createElement('tr');
+      if (r.email === null) {
+        tr.className = 'vacant-row';
+        tr.innerHTML = `
+          <td data-label="Address">${r.address}</td>
+          <td data-label="Tenant">—</td>
+          <td data-label="Monthly Rent">${fmt(r.monthly_rent)}</td>
+          <td data-label="Balance">—</td>
+          <td data-label="Status"><span class="badge badge-vacant">Vacant</span></td>
+        `;
+      } else {
+        let balClass = 'bal-zero', statusText = 'Paid up', statusColor = '#888';
+        if (r.balance > 0) { balClass = 'bal-owed'; statusText = 'Owes ' + fmt(r.balance); statusColor = '#c0392b'; }
+        else if (r.balance < 0) { balClass = 'bal-credit'; statusText = 'Credit ' + fmt(Math.abs(r.balance)); statusColor = '#2a7a4b'; }
+
+        tr.innerHTML = `
+          <td data-label="Address">${r.address}</td>
+          <td data-label="Tenant">${r.email}</td>
+          <td data-label="Monthly Rent">${fmt(r.monthly_rent)}</td>
+          <td data-label="Balance" class="${balClass}">${fmt(r.balance)}</td>
+          <td data-label="Status" style="color:${statusColor};font-weight:700;">${statusText}</td>
+        `;
+      }
+      tbody.appendChild(tr);
+    });
+  }
+
+  document.getElementById('search').addEventListener('input', (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    const filtered = rows.filter(r => r.address.toLowerCase().includes(q));
+    renderTable(filtered);
+  });
+
+  async function handleLogin() {
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const btn = document.getElementById('login-btn');
+    const errEl = document.getElementById('login-error');
+    errEl.style.display = 'none';
+
+    if (!email || !password) {
+      errEl.textContent = 'Please enter your email and password.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Signing in...';
+
+    const { error } = await db.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      errEl.textContent = 'Invalid email or password.';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Sign In';
+      return;
+    }
+
+    await init();
+    btn.disabled = false;
+    btn.textContent = 'Sign In';
+  }
+
+  async function signOut() {
+    await db.auth.signOut();
+    show('view-login');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.getElementById('view-login').style.display !== 'none') handleLogin();
+  });
+
+  init();
+</script>
+</body>
+</html>
