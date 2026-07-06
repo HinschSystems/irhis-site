@@ -1,0 +1,9 @@
+{
+  "name": "irhis-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "I Rent Houses In Sweats — public website and tenant payment API (Vercel serverless functions).",
+  "dependencies": {
+    "stripe": "^17.4.0"
+  }
+}
