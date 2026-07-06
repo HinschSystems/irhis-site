@@ -286,6 +286,8 @@
     <p class="greeting">Welcome back</p>
     <p class="property-name" id="property-address"></p>
 
+    <div class="error-msg" id="payment-status-msg" style="background:#eefaf0;border-color:#b9e3c6;color:#1e6b3c;"></div>
+
     <div class="stats-row">
       <div class="card">
         <div class="card-label">Monthly Rent</div>
@@ -328,6 +330,7 @@
   let monthlyRent = 0;
   let currentBalance = 0;
   let tenantEmail = "";
+  let propertyAddress = "";
 
   function fmt(amount) {
     return '$' + parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -362,6 +365,7 @@
       if (pErr || !property) { window.location.href = '/login'; return; }
 
       monthlyRent = property.monthly_rent;
+      propertyAddress = property.address || "";
 
       // Populate UI
       document.getElementById('property-address').textContent = property.address;
@@ -398,15 +402,34 @@
 
       document.getElementById('view-loading').style.display = 'none';
       document.getElementById('view-dashboard').style.display = 'block';
+
+      // Show a message if we just came back from Stripe checkout
+      const params = new URLSearchParams(window.location.search);
+      const paid = params.get('paid');
+      const statusEl = document.getElementById('payment-status-msg');
+      if (paid === 'success') {
+        statusEl.textContent = 'Payment received! Your balance will update shortly and you\'ll get an emailed receipt from Stripe.';
+        statusEl.style.display = 'block';
+      } else if (paid === 'cancelled') {
+        statusEl.style.background = '#fff2f0';
+        statusEl.style.borderColor = '#f5c0b5';
+        statusEl.style.color = '#b83c28';
+        statusEl.textContent = 'Payment was cancelled. No charge was made.';
+        statusEl.style.display = 'block';
+      }
+      if (paid) {
+        window.history.replaceState({}, document.title, '/dashboard');
+      }
     } catch (e) {
       document.getElementById('view-loading').style.display = 'none';
       document.getElementById('view-load-error').style.display = 'block';
     }
   }
 
-  function handlePayment() {
+  async function handlePayment() {
     const amount = parseFloat(document.getElementById('pay-amount').value);
     const errEl = document.getElementById('pay-error');
+    const btn = document.getElementById('pay-btn');
     errEl.style.display = 'none';
 
     if (!amount || amount < 1) {
@@ -415,10 +438,37 @@
       return;
     }
 
-    const STRIPE_LINK = 'https://buy.stripe.com/3cI9AM4re4gq0bPgZZds402';
-    const amountInCents = Math.round(amount * 100);
-    const emailParam = tenantEmail ? '&prefilled_email=' + encodeURIComponent(tenantEmail) : '';
-    window.location.href = STRIPE_LINK + '?prefilled_amount=' + amountInCents + emailParam;
+    btn.disabled = true;
+    btn.textContent = 'Setting up secure checkout...';
+
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: amount,
+          email: tenantEmail,
+          address: propertyAddress
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.url) {
+        errEl.textContent = result.error || 'Something went wrong setting up your payment. Please try again.';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Pay Now';
+        return;
+      }
+
+      window.location.href = result.url;
+    } catch (e) {
+      errEl.textContent = 'We could not reach the payment server. Please check your connection and try again.';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Pay Now';
+    }
   }
 
   async function signOut() {
