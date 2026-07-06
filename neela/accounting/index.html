@@ -186,15 +186,24 @@
   async function loadRentRoll() {
     show('view-loading');
     try {
-      const { data, error } = await db
+      const { data: properties, error: pErr } = await db
         .from('properties')
-        .select('id, address, monthly_rent, tenants(email, balance)')
+        .select('id, address, monthly_rent')
         .order('address', { ascending: true });
 
-      if (error) throw error;
+      if (pErr) throw pErr;
 
-      rows = data.map(p => {
-        const tenant = Array.isArray(p.tenants) ? p.tenants[0] : p.tenants;
+      const { data: tenants, error: tErr } = await db
+        .from('tenants')
+        .select('email, balance, property_id');
+
+      if (tErr) throw tErr;
+
+      const tenantByProperty = {};
+      tenants.forEach(t => { tenantByProperty[t.property_id] = t; });
+
+      rows = properties.map(p => {
+        const tenant = tenantByProperty[p.id];
         return {
           address: p.address,
           monthly_rent: p.monthly_rent,
@@ -207,6 +216,7 @@
       renderTable(rows);
       show('view-dashboard');
     } catch (e) {
+      console.error('Rent roll load failed:', e);
       show('view-load-error');
     }
   }
