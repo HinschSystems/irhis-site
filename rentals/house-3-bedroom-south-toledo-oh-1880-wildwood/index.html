@@ -63,11 +63,12 @@ body { font-family: 'Nunito Sans', Arial, sans-serif; font-size: 16px; color: va
 .section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--salmon); margin-bottom: 6px; }
 .section-title { font-size: clamp(20px, 2.5vw, 26px); font-weight: 800; color: var(--navy); margin-bottom: 16px; line-height: 1.25; }
 .gallery-section { margin-bottom: 48px; }
-.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
-.gallery-grid .main-photo { grid-column: span 2; grid-row: span 2; }
+.gallery-grid { margin-top: 18px; }
+.gallery-exterior { border-radius: 8px; overflow: hidden; background: var(--cream); margin-bottom: 10px; }
+.gallery-exterior img { width: 100%; height: 380px; object-fit: cover; display: block; }
+.gallery-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .gallery-thumb { border-radius: 8px; overflow: hidden; background: var(--cream); aspect-ratio: 4/3; }
 .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.gallery-thumb.main-photo { aspect-ratio: auto; height: 100%; min-height: 280px; }
 .about-section { margin-bottom: 48px; }
 .about-body { font-size: 16px; line-height: 1.75; color: var(--text); margin-bottom: 28px; }
 .love-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -85,12 +86,6 @@ body { font-family: 'Nunito Sans', Arial, sans-serif; font-size: 16px; color: va
 .location-section { margin-bottom: 48px; }
 .map-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--white); text-decoration: none; padding: 12px 22px; border-radius: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 18px; transition: opacity 0.2s; }
 .map-btn:hover { opacity: 0.85; }
-.prequal-section { background: var(--navy); border-radius: var(--radius); padding: 36px 40px; margin-bottom: 48px; text-align: center; }
-.prequal-section .section-eyebrow { color: var(--salmon); }
-.prequal-section .section-title { color: var(--white); margin-bottom: 12px; }
-.prequal-body { color: rgba(255,255,255,0.75); font-size: 15px; max-width: 520px; margin: 0 auto 28px; }
-.btn-salmon-inline { display: inline-block; background: var(--salmon); color: var(--white); padding: 15px 36px; border-radius: 8px; font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
-.btn-salmon-inline:hover { opacity: 0.88; }
 .cta-section { margin-bottom: 48px; }
 .cta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
 .cta-card { border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -126,24 +121,23 @@ body { font-family: 'Nunito Sans', Arial, sans-serif; font-size: 16px; color: va
 @media (max-width: 1024px) {
 .page-body { grid-template-columns: 1fr; gap: 32px; }
 .sidebar { position: static; }
-.gallery-grid { grid-template-columns: repeat(2, 1fr); }
-.gallery-grid .main-photo { grid-column: span 2; grid-row: auto; }
 }
 @media (max-width: 768px) {
 .hero-overlay { padding: 32px 24px 28px; }
 .hero-photo { height: 360px; }
+.gallery-exterior img { height: 260px; }
+.gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
 .detail-blocks { grid-template-columns: 1fr; }
 .cta-grid { grid-template-columns: 1fr; }
 .testi-grid { grid-template-columns: 1fr; }
 .neela-inner { grid-template-columns: 1fr; text-align: center; }
 .neela-photo { margin: 0 auto; }
-.prequal-section { padding: 28px 22px; }
 }
 @media (max-width: 420px) {
 .hero-photo { height: 280px; }
 .hero-facts { flex-direction: column; gap: 8px; }
-.gallery-grid { grid-template-columns: 1fr; }
-.gallery-grid .main-photo { grid-column: span 1; }
+.gallery-exterior img { height: 200px; }
+.gallery-thumbs { grid-template-columns: 1fr; }
 .price-card-header .rent { font-size: 28px; }
 .hero h1 { font-size: 22px; }
 }
@@ -237,7 +231,6 @@ footer { background: var(--navy, #0b2c3d); color: white; padding: 56px 60px 0; }
 </ul>
 <div class="nav-right">
 <a href="tel:4199027728" class="nav-phone">(419) 902-7728</a>
-<a href="https://irenthousesinsweats.com/prequal" class="nav-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
 </div>
 <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
 <span></span><span></span><span></span>
@@ -251,7 +244,6 @@ footer { background: var(--navy, #0b2c3d); color: white; padding: 56px 60px 0; }
 <li><a href="/contact" target="_blank" rel="noopener">Contact</a></li>
 <li><a href="tel:4199027728">(419) 902-7728</a></li>
 </ul>
-<a href="https://irenthousesinsweats.com/prequal" class="nav-drawer-cta" target="_blank" rel="noopener">Get Pre-Qualified</a>
 </div>
 <div class="nav-overlay"></div>
 </nav>
@@ -278,23 +270,28 @@ footer { background: var(--navy, #0b2c3d); color: white; padding: 56px 60px 0; }
 <div class="section-eyebrow">Photos</div>
 <div class="section-title">See Inside This Home</div>
 <div class="gallery-grid">
-<div class="gallery-thumb main-photo">
-<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c434a6464154b3d907b.jpg" alt="Interior" onerror="this.style.display='none'">
+<div class="gallery-exterior">
+<img loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/6940954bf4c8e95022630e0b.jpg" alt="1880 Wildwood Rd — Exterior" onerror="this.parentElement.style.display='none'">
+</div>
+<div class="gallery-thumbs">
+<div class="gallery-thumb">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c434a6464154b3d907b.jpg" alt="Interior" onerror="this.parentElement.style.display='none'">
 </div>
 <div class="gallery-thumb">
-<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c4315885e59e76abfc4.jpg" alt="Interior" onerror="this.style.display='none'">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c4315885e59e76abfc4.jpg" alt="Interior" onerror="this.parentElement.style.display='none'">
 </div>
 <div class="gallery-thumb">
-<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c4315885e83dd6abfd9.jpg" alt="Kitchen" onerror="this.style.display='none'">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c4315885e83dd6abfd9.jpg" alt="Kitchen" onerror="this.parentElement.style.display='none'">
 </div>
 <div class="gallery-thumb">
-<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c4310cc272b72f0e4fb.jpg" alt="Interior" onerror="this.style.display='none'">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c4310cc272b72f0e4fb.jpg" alt="Interior" onerror="this.parentElement.style.display='none'">
 </div>
 <div class="gallery-thumb">
-<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c4310cc27cc1cf0e4fc.jpg" alt="Interior" onerror="this.style.display='none'">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c4310cc27cc1cf0e4fc.jpg" alt="Interior" onerror="this.parentElement.style.display='none'">
 </div>
 <div class="gallery-thumb">
-<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c43d4fb90df8df6dc17.jpg" alt="Interior" onerror="this.style.display='none'">
+<img loading="lazy" src="https://storage.googleapis.com/msgsndr/Ju2En80bdsSebpKgHpJT/media/69719c43d4fb90df8df6dc17.jpg" alt="Interior" onerror="this.parentElement.style.display='none'">
+</div>
 </div>
 </div>
 </section>
@@ -391,7 +388,7 @@ Fully privacy-fenced backyard with patio and 1.5-car attached garage
 <div class="detail-item"><span class="dk">Credit Score</span><span class="dv">600+</span></div>
 <div class="detail-item"><span class="dk">Background Check</span><span class="dv">Required — all adult applicants</span></div>
 <div class="detail-item"><span class="dk">Eviction History</span><span class="dv">No prior evictions</span></div>
-<div class="detail-item"><span class="dk">First Step</span><span class="dv">Complete prequalification before scheduling a tour</span></div>
+<div class="detail-item"><span class="dk">First Step</span><span class="dv">Reach out or book a showing to get started</span></div>
 </div>
 </div>
 </section>
@@ -405,32 +402,17 @@ Fully privacy-fenced backyard with patio and 1.5-car attached garage
 View on Google Maps
 </a>
 </section>
-<!-- PREQUALIFICATION -->
-<section class="prequal-section">
-<div class="section-eyebrow">Get Started</div>
-<div class="section-title">Start with a Quick, 2-Minute Prequalification</div>
-<p class="prequal-body">A few simple questions tell us if you're likely to be approved before you pay an application fee or take time off to tour. Please complete the prequalification form before requesting a showing.</p>
-<a class="btn-salmon-inline" href="https://www.irenthousesinsweats.com/rentals/house-3-bedroom-south-toledo-oh-1880-wildwood/qualify?property_of_interest=house-3-bedroom-south-toledo-oh-1880-wildwood" target="_blank" rel="noopener">See If You Qualify</a>
-</section>
 <!-- BOTTOM CTAs -->
 <section class="cta-section">
 <div class="section-eyebrow">Next Steps</div>
 <div class="section-title">Ready to Move Forward?</div>
-<div class="cta-grid">
-<div class="cta-card">
-<div class="cta-icon">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0b2c3d" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-</div>
-<h4>Get Pre-Qualified</h4>
-<p>Helps us confirm this home is a realistic fit before anyone takes time off to tour.</p>
-<a class="btn-cta-salmon" href="https://www.irenthousesinsweats.com/rentals/house-3-bedroom-south-toledo-oh-1880-wildwood/qualify?property_of_interest=house-3-bedroom-south-toledo-oh-1880-wildwood" target="_blank" rel="noopener">Start Here</a>
-</div>
+<div class="cta-grid" style="grid-template-columns: repeat(2, 1fr);">
 <div class="cta-card center-card">
 <div class="cta-icon">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 </div>
 <h4>Book a Tour</h4>
-<p>Already confident you qualify? Schedule a time to come walk through.</p>
+<p>Ready to see it in person? Schedule a time to come walk through.</p>
 <a class="btn-cta-outline-white" href="https://api.leadconnectorhq.com/widget/bookings/property/showing" target="_blank" rel="noopener">📅 Book a Showing</a>
 </div>
 <div class="cta-card">
@@ -459,13 +441,12 @@ View on Google Maps
 <div class="price-row"><span class="label">Parking</span><span class="value">1.5-Car Attached</span></div>
 <div class="price-row"><span class="label">Available</span><span class="value">Available Soon</span></div>
 <div class="price-row"><span class="label">Status</span><span class="value"><span class="avail-badge">Available Soon</span></span></div>
-<a class="btn btn-salmon" href="https://www.irenthousesinsweats.com/rentals/house-3-bedroom-south-toledo-oh-1880-wildwood/qualify?property_of_interest=house-3-bedroom-south-toledo-oh-1880-wildwood" target="_blank" rel="noopener">Prequalify Now</a>
-<a class="btn btn-outline-navy" href="https://api.leadconnectorhq.com/widget/bookings/property/showing" target="_blank" rel="noopener">Book a Showing</a>
+<a class="btn btn-salmon" href="https://api.leadconnectorhq.com/widget/bookings/property/showing" target="_blank" rel="noopener">Book a Showing</a>
 </div>
 </div>
 <div class="tour-card">
 <h4>Book a Tour</h4>
-<p>Prequalify first, then schedule your showing online — quick and easy.</p>
+<p>Schedule your showing online — quick and easy.</p>
 <a class="btn btn-outline-navy" href="https://api.leadconnectorhq.com/widget/bookings/property/showing" target="_blank" rel="noopener">Schedule a Showing</a>
 </div>
 </aside>
