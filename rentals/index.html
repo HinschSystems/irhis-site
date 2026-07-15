@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
+/* ── RESET/* ── RESET ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -28,6 +29,7 @@ background: #fff;
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; }
+/* ─── NAV BASE ────────────────────────────────────── */
 nav {
 background: var(--white, #fff);
 height: 78px;
@@ -62,6 +64,7 @@ nav { padding: 0 16px; height: 64px; }
 nav { height: 58px; }
 .nav-logo img { height: 36px; }
 }
+/* ── TOKENS ──────────────────────────────────────────────────── */
 :root {
 --navy:   #0b2c3d;
 --salmon: #C4775A;
@@ -70,6 +73,7 @@ nav { height: 58px; }
 --text:   #3a3a3a;
 --mid:    #6b7280;
 }
+/* ── NAV ─────────────────────────────────────────────────────── */
 .nav {
 position: sticky;
 top: 0;
@@ -121,6 +125,7 @@ transform-origin: center;
 .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav__hamburger.open span:nth-child(2) { opacity: 0; }
 .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* ── MOBILE MENU ─────────────────────────────────────────────── */
 .nav__mobile {
 display: none;
 position: fixed;
@@ -150,6 +155,7 @@ transition: color .2s, background .2s;
 }
 .nav__mobile a:last-child { border-bottom: none; }
 .nav__mobile a:hover { color: var(--salmon); background: rgba(196,119,90,0.05); }
+/* ── PAGE HERO ───────────────────────────────────────────────── */
 .page-hero {
 background: var(--navy);
 padding: 60px 48px 56px;
@@ -177,6 +183,7 @@ max-width: 500px;
 margin: 0 auto;
 line-height: 1.65;
 }
+/* ── BUTTONS ─────────────────────────────────────────────────── */
 .btn {
 display: inline-block;
 text-align: center;
@@ -203,6 +210,7 @@ color: #fff;
 border: 2px solid rgba(255,255,255,0.4);
 }
 .btn-ghost:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.06); }
+/* ── FEATURED ────────────────────────────────────────────────── */
 .featured {
 background: var(--cream);
 padding: 72px 48px 80px;
@@ -237,6 +245,7 @@ border-radius: 6px;
 overflow: hidden;
 box-shadow: 0 12px 56px rgba(11,44,61,0.16);
 }
+/* Gallery */
 .feat-gallery {
 position: relative;
 background: #000;
@@ -308,6 +317,7 @@ font-weight: 600;
 white-space: nowrap;
 padding-bottom: 4px;
 }
+/* Info panel */
 .feat-info {
 background: var(--navy);
 padding: 44px 40px 40px;
@@ -410,6 +420,7 @@ margin-top: auto;
 width: 100%;
 padding: 15px;
 }
+/* ── COMING SOON ─────────────────────────────────────────────── */
 .coming {
 background: #fff;
 padding: 0 48px 16px;
@@ -511,6 +522,7 @@ letter-spacing: 0.10em;
 text-transform: uppercase;
 color: rgba(255,255,255,0.35);
 }
+/* ── PORTFOLIO ───────────────────────────────────────────────── */
 .portfolio {
 background: #fff;
 padding: 64px 48px 80px;
@@ -640,6 +652,7 @@ display: inline-block;
 .prop-card__badge.leased { background: #e0e0e0; color: #666; }
 .prop-card--leased { opacity: 0.72; }
 .prop-card--leased .prop-card__img { filter: grayscale(0.4); }
+/* ── QUALIFY BANNER ──────────────────────────────────────────── */
 .qualify {
 background: var(--navy);
 padding: 72px 48px 80px;
@@ -680,6 +693,7 @@ letter-spacing: 0.12em;
 text-transform: uppercase;
 color: rgba(255,255,255,0.40);
 }
+/* ── FOOTER ──────────────────────────────────────────────────── */
 .footer {
 background: var(--navy);
 border-top: 1px solid rgba(255,255,255,0.07);
@@ -755,6 +769,7 @@ gap: 10px;
 font-size: 12px;
 color: rgba(255,255,255,0.28);
 }
+/* ── LIGHTBOX ────────────────────────────────────────────────── */
 .lightbox {
 display: none;
 position: fixed;
@@ -810,6 +825,7 @@ color: rgba(255,255,255,0.5);
 font-size: 13px;
 font-weight: 600;
 }
+/* ── RESPONSIVE: 1024px ──────────────────────────────────────── */
 @media (max-width: 1024px) {
 .nav { padding: 0 32px; }
 .featured { padding: 56px 32px 64px; }
@@ -824,6 +840,7 @@ font-weight: 600;
 .footer__top { grid-template-columns: 1fr 1fr; gap: 36px; }
 .featured__wrap > div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
 }
+/* ── RESPONSIVE: 768px ───────────────────────────────────────── */
 @media (max-width: 768px) {
 .nav { padding: 0 20px; height: 64px; }
 .nav__logo img { height: 36px; }
@@ -856,6 +873,7 @@ font-weight: 600;
 .featured__wrap > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
 .featured__wrap > div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
 }
+/* ── RESPONSIVE: 480px ───────────────────────────────────────── */
 @media (max-width: 480px) {
 .page-hero { padding: 40px 16px 36px; }
 .featured { padding: 36px 16px 44px; }
@@ -877,6 +895,7 @@ font-weight: 600;
 .qualify__reqs { gap: 20px 28px; }
 .footer { padding: 36px 16px 24px; }
 }
+/* ─── NAV RIGHT / CTA ─────────────────────────────── */
 .nav-right { display: flex; align-items: center; gap: 1.25rem; }
 .nav-phone { font-size: 0.78rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
 .nav-phone:hover { color: var(--salmon); }
@@ -887,11 +906,13 @@ font-weight: 600;
   transition: background 0.2s;
 }
 .nav-cta:hover { background: #b3674d; }
+/* ─── HAMBURGER ───────────────────────────────────── */
 .nav-hamburger {
   display: none; flex-direction: column; justify-content: center; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 4px; width: 36px; height: 36px;
 }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.25s; }
+/* ─── MOBILE DRAWER ───────────────────────────────── */
 .nav-drawer {
   position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
   background: var(--navy); z-index: 500; padding: 2rem 1.5rem;
@@ -924,6 +945,7 @@ font-weight: 600;
   .nav-hamburger { display: flex; }
   .nav-cta { display: none; }
 }
+/* ─── FOOTER BASE ─────────────────────────────────── */
 footer {
 background: var(--navy, #0b2c3d);
 color: white;
@@ -997,10 +1019,12 @@ text-align: center;
 <h1 class="page-hero__title">Explore Our Full Property Portfolio</h1>
 <p class="page-hero__sub">See all homes across the IRHIS portfolio, from current listings to leased properties.</p>
 </section>
+<!-- FEATURED PROPERTIES — Bensch -->
 <section class="featured">
 <div class="featured__wrap">
 <div class="section-label">Featured</div>
 <div style="display:grid; grid-template-columns:1fr; gap:20px;">
+<!-- CARD: 1880 Wildwood Rd — Available Soon -->
 <div class="coming__card">
 <div class="coming__img-wrap">
 <img class="coming__img" loading="lazy"
@@ -1019,7 +1043,7 @@ onerror="this.style.opacity='0'">
 <div><span class="coming-spec__val">3</span><span class="coming-spec__label">Bedrooms</span></div>
 <div><span class="coming-spec__val">1</span><span class="coming-spec__label">Bathroom</span></div>
 <div><span class="coming-spec__val">1,324</span><span class="coming-spec__label">Sq Ft</span></div>
-<div><span class="coming-spec__val">$1,500</span><span class="coming-spec__label">/ Month</span></div>
+<div><span class="coming-spec__val">$1,650</span><span class="coming-spec__label">/ Month</span></div>
 </div>
 <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
 <a class="btn btn-salmon" href="/contact" target="_blank" rel="noopener">Contact Neela</a>
@@ -1029,6 +1053,7 @@ onerror="this.style.opacity='0'">
 </div>
 </div>
 </section>
+<!-- COMING SOON — Byrneway Townhouses -->
 <section class="featured">
 <div class="featured__wrap">
 <div class="section-label">Coming Soon</div>
@@ -1036,6 +1061,7 @@ onerror="this.style.opacity='0'">
 <p style="color:var(--mid); font-size:0.95rem; margin-bottom:28px;">Three two-unit townhouses becoming available July 15th — reach out to get on the waitlist.</p>
 <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;">
 
+<!-- CARD: 2265 & 2267 Byrneway Dr -->
 <div class="coming__card" style="display:grid; grid-template-columns:1fr;">
 <div class="coming__img-wrap" style="min-height:200px;">
 <img class="coming__img" loading="lazy"
@@ -1061,6 +1087,7 @@ onerror="this.style.opacity='0'">
 </div>
 </div>
 
+<!-- CARD: 2301 & 2303 Byrneway Dr -->
 <div class="coming__card" style="display:grid; grid-template-columns:1fr;">
 <div class="coming__img-wrap" style="min-height:200px;">
 <img class="coming__img" loading="lazy"
@@ -1086,6 +1113,7 @@ onerror="this.style.opacity='0'">
 </div>
 </div>
 
+<!-- CARD: 2317 & 2319 Byrneway Dr -->
 <div class="coming__card" style="display:grid; grid-template-columns:1fr;">
 <div class="coming__img-wrap" style="min-height:200px;">
 <img class="coming__img" loading="lazy"
@@ -1114,6 +1142,7 @@ onerror="this.style.opacity='0'">
 </div>
 </div>
 </section>
+<!-- PORTFOLIO GRID -->
 <section class="portfolio">
 <div class="portfolio__wrap">
 <div class="portfolio__header">
@@ -1122,6 +1151,7 @@ onerror="this.style.opacity='0'">
 <p class="portfolio__note">These properties are currently occupied. Get in touch to be added to the waitlist — we'll reach out as soon as something opens up.</p>
 </div>
 <div class="portfolio__grid">
+<!-- CARD: 1531 Wilmore Dr — Recently Leased -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy"
@@ -1142,6 +1172,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 1429 Bensch Dr — Recently Leased -->
 <div class="prop-card prop-card--leased">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy"
@@ -1291,6 +1322,7 @@ alt="5524 Glenridge Dr, Toledo OH" onerror="this.style.display='none'">
 <a class="prop-card__cta" href="/contact" target="_blank" rel="noopener">Ask About This Property</a>
 </div>
 </div>
+<!-- CARD: 332 Lacombe — Recently Leased -->
 <div class="prop-card prop-card--leased">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy"
@@ -1311,6 +1343,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 3872 Vogel Dr -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e1247a2c135a8c839921a2.jpg" alt="3872 Vogel Dr, Toledo OH" onerror="this.style.display='none'">
@@ -1329,6 +1362,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 3110 Strathmoor Ave -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e1253d12a3b92a6815ac7a.jpg" alt="3110 Strathmoor Ave, Toledo OH" onerror="this.style.display='none'">
@@ -1347,6 +1381,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 3908 S Detroit Ave -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e124c5bde9ef25bd0b433a.jpg" alt="3908 S Detroit Ave, Toledo OH" onerror="this.style.display='none'">
@@ -1365,6 +1400,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 5533 Cresthaven Ln #1B -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e125878696a78b8d645110.jpg" alt="5533 Cresthaven Ln, Toledo OH" onerror="this.style.display='none'">
@@ -1383,6 +1419,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 5753 Yermo Dr -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69e125e20b562c7281234468.jpg" alt="5753 Yermo Dr, Toledo OH" onerror="this.style.display='none'">
@@ -1401,6 +1438,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 1347 Corry Ave -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy"
@@ -1422,6 +1460,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 3910 S Detroit Ave -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy"
@@ -1443,6 +1482,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 1052 Valley Grove Dr -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f369eebb6377d896a1031c.jpg"
@@ -1463,6 +1503,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 2264 Rockspring Rd -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a8d14daed238d5054df.jpg"
@@ -1483,6 +1524,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 2270 Rockspring Rd #7 -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a81bb6377d896a12b30.jpg"
@@ -1503,6 +1545,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 3354 Wyckliffe Pkwy #Upper -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a5745cd8494931e8459.jpg"
@@ -1523,6 +1566,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 
+<!-- CARD: 3356 Wyckliffe Pkwy #Lower -->
 <div class="prop-card">
 <div class="prop-card__img-wrap">
 <img class="prop-card__img" loading="lazy" src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/69f36a66bb6377d896a12370.jpg"
@@ -1546,6 +1590,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 </section>
+<!-- QUALIFY BANNER -->
 <section class="qualify">
 <h2 class="qualify__title">Ready to Apply?</h2>
 <p class="qualify__sub">Every rental has the same clear requirements. Get pre-qualified in minutes and move to the front of the line.</p>
@@ -1568,6 +1613,7 @@ onerror="this.style.display='none'">
 </div>
 </div>
 </section>
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
 <button class="lightbox__close" onclick="closeLightbox()" aria-label="Close">&times;</button>
 <button class="lightbox__btn lightbox__prev" onclick="lightboxNav(-1)" aria-label="Previous photo">&#8249;</button>
