@@ -227,6 +227,12 @@ transition: background 0.2s, transform 0.15s;
 }
 .doc-download:hover { background: #b3674d; transform: translateY(-1px); }
 .doc-download svg { flex-shrink: 0; }
+.doc-next-step {
+font-size: 12px;
+color: var(--text-light);
+margin-top: 10px;
+}
+.doc-next-step a { color: var(--navy); font-weight: 700; text-decoration: underline; }
 
 .note-card {
 background: #fff;
@@ -381,7 +387,7 @@ footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 <div class="trust-strip">
 <div class="trust-item">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-Free to download
+Fillable right in your browser
 </div>
 <div class="trust-item">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -409,11 +415,12 @@ Questions? Just ask Neela
       </div>
       <div class="doc-card-body">
         <h3>Rental Application</h3>
-        <p>Have this filled out and ready — with pay stubs, ID, and your rental history — before you tour a property. Every IRHIS rental uses the same application.</p>
-        <a href="/documents/rental-application.pdf" download class="doc-download">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Application (PDF)
+        <p>Fill it out right in your browser — type your info directly into the form, then print or save it as a PDF when you're done. Every IRHIS rental uses the same application.</p>
+        <a href="/documents/rental-application.pdf" target="_blank" rel="noopener" class="doc-download">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Fill Out Application Online
         </a>
+        <p class="doc-next-step">Once it's filled out, save it and email it to <a href="mailto:nkelly7x@gmail.com">nkelly7x@gmail.com</a>.</p>
       </div>
     </div>
 
@@ -423,16 +430,17 @@ Questions? Just ask Neela
       </div>
       <div class="doc-card-body">
         <h3>Lease Agreement</h3>
-        <p>The standard 12-month lease used for every IRHIS rental. Take a look before your showing so there are no surprises when it's time to sign.</p>
-        <a href="/documents/lease-agreement.pdf" download class="doc-download">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Lease Agreement (PDF)
+        <p>The standard 12-month lease used for every IRHIS rental. Fill in the property and tenant details right in your browser, then print or save it as a PDF — review it before your showing so there are no surprises when it's time to sign.</p>
+        <a href="/documents/lease-agreement.pdf" target="_blank" rel="noopener" class="doc-download">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Fill Out Lease Online
         </a>
+        <p class="doc-next-step">Once it's filled out, save it and email it to <a href="mailto:nkelly7x@gmail.com">nkelly7x@gmail.com</a>.</p>
       </div>
     </div>
 
     <div class="note-card">
-      <p><strong>Note:</strong> Formal applications for available properties are submitted through Zillow, not this form. This download is here so you can review requirements and get your documents ready in advance. Have a question about a specific property? <a href="/contact" style="color:var(--navy); font-weight:700;">Reach out to Neela</a>.</p>
+      <p><strong>Note:</strong> These open right in your browser as fillable PDFs — no login or software needed. Type your answers into the form, then use your browser's print or save option to keep a copy. Once you've saved your completed form, email it to <a href="mailto:nkelly7x@gmail.com" style="color:var(--navy); font-weight:700;">nkelly7x@gmail.com</a> — that's how Neela receives it. Formal applications for available properties are still submitted through Zillow, not this form; this is here so you can review requirements and get your info ready in advance. Have a question about a specific property? <a href="/contact" style="color:var(--navy); font-weight:700;">Reach out to Neela</a>.</p>
     </div>
 
   </div>
