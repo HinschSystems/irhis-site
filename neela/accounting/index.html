@@ -58,6 +58,10 @@
     .badge { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 10px; }
     .badge-vacant { background: #eee; color: #888; }
 
+    /* Former tenants with a balance */
+    .section-title { font-size: 18px; font-weight: 800; color: #0b2c3d; margin: 40px 0 4px; }
+    .section-sub { font-size: 13px; color: #888; margin-bottom: 14px; }
+
     .loading, .load-error { text-align: center; padding: 80px 20px; color: #888; }
     .load-error button { margin-top: 12px; background: #C4775A; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-weight: 700; cursor: pointer; }
 
@@ -145,6 +149,22 @@
       </thead>
       <tbody id="rent-roll-body"></tbody>
     </table>
+
+    <div id="former-section" style="display:none;">
+      <p class="section-title">Former Tenants With a Balance</p>
+      <p class="section-sub">Moved out, but still owe money or are owed money. They drop off this list once the balance is $0.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Address</th>
+            <th>Former Tenant</th>
+            <th>Balance</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="former-body"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -156,6 +176,7 @@
   const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
   let rows = [];
+  let formerRows = [];
 
   function fmt(amount) {
     return '$' + parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -195,12 +216,24 @@
 
       const { data: tenants, error: tErr } = await db
         .from('tenants')
-        .select('email, balance, property_id');
+        .select('email, balance, property_id, is_active');
 
       if (tErr) throw tErr;
 
+      // Current occupant = the ACTIVE tenant. Past tenants stay on record after a move-out.
       const tenantByProperty = {};
-      tenants.forEach(t => { tenantByProperty[t.property_id] = t; });
+      tenants.filter(t => t.is_active).forEach(t => { tenantByProperty[t.property_id] = t; });
+
+      const addressById = {};
+      properties.forEach(p => { addressById[p.id] = p.address; });
+
+      formerRows = tenants
+        .filter(t => !t.is_active && Number(t.balance || 0) !== 0)
+        .map(t => ({
+          address: addressById[t.property_id] || '(unknown property)',
+          email: t.email,
+          balance: Number(t.balance),
+        }));
 
       rows = properties.map(p => {
         const tenant = tenantByProperty[p.id];
@@ -214,6 +247,7 @@
 
       renderSummary();
       renderTable(rows);
+      renderFormer();
       show('view-dashboard');
     } catch (e) {
       console.error('Rent roll load failed:', e);
@@ -271,6 +305,28 @@
       }
       tbody.appendChild(tr);
     });
+  }
+
+  function renderFormer() {
+    const section = document.getElementById('former-section');
+    const tbody = document.getElementById('former-body');
+    tbody.innerHTML = '';
+
+    if (formerRows.length === 0) { section.style.display = 'none'; return; }
+
+    // Largest amount owed first
+    [...formerRows].sort((a, b) => b.balance - a.balance).forEach(r => {
+      const owes = r.balance > 0;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td data-label="Address">${r.address}</td>
+        <td data-label="Former Tenant">${r.email || '—'}</td>
+        <td data-label="Balance" class="${owes ? 'bal-owed' : 'bal-credit'}">${fmt(Math.abs(r.balance))}</td>
+        <td data-label="Status" style="color:${owes ? '#c0392b' : '#2a7a4b'};font-weight:700;">${owes ? 'Owes ' + fmt(r.balance) : 'Owed ' + fmt(Math.abs(r.balance)) + ' back'}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+    section.style.display = 'block';
   }
 
   document.getElementById('search').addEventListener('input', (e) => {
