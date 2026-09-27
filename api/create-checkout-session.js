@@ -34,6 +34,25 @@ const SITE_URL = 'https://irenthousesinsweats.com';
 const MIN_AMOUNT_CENTS = 100;        // $1.00 minimum, matches existing dashboard validation
 const MAX_AMOUNT_CENTS = 10000000;   // $100,000 ceiling as a sanity guard against abuse/typos
 
+function calculateAchFeeCents(rentCents) {
+  // Smallest f such that:
+  // f >= round(0.008 * (rentCents + f))
+  // capped at $5.00.
+  for (let feeCents = 0; feeCents <= 500; feeCents++) {
+    if (feeCents >= Math.round(0.008 * (rentCents + feeCents))) {
+      return feeCents;
+    }
+  }
+  return 500;
+}
+
+function checkoutReturnBaseUrl() {
+  if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  return SITE_URL;
+}
+
 const SUPABASE_URL = 'https://dzhdwremvptmtacvmxlq.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6aGR3cmVtdnB0bXRhY3ZteGxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NDg2MDgsImV4cCI6MjA5ODUyNDYwOH0.xb_yw_w3AIpzn-cVZTm_1iqY-IE99oJxSnaa6jMExDQ';
 
@@ -99,6 +118,11 @@ module.exports = async (req, res) => {
       return;
     }
 
+    // Fee is calculated server-side from the submitted rent-payment amount.
+    // Never accept or trust a fee supplied by the browser.
+    const feeAmountCents = calculateAchFeeCents(amountInCents);
+    const sessionTotalCents = amountInCents + feeAmountCents;
+
     // 1. Verify the token and get the real user id
     const userResult = await supabaseRequest('/auth/v1/user', accessToken);
     const userId = userResult.data && userResult.data.id;
@@ -147,28 +171,45 @@ module.exports = async (req, res) => {
       user_id: userId,
       property_id: property.id,
       monthly_rent: String(property.monthly_rent),
+      payment_schema: 'rent_fee_v1',
+      rent_amount_cents: String(amountInCents),
+      fee_amount_cents: String(feeAmountCents),
     };
+
+    const returnBaseUrl = checkoutReturnBaseUrl();
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
+      payment_method_types: ['us_bank_account'],
       customer_email: email,
       line_items: [
         {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'Rent Payment',
+              name: 'Rent',
               description: `Monthly rent payment for ${propertyLabel}. Covers your base rent and any pet rent due for the current month. Questions? Contact Neela at (419) 902-7728.`,
             },
             unit_amount: amountInCents,
           },
           quantity: 1,
         },
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'Bank processing fee',
+              description: 'Bank payment processing fee.',
+            },
+            unit_amount: feeAmountCents,
+          },
+          quantity: 1,
+        },
       ],
       metadata,
       payment_intent_data: { metadata },
-      success_url: `${SITE_URL}/dashboard?paid=success`,
-      cancel_url: `${SITE_URL}/dashboard?paid=cancelled`,
+      success_url: `${returnBaseUrl}/dashboard?paid=success`,
+      cancel_url: `${returnBaseUrl}/dashboard?paid=cancelled`,
     });
 
     res.status(200).json({ url: session.url });
