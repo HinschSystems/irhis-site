@@ -50,6 +50,14 @@
       margin-bottom: 8px;
     }
 
+    .intro {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
     .property-tag {
       background: #E8EEED;
       color: #0b2c3d;
@@ -58,7 +66,7 @@
       text-align: center;
       padding: 10px 16px;
       border-radius: 8px;
-      margin-bottom: 28px;
+      margin-bottom: 8px;
     }
 
     .property-tag span {
@@ -69,6 +77,13 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-bottom: 3px;
+    }
+
+    .property-note {
+      color: #888;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 24px;
     }
 
     label {
@@ -96,6 +111,12 @@
 
     input:focus { border-color: #C4775A; }
 
+    #access-code {
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
     button {
       width: 100%;
       padding: 14px;
@@ -113,6 +134,7 @@
 
     button:hover:not(:disabled) { background: #ad6249; }
     button:disabled { background: #c8c8c8; cursor: not-allowed; }
+    button:focus-visible { outline: 3px solid #0b2c3d; outline-offset: 2px; }
 
     .error {
       background: #fff2f0;
@@ -154,6 +176,7 @@
 
     .invalid p { color: #0b2c3d; font-size: 15px; margin-bottom: 10px; }
     .invalid .contact { color: #888; font-size: 14px; }
+    .invalid a { color: #C4775A; font-weight: 700; }
 
     .invalid button {
       background: #C4775A;
@@ -187,6 +210,22 @@
   <!-- Loading state -->
   <div id="view-loading" class="loading">Looking up your property...</div>
 
+  <!-- Access code entry (no ?p= in the URL) -->
+  <div id="view-code" style="display:none;">
+    <h1>Create Your Account</h1>
+    <p class="intro">Enter the access code Neela sent you. It's how we match your account to your home.</p>
+
+    <div class="error" id="code-error"></div>
+
+    <label for="access-code">Access Code</label>
+    <input type="text" id="access-code" placeholder="e.g. a1b2-c3d4-e5f6"
+      autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+
+    <button id="code-btn" onclick="handleCodeSubmit()">Continue</button>
+
+    <div class="login-link">Already have an account? <a href="/login">Sign in</a></div>
+  </div>
+
   <!-- Form -->
   <div id="view-form" style="display:none;">
     <h1>Create Your Account</h1>
@@ -194,11 +233,15 @@
       <span>Your Property</span>
       <span id="property-address"></span>
     </div>
+    <p class="property-note">Not your home? Stop here and contact Neela at (419) 902-7728.</p>
 
     <div class="error" id="error-msg"></div>
 
     <label for="email">Email Address</label>
     <input type="email" id="email" placeholder="you@email.com" autocomplete="email">
+
+    <label for="email-confirm">Confirm Email Address</label>
+    <input type="email" id="email-confirm" placeholder="Type your email again" autocomplete="off">
 
     <label for="password">Password</label>
     <input type="password" id="password" placeholder="At least 8 characters" autocomplete="new-password">
@@ -211,10 +254,11 @@
     <div class="login-link">Already have an account? <a href="/login">Sign in</a></div>
   </div>
 
-  <!-- Invalid code -->
+  <!-- Invalid code (from a link) -->
   <div id="view-invalid" style="display:none;" class="invalid">
     <p>This invite link is invalid or expired.</p>
-    <p class="contact">Contact Neela at (419) 902-7728 for a new link.</p>
+    <p class="contact">If Neela sent you an access code, you can enter it instead. Otherwise contact Neela at (419) 902-7728 for a new one.</p>
+    <button onclick="showCodeView()">Enter an access code</button>
   </div>
 
   <!-- Already claimed -->
@@ -232,16 +276,16 @@
 
 <script>
   const SUPABASE_URL = 'https://dzhdwremvptmtacvmxlq.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6aGR3cmVtdnB0bXRhY3ZteGxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NDg2MDgsImV4cCI6MjA5ODUyNDYwOH0.xb_yw_w3AIpzn-cVZTm_1iqY-IE99oJxSnaa6jMExDQ';
+  const SUPABASE_KEY = '[key redacted]';
 
   const { createClient } = supabase;
   const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // The invite code from the link. Identity and property are resolved server-side.
+  // The invite code, from the link or typed in. Identity and property are resolved server-side.
   let inviteCode = null;
 
   function show(viewId) {
-    ['view-loading', 'view-form', 'view-invalid', 'view-load-error', 'view-claimed'].forEach(id => {
+    ['view-loading', 'view-code', 'view-form', 'view-invalid', 'view-load-error', 'view-claimed'].forEach(id => {
       document.getElementById(id).style.display = id === viewId ? 'block' : 'none';
     });
   }
@@ -256,42 +300,103 @@
     document.getElementById('error-msg').style.display = 'none';
   }
 
+  function showCodeError(msg) {
+    const el = document.getElementById('code-error');
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  function hideCodeError() {
+    document.getElementById('code-error').style.display = 'none';
+  }
+
+  // Same cleanup for linked and typed codes: lowercase, drop spaces and dashes
+  function normalizeCode(raw) {
+    return (raw || '').toLowerCase().replace(/[\s-]+/g, '');
+  }
+
+  function showCodeView() {
+    hideCodeError();
+    show('view-code');
+    document.getElementById('access-code').focus();
+  }
+
+  function showForm(code, address) {
+    inviteCode = code;
+    document.getElementById('property-address').textContent = address;
+    show('view-form');
+  }
+
+  // Server-side lookup: returns the address only, and only for a valid code
+  async function lookupCode(code) {
+    try {
+      const { data, error } = await db.rpc('lookup_invite', { p_code: code });
+      if (error) return { status: 'error' };
+      if (!Array.isArray(data) || data.length !== 1) return { status: 'invalid' };
+      if (data[0].is_claimed) return { status: 'claimed' };
+      return { status: 'valid', address: data[0].address };
+    } catch (e) {
+      return { status: 'error' };
+    }
+  }
+
   async function init() {
     // If they're already logged in, skip signup entirely and go straight to the dashboard
     const { data: { session } } = await db.auth.getSession();
     if (session) { window.location.href = '/dashboard'; return; }
 
     const params = new URLSearchParams(window.location.search);
-    const code = params.get('p');
+    const code = normalizeCode(params.get('p'));
 
-    if (!code) { show('view-invalid'); return; }
+    // No code in the link: ask for it
+    if (!code) { showCodeView(); return; }
 
-    try {
-      // Server-side lookup: returns the address only, and only for a valid code
-      const { data, error } = await db.rpc('lookup_invite', { p_code: code });
+    const result = await lookupCode(code);
+    if (result.status === 'valid')   { showForm(code, result.address); return; }
+    if (result.status === 'claimed') { show('view-claimed'); return; }
+    if (result.status === 'invalid') { show('view-invalid'); return; }
+    show('view-load-error');
+  }
 
-      if (error) { show('view-load-error'); return; }
-      if (!Array.isArray(data) || data.length !== 1) { show('view-invalid'); return; }
-      if (data[0].is_claimed) { show('view-claimed'); return; }
+  async function handleCodeSubmit() {
+    hideCodeError();
 
-      inviteCode = code;
-      document.getElementById('property-address').textContent = data[0].address;
-      show('view-form');
-    } catch (e) {
-      show('view-load-error');
+    const code = normalizeCode(document.getElementById('access-code').value);
+    const btn  = document.getElementById('code-btn');
+
+    if (!code) { showCodeError('Please enter your access code.'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Checking...';
+
+    const result = await lookupCode(code);
+
+    btn.disabled = false;
+    btn.textContent = 'Continue';
+
+    if (result.status === 'valid')   { showForm(code, result.address); return; }
+    if (result.status === 'claimed') { show('view-claimed'); return; }
+    if (result.status === 'invalid') {
+      showCodeError("We couldn't find that code. Check it against Neela's message and try again, or call Neela at (419) 902-7728.");
+      return;
     }
+    showCodeError("We couldn't check your code right now. Please check your connection and try again.");
   }
 
   async function handleSignup() {
     hideError();
 
-    const email    = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    const confirm  = document.getElementById('confirm').value;
-    const btn      = document.getElementById('submit-btn');
+    const email        = document.getElementById('email').value.trim();
+    const emailConfirm = document.getElementById('email-confirm').value.trim();
+    const password     = document.getElementById('password').value;
+    const confirm      = document.getElementById('confirm').value;
+    const btn          = document.getElementById('submit-btn');
 
-    if (!email || !password || !confirm) {
+    if (!email || !emailConfirm || !password || !confirm) {
       showError('Please fill in all fields.'); return;
+    }
+    if (email.toLowerCase() !== emailConfirm.toLowerCase()) {
+      showError('Email addresses do not match.'); return;
     }
     if (password.length < 8) {
       showError('Password must be at least 8 characters.'); return;
@@ -313,7 +418,7 @@
     }
 
     if (!data.session) {
-      showError('Please check your email to confirm your account, then come back to this link to finish setup.');
+      showError('Please check your email to confirm your account, then come back and enter your access code again to finish setup.');
       btn.disabled = false;
       btn.textContent = 'Create Account';
       return;
@@ -345,6 +450,10 @@
 
     window.location.href = '/dashboard';
   }
+
+  document.getElementById('access-code').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleCodeSubmit();
+  });
 
   init();
 </script>
