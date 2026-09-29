@@ -129,6 +129,21 @@ line-height: 1.65;
 .notice-text strong { font-weight: 800; }
 .notice-text a { color: #b45309; font-weight: 700; text-decoration: none; }
 .notice-text a:hover { text-decoration: underline; }
+.notice-btn {
+display: inline-block;
+margin-top: 12px;
+padding: 10px 20px;
+background: var(--salmon);
+color: var(--white);
+font-family: 'Nunito Sans', Arial, sans-serif;
+font-size: 14px;
+font-weight: 800;
+text-decoration: none;
+border-radius: 6px;
+transition: background 0.2s;
+}
+.notice-btn:hover { background: #b3684d; }
+.notice-btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
 
 /* ─── SEARCH ────────────────────────────────────────── */
 .search-section {
@@ -380,6 +395,7 @@ footer { background: var(--navy); color: white; padding: 56px 60px 0; }
 .help-section { padding: 40px 16px; }
 .notice-inner { flex-direction: column; gap: 8px; }
 .notice-banner { padding: 14px 16px; }
+.notice-btn { display: block; text-align: center; padding: 14px 20px; font-size: 15px; }
 /* Larger touch targets on mobile */
 .prop-card__btn { padding: 15px 12px; font-size: 14px; margin-top: 16px; }
 #address-search { font-size: 16px; padding: 15px 18px 15px 46px; }
@@ -438,7 +454,10 @@ nav { padding: 0 14px; height: 58px; }
 <div class="notice-banner">
 <div class="notice-inner">
 <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-<p class="notice-text"><strong>First time here?</strong> Neela will text you a personal link to create your account. Use that link to get started. <strong>Already have an account?</strong> Find your address below or <a href="/login">sign in here</a> to view your balance and pay. If you have any questions about what you owe, <a href="/contact" target="_blank" rel="noopener">contact Neela</a> directly.</p>
+<div>
+<p class="notice-text"><strong>First time here?</strong> Create your account using the access code Neela sent you. <strong>Already have an account?</strong> Find your address below or <a href="/login">sign in here</a> to view your balance and pay. If you have any questions about what you owe, <a href="/contact" target="_blank" rel="noopener">contact Neela</a> directly.</p>
+<a class="notice-btn" href="/signup">Create Your Account</a>
+</div>
 </div>
 </div>
 
@@ -756,7 +775,7 @@ nav { padding: 0 14px; height: 58px; }
   <div class="help-block">
     <h3>Need Help?</h3>
     <h2>Questions About Your Account?</h2>
-    <p>If you don't see your address, can't find your invite link, or have any questions about your rent or balance — reach out to Neela directly. She handles everything herself.</p>
+    <p>If you don't see your address, can't find your access code, or have any questions about your rent or balance — reach out to Neela directly. She handles everything herself.</p>
     <div class="contact-links">
       <a href="tel:4199027728" class="contact-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.07-1.07a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
