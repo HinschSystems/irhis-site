@@ -108,7 +108,7 @@
 
   <div class="main">
     <p class="page-title">Rent Roll</p>
-    <p class="page-sub">All 40 properties — who's paid, who owes, and current balances.</p>
+    <p class="page-sub" id="page-sub">Who's paid, who owes, and current balances.</p>
 
     <div class="summary-row">
       <div class="summary-card">
@@ -227,15 +227,18 @@
       const addressById = {};
       properties.forEach(p => { addressById[p.id] = p.address; });
 
+      // Hide internal test units (any address containing "Testfield") from Neela's view
+      const isTestAddress = a => /testfield/i.test(a || '');
+
       formerRows = tenants
-        .filter(t => !t.is_active && Number(t.balance || 0) !== 0)
+        .filter(t => !t.is_active && Number(t.balance || 0) !== 0 && !isTestAddress(addressById[t.property_id]))
         .map(t => ({
           address: addressById[t.property_id] || '(unknown property)',
           email: t.email,
           balance: Number(t.balance),
         }));
 
-      rows = properties.map(p => {
+      rows = properties.filter(p => !isTestAddress(p.address)).map(p => {
         const tenant = tenantByProperty[p.id];
         return {
           address: p.address,
@@ -256,6 +259,9 @@
   }
 
   function renderSummary() {
+    document.getElementById('page-sub').textContent =
+      `All ${rows.length} properties — who's paid, who owes, and current balances.`;
+
     const occupied = rows.filter(r => r.email !== null);
     const vacant = rows.filter(r => r.email === null);
     const totalOwed = occupied.reduce((sum, r) => sum + (r.balance > 0 ? r.balance : 0), 0);
