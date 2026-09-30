@@ -314,8 +314,22 @@
 
       <div class="quick-amounts" id="quick-amounts"></div>
 
+      <p class="pay-note" id="fee-preview">
+        Bank processing fee: —
+      </p>
+
       <button class="pay-btn" id="pay-btn" onclick="handlePayment()">Pay Now</button>
-      <p class="pay-note">You'll be taken to a secure checkout page</p>
+
+      <p class="pay-note">
+        Bank account payments only for now. Card payments start in November.
+      </p>
+
+      <p class="pay-note">
+        A bank processing fee of up to $5 applies to each payment.
+        If you pay in parts, the fee applies to each separate payment.
+      </p>
+
+      <p class="pay-note">You'll be taken to a secure bank checkout page</p>
     </div>
   </div>
 </div>
@@ -334,6 +348,38 @@
 
   function fmt(amount) {
     return '$' + parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calculateAchFeeCents(amount) {
+    const rentCents = Math.round(Number(amount) * 100);
+    if (!Number.isFinite(rentCents) || rentCents < 100) return 0;
+
+    for (let feeCents = 0; feeCents <= 500; feeCents++) {
+      if (feeCents >= Math.round(0.008 * (rentCents + feeCents))) {
+        return feeCents;
+      }
+    }
+    return 500;
+  }
+
+  function updateFeePreview() {
+    const amount = parseFloat(document.getElementById('pay-amount').value);
+    const feeEl = document.getElementById('fee-preview');
+    const btn = document.getElementById('pay-btn');
+
+    if (!amount || amount < 1) {
+      feeEl.textContent = 'Bank processing fee: —';
+      btn.textContent = 'Pay Now';
+      return;
+    }
+
+    const feeCents = calculateAchFeeCents(amount);
+    const fee = feeCents / 100;
+    const total = amount + fee;
+
+    feeEl.textContent =
+      `Bank processing fee: ${fmt(fee)} · Total at checkout: ${fmt(total)}`;
+    btn.textContent = `Pay ${fmt(amount)} + ${fmt(fee)} fee`;
   }
 
   async function init() {
@@ -396,19 +442,24 @@
         const btn = document.createElement('button');
         btn.className = 'quick-btn';
         btn.textContent = labels[i];
-        btn.onclick = () => document.getElementById('pay-amount').value = amt;
+        btn.onclick = () => {
+          document.getElementById('pay-amount').value = amt;
+          updateFeePreview();
+        };
         quickWrap.appendChild(btn);
       });
 
       document.getElementById('view-loading').style.display = 'none';
       document.getElementById('view-dashboard').style.display = 'block';
 
+      updateFeePreview();
+
       // Show a message if we just came back from Stripe checkout
       const params = new URLSearchParams(window.location.search);
       const paid = params.get('paid');
       const statusEl = document.getElementById('payment-status-msg');
       if (paid === 'success') {
-        statusEl.textContent = 'Payment received! Your balance will update shortly and you\'ll get an emailed receipt from Stripe.';
+        statusEl.textContent = 'Bank payment submitted. Your balance will update after the payment clears, usually in a few business days.';
         statusEl.style.display = 'block';
       } else if (paid === 'cancelled') {
         statusEl.style.background = '#fff2f0';
@@ -465,7 +516,7 @@
         errEl.textContent = result.error || 'Something went wrong setting up your payment. Please try again.';
         errEl.style.display = 'block';
         btn.disabled = false;
-        btn.textContent = 'Pay Now';
+        updateFeePreview();
         return;
       }
 
@@ -474,9 +525,12 @@
       errEl.textContent = 'We could not reach the payment server. Please check your connection and try again.';
       errEl.style.display = 'block';
       btn.disabled = false;
-      btn.textContent = 'Pay Now';
+      updateFeePreview();
     }
   }
+
+  document.getElementById('pay-amount')
+    .addEventListener('input', updateFeePreview);
 
   async function signOut() {
     await db.auth.signOut();
