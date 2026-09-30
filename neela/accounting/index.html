@@ -26,6 +26,7 @@
     /* Topbar */
     .topbar { background: #0b2c3d; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
     .topbar img { height: 34px; }
+    .topbar-actions { display: flex; gap: 10px; }
     .signout { color: #E8EEED; font-size: 13px; font-weight: 600; cursor: pointer; background: none; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 6px 14px; }
     .signout:hover { background: rgba(255,255,255,0.1); }
 
@@ -65,6 +66,24 @@
     .loading, .load-error { text-align: center; padding: 80px 20px; color: #888; }
     .load-error button { margin-top: 12px; background: #C4775A; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-weight: 700; cursor: pointer; }
 
+    /* Change password modal */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(11,44,61,0.55); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 1000; }
+    .modal-card { background: #fff; border-radius: 14px; padding: 32px; width: 100%; max-width: 400px; box-shadow: 0 8px 40px rgba(0,0,0,0.25); }
+    .modal-card h2 { color: #0b2c3d; font-size: 20px; font-weight: 800; margin-bottom: 18px; }
+    .modal-card label { display: block; color: #0b2c3d; font-size: 13px; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .modal-card input { width: 100%; padding: 12px 14px; border: 1.5px solid #dde3e3; border-radius: 8px; font-size: 15px; margin-bottom: 18px; outline: none; }
+    .modal-card input:focus { border-color: #C4775A; }
+    .pw-hint { font-size: 12px; color: #888; margin: -10px 0 18px; }
+    .pw-msg { padding: 11px 14px; border-radius: 8px; font-size: 14px; margin-bottom: 16px; display: none; }
+    .pw-msg.error { background: #fff2f0; border: 1.5px solid #f5c0b5; color: #b83c28; }
+    .pw-msg.success { background: #eefaf0; border: 1.5px solid #b9e3c6; color: #1e6b3c; }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+    .btn-primary { background: #C4775A; color: #fff; border: none; border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; cursor: pointer; }
+    .btn-primary:hover:not(:disabled) { background: #ad6249; }
+    .btn-primary:disabled { background: #c8c8c8; cursor: not-allowed; }
+    .btn-secondary { background: #fff; color: #0b2c3d; border: 1.5px solid #dde3e3; border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; cursor: pointer; }
+    .btn-secondary:hover { background: #f4f6f6; }
+
     @media (max-width: 900px) { .summary-row { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) {
       table, thead, tbody, th, td, tr { display: block; }
@@ -103,7 +122,10 @@
 <div id="view-dashboard" style="display:none;">
   <div class="topbar">
     <img src="https://assets.cdn.filesafe.space/Ju2En80bdsSebpKgHpJT/media/f893b497-0694-485f-8d2a-efccfe5349bd.png" alt="I Rent Houses In Sweats" onerror="this.style.display='none'">
-    <button class="signout" onclick="signOut()">Sign Out</button>
+    <div class="topbar-actions">
+      <button class="signout" onclick="openPwModal()">Change Password</button>
+      <button class="signout" onclick="signOut()">Sign Out</button>
+    </div>
   </div>
 
   <div class="main">
@@ -164,6 +186,23 @@
         </thead>
         <tbody id="former-body"></tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- CHANGE PASSWORD MODAL -->
+  <div id="pw-modal" class="modal-backdrop" style="display:none;">
+    <div class="modal-card">
+      <h2>Change Password</h2>
+      <div class="pw-msg" id="pw-msg"></div>
+      <label for="pw-new">New password</label>
+      <input type="password" id="pw-new" autocomplete="new-password">
+      <label for="pw-confirm">Confirm new password</label>
+      <input type="password" id="pw-confirm" autocomplete="new-password">
+      <p class="pw-hint">At least 8 characters.</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closePwModal()">Cancel</button>
+        <button class="btn-primary" id="pw-save" onclick="savePassword()">Save Password</button>
+      </div>
     </div>
   </div>
 </div>
@@ -377,7 +416,72 @@
     show('view-login');
   }
 
+  // ---- Change password ----
+  function isPwModalOpen() {
+    return document.getElementById('pw-modal').style.display !== 'none';
+  }
+
+  function showPwMsg(text, type) {
+    const el = document.getElementById('pw-msg');
+    el.textContent = text;
+    el.className = 'pw-msg ' + type;
+    el.style.display = 'block';
+  }
+
+  function openPwModal() {
+    document.getElementById('pw-new').value = '';
+    document.getElementById('pw-confirm').value = '';
+    document.getElementById('pw-msg').style.display = 'none';
+    const btn = document.getElementById('pw-save');
+    btn.disabled = false;
+    btn.textContent = 'Save Password';
+    document.getElementById('pw-modal').style.display = 'flex';
+    document.getElementById('pw-new').focus();
+  }
+
+  function closePwModal() {
+    document.getElementById('pw-modal').style.display = 'none';
+  }
+
+  async function savePassword() {
+    const btn = document.getElementById('pw-save');
+    if (btn.disabled) return; // already saving, or already saved
+
+    const p1 = document.getElementById('pw-new').value;
+    const p2 = document.getElementById('pw-confirm').value;
+
+    if (p1.length < 8) { showPwMsg('Your new password needs at least 8 characters.', 'error'); return; }
+    if (p1 !== p2) { showPwMsg('The two passwords don\'t match.', 'error'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+
+    const { error } = await db.auth.updateUser({ password: p1 });
+
+    if (error) {
+      const msg = /different from the old/i.test(error.message)
+        ? 'Please choose a password different from your current one.'
+        : 'We couldn\'t update your password: ' + error.message;
+      showPwMsg(msg, 'error');
+      btn.disabled = false;
+      btn.textContent = 'Save Password';
+      return;
+    }
+
+    document.getElementById('pw-new').value = '';
+    document.getElementById('pw-confirm').value = '';
+    showPwMsg('Password updated. Use your new password next time you sign in.', 'success');
+    btn.textContent = 'Saved';
+    setTimeout(closePwModal, 2000);
+  }
+
   document.addEventListener('keydown', e => {
+    if (isPwModalOpen()) {
+      if (e.key === 'Escape') { closePwModal(); return; }
+      // Enter saves only while typing in a password field (buttons handle their own clicks)
+      if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); savePassword(); }
+      return;
+    }
     if (e.key === 'Enter' && document.getElementById('view-login').style.display !== 'none') handleLogin();
   });
 
