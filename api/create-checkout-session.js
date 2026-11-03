@@ -22,6 +22,13 @@
 // Required Vercel environment variable:
 //   STRIPE_SECRET_KEY = sk_live_...   (set in Vercel dashboard, never committed)
 //
+// Payment methods (Nov 2026): cards (debit/credit, incl. Apple Pay / Google Pay)
+// and US bank account (ACH) in one checkout. Processing fees are absorbed by
+// IRHIS during this period: no fee line item. Metadata keeps the rent_fee_v1
+// contract with fee_amount_cents = '0' so IRHIS PORTAL PAYMENT RECONCILIATION
+// (Route 2 -> apply_portal_payment_v1) handles new and older fee-bearing
+// sessions without any database or Make change.
+//
 // SUPABASE_URL / SUPABASE_KEY below are the same PUBLIC values already
 // shipped in dashboard/index.html (anon key, protected by RLS). They are not
 // secrets. NEVER put the service_role key in this file.
@@ -33,18 +40,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const SITE_URL = 'https://irenthousesinsweats.com';
 const MIN_AMOUNT_CENTS = 100;        // $1.00 minimum, matches existing dashboard validation
 const MAX_AMOUNT_CENTS = 10000000;   // $100,000 ceiling as a sanity guard against abuse/typos
-
-function calculateAchFeeCents(rentCents) {
-  // Smallest f such that:
-  // f >= round(0.008 * (rentCents + f))
-  // capped at $5.00.
-  for (let feeCents = 0; feeCents <= 500; feeCents++) {
-    if (feeCents >= Math.round(0.008 * (rentCents + feeCents))) {
-      return feeCents;
-    }
-  }
-  return 500;
-}
+const SESSION_TTL_SECONDS = 60 * 60; // 1 hour; Stripe minimum is 30 minutes. Limits stale checkout tabs.
 
 function checkoutReturnBaseUrl() {
   if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_URL) {
@@ -118,10 +114,10 @@ module.exports = async (req, res) => {
       return;
     }
 
-    // Fee is calculated server-side from the submitted rent-payment amount.
+    // No tenant processing fee during this period. Kept as an explicit value so
+    // metadata stays rent_fee_v1-compatible (rent + fee must equal session total).
     // Never accept or trust a fee supplied by the browser.
-    const feeAmountCents = calculateAchFeeCents(amountInCents);
-    const sessionTotalCents = amountInCents + feeAmountCents;
+    const feeAmountCents = 0;
 
     // 1. Verify the token and get the real user id
     const userResult = await supabaseRequest('/auth/v1/user', accessToken);
@@ -180,7 +176,8 @@ module.exports = async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
-      payment_method_types: ['us_bank_account'],
+      payment_method_types: ['card', 'us_bank_account'],
+      expires_at: Math.floor(Date.now() / 1000) + SESSION_TTL_SECONDS,
       customer_email: email,
       line_items: [
         {
@@ -191,17 +188,6 @@ module.exports = async (req, res) => {
               description: `Monthly rent payment for ${propertyLabel}. Covers your base rent and any pet rent due for the current month. Questions? Contact Neela at (419) 902-7728.`,
             },
             unit_amount: amountInCents,
-          },
-          quantity: 1,
-        },
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'Bank processing fee',
-              description: 'Bank payment processing fee.',
-            },
-            unit_amount: feeAmountCents,
           },
           quantity: 1,
         },
